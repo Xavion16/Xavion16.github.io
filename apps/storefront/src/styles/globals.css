@@ -271,6 +271,56 @@
   }
 }
 
+/* Manifesto sesli alıntı kutusu (VoiceQuote) */
+.voice-quote {
+  transition:
+    transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.35s ease;
+}
+.voice-quote:hover {
+  transform: translateY(-4px);
+}
+.voice-quote.is-playing {
+  transform: translateY(-6px) scale(1.02) rotate(-0.6deg);
+  box-shadow:
+    0 0 0 2px var(--color-ember),
+    0 24px 60px -20px rgb(255 90 54 / 0.65);
+}
+.voice-quote.is-playing .voice-quote-text {
+  animation: voice-breathe 2.4s ease-in-out infinite;
+}
+.voice-bar {
+  display: block;
+  width: 4px;
+  height: 25%;
+  border-radius: 2px;
+  background: var(--color-ember);
+  opacity: 0.45;
+  transform-origin: bottom;
+}
+.voice-quote.is-playing .voice-bar {
+  opacity: 1;
+  animation: voice-eq 0.9s ease-in-out infinite;
+}
+@keyframes voice-eq {
+  0%,
+  100% {
+    height: 25%;
+  }
+  50% {
+    height: 100%;
+  }
+}
+@keyframes voice-breathe {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(4px);
+  }
+}
+
 /* prefers-reduced-motion: bütün hareket durur (Rapor §4) */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -289,5 +339,10 @@
 
   .marquee-track {
     animation: none;
+  }
+
+  .voice-quote:hover,
+  .voice-quote.is-playing {
+    transform: none;
   }
 }

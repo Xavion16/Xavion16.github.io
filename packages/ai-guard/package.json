@@ -1,0 +1,17 @@
+{
+  "name": "@arion/ai-guard",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Areion güvenlik katmanı: kişisel veri maskeleme, sağlık ve kart verisi tespiti",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.2",
+    "vitest": "^5.1.1"
+  }
+}

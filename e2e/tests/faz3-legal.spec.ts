@@ -1,6 +1,7 @@
 import { expect, test, type Page, type Request } from "@playwright/test"
 import { readdir, readFile } from "node:fs/promises"
 import path from "node:path"
+import { addFirstInStock, rejectCookies } from "./helpers"
 
 /*
  * Faz 3 kabul (Rapor §12):
@@ -255,18 +256,12 @@ test.describe("ödeme adımındaki yasal onaylar", () => {
   test("onaylar olmadan ödeme butonu pasif; ön bilgilendirmede zorunlu bilgiler var", async ({
     page,
   }) => {
-    await page.goto("/tr/urun/beyoglu-loafer")
-    await page.getByRole("button", { name: "Tümünü Reddet" }).click()
-    await page
-      .getByRole("group", { name: /^Renk/ })
-      .getByRole("radio", { name: "Bordo", exact: true })
-      .check({ force: true })
-    await page
-      .getByRole("group", { name: /^Numara/ })
-      .getByRole("radio", { name: "42", exact: true })
-      .check({ force: true })
-    await page.getByRole("button", { name: "Sepete ekle" }).click()
-    await expect(page.getByText("Sepete eklendi.")).toBeVisible()
+    await page.goto("/tr")
+    await rejectCookies(page)
+    await addFirstInStock(page, "beyoglu-loafer", {
+      color: "Bordo",
+      sizes: ["42", "43", "41", "44", "40", "45", "39"],
+    })
 
     await page.goto("/tr/odeme")
     await page

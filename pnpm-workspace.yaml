@@ -17,6 +17,10 @@ allowBuilds:
   protobufjs: false
 
 # pnpm 10.x
+minimumReleaseAgeExclude:
+  - "@ai-sdk/gateway@4.0.150"
+  - ai@7.0.177
+
 onlyBuiltDependencies:
   - "@medusajs/telemetry"
 

@@ -25,6 +25,11 @@ export const routing = defineRouting({
     "/hesabim/izinlerim": { tr: "/hesabim/izinlerim", en: "/account/permissions" },
     "/hesabim/veri-taleplerim": { tr: "/hesabim/veri-taleplerim", en: "/account/data-requests" },
     "/atolye": { tr: "/atolye", en: "/atelier" },
+    "/yardim": { tr: "/yardim", en: "/help" },
+    "/yardim/siparis-takip": { tr: "/yardim/siparis-takip", en: "/help/order-tracking" },
+    "/yardim/iade": { tr: "/yardim/iade", en: "/help/returns" },
+    "/yardim/talep": { tr: "/yardim/talep", en: "/help/request" },
+    "/iletisim": { tr: "/iletisim", en: "/contact" },
     // Yasal sayfalar: her slug iki dilde de çevrilir (DECISIONS #020 kapandı)
     "/yasal/kvkk-aydinlatma": { tr: "/yasal/kvkk-aydinlatma", en: "/legal/privacy-notice" },
     "/yasal/gizlilik": { tr: "/yasal/gizlilik", en: "/legal/privacy-policy" },

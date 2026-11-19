@@ -72,6 +72,22 @@
     "failing": ""
   },
   {
+    "formFactor": "mobile",
+    "page": "/tr/yardim",
+    "a11y": 100,
+    "bestPractices": 100,
+    "seo": 66,
+    "failing": ""
+  },
+  {
+    "formFactor": "mobile",
+    "page": "/tr/yardim/iade",
+    "a11y": 100,
+    "bestPractices": 100,
+    "seo": 66,
+    "failing": ""
+  },
+  {
     "formFactor": "desktop",
     "page": "/tr",
     "a11y": 100,
@@ -138,6 +154,22 @@
   {
     "formFactor": "desktop",
     "page": "/tr/yasal/on-bilgilendirme",
+    "a11y": 100,
+    "bestPractices": 100,
+    "seo": 66,
+    "failing": ""
+  },
+  {
+    "formFactor": "desktop",
+    "page": "/tr/yardim",
+    "a11y": 100,
+    "bestPractices": 100,
+    "seo": 66,
+    "failing": ""
+  },
+  {
+    "formFactor": "desktop",
+    "page": "/tr/yardim/iade",
     "a11y": 100,
     "bestPractices": 100,
     "seo": 66,

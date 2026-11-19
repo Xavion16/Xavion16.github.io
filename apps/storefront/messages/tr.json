@@ -232,7 +232,10 @@
       "klasik": "Ayağa göre şekil alan deri taban ve pençesi yenilenebilen dikişli yapı. Bir ömür sürmesi için yapılır.",
       "cocuk": "Esnek taban, geniş burun ve büyüme payı. Ayak büyüdükçe ölçüm hatırlatıcısı."
     },
-    "back": "Ana sayfaya dön"
+    "back": "Ana sayfaya dön",
+    "voiceLabel": "Yapay zekâ ile üretilmiş ses",
+    "listen": "Sesli dinle",
+    "stop": "Durdur"
   },
   "placeholder": {
     "eyebrow": "Yapım aşamasında",
@@ -559,5 +562,161 @@
       "error": "Başvuru gönderilemedi. Lütfen alanları kontrol et.",
       "notice": "Bu formdaki bilgiler yalnızca başvurunu sonuçlandırmak ve kimliğini doğrulamak için işlenir (KVKK m.5/2-ç, hukuki yükümlülük)."
     }
+  },
+  "help": {
+    "eyebrow": "Yardım merkezi",
+    "title": "Nasıl yardımcı olabiliriz?",
+    "searchLabel": "Yardım merkezinde ara",
+    "searchPlaceholder": "Örn. iade, numara, kargo…",
+    "results": "{count} sonuç",
+    "noResults": "Sonuç bulunamadı. Areion'a sor ya da talep oluştur.",
+    "quick": {
+      "tracking": "Sipariş takibi",
+      "trackingDesc": "Giriş yapmadan, sipariş no ve e-postayla.",
+      "returns": "İade ve değişim",
+      "returnsDesc": "14 gün cayma, ücretsiz iade kargo kodu.",
+      "ticket": "Talep oluştur",
+      "ticketDesc": "Yazılı talep; bilet numarası alırsın.",
+      "chat": "Areion'a sor",
+      "chatDesc": "Yapay zekâ danışmanı, gerekirse temsilciye bağlar."
+    },
+    "contactTitle": "Bize ulaş",
+    "hours": "Hafta içi 09.00–18.00 (DEMO)",
+    "tracking": {
+      "title": "Sipariş takibi",
+      "intro": "Giriş yapmadan siparişini takip edebilirsin. Sipariş numarası ve siparişte kullandığın e-posta birlikte doğrulanır.",
+      "orderNo": "Sipariş numarası",
+      "email": "E-posta",
+      "submit": "Siparişi bul",
+      "notFound": "Bu bilgilerle eşleşen sipariş bulunamadı. Numara ve e-postayı kontrol et.",
+      "carrier": "Kargo firması",
+      "trackingNo": "Takip numarası",
+      "steps": {
+        "created": "Sipariş alındı",
+        "shipped": "Kargoya verildi",
+        "in_transit": "Yolda",
+        "delivered": "Teslim edildi"
+      },
+      "expected": "Tahmini teslim: {date}",
+      "demo": "DEMO kargo: durum sipariş zamanından simüle edilir."
+    },
+    "ticket": {
+      "title": "Talep / şikâyet formu",
+      "intro": "Yazılı talebin kayda geçer ve bir bilet numarası alırsın. Ortalama ilk yanıt süremiz 4 saattir (DEMO).",
+      "topic": "Konu",
+      "topics": {
+        "size_fit": "Beden ve uyum",
+        "order": "Sipariş",
+        "shipping": "Kargo",
+        "return": "İade ve değişim",
+        "payment": "Ödeme",
+        "care": "Bakım ve tamir",
+        "kvkk": "Kişisel veriler",
+        "other": "Diğer"
+      },
+      "fullName": "Ad soyad",
+      "email": "E-posta",
+      "orderRef": "Sipariş numarası (varsa)",
+      "message": "Mesajın",
+      "submit": "Talebi gönder",
+      "success": "Talebin alındı. Bilet numaran: {ticket}",
+      "error": "Talep gönderilemedi. Lütfen alanları kontrol et.",
+      "notice": "Bu formdaki bilgiler yalnızca talebini yanıtlamak için işlenir (KVKK m.5/2-c). Ayrıntı:"
+    },
+    "returns": {
+      "title": "İade, değişim ve cayma",
+      "intro": "Teslimden itibaren 14 gün içinde hiçbir gerekçe göstermeden cayabilirsin. İade kargo ücreti bize aittir. Kusurlu üründe haklarının 14 günle sınırı yoktur.",
+      "step1": "Siparişini bul",
+      "step2": "Ürün ve neden",
+      "step3": "Sonuç",
+      "orderNo": "Sipariş numarası",
+      "email": "E-posta",
+      "find": "Siparişi bul",
+      "notFound": "Bu bilgilerle eşleşen sipariş bulunamadı.",
+      "withinWindow": "Cayma süren devam ediyor: {days} gün kaldı (son gün {date}).",
+      "notDelivered": "Siparişin henüz teslim edilmedi; cayma hakkını şimdiden kullanabilirsin.",
+      "expiredTitle": "14 günlük cayma süresi doldu",
+      "expired": "Ürünü {date} tarihinde teslim aldın; cayma süresi {deadline} tarihinde sona erdi. Fikir değişikliği nedeniyle iade artık mümkün değil. Ürün kusurluysa ayıplı mal hakların devam eder: nedeni \"Kusurlu\" olarak seç.",
+      "items": "İade edilecek ürünler",
+      "reason": "Neden",
+      "reasons": {
+        "fit": "Uyum (olmadı)",
+        "dislike": "Beğenmedim",
+        "defective": "Kusurlu",
+        "wrong_item": "Yanlış ürün geldi"
+      },
+      "defectTitle": "Ayıplı mal — seçimlik hakların (6502 s.K. m.11)",
+      "remedies": {
+        "terminate": "Sözleşmeden dönme (para iadesi)",
+        "discount": "Ayıp oranında bedel indirimi",
+        "repair": "Ücretsiz onarım",
+        "replace": "Ayıpsız misliyle değişim"
+      },
+      "fitResult": "Nasıl oldu?",
+      "fitResults": {
+        "small": "Küçük geldi",
+        "large": "Büyük geldi",
+        "narrow": "Dar geldi",
+        "wide": "Bol geldi",
+        "other": "Başka"
+      },
+      "wantsExchange": "Para iadesi yerine değişim istiyorum",
+      "exchangeNote": "İstediğin numara / genişlik",
+      "exchangeHint": "Ön ayağın darsa yarım numara büyütmek yerine aynı numaranın W seçeneğini dene.",
+      "submit": "Talebi oluştur",
+      "successTitle": "İade talebin oluşturuldu",
+      "returnNo": "Talep no",
+      "returnCode": "Ücretsiz iade kargo kodu",
+      "refundDue": "Para iadesi en geç: {date}",
+      "exchangeDone": "Değişim talebin alındı; yeni ürün iade ulaşınca gönderilir.",
+      "repairDone": "Onarım / değişim talebin alındı; ürün bize ulaşınca süreç başlar.",
+      "sellerPays": "İade kargo ücreti ARION'a aittir.",
+      "errors": {
+        "withdrawal_expired": "Cayma süresi dolduğu için bu talep oluşturulamadı.",
+        "remedy_required": "Lütfen bir seçimlik hak seç.",
+        "exchange_note_required": "Lütfen istediğin numarayı yaz.",
+        "generic": "Talep oluşturulamadı. Lütfen tekrar dene."
+      },
+      "notice": "Bilgilerin yalnızca iade talebini sonuçlandırmak için işlenir. Uyum geri bildirimin kimliğin olmadan kalıplarımızı iyileştirmek için kullanılır."
+    },
+    "contact": {
+      "title": "İletişim",
+      "intro": "Bize aşağıdaki kanallardan ulaşabilirsin. Kanal bilgileri örnektir (DEMO).",
+      "channels": "Kanallar",
+      "chat": "Canlı destek (Areion + temsilci)",
+      "whatsapp": "WhatsApp (DEMO — bağlı değil)",
+      "email": "E-posta",
+      "phone": "Telefon",
+      "address": "Adres",
+      "kep": "KEP"
+    }
+  },
+  "areion": {
+    "open": "Areion'a sor",
+    "close": "Sohbeti kapat",
+    "title": "Areion",
+    "subtitle": "Yapay zekâ danışmanı",
+    "disclosure": "Ben bir yapay zekâ asistanıyım, insan değilim. Sağlık tavsiyesi vermem, kart bilgisi istemem.",
+    "consentTitle": "Başlamadan önce",
+    "consentAccept": "Kabul ediyorum, başla",
+    "consentDecline": "Temsilciyle yazışmak istiyorum",
+    "privacy": "Aydınlatma metni",
+    "placeholder": "Sorunu yaz… (ör. 41 mi 42 mi?)",
+    "send": "Gönder",
+    "thinking": "Areion düşünüyor…",
+    "handoff": "Temsilciye bağlan",
+    "handoffName": "Ad soyad",
+    "handoffEmail": "E-posta",
+    "handoffSubmit": "Temsilciye ilet",
+    "handoffDone": "Seni bir temsilciye bağladım. Talep numaran {ticket}. Konuşma geçmişin (kişisel bilgiler maskelenerek) temsilciye iletildi.",
+    "error": "Şu an yanıt veremiyorum. İstersen seni bir temsilciye bağlayayım.",
+    "greeting": "Merhaba, ben Areion. Beden, kalıp, kargo, iade ya da ürünlerimiz hakkında sorabilirsin.",
+    "masked": "Kişisel bilgilerin gönderilmeden önce maskelenir."
+  },
+  "footerHelp": {
+    "helpCenter": "Yardım merkezi",
+    "tracking": "Sipariş takibi",
+    "returns": "İade ve değişim",
+    "contact": "İletişim"
   }
 }

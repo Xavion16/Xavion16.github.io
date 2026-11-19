@@ -21,6 +21,11 @@ const PAGES = [
   "/tr/yasal/kvkk-basvuru",
   "/tr/yasal/cerez-politikasi",
   "/en/legal/pre-contract-information",
+  "/tr/yardim",
+  "/tr/yardim/siparis-takip",
+  "/tr/yardim/iade",
+  "/tr/yardim/talep",
+  "/tr/iletisim",
 ]
 
 for (const url of PAGES) {

@@ -66,6 +66,11 @@ export default defineMiddlewares({
       method: ["POST"],
       middlewares: [authenticate("customer", ["bearer", "session"], { allowUnauthenticated: true })],
     },
+    {
+      matcher: "/store/arion/support-tickets",
+      method: ["POST"],
+      middlewares: [authenticate("customer", ["bearer", "session"], { allowUnauthenticated: true })],
+    },
     // Yalnızca üyeler
     {
       matcher: "/store/arion/me*",

@@ -8,6 +8,7 @@ import { Link } from "@/i18n/navigation"
 import { routing } from "@/i18n/routing"
 import { localizedAlternates } from "@/lib/metadata"
 import { CATEGORY_KEYS, type CategoryKey } from "@/lib/site"
+import { VoiceQuote } from "@/components/brand/voice-quote"
 
 const PARAGRAPHS = ["p1", "p2", "p3"] as const
 const PRINCIPLES = ["fit", "explain", "repair", "measure"] as const
@@ -64,15 +65,12 @@ export default async function ManifestoPage({
 
       <div className="bg-chalk text-ink">
         <div className="mx-auto grid max-w-[1440px] gap-12 px-4 py-20 sm:px-8 md:py-28 lg:grid-cols-[1fr_1.4fr]">
-          <blockquote
+          <VoiceQuote
+            quote={t("quote")}
             lang={otherLang}
-            className="self-start rounded-3xl bg-ink p-8 text-lg leading-relaxed font-semibold text-white lg:sticky lg:top-28"
-          >
-            <span aria-hidden="true" className="condensed block text-7xl leading-none text-ember">
-              “
-            </span>
-            <p>{t("quote")}</p>
-          </blockquote>
+            src={`/audio/manifesto-quote-${otherLang}.mp3`}
+            labels={{ listen: t("listen"), stop: t("stop"), voice: t("voiceLabel") }}
+          />
           <div className="space-y-8 text-xl leading-relaxed md:text-2xl">
             {PARAGRAPHS.map((p) => (
               <p key={p} className="font-medium">

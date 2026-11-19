@@ -1,6 +1,7 @@
 import { expect, test, type Page } from "@playwright/test"
 import { readdir, readFile } from "node:fs/promises"
 import path from "node:path"
+import { addFirstInStock } from "./helpers"
 
 /*
  * Faz 2 kabul:
@@ -22,12 +23,11 @@ async function pick(page: Page, group: RegExp, value: string) {
 }
 
 async function addKackarToCart(page: Page) {
-  await page.goto("/tr/urun/kackar-su-gecirmez-bot")
-  await pick(page, /^Renk/, "Kahverengi")
-  await pick(page, /^Numara/, "42")
-  await pick(page, /^Genişlik/, "W")
-  await page.getByRole("button", { name: "Sepete ekle" }).click()
-  await expect(page.getByText("Sepete eklendi.")).toBeVisible()
+  await addFirstInStock(page, "kackar-su-gecirmez-bot", {
+    color: "Kahverengi",
+    width: "W",
+    sizes: ["42", "43", "41", "44", "40", "39"],
+  })
   await expect(page.getByTestId("cart-count")).toHaveText("1")
 }
 

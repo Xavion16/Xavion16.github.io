@@ -52,6 +52,21 @@ export async function SiteFooter() {
                 </Link>
               </li>
             </ul>
+            <h2 className={`${headingClass} mt-8`}>{t("footer.help")}</h2>
+            <ul className="mt-5 text-sm">
+              <li>
+                <Link href="/yardim" className={linkClass}>{t("footerHelp.helpCenter")}</Link>
+              </li>
+              <li>
+                <Link href="/yardim/siparis-takip" className={linkClass}>{t("footerHelp.tracking")}</Link>
+              </li>
+              <li>
+                <Link href="/yardim/iade" className={linkClass}>{t("footerHelp.returns")}</Link>
+              </li>
+              <li>
+                <Link href="/iletisim" className={linkClass}>{t("footerHelp.contact")}</Link>
+              </li>
+            </ul>
           </div>
 
           <div>

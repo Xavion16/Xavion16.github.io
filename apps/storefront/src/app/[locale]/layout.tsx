@@ -3,7 +3,11 @@ import { Archivo, JetBrains_Mono } from "next/font/google"
 import { notFound } from "next/navigation"
 import { hasLocale, NextIntlClientProvider } from "next-intl"
 import { getTranslations, setRequestLocale } from "next-intl/server"
-import { COOKIE_CATEGORIES, type CookieCategory } from "@arion/legal-texts"
+import { CONSENT_TEXTS, COOKIE_CATEGORIES, type CookieCategory } from "@arion/legal-texts"
+import { cookies } from "next/headers"
+import { AreionChat } from "@/components/areion/areion-chat"
+import { AI_CONSENT_COOKIE } from "@/lib/ai/config"
+import { getCustomer } from "@/lib/medusa/customer"
 import { CookieConsent } from "@/components/consent/cookie-consent"
 import { SiteFooter } from "@/components/layout/site-footer"
 import { SiteHeader } from "@/components/layout/site-header"
@@ -68,6 +72,8 @@ export default async function LocaleLayout({
   if (!hasLocale(routing.locales, locale)) notFound()
   setRequestLocale(locale)
   const choice = await readCookieChoice()
+  const aiConsent = (await cookies()).get(AI_CONSENT_COOKIE)?.value === "1"
+  const customer = await getCustomer()
   const order: CookieCategory[] = ["necessary", "functional", "analytics", "marketing"]
   const categories = order.map((key) => ({
     key,
@@ -88,6 +94,14 @@ export default async function LocaleLayout({
             {children}
           </main>
           <SiteFooter />
+          <AreionChat
+            consented={aiConsent}
+            consentText={CONSENT_TEXTS.ai_chat_transfer.text[locale]}
+            defaults={{
+              full_name: customer ? `${customer.first_name ?? ""} ${customer.last_name ?? ""}`.trim() : undefined,
+              email: customer?.email ?? undefined,
+            }}
+          />
           <CookieConsent initial={choice} categories={categories} />
         </NextIntlClientProvider>
       </body>

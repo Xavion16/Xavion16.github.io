@@ -232,7 +232,10 @@
       "klasik": "A leather sole that shapes itself to your foot and a welted build that can be resoled. Made to last a lifetime.",
       "cocuk": "A flexible sole, a wide toe box and room to grow. Measuring reminders as the foot grows."
     },
-    "back": "Back to home"
+    "back": "Back to home",
+    "voiceLabel": "AI-generated voice",
+    "listen": "Listen",
+    "stop": "Stop"
   },
   "placeholder": {
     "eyebrow": "Under construction",
@@ -559,5 +562,161 @@
       "error": "The request could not be sent. Please check the fields.",
       "notice": "The details in this form are processed only to handle your request and verify your identity (KVKK Art. 5/2-ç, legal obligation)."
     }
+  },
+  "help": {
+    "eyebrow": "Help centre",
+    "title": "How can we help?",
+    "searchLabel": "Search the help centre",
+    "searchPlaceholder": "e.g. returns, size, shipping…",
+    "results": "{count} results",
+    "noResults": "No results. Ask Areion or open a request.",
+    "quick": {
+      "tracking": "Order tracking",
+      "trackingDesc": "No sign-in needed: order number and email.",
+      "returns": "Returns & exchanges",
+      "returnsDesc": "14-day withdrawal, free return shipping code.",
+      "ticket": "Open a request",
+      "ticketDesc": "Written request; you get a ticket number.",
+      "chat": "Ask Areion",
+      "chatDesc": "AI advisor that hands over to a person when needed."
+    },
+    "contactTitle": "Contact us",
+    "hours": "Weekdays 09:00–18:00 (DEMO)",
+    "tracking": {
+      "title": "Order tracking",
+      "intro": "Track your order without signing in. Your order number and the email used at checkout are verified together.",
+      "orderNo": "Order number",
+      "email": "Email",
+      "submit": "Find order",
+      "notFound": "No order matches these details. Check the number and email.",
+      "carrier": "Courier",
+      "trackingNo": "Tracking number",
+      "steps": {
+        "created": "Order received",
+        "shipped": "Shipped",
+        "in_transit": "In transit",
+        "delivered": "Delivered"
+      },
+      "expected": "Expected delivery: {date}",
+      "demo": "DEMO courier: status is simulated from the order time."
+    },
+    "ticket": {
+      "title": "Request / complaint form",
+      "intro": "Your written request is recorded and you get a ticket number. Average first response time is 4 hours (DEMO).",
+      "topic": "Topic",
+      "topics": {
+        "size_fit": "Size & fit",
+        "order": "Order",
+        "shipping": "Shipping",
+        "return": "Returns & exchanges",
+        "payment": "Payment",
+        "care": "Care & repair",
+        "kvkk": "Personal data",
+        "other": "Other"
+      },
+      "fullName": "Full name",
+      "email": "Email",
+      "orderRef": "Order number (if any)",
+      "message": "Your message",
+      "submit": "Send request",
+      "success": "Your request was received. Ticket number: {ticket}",
+      "error": "The request could not be sent. Please check the fields.",
+      "notice": "The details in this form are processed only to answer your request (KVKK Art. 5/2-c). Details:"
+    },
+    "returns": {
+      "title": "Returns, exchanges and withdrawal",
+      "intro": "You can withdraw within 14 days of delivery without giving a reason. Return shipping is on us. For defective items your rights are not limited to 14 days.",
+      "step1": "Find your order",
+      "step2": "Items and reason",
+      "step3": "Result",
+      "orderNo": "Order number",
+      "email": "Email",
+      "find": "Find order",
+      "notFound": "No order matches these details.",
+      "withinWindow": "Your withdrawal period is open: {days} days left (last day {date}).",
+      "notDelivered": "Your order has not been delivered yet; you can already withdraw.",
+      "expiredTitle": "The 14-day withdrawal period has ended",
+      "expired": "You received the item on {date}; the withdrawal period ended on {deadline}. A change-of-mind return is no longer possible. If the item is defective, your rights still apply: choose \"Defective\" as the reason.",
+      "items": "Items to return",
+      "reason": "Reason",
+      "reasons": {
+        "fit": "Fit (didn't fit)",
+        "dislike": "Didn't like it",
+        "defective": "Defective",
+        "wrong_item": "Wrong item received"
+      },
+      "defectTitle": "Defective goods — your elective rights (Law No. 6502 Art. 11)",
+      "remedies": {
+        "terminate": "Terminate the contract (refund)",
+        "discount": "Price reduction",
+        "repair": "Free repair",
+        "replace": "Replacement with a non-defective item"
+      },
+      "fitResult": "How was it?",
+      "fitResults": {
+        "small": "Too small",
+        "large": "Too large",
+        "narrow": "Too narrow",
+        "wide": "Too wide",
+        "other": "Other"
+      },
+      "wantsExchange": "I'd like an exchange instead of a refund",
+      "exchangeNote": "Size / width you'd like",
+      "exchangeHint": "If your forefoot is wide, try the W option in the same size rather than going up half a size.",
+      "submit": "Create request",
+      "successTitle": "Your return request was created",
+      "returnNo": "Request no",
+      "returnCode": "Free return shipping code",
+      "refundDue": "Refund by: {date}",
+      "exchangeDone": "Exchange request received; the new item ships when your return arrives.",
+      "repairDone": "Repair / replacement request received; the process starts when the item reaches us.",
+      "sellerPays": "Return shipping is paid by ARION.",
+      "errors": {
+        "withdrawal_expired": "This request could not be created because the withdrawal period has ended.",
+        "remedy_required": "Please choose one of your elective rights.",
+        "exchange_note_required": "Please write the size you'd like.",
+        "generic": "The request could not be created. Please try again."
+      },
+      "notice": "Your details are processed only to handle the return. Your fit feedback is used, without your identity, to improve our lasts."
+    },
+    "contact": {
+      "title": "Contact",
+      "intro": "You can reach us through the channels below. Channel details are samples (DEMO).",
+      "channels": "Channels",
+      "chat": "Live support (Areion + agent)",
+      "whatsapp": "WhatsApp (DEMO — not connected)",
+      "email": "Email",
+      "phone": "Phone",
+      "address": "Address",
+      "kep": "KEP"
+    }
+  },
+  "areion": {
+    "open": "Ask Areion",
+    "close": "Close chat",
+    "title": "Areion",
+    "subtitle": "AI advisor",
+    "disclosure": "I'm an AI assistant, not a person. I don't give health advice and I never ask for card details.",
+    "consentTitle": "Before we start",
+    "consentAccept": "I agree, start",
+    "consentDecline": "I'd rather talk to a person",
+    "privacy": "Privacy notice",
+    "placeholder": "Type your question… (e.g. 41 or 42?)",
+    "send": "Send",
+    "thinking": "Areion is thinking…",
+    "handoff": "Talk to a person",
+    "handoffName": "Full name",
+    "handoffEmail": "Email",
+    "handoffSubmit": "Send to an agent",
+    "handoffDone": "I've connected you to an agent. Your ticket number is {ticket}. Your conversation (with personal details masked) was passed on.",
+    "error": "I can't answer right now. I can connect you to a person if you like.",
+    "greeting": "Hi, I'm Areion. Ask me about sizes, lasts, shipping, returns or our products.",
+    "masked": "Personal details are masked before sending."
+  },
+  "footerHelp": {
+    "helpCenter": "Help centre",
+    "tracking": "Order tracking",
+    "returns": "Returns & exchanges",
+    "contact": "Contact"
   }
 }
