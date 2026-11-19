@@ -1,0 +1,11 @@
+node_modules
+**/.next
+**/.medusa
+**/dist
+pnpm-lock.yaml
+infra/db/.data
+e2e/.results
+e2e/.report
+docs/PROJE_RAPORU.md
+apps/storefront
+apps/backend
