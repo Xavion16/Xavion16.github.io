@@ -64,3 +64,6 @@ e2e/.report
 
 # TypeScript artımlı derleme önbelleği
 *.tsbuildinfo
+
+# Geliştirme e-posta kutusu (outbox provider)
+apps/backend/.outbox

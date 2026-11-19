@@ -25,7 +25,7 @@
   },
   {
     "formFactor": "mobile",
-    "page": "/en/manifesto",
+    "page": "/tr/koleksiyon",
     "a11y": 100,
     "bestPractices": 100,
     "seo": 66,
@@ -33,10 +33,26 @@
   },
   {
     "formFactor": "mobile",
-    "page": "/tr/ayak-ikizi",
+    "page": "/tr/urun/kackar-su-gecirmez-bot",
     "a11y": 100,
     "bestPractices": 100,
     "seo": 66,
+    "failing": ""
+  },
+  {
+    "formFactor": "mobile",
+    "page": "/tr/sepet",
+    "a11y": 100,
+    "bestPractices": 100,
+    "seo": 66,
+    "failing": ""
+  },
+  {
+    "formFactor": "mobile",
+    "page": "/tr/hesabim/kayit",
+    "a11y": 100,
+    "bestPractices": 100,
+    "seo": 63,
     "failing": ""
   },
   {
@@ -65,7 +81,7 @@
   },
   {
     "formFactor": "desktop",
-    "page": "/en/manifesto",
+    "page": "/tr/koleksiyon",
     "a11y": 100,
     "bestPractices": 100,
     "seo": 66,
@@ -73,10 +89,26 @@
   },
   {
     "formFactor": "desktop",
-    "page": "/tr/ayak-ikizi",
+    "page": "/tr/urun/kackar-su-gecirmez-bot",
     "a11y": 100,
     "bestPractices": 100,
     "seo": 66,
+    "failing": ""
+  },
+  {
+    "formFactor": "desktop",
+    "page": "/tr/sepet",
+    "a11y": 100,
+    "bestPractices": 100,
+    "seo": 66,
+    "failing": ""
+  },
+  {
+    "formFactor": "desktop",
+    "page": "/tr/hesabim/kayit",
+    "a11y": 100,
+    "bestPractices": 100,
+    "seo": 63,
     "failing": ""
   }
 ]

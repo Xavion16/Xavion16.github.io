@@ -10,6 +10,14 @@ const PAGES = [
   "/tr/ayak-ikizi",
   "/tr/yasal/kvkk-aydinlatma",
   "/tr/olmayan-sayfa",
+  "/tr/koleksiyon",
+  "/tr/koleksiyon/topuklu",
+  "/tr/urun/kackar-su-gecirmez-bot",
+  "/en/product/bogaz-gunluk-sneaker",
+  "/tr/sepet",
+  "/tr/odeme",
+  "/tr/hesabim/giris",
+  "/tr/hesabim/kayit",
 ]
 
 for (const url of PAGES) {

@@ -9,7 +9,15 @@ import { fileURLToPath } from "node:url"
 
 const BASE = process.env.STOREFRONT_URL ?? "http://localhost:8000"
 const MIN = Number(process.env.LH_MIN_A11Y ?? 95)
-const PAGES = ["/tr", "/en", "/tr/manifesto", "/en/manifesto", "/tr/ayak-ikizi"]
+const PAGES = [
+  "/tr",
+  "/en",
+  "/tr/manifesto",
+  "/tr/koleksiyon",
+  "/tr/urun/kackar-su-gecirmez-bot",
+  "/tr/sepet",
+  "/tr/hesabim/kayit",
+]
 const here = path.dirname(fileURLToPath(import.meta.url))
 const outDir = path.resolve(here, "../docs/screenshots/faz-1")
 

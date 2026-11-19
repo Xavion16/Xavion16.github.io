@@ -32,7 +32,9 @@ async function relatedProductIds(
     withDeleted,
   });
 
-  return (data as Record<string, any>[])
+  // ARION: silinen ürünlerin özel (exclusive) seçenekleri bazen boş satır döndürür (DECISIONS #034)
+  return (data as (Record<string, any> | null | undefined)[])
+    .filter((row): row is Record<string, any> => row != null)
     .flatMap(pick)
     .filter((id): id is string => Boolean(id));
 }

@@ -9,6 +9,7 @@ Medusa'ya özel dizin yapısı, kurallar ve yasak yollar için [AGENTS.md](./AGE
 ## Komutlar
 
 - Altyapı (Docker'sız, DECISIONS #006): `pnpm db` → yerel PostgreSQL (infra/db). Redis yok, Medusa in-memory modüllerle çalışır.
+- Demo verisi: `cd apps/backend && npx medusa exec ./src/scripts/seed-arion.ts` (tekrar çalıştırılabilir).
 - Geliştirme: `pnpm dev` | Test: `pnpm test` | E2E: `pnpm e2e` | A11y: `pnpm e2e:a11y`
 - Paket yöneticisi: pnpm 12. Ayarlar `pnpm-workspace.yaml` içinde (package.json'daki `pnpm` alanı okunmaz).
 

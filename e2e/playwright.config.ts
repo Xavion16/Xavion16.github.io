@@ -7,9 +7,13 @@ export default defineConfig({
   testDir: "./tests",
   outputDir: "./.results",
   fullyParallel: true,
+  // Geliştirme sunucusu (next dev) paralel yükte yavaşlar; yerelde 3 işçi yeterli
+  workers: process.env.CI ? undefined : 3,
   retries: process.env.CI ? 2 : 0,
   reporter: [["list"], ["html", { open: "never", outputFolder: "./.report" }]],
-  timeout: 60_000,
+  timeout: 90_000,
+  // Geliştirme sunucusu ilk istekte sayfayı derler; aksiyon/yönlendirme beklemeleri buna göre
+  expect: { timeout: 20_000 },
   use: {
     baseURL: STOREFRONT_URL,
     locale: "tr-TR",
