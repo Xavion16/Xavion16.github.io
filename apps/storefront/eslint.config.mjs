@@ -25,7 +25,9 @@ export default defineConfig([
     "build/**",
     "next-env.d.ts",
     "*.config.js",
+    "*.config.mjs",
     "check-env-variables.js",
     "next-sitemap.js",
+    "starter-ref/**",
   ]),
 ])

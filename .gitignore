@@ -61,3 +61,6 @@ infra/db/.data
 # Playwright
 e2e/.results
 e2e/.report
+
+# TypeScript artımlı derleme önbelleği
+*.tsbuildinfo

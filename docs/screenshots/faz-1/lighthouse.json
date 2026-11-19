@@ -1,0 +1,82 @@
+[
+  {
+    "formFactor": "mobile",
+    "page": "/tr",
+    "a11y": 100,
+    "bestPractices": 100,
+    "seo": 66,
+    "failing": ""
+  },
+  {
+    "formFactor": "mobile",
+    "page": "/en",
+    "a11y": 100,
+    "bestPractices": 100,
+    "seo": 66,
+    "failing": ""
+  },
+  {
+    "formFactor": "mobile",
+    "page": "/tr/manifesto",
+    "a11y": 100,
+    "bestPractices": 100,
+    "seo": 66,
+    "failing": ""
+  },
+  {
+    "formFactor": "mobile",
+    "page": "/en/manifesto",
+    "a11y": 100,
+    "bestPractices": 100,
+    "seo": 66,
+    "failing": ""
+  },
+  {
+    "formFactor": "mobile",
+    "page": "/tr/ayak-ikizi",
+    "a11y": 100,
+    "bestPractices": 100,
+    "seo": 66,
+    "failing": ""
+  },
+  {
+    "formFactor": "desktop",
+    "page": "/tr",
+    "a11y": 100,
+    "bestPractices": 100,
+    "seo": 66,
+    "failing": ""
+  },
+  {
+    "formFactor": "desktop",
+    "page": "/en",
+    "a11y": 100,
+    "bestPractices": 100,
+    "seo": 66,
+    "failing": ""
+  },
+  {
+    "formFactor": "desktop",
+    "page": "/tr/manifesto",
+    "a11y": 100,
+    "bestPractices": 100,
+    "seo": 66,
+    "failing": ""
+  },
+  {
+    "formFactor": "desktop",
+    "page": "/en/manifesto",
+    "a11y": 100,
+    "bestPractices": 100,
+    "seo": 66,
+    "failing": ""
+  },
+  {
+    "formFactor": "desktop",
+    "page": "/tr/ayak-ikizi",
+    "a11y": 100,
+    "bestPractices": 100,
+    "seo": 66,
+    "failing": ""
+  }
+]

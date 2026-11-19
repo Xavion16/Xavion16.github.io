@@ -1,0 +1,251 @@
+{
+  "meta": {
+    "title": "ARION — Carried by Arion",
+    "titleTemplate": "%s · ARION",
+    "description": "We get to know your foot first, then we make your shoe. Shoes crafted in Türkiye, designed with fit technology and built to be repaired.",
+    "ogTagline": "We get to know your foot first, then we make your shoe."
+  },
+  "demo": {
+    "label": "DEMO",
+    "text": "This site is a student project. No real sales, no payments taken."
+  },
+  "nav": {
+    "skip": "Skip to content",
+    "primary": "Main menu",
+    "manifesto": "Manifesto",
+    "collection": "Collection",
+    "fitTwin": "Fit Twin",
+    "atelier": "Atelier",
+    "home": "ARION home",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu",
+    "language": "Language",
+    "switchTo": "Türkçe",
+    "switchToLabel": "Türkçe'ye geç"
+  },
+  "footer": {
+    "tagline": "Crafted in Türkiye.",
+    "slogan": "Carried by Arion.",
+    "explore": "Explore",
+    "help": "Help",
+    "legal": "Legal",
+    "helpCenter": "Help centre",
+    "orderTracking": "Order tracking",
+    "returns": "Returns & exchanges",
+    "contact": "Contact",
+    "cookiePrefs": "Cookie Preferences",
+    "etbis": "ETBİS registration (sample slot)",
+    "rights": "© {year} ARION. All rights reserved.",
+    "legalNote": "Legal texts are templates and need a lawyer's review before a commercial launch. English versions are informational translations; the Turkish text is binding."
+  },
+  "legalPages": {
+    "kvkk-aydinlatma": "Privacy Notice (KVKK)",
+    "gizlilik": "Privacy Policy",
+    "cerez-politikasi": "Cookie Policy",
+    "acik-riza": "Explicit Consent Texts",
+    "kvkk-basvuru": "Data Subject Request Form",
+    "mesafeli-satis": "Distance Sales Agreement",
+    "on-bilgilendirme": "Pre-Contract Information",
+    "iade-politikasi": "Returns & Exchange Policy",
+    "uyelik-sozlesmesi": "Membership Agreement",
+    "kullanim-kosullari": "Terms of Use",
+    "ticari-ileti": "Commercial Message Consent",
+    "kunye": "Imprint",
+    "erisilebilirlik": "Accessibility Statement"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Shoe Atelier & Fit Laboratory",
+      "title": "Carried home.",
+      "lead": "In myth, Arion carried his rider home when every battle was lost. We build shoes with the same promise: we get to know your foot first, then we make your shoe. And we stay with it for as long as it lives.",
+      "ctaFitTwin": "Create your Fit Twin",
+      "ctaManifesto": "Read the manifesto",
+      "pronunciation": "ARION is pronounced /ˈa.ri.on/.",
+      "kicker": "A shoe is a contract of carriage.",
+      "badge": "New · Last Fit Score",
+      "cardTitle": "Last Fit Score",
+      "cardSize": "Recommended: EU 42 · W",
+      "cardReason": "Forefoot 4 mm wider",
+      "chipCrafted": "Crafted in Türkiye",
+      "chipRepair": "Repairability",
+      "chipLast": "Last: ARN-L07"
+    },
+    "myth": {
+      "eyebrow": "The story of the name",
+      "title": "A child of earth and water, a horse of legendary speed.",
+      "body": "In Greek myth, Arion is the son of Poseidon, god of the sea, and Demeter, goddess of the earth. When the army fell in the war of the Seven against Thebes, Arion's speed alone carried King Adrastus out alive. Every part of the myth maps to one of our promises.",
+      "tableCaption": "Traits from the myth and what they mean at ARION",
+      "colMyth": "In the myth",
+      "colPromise": "At ARION",
+      "rows": {
+        "carrier": {
+          "myth": "Carries his rider home safely from battle",
+          "promise": "A shoe is a contract of carriage. It carries you home, whatever the conditions."
+        },
+        "earthWater": {
+          "myth": "Child of earth (Demeter) and water (Poseidon)",
+          "promise": "Winter boots and outdoor shoes that grip the ground and stand up to water"
+        },
+        "speed": {
+          "myth": "Legendary speed",
+          "promise": "Sneakers and movement: The Physics of Motion"
+        },
+        "immortal": {
+          "myth": "Immortality",
+          "promise": "Repairability, the Lifetime Plan and the Shoe Passport"
+        },
+        "speaking": {
+          "myth": "A horse that could speak",
+          "promise": "Areion, our AI shoe advisor"
+        }
+      }
+    },
+    "categories": {
+      "eyebrow": "Categories",
+      "title": "Shop by category.",
+      "intro": "A heel and a winter boot do not share priorities. Each category page explains why we build it the way we do.",
+      "soon": "Products in Phase 2",
+      "items": {
+        "topuklu": {
+          "name": "Heels",
+          "manifesto": "Balance Engineering",
+          "points": "Shank, heel axis, forefoot cushion"
+        },
+        "kislik-bot": {
+          "name": "Winter Boots",
+          "manifesto": "The Durability Contract",
+          "points": "Waterproof membrane, welted sole, deep lugs"
+        },
+        "sneaker": {
+          "name": "Sneakers",
+          "manifesto": "The Physics of Motion",
+          "points": "Midsole cushioning, drop, flex line"
+        },
+        "klasik": {
+          "name": "Classics",
+          "manifesto": "Heritage & Repairability",
+          "points": "Goodyear welt, leather sole, resoling"
+        },
+        "cocuk": {
+          "name": "Kids",
+          "manifesto": "Room to Grow",
+          "points": "Flexible sole, wide toe box, measuring reminders"
+        }
+      },
+      "explore": "Explore"
+    },
+    "fitTwin": {
+      "eyebrow": "Fit Twin · Last Fit Score",
+      "title": "Same size. Different foot.",
+      "body": "Size and fit are the most common reasons people return shoes bought online. We compare your foot measurements with the millimetre tables of our lasts and give every model a fit score from 0 to 100, with the reasoning behind it.",
+      "steps": {
+        "measure": "Measure your foot: length and forefoot width, in millimetres.",
+        "match": "Match it to the last: we compare it with each model's last table.",
+        "explain": "See the reasoning: \"Your forefoot is 4 mm wider than this last, we recommend W.\""
+      },
+      "privacy": "Foot measurements are protected like sensitive data: separate explicit consent, encrypted storage, one-click deletion. Nothing is stored in guest mode.",
+      "cta": "Create your Fit Twin",
+      "sampleLabel": "Sample fit score",
+      "sampleReason": "Forefoot 4 mm wider → W width recommended"
+    },
+    "atelier": {
+      "eyebrow": "Atelier",
+      "title": "One pair. Seven steps.",
+      "body": "For atelier-made models, you can follow your order through every stage of production.",
+      "steps": {
+        "cutting": "Cutting",
+        "upper": "Upper stitching",
+        "lasting": "Lasting",
+        "sole": "Sole attaching",
+        "finishing": "Finishing",
+        "qc": "Quality check",
+        "shipping": "Shipping"
+      }
+    },
+    "promises": {
+      "eyebrow": "Measurable promises",
+      "title": "Data. Not claims.",
+      "body": "We back our ideology with numbers. Once live, every metric on the Transparency Board will be calculated from real data.",
+      "demoNote": "The values below are samples.",
+      "metrics": {
+        "fitReturns": "Fit-related return rate",
+        "repaired": "Pairs repaired",
+        "lifespan": "Average shoe lifespan",
+        "firstResponse": "First response time"
+      },
+      "units": {
+        "months": "mo",
+        "minutes": "min"
+      }
+    },
+    "closing": {
+      "title": "No shoe is immortal.",
+      "body": "But a brand can refuse to let it die.",
+      "slogan": "Carried by Arion.",
+      "cta": "Create your Fit Twin",
+      "ctaSecondary": "Manifesto"
+    },
+    "marquee": {
+      "label": "Highlights",
+      "m1": "Crafted in Türkiye",
+      "m2": "Last Fit Score",
+      "m3": "Built to be repaired",
+      "m4": "Shoe Passport",
+      "m5": "Lifetime Plan",
+      "m6": "Free return shipping"
+    }
+  },
+  "manifesto": {
+    "title": "Manifesto",
+    "eyebrow": "Ideology",
+    "lead": "In myth, Arion carried his rider home when every battle was lost. That is how we see shoes.",
+    "paragraphs": {
+      "p1": "A shoe is the only interface between your foot and the world. It carries your whole weight thousands of times a day. So we treat it not as a fashion object but as a contract of carriage.",
+      "p2": "We explain why every model is built the way it is. We measure our claims. When a shoe wears out, we call it back to the atelier, not to the bin.",
+      "p3": "Türkiye cannot win a price war on cheap production. The way to win is added value: design, fit technology, craft and direct cross-border e-commerce."
+    },
+    "quote": "Efsanede Arion, savaş kaybedildiğinde bile sahibini eve taşıdı. Biz ayakkabıyı aynı sözle yaparız.",
+    "principlesTitle": "Four principles",
+    "principles": {
+      "fit": {
+        "title": "Foot first",
+        "body": "A size is a label, not a measurement. We calculate fit in millimetres."
+      },
+      "explain": {
+        "title": "Explain",
+        "body": "Every technical claim comes with an answer to \"How did we measure this?\""
+      },
+      "repair": {
+        "title": "Repair",
+        "body": "Welted soles, replaceable heel tips, resoling. A longer life is a design decision."
+      },
+      "measure": {
+        "title": "Measure",
+        "body": "Return rate, repairs, lifespan. We keep our promises with public numbers."
+      }
+    },
+    "categoriesTitle": "Category manifestos",
+    "categories": {
+      "topuklu": "As heel height rises, weight shifts to the forefoot. The shank, the heel axis and the forefoot cushion are there to manage that load.",
+      "kislik-bot": "A waterproof membrane, a gusseted tongue and rubber that stays flexible in the cold. A welted sole, so it can be repaired.",
+      "sneaker": "Midsole cushioning and energy return, heel-to-toe drop and a flex line that bends in the right place.",
+      "klasik": "A leather sole that shapes itself to your foot and a welted build that can be resoled. Made to last a lifetime.",
+      "cocuk": "A flexible sole, a wide toe box and room to grow. Measuring reminders as the foot grows."
+    },
+    "back": "Back to home"
+  },
+  "placeholder": {
+    "eyebrow": "Under construction",
+    "fitTwinTitle": "Fit Twin",
+    "collectionTitle": "Collection",
+    "atelierTitle": "Atelier",
+    "body": "This section will be built in {phase}.",
+    "legalBody": "This legal text will be published in Phase 3 (Legal & KVKK layer). Texts will be versioned and the version number will increase with every change.",
+    "back": "Back to home"
+  },
+  "notFound": {
+    "title": "This page lost its way.",
+    "body": "The page you are looking for does not exist or has moved.",
+    "back": "Back to home"
+  }
+}

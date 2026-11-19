@@ -10,6 +10,7 @@ allowBuilds:
   "@embedded-postgres/windows-x64": true
   "@medusajs/telemetry": true
   "@swc/core": true
+  "@parcel/watcher": true
   esbuild: true
   msgpackr-extract: true
   unrs-resolver: true
@@ -21,6 +22,6 @@ onlyBuiltDependencies:
 
 # pnpm 12 artık package.json içindeki "pnpm" alanını okumuyor (DECISIONS #006)
 overrides:
-  "@types/react": "19.0.5"
-  "@types/react-dom": "19.0.5"
+  "@types/react": "19.3.0"
+  "@types/react-dom": "19.3.0"
   "tsconfig-paths": "^4.2.0"

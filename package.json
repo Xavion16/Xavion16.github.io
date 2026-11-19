@@ -20,7 +20,9 @@
     "e2e:install": "pnpm --filter @arion/e2e e2e:install",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "prepare": "husky"
+    "prepare": "husky",
+    "e2e:a11y": "pnpm --filter @arion/e2e e2e:a11y",
+    "e2e:lighthouse": "pnpm --filter @arion/e2e e2e:lighthouse"
   },
   "devDependencies": {
     "@medusajs/eslint-plugin": "2.22.7",

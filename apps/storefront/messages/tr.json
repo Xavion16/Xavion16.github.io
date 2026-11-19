@@ -1,0 +1,251 @@
+{
+  "meta": {
+    "title": "ARION — Seni eve taşır",
+    "titleTemplate": "%s · ARION",
+    "description": "Önce ayağını tanırız, sonra ayakkabını yaparız. Türkiye'de üretilen, uyum teknolojisiyle tasarlanan ve tamir edilebilen ayakkabılar.",
+    "ogTagline": "Önce ayağını tanırız, sonra ayakkabını yaparız."
+  },
+  "demo": {
+    "label": "DEMO",
+    "text": "Bu site bir ödev projesidir. Gerçek satış yapılmaz, ödeme alınmaz."
+  },
+  "nav": {
+    "skip": "İçeriğe geç",
+    "primary": "Ana menü",
+    "manifesto": "Manifesto",
+    "collection": "Koleksiyon",
+    "fitTwin": "Ayak İkizi",
+    "atelier": "Atölye",
+    "home": "ARION ana sayfa",
+    "menuOpen": "Menüyü aç",
+    "menuClose": "Menüyü kapat",
+    "language": "Dil",
+    "switchTo": "English",
+    "switchToLabel": "Switch to English"
+  },
+  "footer": {
+    "tagline": "Crafted in Türkiye.",
+    "slogan": "Seni eve taşır.",
+    "explore": "Keşfet",
+    "help": "Yardım",
+    "legal": "Yasal",
+    "helpCenter": "Yardım merkezi",
+    "orderTracking": "Sipariş takibi",
+    "returns": "İade ve değişim",
+    "contact": "İletişim",
+    "cookiePrefs": "Çerez Tercihleri",
+    "etbis": "ETBİS kaydı (örnek alan)",
+    "rights": "© {year} ARION. Tüm hakları saklıdır.",
+    "legalNote": "Yasal metinler şablondur; ticari lansmandan önce avukat kontrolü gerekir."
+  },
+  "legalPages": {
+    "kvkk-aydinlatma": "KVKK Aydınlatma Metni",
+    "gizlilik": "Gizlilik Politikası",
+    "cerez-politikasi": "Çerez Politikası",
+    "acik-riza": "Açık Rıza Metinleri",
+    "kvkk-basvuru": "KVKK Başvuru Formu",
+    "mesafeli-satis": "Mesafeli Satış Sözleşmesi",
+    "on-bilgilendirme": "Ön Bilgilendirme Formu",
+    "iade-politikasi": "İade ve Değişim Politikası",
+    "uyelik-sozlesmesi": "Üyelik Sözleşmesi",
+    "kullanim-kosullari": "Kullanım Koşulları",
+    "ticari-ileti": "Ticari Elektronik İleti Onayı",
+    "kunye": "Künye",
+    "erisilebilirlik": "Erişilebilirlik Beyanı"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Ayakkabı Atölyesi & Uyum Laboratuvarı",
+      "title": "Seni eve taşır.",
+      "lead": "Efsanede Arion, savaş kaybedildiğinde bile sahibini eve sağ salim taşıyan attı. Biz ayakkabıyı aynı sözle yaparız: önce ayağını tanırız, sonra ayakkabını yaparız. Ve ayakkabın yaşadıkça yanında oluruz.",
+      "ctaFitTwin": "Ayak İkizini oluştur",
+      "ctaManifesto": "Manifestoyu oku",
+      "pronunciation": "ARION, /ˈa.ri.on/ diye okunur.",
+      "kicker": "Ayakkabı bir taşıma sözleşmesidir.",
+      "badge": "Yeni · Kalıp Uyum Skoru",
+      "cardTitle": "Kalıp Uyum Skoru",
+      "cardSize": "Önerilen: EU 42 · W",
+      "cardReason": "Ön ayak 4 mm geniş",
+      "chipCrafted": "Crafted in Türkiye",
+      "chipRepair": "Tamir edilebilirlik",
+      "chipLast": "Kalıp: ARN-L07"
+    },
+    "myth": {
+      "eyebrow": "İsmin hikâyesi",
+      "title": "Toprağın ve suyun çocuğu, efsanevi hızda bir at.",
+      "body": "Yunan mitolojisinde Arion, deniz tanrısı Poseidon ile toprak tanrıçası Demeter'in oğludur. Thebai'ye Karşı Yediler savaşında ordu yenildiğinde, kral Adrastos'u savaştan sağ çıkaran tek şey Arion'un hızıdır. Mitin her parçası bir sözümüze karşılık gelir.",
+      "tableCaption": "Mitteki özellikler ve ARION'daki karşılıkları",
+      "colMyth": "Mitte",
+      "colPromise": "ARION'da",
+      "rows": {
+        "carrier": {
+          "myth": "Sahibini savaştan sağ salim eve getirir",
+          "promise": "Ayakkabı bir taşıma sözleşmesidir. Seni her koşulda eve taşır."
+        },
+        "earthWater": {
+          "myth": "Toprak (Demeter) ve suyun (Poseidon) çocuğu",
+          "promise": "Zemine sağlam basan, suya dayanan kışlık bot ve outdoor serisi"
+        },
+        "speed": {
+          "myth": "Efsanevi hız",
+          "promise": "Sneaker ve hareket serisi: Hareketin Fiziği"
+        },
+        "immortal": {
+          "myth": "Ölümsüzlük",
+          "promise": "Tamir edilebilirlik, Ömür Planı ve Ayakkabı Pasaportu"
+        },
+        "speaking": {
+          "myth": "Konuşabilen at",
+          "promise": "Yapay zekâ danışmanımız Areion"
+        }
+      }
+    },
+    "categories": {
+      "eyebrow": "Kategoriler",
+      "title": "Kategoriye göre keşfet.",
+      "intro": "Topuklu bir ayakkabıyla kışlık botun önceliği aynı değildir. Her kategori sayfasında neden böyle yaptığımızı anlatırız.",
+      "soon": "Ürünler Faz 2'de",
+      "items": {
+        "topuklu": {
+          "name": "Topuklu",
+          "manifesto": "Denge Mühendisliği",
+          "points": "Şank, topuk ekseni, ön ayak yastığı"
+        },
+        "kislik-bot": {
+          "name": "Kışlık Bot",
+          "manifesto": "Dayanıklılık Sözleşmesi",
+          "points": "Su geçirmez membran, dikişli taban, derin diş"
+        },
+        "sneaker": {
+          "name": "Sneaker",
+          "manifesto": "Hareketin Fiziği",
+          "points": "Ara taban sönümleme, drop, esneme hattı"
+        },
+        "klasik": {
+          "name": "Klasik",
+          "manifesto": "Miras ve Tamir Edilebilirlik",
+          "points": "Goodyear welt, deri taban, pençe yenileme"
+        },
+        "cocuk": {
+          "name": "Çocuk",
+          "manifesto": "Büyüme Payı",
+          "points": "Esnek taban, geniş burun, ölçüm hatırlatıcısı"
+        }
+      },
+      "explore": "Keşfet"
+    },
+    "fitTwin": {
+      "eyebrow": "Ayak İkizi · Kalıp Uyum Skoru",
+      "title": "Aynı numara. Farklı ayak.",
+      "body": "Online ayakkabı iadelerinin en yaygın nedeni beden ve kalıp uyumsuzluğu. Ayak ölçülerini kalıplarımızın milimetrik tablolarıyla karşılaştırır, her model için 0–100 arası bir uyum skoru ve gerekçesini veririz.",
+      "steps": {
+        "measure": "Ayağını ölç: uzunluk ve ön ayak genişliği, milimetre cinsinden.",
+        "match": "Kalıpla eşleştir: her modelin kalıp tablosuyla karşılaştırırız.",
+        "explain": "Gerekçeyi gör: \"Ön ayağın bu kalıptan 4 mm geniş, W öneriyoruz.\""
+      },
+      "privacy": "Ayak ölçüleri hassas veri gibi korunur: ayrı açık rıza, şifreli saklama, tek tıkla silme. Misafir modunda hiçbir şey saklanmaz.",
+      "cta": "Ayak İkizini oluştur",
+      "sampleLabel": "Örnek uyum skoru",
+      "sampleReason": "Ön ayak 4 mm geniş → W genişlik önerilir"
+    },
+    "atelier": {
+      "eyebrow": "Atölye",
+      "title": "Yedi adımda bir çift.",
+      "body": "Atölyede üretilen modellerde siparişinin hangi aşamada olduğunu adım adım izlersin.",
+      "steps": {
+        "cutting": "Kesim",
+        "upper": "Saya dikimi",
+        "lasting": "Kalıba çekme",
+        "sole": "Taban montajı",
+        "finishing": "Finisaj",
+        "qc": "Kalite kontrol",
+        "shipping": "Kargo"
+      }
+    },
+    "promises": {
+      "eyebrow": "Ölçülebilir sözler",
+      "title": "İddia değil. Veri.",
+      "body": "İdeolojimizi sayılarla kanıtlarız. Şeffaflık Paneli'ndeki bütün metrikler yayına alındığında canlı veriden hesaplanacak.",
+      "demoNote": "Aşağıdaki değerler örnektir.",
+      "metrics": {
+        "fitReturns": "Uyum kaynaklı iade oranı",
+        "repaired": "Tamir edilen çift",
+        "lifespan": "Ortalama ayakkabı ömrü",
+        "firstResponse": "İlk yanıt süresi"
+      },
+      "units": {
+        "months": "ay",
+        "minutes": "dk"
+      }
+    },
+    "closing": {
+      "title": "Ölümsüz ayakkabı yoktur.",
+      "body": "Ama ölmesine izin vermeyen bir marka olabilir.",
+      "slogan": "Carried by Arion.",
+      "cta": "Ayak İkizini oluştur",
+      "ctaSecondary": "Manifesto"
+    },
+    "marquee": {
+      "label": "Öne çıkanlar",
+      "m1": "Crafted in Türkiye",
+      "m2": "Kalıp Uyum Skoru",
+      "m3": "Tamir edilebilir",
+      "m4": "Ayakkabı Pasaportu",
+      "m5": "Ömür Planı",
+      "m6": "İade kargosu satıcıdan"
+    }
+  },
+  "manifesto": {
+    "title": "Manifesto",
+    "eyebrow": "İdeoloji",
+    "lead": "Efsanede Arion, savaş kaybedildiğinde bile sahibini eve sağ salim taşıyan attı. Biz de ayakkabıyı böyle görüyoruz.",
+    "paragraphs": {
+      "p1": "Ayakkabı, ayağınla dünya arasındaki tek arayüzdür. Günde binlerce adımda tüm ağırlığını taşır. Bu yüzden onu bir moda nesnesi olarak değil, bir taşıma sözleşmesi olarak görürüz.",
+      "p2": "Her modelin neden böyle yapıldığını açıklarız. İddialarımızı ölçeriz. Ayakkabı eskidiğinde onu çöpe değil, atölyeye çağırırız.",
+      "p3": "Türkiye ucuz üretimde fiyat savaşını kazanamaz. Kazanma yolu katma değerdir: tasarım, uyum teknolojisi, zanaat ve doğrudan e-ihracat."
+    },
+    "quote": "In myth, Arion carried his rider home when every battle was lost. We build shoes with the same promise.",
+    "principlesTitle": "Dört ilke",
+    "principles": {
+      "fit": {
+        "title": "Önce ayak",
+        "body": "Numara bir göstergedir, ölçü değildir. Uyumu milimetreyle hesaplarız."
+      },
+      "explain": {
+        "title": "Açıkla",
+        "body": "Her teknik iddianın yanında \"Nasıl ölçtük?\" sorusunun cevabı durur."
+      },
+      "repair": {
+        "title": "Tamir et",
+        "body": "Dikişli taban, değiştirilebilir topuk, pençe yenileme. Ömrü uzatmak tasarım kararıdır."
+      },
+      "measure": {
+        "title": "Ölç",
+        "body": "İade oranı, tamir sayısı, ayakkabı ömrü. Sözlerimizi herkese açık sayılarla tutarız."
+      }
+    },
+    "categoriesTitle": "Kategori manifestoları",
+    "categories": {
+      "topuklu": "Topuk yüksekliği arttıkça ağırlık ön ayağa kayar. Şank, topuk ekseni ve ön ayak yastığı bu yükü yönetmek için oradadır.",
+      "kislik-bot": "Su geçirmez membran, dikişsiz körük dil ve soğukta esnemeye devam eden kauçuk. Tamir edilebilsin diye dikişli taban.",
+      "sneaker": "Ara tabanın sönümlemesi ve geri dönüşü, topuk-burun yükseklik farkı ve doğru yerde bükülen bir esneme hattı.",
+      "klasik": "Ayağa göre şekil alan deri taban ve pençesi yenilenebilen dikişli yapı. Bir ömür sürmesi için yapılır.",
+      "cocuk": "Esnek taban, geniş burun ve büyüme payı. Ayak büyüdükçe ölçüm hatırlatıcısı."
+    },
+    "back": "Ana sayfaya dön"
+  },
+  "placeholder": {
+    "eyebrow": "Yapım aşamasında",
+    "fitTwinTitle": "Ayak İkizi",
+    "collectionTitle": "Koleksiyon",
+    "atelierTitle": "Atölye",
+    "body": "Bu bölüm {phase} kapsamında geliştirilecek.",
+    "legalBody": "Bu yasal metin Faz 3'te (Hukuk ve KVKK Katmanı) yayımlanacak. Metinler versiyonlu tutulacak ve her değişiklikte sürüm numarası artırılacak.",
+    "back": "Ana sayfaya dön"
+  },
+  "notFound": {
+    "title": "Bu sayfa yolda kaldı.",
+    "body": "Aradığın sayfa yok ya da taşındı.",
+    "back": "Ana sayfaya dön"
+  }
+}

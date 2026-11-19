@@ -31,7 +31,9 @@ Medusa'ya özel dizin yapısı, kurallar ve yasak yollar için [AGENTS.md](./AGE
 
 ## Tasarım
 
-- frontend-design skill'ini kullan. Bölüm 4'teki palet ve tipografi. Jenerik AI estetiği yok.
+- Tasarım yönü: "Performans × Cam" (DECISIONS #026) — koyu zemin, kor/mavi/yeşil vurgular, buzlu cam yüzeyler, Archivo sıkışık büyük harf. Token'lar `apps/storefront/src/styles/globals.css`. Rapor §4'teki palet bunun yerini almıştır.
+- Başka markaların logosu, fontu, sloganı ya da görselleri kullanılmaz.
+- Cam panellerde metin kontrastı AA'yı geçmeli; kor zemin üzerinde metin her zaman koyu.
 - prefers-reduced-motion'a saygı göster. WCAG 2.2 AA hedefi.
 
 ## Çalışma şekli
