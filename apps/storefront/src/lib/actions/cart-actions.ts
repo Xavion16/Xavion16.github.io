@@ -176,3 +176,49 @@ export async function startPaymentAction(): Promise<void> {
   if (!pageUrl) redirect(`${checkout}?hata=odeme-baslatilamadi`)
   redirect(pageUrl)
 }
+
+const AcceptSchema = z.object({
+  accept_pre_contract: z.literal("on"),
+  accept_distance_sales: z.literal("on"),
+  pre_contract_hash: z.string().regex(/^[a-f0-9]{16}$/),
+  distance_sales_hash: z.string().regex(/^[a-f0-9]{16}$/),
+})
+
+/**
+ * Ön Bilgilendirme + Mesafeli Satış onayı → sunucuda kayıt (sürüm + hash) → ödeme sayfası (Rapor §7.2).
+ * Onay olmadan backend siparişi zaten reddeder; bu aksiyon da onaysız ödeme başlatmaz.
+ */
+export async function acceptAndPayAction(form: FormData): Promise<void> {
+  const locale = await getLocale()
+  const checkout = getPathname({ href: "/odeme", locale })
+  const parsed = AcceptSchema.safeParse({
+    accept_pre_contract: form.get("accept_pre_contract"),
+    accept_distance_sales: form.get("accept_distance_sales"),
+    pre_contract_hash: form.get("pre_contract_hash"),
+    distance_sales_hash: form.get("distance_sales_hash"),
+  })
+  if (!parsed.success) redirect(`${checkout}?hata=onay-eksik`)
+  const cart = await getCart()
+  if (!cart) redirect(`${checkout}?hata=eksik`)
+
+  let outcome: "ok" | "changed" | "failed" = "failed"
+  try {
+    await sdk.client.fetch(`/store/arion/carts/${cart.id}/legal-acceptance`, {
+      method: "POST",
+      headers: await getAuthHeaders(),
+      body: {
+        locale,
+        pre_contract: true,
+        distance_sales: true,
+        pre_contract_hash: parsed.data.pre_contract_hash,
+        distance_sales_hash: parsed.data.distance_sales_hash,
+      },
+    })
+    outcome = "ok"
+  } catch (e) {
+    outcome = (e as { status?: number }).status === 409 ? "changed" : "failed"
+  }
+  if (outcome === "changed") redirect(`${checkout}?hata=sozlesme-degisti`)
+  if (outcome === "failed") redirect(`${checkout}?hata=odeme-baslatilamadi`)
+  await startPaymentAction()
+}

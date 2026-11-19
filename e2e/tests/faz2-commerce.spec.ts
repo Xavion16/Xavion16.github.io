@@ -54,6 +54,13 @@ async function fillAddressAndShip(page: Page, email?: string) {
 }
 
 async function pay(page: Page, result: "success" | "failure") {
+  // Faz 3: ön bilgilendirme + mesafeli satış onayı olmadan ödeme başlamaz
+  await page
+    .getByLabel("Ön Bilgilendirme Formu’nu okudum, bilgilendirildim.")
+    .check()
+  await page
+    .getByLabel("Mesafeli Satış Sözleşmesi’ni okudum, onaylıyorum.")
+    .check()
   await page.getByRole("button", { name: "Siparişi Onayla ve Öde" }).click()
   await expect(page).toHaveURL(/\/tr\/odeme\/simulasyon\?token=mock_/)
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
@@ -149,6 +156,7 @@ test.describe("uçtan uca satın alma (iyzico sandbox/mock)", () => {
       .getByRole("textbox", { name: "E-posta", exact: true })
       .fill(email)
     await page.getByLabel("Şifre").fill("Arion-test-2026")
+    await page.getByLabel(/Üyelik Sözleşmesi/).check()
     await page.getByRole("button", { name: "Üyeliği oluştur" }).click()
     await expect(page).toHaveURL(/\/tr\/hesabim$/)
     await expect(page.getByRole("heading", { level: 1 })).toContainText(

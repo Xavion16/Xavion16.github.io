@@ -1,7 +1,8 @@
 import { getTranslations } from "next-intl/server"
 import { Logo } from "@/components/brand/logo"
+import { CookiePrefsButton } from "@/components/consent/cookie-consent"
 import { Link } from "@/i18n/navigation"
-import { LEGAL_SLUGS } from "@/lib/site"
+import { LEGAL_SLUGS, legalHref } from "@/lib/site"
 
 export async function SiteFooter() {
   const t = await getTranslations()
@@ -59,7 +60,7 @@ export async function SiteFooter() {
               {LEGAL_SLUGS.map((slug) => (
                 <li key={slug}>
                   <Link
-                    href={{ pathname: "/yasal/[slug]", params: { slug } }}
+                    href={legalHref(slug)}
                     className={linkClass}
                   >
                     {t(`legalPages.${slug}`)}
@@ -67,15 +68,10 @@ export async function SiteFooter() {
                 </li>
               ))}
               <li>
-                <Link
-                  href={{
-                    pathname: "/yasal/[slug]",
-                    params: { slug: "cerez-politikasi" },
-                  }}
+                <CookiePrefsButton
+                  label={t("footer.cookiePrefs")}
                   className="mt-1 inline-flex rounded-full border border-white/25 px-4 py-2 font-semibold text-white transition-colors hover:bg-white hover:text-ink"
-                >
-                  {t("footer.cookiePrefs")}
-                </Link>
+                />
               </li>
             </ul>
           </div>

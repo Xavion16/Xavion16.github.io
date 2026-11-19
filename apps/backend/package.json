@@ -23,6 +23,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@arion/legal-texts": "workspace:*",
     "@arion/pricing-rules": "workspace:*",
     "@medusajs/admin-sdk": "2.22.7",
     "@medusajs/admin-shared": "2.22.7",

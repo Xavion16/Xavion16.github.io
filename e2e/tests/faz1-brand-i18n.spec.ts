@@ -73,7 +73,7 @@ test.describe("TR ↔ EN geçişi", () => {
   test("dinamik yasal sayfada slug korunur", async ({ page, isMobile }) => {
     await page.goto("/tr/yasal/kunye")
     await switchLanguage(page, isMobile, "English")
-    await expect(page).toHaveURL(/\/en\/legal\/kunye$/)
+    await expect(page).toHaveURL(/\/en\/legal\/imprint$/)
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Imprint")
   })
 
@@ -108,7 +108,7 @@ test("footer'da yasal linkler ve Çerez Tercihleri var", async ({ page }) => {
     footer.getByRole("link", { name: "KVKK Aydınlatma Metni" }),
   ).toBeVisible()
   await expect(
-    footer.getByRole("link", { name: "Çerez Tercihleri" }),
+    footer.getByRole("button", { name: "Çerez Tercihleri" }),
   ).toBeVisible()
   await expect(footer.getByRole("link", { name: "Künye" })).toBeVisible()
 })

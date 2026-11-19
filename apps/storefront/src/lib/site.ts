@@ -32,3 +32,8 @@ export const CATEGORY_KEYS = [
 ] as const
 
 export type CategoryKey = (typeof CATEGORY_KEYS)[number]
+
+/** Yasal sayfanın next-intl yol anahtarı (dile göre çevrilmiş slug). */
+export function legalHref<S extends LegalSlug>(slug: S): `/yasal/${S}` {
+  return `/yasal/${slug}`
+}

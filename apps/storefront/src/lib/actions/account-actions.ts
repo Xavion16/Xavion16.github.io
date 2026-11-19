@@ -59,15 +59,22 @@ export async function registerAction(_prev: ActionState, form: FormData): Promis
     first_name: form.get("first_name"),
     last_name: form.get("last_name"),
   })
-  if (!parsed.success) {
+  const acceptedMembership = form.get("accept_membership") === "on"
+  if (!parsed.success || !acceptedMembership) {
     const fieldErrors: Record<string, string> = {}
-    for (const issue of parsed.error.issues) {
+    for (const issue of parsed.success ? [] : parsed.error.issues) {
       const key = String(issue.path[0] ?? "")
       if (key && !fieldErrors[key]) fieldErrors[key] = "invalid"
     }
+    if (!acceptedMembership) fieldErrors.accept_membership = "required"
     return { ok: false, error: "invalidRegister", fieldErrors }
   }
   const { email, password, first_name, last_name } = parsed.data
+  // Açık rızalar: yalnızca kullanıcı kutuyu kendisi işaretlediyse (varsayılan hayır)
+  const marketing = {
+    marketing_email: form.get("marketing_email") === "on",
+    marketing_sms: form.get("marketing_sms") === "on",
+  }
   try {
     const regToken = await sdk.auth.register("customer", "emailpass", { email, password })
     await sdk.store.customer.create(
@@ -82,6 +89,19 @@ export async function registerAction(_prev: ActionState, form: FormData): Promis
   if (!token) return { ok: false, error: "registerFailed" }
   await setAuthToken(token)
   await transferCart(token)
+  if (marketing.marketing_email || marketing.marketing_sms) {
+    // Rıza + İYS kaydı (yalnızca verilenler; verilmeyenler için kayıt "hiç rıza yok" demektir)
+    await sdk.client
+      .fetch("/store/arion/consents", {
+        method: "POST",
+        headers: { authorization: `Bearer ${token}` },
+        body: {
+          channel: "register",
+          changes: Object.fromEntries(Object.entries(marketing).filter(([, v]) => v)),
+        },
+      })
+      .catch(() => undefined)
+  }
   revalidatePath("/", "layout")
   const locale = await getLocale()
   redirect(getPathname({ href: "/hesabim", locale }))

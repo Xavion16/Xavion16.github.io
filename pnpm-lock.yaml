@@ -216,6 +216,9 @@ importers:
 
   apps/backend:
     dependencies:
+      '@arion/legal-texts':
+        specifier: workspace:*
+        version: link:../../packages/legal-texts
       '@arion/pricing-rules':
         specifier: workspace:*
         version: link:../../packages/pricing-rules
@@ -313,6 +316,9 @@ importers:
 
   apps/storefront:
     dependencies:
+      '@arion/legal-texts':
+        specifier: workspace:*
+        version: link:../../packages/legal-texts
       '@medusajs/js-sdk':
         specifier: 2.22.7
         version: 2.22.7
@@ -404,6 +410,28 @@ importers:
 
   packages/fit-engine:
     devDependencies:
+      typescript:
+        specifier: ^5.6.2
+        version: 5.9.3
+      vitest:
+        specifier: ^5.1.1
+        version: 5.1.1(@opentelemetry/api@1.9.1)(@types/node@22.20.5)(vite@7.3.7(@types/node@22.20.5)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.51.0)(yaml@2.9.0))
+
+  packages/legal-texts:
+    dependencies:
+      '@pdf-lib/fontkit':
+        specifier: 1.1.1
+        version: 1.1.1
+      dejavu-fonts-ttf:
+        specifier: 2.37.3
+        version: 2.37.3
+      pdf-lib:
+        specifier: 1.17.1
+        version: 1.17.1
+    devDependencies:
+      '@types/node':
+        specifier: ^22.10.0
+        version: 22.20.5
       typescript:
         specifier: ^5.6.2
         version: 5.9.3
@@ -2930,6 +2958,15 @@ packages:
 
   '@paulirish/trace_engine@0.0.67':
     resolution: {integrity: sha512-AWZSKQDwbWKIO//xGvM8isSyDgEDZWDq12SbMQMxl6eE9ZgWaoc9n/2d7REjwcRANyA1Zjo1rVfJiSRFFGKUww==}
+
+  '@pdf-lib/fontkit@1.1.1':
+    resolution: {integrity: sha512-KjMd7grNapIWS/Dm0gvfHEilSyAmeLvrEGVcqLGi0VYebuqqzTbgF29efCx7tvx+IEbG3zQciRSWl3GkUSvjZg==}
+
+  '@pdf-lib/standard-fonts@1.0.0':
+    resolution: {integrity: sha512-hU30BK9IUN/su0Mn9VdlVKsWBS6GyhVfqjwl1FjZN4TxP6cCw0jP2w7V3Hf5uX7M0AZJ16vey9yE0ny7Sa59ZA==}
+
+  '@pdf-lib/upng@1.0.1':
+    resolution: {integrity: sha512-dQK2FUMQtowVP00mtIksrlZhdFXQZPC+taih1q4CvPZ5vqdxR/LKBaFg0oAfzd1GlHZXXSPdQfzQnt+ViGvEIQ==}
 
   '@playwright/test@1.65.1':
     resolution: {integrity: sha512-y+NCIRm2LvY4slUVWvGh1nujJ8RF/hEisIsq2mtUPgdQC4L701bq5hZGMhrpeXjACvwvO9tj5dJqhvM6TP9lbw==}
@@ -5486,6 +5523,9 @@ packages:
     resolution: {integrity: sha512-8QmQKqEASLd5nx0U1B1okLElbUuuttJ/AnYmRXbbbGDWh6uS208EjD4Xqq/I9wK7u0v6O08XhTWnt5XtEbR6Dg==}
     engines: {node: '>= 0.4'}
 
+  dejavu-fonts-ttf@2.37.3:
+    resolution: {integrity: sha512-f1hd7jJbeQa1VWcw+K2KrTXS50zTMaHpVC4XIKJpNcDeYR5ajMtj/iLlQDYNvLOKamUB3ARVVCf79lNwNVztSQ==}
+
   delayed-stream@1.0.0:
     resolution: {integrity: sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==}
     engines: {node: '>=0.4.0'}
@@ -7477,6 +7517,9 @@ packages:
     resolution: {integrity: sha512-R4nPAVTAU0B9D35/Gk3uJf/7XYbQcyohSKdvAxIRSNghFl4e71hVoGnBNQz9cWaXxO2I10KTC+3jMdvvoKw6dQ==}
     engines: {node: '>=6'}
 
+  pako@1.0.11:
+    resolution: {integrity: sha512-4hLB8Py4zZce5s4yd9XzopqwVv/yGNhV1Bl8NTmCq1763HeK2+EwVTv+leGeL13Dnh2wfbqowVPXCIO0z4taYw==}
+
   parent-module@1.0.1:
     resolution: {integrity: sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==}
     engines: {node: '>=6'}
@@ -7541,6 +7584,9 @@ packages:
   path-type@4.0.0:
     resolution: {integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==}
     engines: {node: '>=8'}
+
+  pdf-lib@1.17.1:
+    resolution: {integrity: sha512-V/mpyJAoTsN4cnP31vc0wfNA1+p20evqqnap0KLoRUN0Yk/p3wN52DOEsL4oBFcLdb76hlpKPtzJIgo67j/XLw==}
 
   pg-cloudflare@1.4.1:
     resolution: {integrity: sha512-6PQbsFWZcp9EmJEwy5cGQ2La+AMWpP46lgbb8X+U/XsHIUweYDNCpeuKck5RxL2MdVFi7krbbEi5nX4Zh7JhrQ==}
@@ -8595,6 +8641,9 @@ packages:
   tsconfig-paths@4.2.0:
     resolution: {integrity: sha512-NoZ4roiN7LnbKn9QqE1amc9DJfzvZXxF4xDavcOWt1BPkdx+m+0gJuPM+S0vCe7zTJMYUP0R8pO2XMr+Y8oLIg==}
     engines: {node: '>=6'}
+
+  tslib@1.14.1:
+    resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
 
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
@@ -12127,6 +12176,18 @@ snapshots:
     dependencies:
       third-party-web: 0.30.0
 
+  '@pdf-lib/fontkit@1.1.1':
+    dependencies:
+      pako: 1.0.11
+
+  '@pdf-lib/standard-fonts@1.0.0':
+    dependencies:
+      pako: 1.0.11
+
+  '@pdf-lib/upng@1.0.1':
+    dependencies:
+      pako: 1.0.11
+
   '@playwright/test@1.65.1':
     dependencies:
       playwright: 1.65.1
@@ -14652,6 +14713,8 @@ snapshots:
       has-property-descriptors: 1.0.2
       object-keys: 1.1.1
 
+  dejavu-fonts-ttf@2.37.3: {}
+
   delayed-stream@1.0.0: {}
 
   denque@2.1.0: {}
@@ -17097,6 +17160,8 @@ snapshots:
 
   p-try@2.2.0: {}
 
+  pako@1.0.11: {}
+
   parent-module@1.0.1:
     dependencies:
       callsites: 3.1.0
@@ -17146,6 +17211,13 @@ snapshots:
   path-to-regexp@9.0.0: {}
 
   path-type@4.0.0: {}
+
+  pdf-lib@1.17.1:
+    dependencies:
+      '@pdf-lib/standard-fonts': 1.0.0
+      '@pdf-lib/upng': 1.0.1
+      pako: 1.0.11
+      tslib: 1.14.1
 
   pg-cloudflare@1.4.1:
     optional: true
@@ -18318,6 +18390,8 @@ snapshots:
       json5: 2.2.3
       minimist: 1.2.8
       strip-bom: 3.0.0
+
+  tslib@1.14.1: {}
 
   tslib@2.8.1: {}
 

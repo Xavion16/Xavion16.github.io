@@ -18,6 +18,9 @@ const PAGES = [
   "/tr/odeme",
   "/tr/hesabim/giris",
   "/tr/hesabim/kayit",
+  "/tr/yasal/kvkk-basvuru",
+  "/tr/yasal/cerez-politikasi",
+  "/en/legal/pre-contract-information",
 ]
 
 for (const url of PAGES) {

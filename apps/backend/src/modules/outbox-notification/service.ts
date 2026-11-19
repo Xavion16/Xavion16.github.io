@@ -45,6 +45,11 @@ class OutboxNotificationService extends AbstractNotificationProviderService {
       `<!-- to: ${notification.to} | subject: ${subject} -->\n${html}`,
       "utf8",
     )
+    // Ekler (ör. sözleşme PDF'leri) e-postanın yanına ayrı dosya olarak yazılır
+    for (const att of notification.attachments ?? []) {
+      const safeName = att.filename.replace(/[^a-z0-9._-]/gi, "_")
+      await writeFile(path.join(this.directory, `${id}-${safeName}`), Buffer.from(att.content, "base64"))
+    }
     this.logger.info(`[outbox] ${notification.template} → ${path.basename(file)}`)
     return { id }
   }

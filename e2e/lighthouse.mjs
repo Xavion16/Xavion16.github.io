@@ -17,6 +17,8 @@ const PAGES = [
   "/tr/urun/kackar-su-gecirmez-bot",
   "/tr/sepet",
   "/tr/hesabim/kayit",
+  "/tr/yasal/kvkk-basvuru",
+  "/tr/yasal/on-bilgilendirme",
 ]
 const here = path.dirname(fileURLToPath(import.meta.url))
 const outDir = path.resolve(here, "../docs/screenshots/faz-1")

@@ -3,9 +3,12 @@ import { Archivo, JetBrains_Mono } from "next/font/google"
 import { notFound } from "next/navigation"
 import { hasLocale, NextIntlClientProvider } from "next-intl"
 import { getTranslations, setRequestLocale } from "next-intl/server"
+import { COOKIE_CATEGORIES, type CookieCategory } from "@arion/legal-texts"
+import { CookieConsent } from "@/components/consent/cookie-consent"
 import { SiteFooter } from "@/components/layout/site-footer"
 import { SiteHeader } from "@/components/layout/site-header"
 import { routing } from "@/i18n/routing"
+import { readCookieChoice } from "@/lib/consent"
 import { SITE_URL } from "@/lib/site"
 import "@/styles/globals.css"
 
@@ -64,6 +67,13 @@ export default async function LocaleLayout({
   const { locale } = await params
   if (!hasLocale(routing.locales, locale)) notFound()
   setRequestLocale(locale)
+  const choice = await readCookieChoice()
+  const order: CookieCategory[] = ["necessary", "functional", "analytics", "marketing"]
+  const categories = order.map((key) => ({
+    key,
+    name: COOKIE_CATEGORIES[key].name[locale],
+    description: COOKIE_CATEGORIES[key].description[locale],
+  }))
 
   return (
     <html
@@ -78,6 +88,7 @@ export default async function LocaleLayout({
             {children}
           </main>
           <SiteFooter />
+          <CookieConsent initial={choice} categories={categories} />
         </NextIntlClientProvider>
       </body>
     </html>

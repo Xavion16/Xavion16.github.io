@@ -56,6 +56,22 @@
     "failing": ""
   },
   {
+    "formFactor": "mobile",
+    "page": "/tr/yasal/kvkk-basvuru",
+    "a11y": 100,
+    "bestPractices": 100,
+    "seo": 66,
+    "failing": ""
+  },
+  {
+    "formFactor": "mobile",
+    "page": "/tr/yasal/on-bilgilendirme",
+    "a11y": 100,
+    "bestPractices": 100,
+    "seo": 66,
+    "failing": ""
+  },
+  {
     "formFactor": "desktop",
     "page": "/tr",
     "a11y": 100,
@@ -109,6 +125,22 @@
     "a11y": 100,
     "bestPractices": 100,
     "seo": 63,
+    "failing": ""
+  },
+  {
+    "formFactor": "desktop",
+    "page": "/tr/yasal/kvkk-basvuru",
+    "a11y": 100,
+    "bestPractices": 100,
+    "seo": 66,
+    "failing": ""
+  },
+  {
+    "formFactor": "desktop",
+    "page": "/tr/yasal/on-bilgilendirme",
+    "a11y": 100,
+    "bestPractices": 100,
+    "seo": 66,
     "failing": ""
   }
 ]

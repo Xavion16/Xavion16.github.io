@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { hasLocale } from "next-intl"
 import { getTranslations, setRequestLocale } from "next-intl/server"
 import { notFound, redirect } from "next/navigation"
+import { AccountNav } from "@/components/account/account-nav"
 import { buttonClass } from "@/components/ui/button"
 import { getPathname, Link } from "@/i18n/navigation"
 import { routing } from "@/i18n/routing"
@@ -29,8 +30,9 @@ export default async function AccountPage({ params }: PageProps<"/[locale]/hesab
   const dateFmt = new Intl.DateTimeFormat(locale === "tr" ? "tr-TR" : "en-GB", { dateStyle: "medium" })
 
   return (
-    <div className="mx-auto max-w-[1100px] px-4 py-16 sm:px-8">
-      <div className="flex flex-wrap items-end justify-between gap-6">
+    <div className="mx-auto max-w-[1100px] px-4 py-12 sm:px-8">
+      <AccountNav current="/hesabim" />
+      <div className="mt-8 flex flex-wrap items-end justify-between gap-6">
         <div>
           <p className="eyebrow text-ember">{t("title")}</p>
           <h1 className="condensed mt-3 text-display">

@@ -19,6 +19,8 @@ export default defineConfig({
     locale: "tr-TR",
     trace: "retain-on-failure",
     screenshot: "only-on-failure",
+    // Varsayılan: çerez tercihi yapılmış ziyaretçi (banner diğer testleri örtmesin). Faz 3 testleri bunu sıfırlar.
+    storageState: "./fixtures/cookie-choice.json",
   },
   metadata: { backendUrl: BACKEND_URL },
   projects: [

@@ -21,6 +21,7 @@ module.exports = defineConfig({
     { resolve: "./src/modules/last" },
     { resolve: "./src/modules/product-tech" },
     { resolve: "./src/modules/price-history" },
+    { resolve: "./src/modules/consent" },
 
     // ── Ödeme: iyzico Checkout Form (mock | live) ─────────────────────
     {

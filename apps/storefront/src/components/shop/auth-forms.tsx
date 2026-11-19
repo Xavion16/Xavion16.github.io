@@ -3,6 +3,7 @@
 import { useActionState } from "react"
 import { useTranslations } from "next-intl"
 import { ArrowIcon, buttonClass } from "@/components/ui/button"
+import { Link } from "@/i18n/navigation"
 import { loginAction, registerAction } from "@/lib/actions/account-actions"
 import type { ActionState } from "@/lib/actions/cart-actions"
 import { cn } from "@/lib/utils"
@@ -77,7 +78,9 @@ export function LoginForm({ next }: { next?: string }) {
   )
 }
 
-export function RegisterForm() {
+export type RegisterConsent = { purpose: "marketing_email" | "marketing_sms"; label: string; text: string }
+
+export function RegisterForm({ consents }: { consents: RegisterConsent[] }) {
   const t = useTranslations("shop.account")
   const [state, action, pending] = useActionState<ActionState, FormData>(registerAction, { ok: false })
   const bad = (k: string) => Boolean(state.fieldErrors?.[k])
@@ -96,10 +99,60 @@ export function RegisterForm() {
         hint={t("passwordHint")}
         invalid={bad("password")}
       />
+
+      {/* Sözleşme onayı (zorunlu) — aydınlatma değil, sözleşmenin kurulması */}
+      <div className="flex items-start gap-3">
+        <input
+          id="accept_membership"
+          name="accept_membership"
+          type="checkbox"
+          required
+          aria-invalid={bad("accept_membership") || undefined}
+          className="mt-0.5 size-5 shrink-0 accent-[var(--color-ember)]"
+        />
+        <label htmlFor="accept_membership" className="text-sm leading-relaxed">
+          {t.rich("registerForm.membership", {
+            link: () => (
+              <Link href="/yasal/uyelik-sozlesmesi" target="_blank" className="font-semibold underline underline-offset-4">
+                {t("registerForm.membershipLink")}
+              </Link>
+            ),
+          })}
+        </label>
+      </div>
+
+      {/* Açık rızalar: AYRI kutular, hiçbiri önceden işaretli değil, üyeliğin ön koşulu değil (Rapor §7.1.3, §7.4) */}
+      <fieldset className="rounded-2xl border border-white/15 p-4">
+        <legend className="px-1 text-sm font-semibold">{t("registerForm.marketingTitle")}</legend>
+        <ul className="mt-2 space-y-3">
+          {consents.map((c) => (
+            <li key={c.purpose} className="flex items-start gap-3">
+              <input
+                id={`consent-${c.purpose}`}
+                name={c.purpose}
+                type="checkbox"
+                defaultChecked={false}
+                className="mt-0.5 size-5 shrink-0 accent-[var(--color-ember)]"
+              />
+              <div className="text-sm leading-relaxed">
+                <label htmlFor={`consent-${c.purpose}`}>{c.label}</label>
+                <details className="mt-1 text-xs text-smoke">
+                  <summary className="cursor-pointer underline underline-offset-4">{t("registerForm.readText")}</summary>
+                  <p className="mt-2">{c.text}</p>
+                </details>
+              </div>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-3 text-xs text-smoke">{t("registerForm.marketingNote")}</p>
+      </fieldset>
+
       <div aria-live="polite">
         {state.error ? (
           <p role="alert" className="text-sm text-ember">
-            {t(`errors.${state.error === "registerFailed" ? "registerFailed" : "invalidRegister"}`)}
+            {state.fieldErrors?.accept_membership
+              ? t("registerForm.membershipRequired")
+              : t(`errors.${state.error === "registerFailed" ? "registerFailed" : "invalidRegister"}`)}
           </p>
         ) : null}
       </div>

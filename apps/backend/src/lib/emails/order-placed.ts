@@ -73,7 +73,7 @@ export function renderOrderPlacedEmail(order: OrderEmailData): { subject: string
     <h2 style="font-size:16px;margin:28px 0 8px">Teslimat adresi</h2>
     <p style="margin:0;color:#46464d">${esc(a?.first_name)} ${esc(a?.last_name)}<br>${esc(a?.address_1)}<br>${esc(a?.city)} ${esc(a?.province)}</p>
     <p style="margin:28px 0 0;font-size:12px;color:#46464d">Cayma hakkını teslimden itibaren 14 gün içinde gerekçe göstermeden kullanabilirsin; iade kargo ücreti satıcıya aittir.
-    Ön bilgilendirme formu ve mesafeli satış sözleşmesi Faz 3'te bu e-postaya PDF olarak eklenecek.</p>
+    Onayladığın Ön Bilgilendirme Formu ve Mesafeli Satış Sözleşmesi bu e-postaya PDF olarak eklenmiştir; ayrıca Hesabım &gt; Siparişlerim sayfasında kalıcı olarak bulunur.</p>
   </div>
 </body></html>`
   return { subject, html }

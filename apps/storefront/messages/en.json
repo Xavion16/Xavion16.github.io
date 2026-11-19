@@ -394,7 +394,6 @@
       "payNote": "You will be redirected to a secure payment page. Your card details never reach ARION and are not stored.",
       "privacyNote": "Your details are processed only to deliver and invoice your order.",
       "privacyLink": "Privacy Notice (KVKK)",
-      "legalPhase3": "The pre-contract information and distance sales agreement step will be added in Phase 3.",
       "summary": "Order summary",
       "errors": {
         "eksik": "Complete the address and shipping steps before paying.",
@@ -402,9 +401,16 @@
         "oturum": "Payment session not found. Please try again.",
         "odeme-reddedildi": "Payment was not approved. You were not charged; you can try again.",
         "invalidAddress": "Please check the highlighted fields.",
-        "noCart": "Cart not found."
+        "noCart": "Cart not found.",
+        "onay-eksik": "Accept the pre-contract information and the distance sales agreement before paying.",
+        "sozlesme-degisti": "Your cart changed; please read and accept the updated texts again."
       },
-      "fieldInvalid": "Please check this field."
+      "fieldInvalid": "Please check this field.",
+      "preContractBox": "Pre-Contract Information Form",
+      "distanceSalesBox": "Distance Sales Agreement",
+      "acceptPreContract": "I have read the Pre-Contract Information Form and have been informed.",
+      "acceptDistanceSales": "I have read and accept the Distance Sales Agreement.",
+      "acceptBothHint": "Accept both texts to continue to payment."
     },
     "simulation": {
       "eyebrow": "Payment provider simulation · DEMO",
@@ -424,7 +430,10 @@
       "total": "Total (VAT included)",
       "address": "Delivery address",
       "continue": "Continue shopping",
-      "demo": "This is a demo order; no product is shipped and no payment is taken."
+      "demo": "This is a demo order; no product is shipped and no payment is taken.",
+      "documents": "Contract documents",
+      "docPreContract": "Pre-Contract Information Form",
+      "docDistanceSales": "Distance Sales Agreement"
     },
     "account": {
       "title": "Account",
@@ -450,11 +459,105 @@
         "invalidCredentials": "Email or password is incorrect.",
         "invalidRegister": "Please check the highlighted fields.",
         "registerFailed": "Account could not be created. This email may already be registered."
+      },
+      "nav": {
+        "overview": "Overview",
+        "permissions": "Permissions",
+        "dataRequests": "Data requests",
+        "label": "Account menu"
+      },
+      "permissions": {
+        "title": "Permissions",
+        "intro": "Give or withdraw each consent separately. Changes are recorded; marketing consents are reported to the Message Management System (İYS).",
+        "save": "Save changes",
+        "saved": "Your permissions were updated.",
+        "error": "Could not save, please try again.",
+        "granted": "Given",
+        "notGranted": "Not given",
+        "lastChange": "Last change: {date}",
+        "cookies": "Cookie preferences",
+        "cookiesNote": "Cookie permissions are managed per browser.",
+        "fitTwinPhase": "Fit Twin opens in Phase 5; you can already give or refuse this consent.",
+        "openCookies": "Open cookie preferences"
+      },
+      "dataRequests": {
+        "title": "Data requests",
+        "intro": "Exercise your rights under KVKK Art. 11 here. Requests are answered within 30 days.",
+        "download": "Download my data (JSON)",
+        "downloadNote": "The personal data in your account is downloaded immediately as a machine-readable file.",
+        "newRequest": "New request (deletion, correction, objection…)",
+        "none": "You have no requests yet.",
+        "due": "Due {date}",
+        "statuses": {
+          "received": "Received",
+          "verifying": "Verifying identity",
+          "in_progress": "In progress",
+          "resolved": "Resolved",
+          "rejected": "Rejected"
+        },
+        "types": {
+          "info": "Information",
+          "export": "Download my data",
+          "correct": "Correction",
+          "delete": "Deletion",
+          "object": "Objection",
+          "other": "Other"
+        }
+      },
+      "registerForm": {
+        "marketingTitle": "Communication preferences (optional)",
+        "marketingNote": "These consents are not a condition of membership; withdraw them any time under Account > Permissions.",
+        "membership": "I have read and accept the <link></link>.",
+        "membershipLink": "Membership Agreement",
+        "readText": "Read the consent text",
+        "membershipRequired": "You need to accept the membership agreement."
       }
     },
     "errors": {
       "selectVariant": "Please choose all options.",
       "addFailed": "The item could not be added. It may be out of stock."
+    }
+  },
+  "cookies": {
+    "title": "Your cookie choice",
+    "body": "We only use strictly necessary cookies to run the site. Functional, analytics and marketing cookies load only if you allow them. You can change your choice at any time via \"Cookie Preferences\" at the bottom of the page.",
+    "acceptAll": "Accept all",
+    "rejectAll": "Reject all",
+    "manage": "Manage preferences",
+    "policy": "Cookie Policy",
+    "prefsTitle": "Cookie preferences",
+    "prefsIntro": "Switch each category on or off. Strictly necessary cookies are required to run the site and need no consent.",
+    "alwaysOn": "Always on",
+    "save": "Save my choices",
+    "close": "Close",
+    "saved": "Your choice has been saved."
+  },
+  "legal": {
+    "eyebrow": "Legal",
+    "version": "Version {version} · Updated {date}",
+    "hash": "Content hash",
+    "binding": "This English version is an informational translation. The Turkish text is legally binding.",
+    "lawyer": "This text is a template and needs a lawyer’s review before a commercial launch.",
+    "template": "This is a template. At checkout it is filled in with your cart details and your acceptance is recorded.",
+    "back": "Back to home",
+    "form": {
+      "title": "Request form",
+      "fullName": "Full name",
+      "email": "Email",
+      "type": "Request type",
+      "details": "Your request (optional)",
+      "submit": "Send request",
+      "types": {
+        "info": "Is my data processed? / information",
+        "export": "A copy of my data",
+        "correct": "Correction",
+        "delete": "Deletion / destruction",
+        "object": "Objection",
+        "other": "Other"
+      },
+      "success": "Your request was received. Reference: {reference}. Reply due by: {date}.",
+      "error": "The request could not be sent. Please check the fields.",
+      "notice": "The details in this form are processed only to handle your request and verify your identity (KVKK Art. 5/2-ç, legal obligation)."
     }
   }
 }

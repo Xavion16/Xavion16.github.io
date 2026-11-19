@@ -8,6 +8,8 @@ const nextConfig: NextConfig = {
   // Strict TS: derleme tip hatasında durur (starter'daki ignoreBuildErrors kaldırıldı).
   typescript: { ignoreBuildErrors: false },
   poweredByHeader: false,
+  // PDF üretimi font dosyasını require.resolve ile bulur; paket Node tarafından doğrudan yüklenmeli
+  serverExternalPackages: ["@arion/legal-texts", "pdf-lib", "@pdf-lib/fontkit"],
   images: {
     remotePatterns: [{ protocol: "http", hostname: "localhost" }],
   },

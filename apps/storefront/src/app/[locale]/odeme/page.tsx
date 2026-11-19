@@ -7,7 +7,16 @@ import { CartTotals } from "@/components/shop/cart-totals"
 import { ArrowIcon, buttonClass } from "@/components/ui/button"
 import { Link } from "@/i18n/navigation"
 import { routing } from "@/i18n/routing"
-import { setShippingAction, startPaymentAction } from "@/lib/actions/cart-actions"
+import {
+  acceptanceDocs,
+  buildDistanceSalesContract,
+  buildPreContractInfo,
+  cartToContractInput,
+  type CartLike,
+} from "@arion/legal-texts"
+import { LegalAcceptance } from "@/components/checkout/legal-acceptance"
+import { LegalDocView } from "@/components/legal/legal-doc-view"
+import { setShippingAction } from "@/lib/actions/cart-actions"
 import { formatMoney } from "@/lib/format"
 import { getCart } from "@/lib/medusa/cart"
 import { localized } from "@/lib/medusa/catalog"
@@ -18,7 +27,14 @@ import { cn } from "@/lib/utils"
 
 export const dynamic = "force-dynamic"
 
-const ERROR_CODES = ["eksik", "odeme-baslatilamadi", "oturum", "odeme-reddedildi"] as const
+const ERROR_CODES = [
+  "eksik",
+  "odeme-baslatilamadi",
+  "oturum",
+  "odeme-reddedildi",
+  "onay-eksik",
+  "sozlesme-degisti",
+] as const
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/odeme">): Promise<Metadata> {
   const { locale } = await params
@@ -63,6 +79,9 @@ export default async function CheckoutPage({ params, searchParams }: PageProps<"
     ? (await sdk.store.fulfillment.listCartOptions({ cart_id: cart.id }, await getAuthHeaders())).shipping_options
     : []
   const hasShipping = Boolean(selectedOption)
+  // Ekranda gösterilen metin = backend'in onay kaydında yeniden ürettiği metin (aynı fonksiyon → aynı hash)
+  const contractInput = cartToContractInput(cart as unknown as CartLike)
+  const accDocs = acceptanceDocs(cart as unknown as CartLike, locale)
 
   const stepClass = "glass rounded-[28px] p-6 sm:p-8"
   const stepTitle = (n: number, label: string, done: boolean) => (
@@ -112,7 +131,7 @@ export default async function CheckoutPage({ params, searchParams }: PageProps<"
                 <p className="mt-4 text-xs text-smoke">
                   {t("privacyNote")}{" "}
                   <Link
-                    href={{ pathname: "/yasal/[slug]", params: { slug: "kvkk-aydinlatma" } }}
+                    href="/yasal/kvkk-aydinlatma"
                     className="underline underline-offset-4 hover:text-white"
                   >
                     {t("privacyLink")}
@@ -175,14 +194,11 @@ export default async function CheckoutPage({ params, searchParams }: PageProps<"
           <section aria-labelledby="adim-3" className={cn(stepClass, !hasShipping && "opacity-60")}>
             <div id="adim-3">{stepTitle(3, t("step3"), false)}</div>
             {hasAddress && hasShipping && !showAddressForm ? (
-              <form action={startPaymentAction} className="mt-6">
-                <p className="text-sm text-smoke">{t("payNote")}</p>
-                <p className="mt-2 text-xs text-smoke">{t("legalPhase3")}</p>
-                <button type="submit" className={buttonClass({ size: "lg", className: "mt-6 w-full sm:w-auto" })}>
-                  {t("pay")}
-                  <ArrowIcon />
-                </button>
-              </form>
+              <LegalAcceptance
+                preContract={<LegalDocView doc={buildPreContractInfo(contractInput, locale)} headingLevel={2} compact />}
+                distanceSales={<LegalDocView doc={buildDistanceSalesContract(contractInput, locale)} headingLevel={2} compact />}
+                hashes={{ pre: accDocs.pre_contract.hash, dist: accDocs.distance_sales.hash }}
+              />
             ) : null}
           </section>
         </div>

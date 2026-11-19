@@ -66,6 +66,22 @@ export default async function OrderPage({ params }: PageProps<"/[locale]/siparis
               <CartTotals cart={order} />
             </div>
           </section>
+          <div className="flex flex-col gap-6">
+          <section aria-labelledby="belgeler" className="glass rounded-[28px] p-6">
+            <h2 id="belgeler" className="text-lg font-bold">{t("documents")}</h2>
+            <ul className="mt-3 space-y-2 text-sm">
+              <li>
+                <a href={`/api/belge/${order.id}/on-bilgilendirme`} download className="font-semibold underline underline-offset-4 hover:text-ember">
+                  {t("docPreContract")} (PDF)
+                </a>
+              </li>
+              <li>
+                <a href={`/api/belge/${order.id}/mesafeli-satis`} download className="font-semibold underline underline-offset-4 hover:text-ember">
+                  {t("docDistanceSales")} (PDF)
+                </a>
+              </li>
+            </ul>
+          </section>
           <section aria-labelledby="adres" className="glass h-fit rounded-[28px] p-6">
             <h2 id="adres" className="text-lg font-bold">{t("address")}</h2>
             <p className="mt-3 text-sm leading-relaxed text-smoke">
@@ -76,6 +92,7 @@ export default async function OrderPage({ params }: PageProps<"/[locale]/siparis
               {a?.province} / {a?.city}
             </p>
           </section>
+          </div>
         </div>
 
         <Link href="/koleksiyon" className={buttonClass({ variant: "light", size: "lg", className: "mt-10" })}>

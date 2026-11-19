@@ -394,7 +394,6 @@
       "payNote": "Güvenli ödeme sayfasına yönlendirileceksin. Kart bilgilerin ARION'a ulaşmaz, saklanmaz.",
       "privacyNote": "Bilgilerin yalnızca siparişini teslim etmek ve faturalamak için işlenir.",
       "privacyLink": "KVKK Aydınlatma Metni",
-      "legalPhase3": "Ön bilgilendirme formu ve mesafeli satış sözleşmesi onay adımı Faz 3'te eklenecek.",
       "summary": "Sipariş özeti",
       "errors": {
         "eksik": "Ödemeden önce adres ve kargo adımlarını tamamla.",
@@ -402,9 +401,16 @@
         "oturum": "Ödeme oturumu bulunamadı. Lütfen tekrar dene.",
         "odeme-reddedildi": "Ödeme onaylanmadı. Kartından para çekilmedi; tekrar deneyebilirsin.",
         "invalidAddress": "Lütfen işaretli alanları kontrol et.",
-        "noCart": "Sepet bulunamadı."
+        "noCart": "Sepet bulunamadı.",
+        "onay-eksik": "Ödemeden önce ön bilgilendirme formunu ve mesafeli satış sözleşmesini onaylaman gerekir.",
+        "sozlesme-degisti": "Sepetin değişti; lütfen güncel metinleri tekrar okuyup onayla."
       },
-      "fieldInvalid": "Bu alanı kontrol et."
+      "fieldInvalid": "Bu alanı kontrol et.",
+      "preContractBox": "Ön Bilgilendirme Formu",
+      "distanceSalesBox": "Mesafeli Satış Sözleşmesi",
+      "acceptPreContract": "Ön Bilgilendirme Formu’nu okudum, bilgilendirildim.",
+      "acceptDistanceSales": "Mesafeli Satış Sözleşmesi’ni okudum, onaylıyorum.",
+      "acceptBothHint": "Ödemeye geçmek için iki metni de onayla."
     },
     "simulation": {
       "eyebrow": "Ödeme sağlayıcı simülasyonu · DEMO",
@@ -424,7 +430,10 @@
       "total": "Toplam (KDV dahil)",
       "address": "Teslimat adresi",
       "continue": "Alışverişe devam et",
-      "demo": "Bu bir demo siparişidir; gerçek ürün gönderilmez, ödeme alınmaz."
+      "demo": "Bu bir demo siparişidir; gerçek ürün gönderilmez, ödeme alınmaz.",
+      "documents": "Sözleşme belgeleri",
+      "docPreContract": "Ön Bilgilendirme Formu",
+      "docDistanceSales": "Mesafeli Satış Sözleşmesi"
     },
     "account": {
       "title": "Hesabım",
@@ -450,11 +459,105 @@
         "invalidCredentials": "E-posta ya da şifre hatalı.",
         "invalidRegister": "Lütfen işaretli alanları kontrol et.",
         "registerFailed": "Üyelik oluşturulamadı. Bu e-posta zaten kayıtlı olabilir."
+      },
+      "nav": {
+        "overview": "Genel bakış",
+        "permissions": "İzinlerim",
+        "dataRequests": "Veri taleplerim",
+        "label": "Hesap menüsü"
+      },
+      "permissions": {
+        "title": "İzinlerim",
+        "intro": "Her rızayı ayrı ayrı verebilir ya da geri alabilirsin. Değişiklikler kayıt altına alınır; pazarlama izinleri İleti Yönetim Sistemi'ne (İYS) bildirilir.",
+        "save": "Değişiklikleri kaydet",
+        "saved": "İzinlerin güncellendi.",
+        "error": "Kaydedilemedi, lütfen tekrar dene.",
+        "granted": "Verildi",
+        "notGranted": "Verilmedi",
+        "lastChange": "Son değişiklik: {date}",
+        "cookies": "Çerez tercihleri",
+        "cookiesNote": "Çerez izinlerini tarayıcı bazında yönetirsin.",
+        "fitTwinPhase": "Ayak İkizi Faz 5'te açılacak; şimdiden izin verebilir ya da vermeyebilirsin.",
+        "openCookies": "Çerez tercihlerini aç"
+      },
+      "dataRequests": {
+        "title": "Veri taleplerim",
+        "intro": "KVKK m.11 kapsamındaki haklarını buradan kullanabilirsin. Başvurular en geç 30 gün içinde yanıtlanır.",
+        "download": "Verilerimi indir (JSON)",
+        "downloadNote": "Hesabına ait kişisel verilerin makinece okunur bir dosya olarak hemen indirilir.",
+        "newRequest": "Yeni başvuru (silme, düzeltme, itiraz…)",
+        "none": "Henüz başvurun yok.",
+        "due": "Son tarih {date}",
+        "statuses": {
+          "received": "Alındı",
+          "verifying": "Kimlik doğrulama",
+          "in_progress": "İşlemde",
+          "resolved": "Sonuçlandı",
+          "rejected": "Reddedildi"
+        },
+        "types": {
+          "info": "Bilgi talebi",
+          "export": "Verilerimi indir",
+          "correct": "Düzeltme",
+          "delete": "Silme",
+          "object": "İtiraz",
+          "other": "Diğer"
+        }
+      },
+      "registerForm": {
+        "marketingTitle": "İletişim tercihleri (isteğe bağlı)",
+        "marketingNote": "Bu onaylar üyeliğin ön koşulu değildir; istediğin zaman Hesabım > İzinlerim sayfasından geri alabilirsin.",
+        "membership": "<link></link>'ni okudum ve kabul ediyorum.",
+        "membershipLink": "Üyelik Sözleşmesi",
+        "readText": "Rıza metnini oku",
+        "membershipRequired": "Üyelik sözleşmesini kabul etmen gerekir."
       }
     },
     "errors": {
       "selectVariant": "Lütfen tüm seçenekleri belirle.",
       "addFailed": "Ürün sepete eklenemedi. Stok bitmiş olabilir."
+    }
+  },
+  "cookies": {
+    "title": "Çerez tercihin",
+    "body": "Siteyi çalıştırmak için yalnızca zorunlu çerezleri kullanıyoruz. İşlevsel, analitik ve pazarlama çerezleri ancak izin verirsen yüklenir. Seçimini istediğin zaman sayfanın altındaki \"Çerez Tercihleri\" bağlantısıyla değiştirebilirsin.",
+    "acceptAll": "Tümünü Kabul Et",
+    "rejectAll": "Tümünü Reddet",
+    "manage": "Tercihleri Yönet",
+    "policy": "Çerez Politikası",
+    "prefsTitle": "Çerez tercihleri",
+    "prefsIntro": "Her kategoriyi ayrı ayrı açıp kapatabilirsin. Zorunlu çerezler sitenin çalışması için gereklidir ve rıza gerektirmez.",
+    "alwaysOn": "Her zaman açık",
+    "save": "Seçimlerimi kaydet",
+    "close": "Kapat",
+    "saved": "Tercihin kaydedildi."
+  },
+  "legal": {
+    "eyebrow": "Yasal",
+    "version": "Sürüm {version} · Güncelleme {date}",
+    "hash": "İçerik özeti",
+    "binding": "",
+    "lawyer": "Bu metin şablondur; ticari lansmandan önce avukat kontrolü gerekir.",
+    "template": "Bu bir şablondur. Sipariş sırasında sepetinin bilgileriyle doldurularak gösterilir ve onayın kayıt altına alınır.",
+    "back": "Ana sayfaya dön",
+    "form": {
+      "title": "Başvuru formu",
+      "fullName": "Ad soyad",
+      "email": "E-posta",
+      "type": "Talep türü",
+      "details": "Talebin (isteğe bağlı)",
+      "submit": "Başvuruyu gönder",
+      "types": {
+        "info": "Verilerim işleniyor mu? / bilgi talebi",
+        "export": "Verilerimin bir kopyası",
+        "correct": "Düzeltme",
+        "delete": "Silme / yok etme",
+        "object": "İtiraz",
+        "other": "Diğer"
+      },
+      "success": "Başvurun alındı. Referans numaran {reference}. Son yanıt tarihi: {date}.",
+      "error": "Başvuru gönderilemedi. Lütfen alanları kontrol et.",
+      "notice": "Bu formdaki bilgiler yalnızca başvurunu sonuçlandırmak ve kimliğini doğrulamak için işlenir (KVKK m.5/2-ç, hukuki yükümlülük)."
     }
   }
 }
