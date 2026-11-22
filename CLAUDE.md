@@ -31,7 +31,7 @@ Medusa'ya özel dizin yapısı, kurallar ve yasak yollar için [AGENTS.md](./AGE
 
 ## Tasarım
 
-- Tasarım yönü: "Altın & Gümüş" (DECISIONS #078, #070 yerine) — sıcak siyah zemin, altın (#c9a253) ana vurgu, gümüş (#c4c7cc) erkek vurgusu, bej/fildişi metin; mor/bordo yok. Açılış ikiye bölünmüş Kadın / Erkek. Cam görünümü yalnızca deneme anahtarı (#079). Bodoni Moda + Jost (#077: hap buton, mono etiket, krom metin yok; köşeli butonlar), fotoğraf ağırlıklı. Kadın = yalnızca topuklu, Erkek ayrı dünya. Token'lar `apps/storefront/src/styles/globals.css`.
+- Tasarım yönü: "Altın & Gümüş" (DECISIONS #078, #070 yerine) — sıcak siyah zemin, altın (#c9a253) ana vurgu, gümüş (#c4c7cc) erkek vurgusu, bej/fildişi metin; mor/bordo yok. Açılış ikiye bölünmüş Kadın / Erkek. Cam (glassmorphism) görünümü kalıcı (#088): buzlu üst çubuk, yumuşak köşeli cam kartlar, altın ışık havuzlu arka plan; açılış cam pano almaz. Bodoni Moda + Jost (#077: hap buton, mono etiket, krom metin yok; köşeli butonlar), fotoğraf ağırlıklı. Kadın = yalnızca topuklu, Erkek ayrı dünya. Token'lar `apps/storefront/src/styles/globals.css`.
 - Başka markaların logosu, fontu, sloganı ya da görselleri kullanılmaz.
 - Cam panellerde metin kontrastı AA'yı geçmeli; altın (ember) zemin üzerinde metin her zaman koyu.
 - prefers-reduced-motion'a saygı göster. WCAG 2.2 AA hedefi.

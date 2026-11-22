@@ -201,13 +201,9 @@ test("açılışta Kadın / Erkek ikiye bölünür, üzerine gelinen taraf geni�
     .toBeGreaterThan(250)
 })
 
-// Deneme cam görünümü (DECISIONS #079): anahtar <html data-skin> özniteliğini açıp kapatır
-test("görünüm anahtarı Altın ↔ Cam arasında geçer", async ({ page }) => {
+// Cam görünümü kalıcı (DECISIONS #088): deneme anahtarı yok
+test("site cam görünümüyle açılır, görünüm anahtarı yok", async ({ page }) => {
   await page.goto("/tr")
-  const sw = page.getByTestId("skin-switch")
-  await expect(page.locator("html")).not.toHaveAttribute("data-skin", "glass")
-  await sw.getByRole("button", { name: "Cam" }).click()
   await expect(page.locator("html")).toHaveAttribute("data-skin", "glass")
-  await sw.getByRole("button", { name: "Altın" }).click()
-  await expect(page.locator("html")).not.toHaveAttribute("data-skin", "glass")
+  await expect(page.getByTestId("skin-switch")).toHaveCount(0)
 })

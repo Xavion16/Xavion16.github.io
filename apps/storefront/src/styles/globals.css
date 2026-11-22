@@ -497,7 +497,6 @@
   }
 }
 /* Mobil sepet çubuğu görünürken sabit düğmeler yukarı kalkar */
-html[data-buybar="on"] [data-testid="areion-launcher"],
-html[data-buybar="on"] [data-testid="skin-switch"] {
+html[data-buybar="on"] [data-testid="areion-launcher"] {
   bottom: 5.25rem;
 }

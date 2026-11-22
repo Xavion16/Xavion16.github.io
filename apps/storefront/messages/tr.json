@@ -1345,10 +1345,5 @@
   "nav2": {
     "lifetime": "Ömür Planı",
     "transparency": "Şeffaflık"
-  },
-  "skin": {
-    "label": "Görünüm (deneme)",
-    "gold": "Altın",
-    "glass": "Cam"
   }
 }

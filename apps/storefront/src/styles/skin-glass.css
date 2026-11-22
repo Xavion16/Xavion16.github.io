@@ -1,7 +1,7 @@
 /*
- * DENEME: Cam (glassmorphism) görünümü — DECISIONS #079.
- * Yalnızca <html data-skin="glass"> iken devreye girer; varsayılan görünüm Altın & Gümüş (#078) değişmez.
- * Geri almak: bu dosyayı ve layout.tsx'teki importunu + <SkinSwitch /> bileşenini silmek yeterli.
+ * Cam (glassmorphism) görünümü — DECISIONS #079 deneme olarak eklendi, #088 ile kalıcı oldu.
+ * Altın & Gümüş paletinin (#078) üstüne gelir; layout <html data-skin="glass"> ile her zaman açar.
+ * Açılış (Kadın | Erkek) bölümü cam pano almaz.
  */
 
 /* Arka plan: camın ardında görünsün diye sabit altın/gümüş ışık havuzları */

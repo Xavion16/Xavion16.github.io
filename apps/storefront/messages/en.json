@@ -1345,10 +1345,5 @@
   "nav2": {
     "lifetime": "Lifetime Plan",
     "transparency": "Transparency"
-  },
-  "skin": {
-    "label": "Look (trial)",
-    "gold": "Gold",
-    "glass": "Glass"
   }
 }

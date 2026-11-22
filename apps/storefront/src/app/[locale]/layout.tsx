@@ -15,9 +15,8 @@ import { routing } from "@/i18n/routing"
 import { readCookieChoice } from "@/lib/consent"
 import { SITE_URL } from "@/lib/site"
 import "@/styles/globals.css"
-// DENEME (DECISIONS #079): cam görünümü. Geri almak için bu import, SkinSwitch ve skin-glass.css silinir.
+// Cam görünümü kalıcıdır (DECISIONS #088): stiller <html data-skin="glass"> altında tanımlı
 import "@/styles/skin-glass.css"
-import { SkinSwitch } from "@/components/dev/skin-switch"
 
 // Türkçe karakterler (ğ, ş, İ, ı, ç, ö, ü) latin-ext alt kümesindedir — zorunlu.
 // Kadife Gece: Bodoni Moda (başlık, didone) + Jost (gövde). DECISIONS #070, #077
@@ -90,6 +89,7 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
+      data-skin="glass"
       className={`${bodoni.variable} ${jost.variable}`}
     >
       <body className="min-h-dvh antialiased">
@@ -108,7 +108,6 @@ export default async function LocaleLayout({
             }}
           />
           <CookieConsent initial={choice} categories={categories} />
-          <SkinSwitch />
           </FitTwinProvider>
         </NextIntlClientProvider>
       </body>
