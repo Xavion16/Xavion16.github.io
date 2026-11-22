@@ -55,6 +55,7 @@ const ROUTES = [
   { file: "hesabim/giris/page" },
   { file: "hesabim/kayit/page" },
   { file: "sepet/page", component: "@/components/static/static-cart-page" },
+  { file: "odeme/page", component: "@/components/static/static-checkout-page" },
 ]
 
 const wrappers = []
@@ -73,8 +74,10 @@ function prepare() {
   for (const r of ROUTES) {
     const source = path.join(APP, `${r.file}.tsx`)
     if (!existsSync(source)) throw new Error(`Rota bulunamadı: ${r.file}`)
-    const ex = exportsOf(readFileSync(source, "utf8"))
-    const base = `./${path.basename(r.file)}`
+    // Bileşen rotalarında meta verisi sayfa yerine bileşen dosyasından alınır
+    const componentFile = r.component ? path.join(ROOT, "src", r.component.replace(/^@\//, "") + ".tsx") : null
+    const ex = exportsOf(readFileSync(componentFile ?? source, "utf8"))
+    const base = r.component ?? `./${path.basename(r.file)}`
     const lines = ["// OTOMATİK ÜRETİLDİ — scripts/static-export.mjs (statik yayın sarmalayıcısı, commit edilmez)"]
     if (r.imports) lines.push(r.imports)
     lines.push(r.component ? `export { default } from "${r.component}"` : `export { default } from "${base}"`)

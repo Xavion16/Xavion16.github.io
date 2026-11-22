@@ -772,10 +772,74 @@
     },
     "staticCart": {
       "shippingFree": "Free",
-      "checkout": "Complete order (demo)",
+      "demoNote": "This is a coursework site: no payment is taken, no order is created and nothing is shipped."
+    },
+    "discount": {
+      "label": "Discount code",
+      "placeholder": "Enter code",
+      "apply": "Apply",
+      "remove": "Remove",
+      "unknown": "This code isn't valid.",
+      "minimum": "This code applies to baskets of {min} or more.",
+      "stale": "The basket total changed, so the code no longer applies.",
+      "hint": "Demo codes: ARION10 (10%), SCU20 (20% over ₺2,000), HOSGELDIN (₺250 over ₺1,500).",
+      "percentOff": "{value}% off",
+      "fixedOff": "{value} off",
+      "line": "Discount"
+    },
+    "staticCheckout": {
+      "eyebrow": "Demo checkout",
+      "title": "Checkout",
+      "stepsLabel": "Checkout steps",
+      "steps": {
+        "1": "Delivery",
+        "2": "Shipping",
+        "3": "Payment"
+      },
+      "fields": {
+        "email": "Email",
+        "name": "Full name",
+        "phone": "Phone",
+        "address": "Address",
+        "city": "Province",
+        "district": "District"
+      },
+      "privacy": "These details are only used on this screen; they are never stored or sent anywhere.",
+      "next": "Continue",
+      "back": "Back",
+      "free": "Free",
+      "shipping": {
+        "standard": {
+          "title": "Standard shipping",
+          "eta": "2–4 business days"
+        },
+        "express": {
+          "title": "Express shipping",
+          "eta": "Next business day"
+        }
+      },
+      "deliverTo": "Delivering to: {name}, {address}",
+      "card": {
+        "title": "Demo test card",
+        "aria": "Demo test card 4242 4242 4242 4242, expires 12/30",
+        "note": "This is a coursework site: no real card details are requested and no payment is taken. Payment is simulated with this fixed test card."
+      },
+      "accept": {
+        "preContract": "I have read and accept the <link>Pre-contract Information Form</link>.",
+        "distance": "I have read and accept the <link>Distance Sales Agreement</link>."
+      },
+      "pay": "Confirm payment · {total}",
+      "paying": "Simulating payment…",
       "demoNote": "This is a coursework site: no payment is taken, no order is created and nothing is shipped.",
-      "doneTitle": "Thank you.",
-      "doneBody": "Your demo order is complete. As this is a coursework site, no payment was taken and no real order was created."
+      "empty": "Your basket is empty; add a product first.",
+      "emptyCta": "Explore the collection",
+      "done": {
+        "eyebrow": "Demo order",
+        "title": "Thank you.",
+        "body": "{name}, your demo order is complete. On a real site a confirmation would go to {email}; as this is a coursework site, no payment was taken and no email was sent.",
+        "orderNo": "Order number:",
+        "continue": "Continue shopping"
+      }
     }
   },
   "cookies": {

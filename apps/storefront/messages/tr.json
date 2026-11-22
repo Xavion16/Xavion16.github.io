@@ -772,10 +772,74 @@
     },
     "staticCart": {
       "shippingFree": "Ücretsiz",
-      "checkout": "Siparişi tamamla (demo)",
+      "demoNote": "Bu bir ödev sitesidir: ödeme alınmaz, sipariş oluşturulmaz ve ürün gönderilmez."
+    },
+    "discount": {
+      "label": "İndirim kodu",
+      "placeholder": "Kodu gir",
+      "apply": "Uygula",
+      "remove": "Kaldır",
+      "unknown": "Bu kod geçerli değil.",
+      "minimum": "Bu kod {min} ve üzeri sepetlerde geçerli.",
+      "stale": "Sepet tutarı değiştiği için kod artık geçerli değil.",
+      "hint": "Demo kodlar: ARION10 (%10), SCU20 (₺2.000 üzeri %20), HOSGELDIN (₺1.500 üzeri ₺250).",
+      "percentOff": "%{value} indirim",
+      "fixedOff": "{value} indirim",
+      "line": "İndirim"
+    },
+    "staticCheckout": {
+      "eyebrow": "Demo ödeme",
+      "title": "Ödeme",
+      "stepsLabel": "Ödeme adımları",
+      "steps": {
+        "1": "Teslimat",
+        "2": "Kargo",
+        "3": "Ödeme"
+      },
+      "fields": {
+        "email": "E-posta",
+        "name": "Ad soyad",
+        "phone": "Telefon",
+        "address": "Adres",
+        "city": "İl",
+        "district": "İlçe"
+      },
+      "privacy": "Bu bilgiler yalnızca bu ekranda kullanılır; hiçbir yere kaydedilmez ya da gönderilmez.",
+      "next": "Devam et",
+      "back": "Geri",
+      "free": "Ücretsiz",
+      "shipping": {
+        "standard": {
+          "title": "Standart kargo",
+          "eta": "2–4 iş günü"
+        },
+        "express": {
+          "title": "Hızlı kargo",
+          "eta": "Ertesi iş günü"
+        }
+      },
+      "deliverTo": "Teslimat: {name}, {address}",
+      "card": {
+        "title": "Demo test kartı",
+        "aria": "Demo test kartı 4242 4242 4242 4242, son kullanma 12/30",
+        "note": "Bu bir ödev sitesidir: gerçek kart bilgisi istenmez ve ödeme alınmaz. Ödeme bu sabit test kartıyla simüle edilir."
+      },
+      "accept": {
+        "preContract": "<link>Ön Bilgilendirme Formu</link>'nu okudum ve onaylıyorum.",
+        "distance": "<link>Mesafeli Satış Sözleşmesi</link>'ni okudum ve onaylıyorum."
+      },
+      "pay": "Ödemeyi onayla · {total}",
+      "paying": "Ödeme simüle ediliyor…",
       "demoNote": "Bu bir ödev sitesidir: ödeme alınmaz, sipariş oluşturulmaz ve ürün gönderilmez.",
-      "doneTitle": "Teşekkürler.",
-      "doneBody": "Demo siparişin tamamlandı. Bu bir ödev sitesi olduğu için ödeme alınmadı ve gerçek bir sipariş oluşturulmadı."
+      "empty": "Sepetin boş; ödeme için önce ürün ekle.",
+      "emptyCta": "Koleksiyonu keşfet",
+      "done": {
+        "eyebrow": "Demo sipariş",
+        "title": "Teşekkürler.",
+        "body": "{name}, demo siparişin tamamlandı. Gerçek bir sitede onay e-postası {email} adresine giderdi; bu bir ödev sitesi olduğu için ödeme alınmadı ve e-posta gönderilmedi.",
+        "orderNo": "Sipariş numarası:",
+        "continue": "Alışverişe devam et"
+      }
     }
   },
   "cookies": {
