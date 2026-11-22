@@ -98,8 +98,8 @@ export async function CollectionView({
       </header>
 
       <div className="mx-auto max-w-[1440px] px-4 pb-24 sm:px-8">
-        {/* Sabit çubuk: kategori sekmeleri + filtreler (DECISIONS #083) */}
-        <div className="sticky top-16 z-30 -mx-4 border-b border-chalk/10 bg-void/92 px-4 backdrop-blur-md sm:-mx-8 sm:px-8" data-testid="filter-bar">
+        {/* Kategori sekmeleri + filtreler; sayfayla birlikte kayar, sabit değil (DECISIONS #095) */}
+        <div className="relative z-30 -mx-4 border-b border-chalk/10 bg-void/92 px-4 backdrop-blur-md sm:-mx-8 sm:px-8" data-testid="filter-bar">
         <nav aria-label={t("eyebrow")} className="-mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
           <ul className="flex gap-6 pt-2">
             <li>

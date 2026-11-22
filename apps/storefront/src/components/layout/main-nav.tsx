@@ -124,8 +124,8 @@ export function MainNav() {
                   {t(item.key)}
                 </Link>
                 {mega ? (
-                  // Yalnızca masaüstü; üzerine gelince ya da klavye odağında açılır
-                  <div className="pointer-events-none absolute inset-x-0 top-full hidden border-b border-chalk/10 bg-void/97 opacity-0 shadow-[0_30px_60px_-30px_rgb(0_0_0/0.9)] backdrop-blur-md transition-opacity duration-200 group-focus-within/mega:pointer-events-auto group-focus-within/mega:opacity-100 group-hover/mega:pointer-events-auto group-hover/mega:opacity-100 md:block">
+                  // Yalnızca masaüstü; üzerine gelince açılır, fare çekilince kapanır. Tıklamayla kalan odak menüyü açık tutmaz; yalnızca klavye odağı (focus-visible) açar
+                  <div className="pointer-events-none absolute inset-x-0 top-full hidden border-b border-chalk/10 bg-void/97 opacity-0 shadow-[0_30px_60px_-30px_rgb(0_0_0/0.9)] backdrop-blur-md transition-opacity duration-200 group-has-[:focus-visible]/mega:pointer-events-auto group-has-[:focus-visible]/mega:opacity-100 group-hover/mega:pointer-events-auto group-hover/mega:opacity-100 md:block">
                     <div className="mx-auto grid max-w-[1440px] grid-cols-[14rem_1fr] gap-10 px-8 py-8">
                       <ul className="flex flex-col gap-3 border-r border-chalk/10 pr-8">
                         {mega.links.map((l) => (
