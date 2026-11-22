@@ -840,6 +840,47 @@
         "orderNo": "Sipariş numarası:",
         "continue": "Alışverişe devam et"
       }
+    },
+    "reviews": {
+      "eyebrow": "Yorumlar",
+      "title": "Giyenler ne diyor",
+      "ratingLabel": "5 üzerinden {value} yıldız",
+      "count": "{count, plural, one {# yorum} other {# yorum}}",
+      "fitTitle": "Kalıp nasıldı",
+      "fit": {
+        "small": "Dar",
+        "true": "Tam kalıp",
+        "large": "Geniş"
+      },
+      "emptyTitle": "Henüz yorum yok.",
+      "emptyBody": "Bu modeli denediysen ilk yorumu sen yaz: puanın, numaran ve kalıbın nasıl oturduğu sonraki kişiye doğru numarayı seçtirir.",
+      "write": "Yorum yaz",
+      "localNote": "Demo: yorumlar yalnızca bu tarayıcıda saklanır, kimseyle paylaşılmaz ve başka ziyaretçilere görünmez. Uydurma yorum göstermiyoruz.",
+      "noneYet": "İlk yorumu yazan sen ol.",
+      "anonymous": "İsimsiz",
+      "sizeWorn": "Numara {size}",
+      "fitWas": "Kalıp: {fit}",
+      "yourDevice": "Bu cihazda",
+      "delete": "Yorumu sil",
+      "stars": "{count} yıldız",
+      "form": {
+        "rating": "Puanın",
+        "fit": "Kalıp nasıl oturdu",
+        "size": "Giydiğin numara",
+        "sizeNone": "Belirtmek istemiyorum",
+        "name": "Görünecek ad (isteğe bağlı)",
+        "namePlaceholder": "Örn. Deniz",
+        "body": "Yorumun",
+        "bodyPlaceholder": "Konfor, kalıp, malzeme… En az 10 karakter.",
+        "privacy": "Sağlık bilgisi ya da başkasına ait kişisel veri yazma. Yorumun bu cihazdan çıkmaz.",
+        "cancel": "Vazgeç",
+        "submit": "Yorumu yayınla"
+      },
+      "errors": {
+        "rating": "Lütfen 1–5 arası bir puan seç.",
+        "fit": "Kalıbın nasıl oturduğunu seç.",
+        "body": "Yorum 10–600 karakter olmalı."
+      }
     }
   },
   "cookies": {

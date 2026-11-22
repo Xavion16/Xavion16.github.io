@@ -840,6 +840,47 @@
         "orderNo": "Order number:",
         "continue": "Continue shopping"
       }
+    },
+    "reviews": {
+      "eyebrow": "Reviews",
+      "title": "What wearers say",
+      "ratingLabel": "{value} out of 5 stars",
+      "count": "{count, plural, one {# review} other {# reviews}}",
+      "fitTitle": "How did it fit",
+      "fit": {
+        "small": "Runs small",
+        "true": "True to size",
+        "large": "Runs large"
+      },
+      "emptyTitle": "No reviews yet.",
+      "emptyBody": "If you have tried this model, write the first review: your rating, size and fit help the next person choose the right size.",
+      "write": "Write a review",
+      "localNote": "Demo: reviews are stored only in this browser, shared with no one and not visible to other visitors. We never show made-up reviews.",
+      "noneYet": "Be the first to write one.",
+      "anonymous": "Anonymous",
+      "sizeWorn": "Size {size}",
+      "fitWas": "Fit: {fit}",
+      "yourDevice": "This device",
+      "delete": "Delete review",
+      "stars": "{count} stars",
+      "form": {
+        "rating": "Your rating",
+        "fit": "How did it fit",
+        "size": "Size you wear",
+        "sizeNone": "Prefer not to say",
+        "name": "Display name (optional)",
+        "namePlaceholder": "e.g. Deniz",
+        "body": "Your review",
+        "bodyPlaceholder": "Comfort, fit, materials… At least 10 characters.",
+        "privacy": "Do not include health information or anyone else’s personal data. Your review never leaves this device.",
+        "cancel": "Cancel",
+        "submit": "Post review"
+      },
+      "errors": {
+        "rating": "Please choose a rating from 1 to 5.",
+        "fit": "Choose how it fitted.",
+        "body": "Review must be 10–600 characters."
+      }
     }
   },
   "cookies": {

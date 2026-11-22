@@ -4,6 +4,7 @@ import { getFormatter, getMessages, getTranslations, setRequestLocale } from "ne
 import { notFound } from "next/navigation"
 import { ShoeDrawing } from "@/components/illustrations/shoe-drawings"
 import { ProductExperience } from "@/components/product/product-experience"
+import { ProductReviews } from "@/components/product/product-reviews"
 import { Price } from "@/components/shop/price"
 import { ProductCard } from "@/components/shop/product-card"
 import { type PickerVariant } from "@/components/shop/variant-picker"
@@ -86,6 +87,7 @@ export default async function ProductPage({ params }: Props) {
   const tech = details?.tech
   const gallery = productGallery(product.handle, options.find((o) => o.title === "Renk")?.values ?? [])
   const tc = await getTranslations("shop.collection")
+  const tr = await getTranslations("shop.reviews")
   const priceLabel = amount != null ? format.number(amount, { style: "currency", currency: "TRY", maximumFractionDigits: 0 }) : null
   const last = details?.last
   const metrics = tech?.test_metrics.metrics ?? []
@@ -197,6 +199,7 @@ export default async function ProductPage({ params }: Props) {
             ...(tech ? [["teknik", t("sections.tech")], ["dayaniklilik", t("sections.durability")]] : []),
             ...(last ? [["kalip", t("sections.last")]] : []),
             ["omur", tp("lifetime")],
+            ["yorumlar", tr("eyebrow")],
           ].map(([id, label]) => (
             <li key={id}>
               <a href={`#${id}`} className="inline-flex min-h-11 items-center rounded-[2px] border border-white/15 px-4 text-sm font-semibold whitespace-nowrap hover:bg-white hover:text-ink">
@@ -439,6 +442,13 @@ export default async function ProductPage({ params }: Props) {
             </div>
           ) : null}
         </div>
+      </section>
+
+      {/* Yorumlar (DECISIONS #093) */}
+      <section id="yorumlar" aria-labelledby="yorumlar-baslik" className="scroll-mt-36 mx-auto max-w-[1440px] px-4 py-20 sm:px-8">
+        <p className="eyebrow text-ember">{tr("eyebrow")}</p>
+        <h2 id="yorumlar-baslik" className="condensed mt-3 mb-10 text-headline">{tr("title")}</h2>
+        <ProductReviews handle={product.handle} sizes={options.find((o) => o.title === "Numara")?.values ?? []} />
       </section>
 
       {related.length ? (
