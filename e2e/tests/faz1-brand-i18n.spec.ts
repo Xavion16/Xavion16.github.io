@@ -208,7 +208,7 @@ test("site cam görünümüyle açılır, görünüm anahtarı yok", async ({ pa
   await expect(page.getByTestId("skin-switch")).toHaveCount(0)
 })
 
-// Hakkımızda (DECISIONS #090): ekip ve bölümleri
+// Hakkımızda (DECISIONS #090, #091): ekipte yalnızca Enes Atalay
 test("Hakkımızda sayfası ekibi gösterir; menüden ve İngilizce adresten açılır", async ({
   page,
 }) => {
@@ -220,11 +220,7 @@ test("Hakkımızda sayfası ekibi gösterir; menüden ve İngilizce adresten aç
   await expect(page.getByTestId("team-enes")).toContainText(
     "Uluslararası Ticaret ve Lojistik, 3. sınıf",
   )
-  await expect(page.getByTestId("team-kadir")).toContainText("Kadir Kara")
-  await expect(page.getByTestId("team-kadir")).toContainText("Teknik destek")
-  await expect(page.getByTestId("team-kadir")).toContainText(
-    "Endüstri Mühendisliği, 4. sınıf",
-  )
+  await expect(page.getByTestId("team-kadir")).toHaveCount(0)
   await expect(
     page.getByRole("contentinfo").getByRole("link", { name: "Hakkımızda" }),
   ).toHaveAttribute("href", "/tr/hakkimizda")

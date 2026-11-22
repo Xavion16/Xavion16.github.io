@@ -9,10 +9,7 @@ import { routing } from "@/i18n/routing"
 import { localizedAlternates } from "@/lib/metadata"
 
 const VALUES = ["fit", "repair", "honest"] as const
-const TEAM = [
-  { key: "enes", initials: "EA" },
-  { key: "kadir", initials: "KK" },
-] as const
+const TEAM = [{ key: "enes", initials: "EA" }] as const
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/hakkimizda">): Promise<Metadata> {
   const { locale } = await params
@@ -90,7 +87,7 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/hakkimi
             {t.rich("team.title", { em: (c) => <em>{c}</em> })}
           </h2>
           <p className="mt-4 max-w-2xl leading-relaxed text-smoke">{t("team.lead")}</p>
-          <ul className="mt-12 grid gap-5 md:grid-cols-2">
+          <ul className="mt-12 grid max-w-2xl gap-5">
             {TEAM.map((m) => (
               <li key={m.key} className="glass flex flex-col gap-6 rounded-[4px] p-6 sm:flex-row sm:items-center sm:p-8" data-testid={`team-${m.key}`}>
                 <span

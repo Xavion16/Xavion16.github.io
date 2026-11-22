@@ -1380,8 +1380,8 @@
     },
     "team": {
       "eyebrow": "Team",
-      "title": "The people <em>behind it.</em>",
-      "lead": "ARION is a coursework project run by two students at Sivas Cumhuriyet University.",
+      "title": "The person <em>behind it.</em>",
+      "lead": "ARION is a coursework project carried out at Sivas Cumhuriyet University.",
       "departmentLabel": "Department",
       "schoolLabel": "University",
       "members": {
@@ -1391,13 +1391,6 @@
           "department": "International Trade and Logistics, 3rd year",
           "school": "Sivas Cumhuriyet University (SCÜ)",
           "bio": "Owner of the ARION idea, the brand concept and the coursework project."
-        },
-        "kadir": {
-          "name": "Kadir Kara",
-          "role": "Technical support",
-          "department": "Industrial Engineering, 4th year",
-          "school": "Sivas Cumhuriyet University (SCÜ)",
-          "bio": "The site's technical infrastructure, design implementation and deployment."
         }
       }
     },

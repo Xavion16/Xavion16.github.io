@@ -1380,8 +1380,8 @@
     },
     "team": {
       "eyebrow": "Ekip",
-      "title": "Projenin <em>arkasındakiler.</em>",
-      "lead": "ARION, Sivas Cumhuriyet Üniversitesi'nde iki öğrencinin birlikte yürüttüğü bir ödev projesidir.",
+      "title": "Projenin <em>arkasında.</em>",
+      "lead": "ARION, Sivas Cumhuriyet Üniversitesi'nde yürütülen bir ödev projesidir.",
       "departmentLabel": "Bölüm",
       "schoolLabel": "Üniversite",
       "members": {
@@ -1391,13 +1391,6 @@
           "department": "Uluslararası Ticaret ve Lojistik, 3. sınıf",
           "school": "Sivas Cumhuriyet Üniversitesi (SCÜ)",
           "bio": "ARION fikrinin, marka kurgusunun ve ödev projesinin sahibi."
-        },
-        "kadir": {
-          "name": "Kadir Kara",
-          "role": "Teknik destek",
-          "department": "Endüstri Mühendisliği, 4. sınıf",
-          "school": "Sivas Cumhuriyet Üniversitesi (SCÜ)",
-          "bio": "Sitenin teknik altyapısı, tasarımın uygulanması ve yayına alınması."
         }
       }
     },
