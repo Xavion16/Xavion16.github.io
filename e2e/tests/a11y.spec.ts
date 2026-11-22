@@ -6,6 +6,8 @@ const PAGES = [
   "/tr",
   "/en",
   "/tr/manifesto",
+  "/tr/hakkimizda",
+  "/en/about",
   "/en/manifesto",
   "/tr/ayak-ikizi",
   "/tr/yasal/kvkk-aydinlatma",

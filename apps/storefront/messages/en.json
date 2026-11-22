@@ -31,7 +31,8 @@
       "classic": "Classic",
       "boots": "Winter boots",
       "sneakers": "Sneakers"
-    }
+    },
+    "about": "About"
   },
   "footer": {
     "tagline": "Crafted in Türkiye.",
@@ -1345,5 +1346,66 @@
   "nav2": {
     "lifetime": "Lifetime Plan",
     "transparency": "Transparency"
+  },
+  "about": {
+    "eyebrow": "About us",
+    "title": "About us",
+    "title_rich": "A legend born from <em>coursework.</em>",
+    "lead": "ARION grew from the idea of shoes that fit you exactly and can be repaired and worn for years. This site is a university coursework project that turns that idea into a brand.",
+    "storyImageAlt": "A shoemaker's hands stitching a brown upper with waxed thread",
+    "story": {
+      "eyebrow": "Our story",
+      "title": "Named after a <em>horse's</em> loyalty.",
+      "p1": "In Greek myth, Arion is the divine horse of Poseidon. Swifter than the wind, he carries his rider home even when every battle is lost. We wanted to carry that promise into a shoe: a pair that brings you safely home with every step.",
+      "p2": "That is why every model in our collection bears a name from myth: from Selene to Artemis, from Adrastus to Herakles. The name tells the shoe's character.",
+      "p3": "With Fit Twin we set out to end size guessing, with the Lifetime Plan and Shoe Passport to extend a shoe's life, and with the transparency page to show everything openly."
+    },
+    "values": {
+      "eyebrow": "Our values",
+      "title": "We make three promises.",
+      "items": {
+        "fit": {
+          "title": "A shoe that truly fits",
+          "body": "Size shouldn't be a guess. Fit Twin compares your measurements with our lasts and recommends the best model, explaining why."
+        },
+        "repair": {
+          "title": "Repaired, not thrown away",
+          "body": "Goodyear and Blake soles can be renewed. Every pair has a passport and a repair history."
+        },
+        "honest": {
+          "title": "An open, honest brand",
+          "body": "Price history, material sources and test values are never hidden; anything that is a demo is marked DEMO."
+        }
+      }
+    },
+    "team": {
+      "eyebrow": "Team",
+      "title": "The people <em>behind it.</em>",
+      "lead": "ARION is a coursework project run by two students at Sivas Cumhuriyet University.",
+      "departmentLabel": "Department",
+      "schoolLabel": "University",
+      "members": {
+        "enes": {
+          "name": "Enes Atalay",
+          "role": "Project owner",
+          "department": "International Trade and Logistics, 3rd year",
+          "school": "Sivas Cumhuriyet University (SCÜ)",
+          "bio": "Owner of the ARION idea, the brand concept and the coursework project."
+        },
+        "kadir": {
+          "name": "Kadir Kara",
+          "role": "Technical support",
+          "department": "Industrial Engineering, 4th year",
+          "school": "Sivas Cumhuriyet University (SCÜ)",
+          "bio": "The site's technical infrastructure, design implementation and deployment."
+        }
+      }
+    },
+    "closing": {
+      "quote": "No shoe is immortal; but a brand can refuse to let it die.",
+      "note": "This site is a coursework project. No real sales are made, no payment is taken and nothing is shipped. Product images and data are for DEMO purposes.",
+      "ctaCollection": "Explore the collection",
+      "ctaManifesto": "Read the manifesto"
+    }
   }
 }

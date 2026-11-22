@@ -49,6 +49,7 @@ const ROUTES = [
   { file: "yardim/iade/page" },
   { file: "yardim/talep/page" },
   { file: "iletisim/page" },
+  { file: "hakkimizda/page" },
   { file: "yasal/[slug]/page" },
   { file: "yasal/kvkk-basvuru/page" },
   { file: "hesabim/giris/page" },

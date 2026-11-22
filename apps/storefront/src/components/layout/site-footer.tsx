@@ -52,6 +52,11 @@ export async function SiteFooter() {
                 </Link>
               </li>
               <li>
+                <Link href="/hakkimizda" className={linkClass}>
+                  {t("nav.about")}
+                </Link>
+              </li>
+              <li>
                 <Link href="/omur-plani" className={linkClass}>
                   {t("nav2.lifetime")}
                 </Link>

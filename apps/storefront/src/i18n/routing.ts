@@ -29,6 +29,7 @@ const PATHNAMES = {
     "/yardim/iade": { tr: "/yardim/iade", en: "/help/returns" },
     "/yardim/talep": { tr: "/yardim/talep", en: "/help/request" },
     "/iletisim": { tr: "/iletisim", en: "/contact" },
+  "/hakkimizda": { tr: "/hakkimizda", en: "/about" },
     // Yasal sayfalar: her slug iki dilde de çevrilir (DECISIONS #020 kapandı)
     "/yasal/kvkk-aydinlatma": { tr: "/yasal/kvkk-aydinlatma", en: "/legal/privacy-notice" },
     "/yasal/gizlilik": { tr: "/yasal/gizlilik", en: "/legal/privacy-policy" },

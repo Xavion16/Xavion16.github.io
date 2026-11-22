@@ -10,13 +10,14 @@ import { cn } from "@/lib/utils"
 import { LanguageSwitcher } from "./language-switcher"
 
 // Kadın (yalnızca topuklu) · Erkek (Salon) · Çocuk ayrı dünyalar (DECISIONS #070)
-type Item = { key: "women" | "men" | "kids" | "fitTwin" | "atelier"; href: AppPathname; kategori?: string }
+type Item = { key: "women" | "men" | "kids" | "fitTwin" | "atelier" | "about"; href: AppPathname; kategori?: string }
 const ITEMS: ReadonlyArray<Item> = [
   { key: "women", href: "/koleksiyon/[kategori]", kategori: "topuklu" },
   { key: "men", href: "/koleksiyon/[kategori]", kategori: "erkek" },
   { key: "kids", href: "/koleksiyon/[kategori]", kategori: "cocuk" },
   { key: "fitTwin", href: "/ayak-ikizi" },
   { key: "atelier", href: "/atolye" },
+  { key: "about", href: "/hakkimizda" },
 ]
 
 /** Masaüstü mega menü içeriği (DECISIONS #083): kategoriler + öne çıkan ürünler */

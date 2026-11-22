@@ -31,7 +31,8 @@
       "classic": "Klasik",
       "boots": "Kışlık bot",
       "sneakers": "Sneaker"
-    }
+    },
+    "about": "Hakkımızda"
   },
   "footer": {
     "tagline": "Crafted in Türkiye.",
@@ -1345,5 +1346,66 @@
   "nav2": {
     "lifetime": "Ömür Planı",
     "transparency": "Şeffaflık"
+  },
+  "about": {
+    "eyebrow": "Hakkımızda",
+    "title": "Hakkımızda",
+    "title_rich": "Bir ödevden doğan <em>efsane.</em>",
+    "lead": "ARION, ayağına tam oturan, yıllarca tamir edilerek giyilebilen ayakkabılar fikrinden doğdu. Bu site, o fikri bir markaya dönüştüren bir üniversite ödev projesidir.",
+    "storyImageAlt": "Usta elleri, kahverengi sayayı mumlu iple dikiyor",
+    "story": {
+      "eyebrow": "Hikâyemiz",
+      "title": "Adını bir <em>atın</em> sadakatinden aldı.",
+      "p1": "Yunan efsanelerinde Arion, Poseidon'un ilahi atıdır. Rüzgârdan hızlıdır ve savaş kaybedildiğinde bile sahibini eve taşır. Biz bu sözü ayakkabıya taşımak istedik: her adımda seni güvenle eve getiren bir çift.",
+      "p2": "Bu yüzden koleksiyonumuzdaki her model efsanelerden bir isim taşır: Selene'den Artemis'e, Adrastus'tan Herakles'e. İsim, ayakkabının karakterini anlatır.",
+      "p3": "Ayak İkizi ile numara tahminini ortadan kaldırmayı, Ömür Planı ve Ayakkabı Pasaportu ile ayakkabının ömrünü uzatmayı, şeffaflık sayfasıyla da her şeyi açıkça göstermeyi hedefledik."
+    },
+    "values": {
+      "eyebrow": "Değerlerimiz",
+      "title": "Üç sözümüz var.",
+      "items": {
+        "fit": {
+          "title": "Tam oturan ayakkabı",
+          "body": "Numara bir tahmin olmamalı. Ayak İkizi ölçünü kalıplarımızla karşılaştırır ve sana en uygun modeli, nedenini açıklayarak önerir."
+        },
+        "repair": {
+          "title": "Atılmayan, onarılan ayakkabı",
+          "body": "Goodyear ve Blake dikişli tabanlar yenilenebilir. Her çiftin bir pasaportu ve bir tamir geçmişi vardır."
+        },
+        "honest": {
+          "title": "Açık ve dürüst marka",
+          "body": "Fiyat geçmişi, malzeme kaynağı ve test değerleri saklanmaz; demo olan her bilgi DEMO olarak işaretlenir."
+        }
+      }
+    },
+    "team": {
+      "eyebrow": "Ekip",
+      "title": "Projenin <em>arkasındakiler.</em>",
+      "lead": "ARION, Sivas Cumhuriyet Üniversitesi'nde iki öğrencinin birlikte yürüttüğü bir ödev projesidir.",
+      "departmentLabel": "Bölüm",
+      "schoolLabel": "Üniversite",
+      "members": {
+        "enes": {
+          "name": "Enes Atalay",
+          "role": "Proje sahibi",
+          "department": "Uluslararası Ticaret ve Lojistik, 3. sınıf",
+          "school": "Sivas Cumhuriyet Üniversitesi (SCÜ)",
+          "bio": "ARION fikrinin, marka kurgusunun ve ödev projesinin sahibi."
+        },
+        "kadir": {
+          "name": "Kadir Kara",
+          "role": "Teknik destek",
+          "department": "Endüstri Mühendisliği, 4. sınıf",
+          "school": "Sivas Cumhuriyet Üniversitesi (SCÜ)",
+          "bio": "Sitenin teknik altyapısı, tasarımın uygulanması ve yayına alınması."
+        }
+      }
+    },
+    "closing": {
+      "quote": "Ölümsüz ayakkabı yoktur; ama ölmesine izin vermeyen bir marka olabilir.",
+      "note": "Bu site bir ödev projesidir. Gerçek satış yapılmaz, ödeme alınmaz ve ürün gönderilmez. Ürün görselleri ve veriler DEMO amaçlıdır.",
+      "ctaCollection": "Koleksiyonu keşfet",
+      "ctaManifesto": "Manifestoyu oku"
+    }
   }
 }
