@@ -44,7 +44,6 @@ export default async function ManifestoPage({
 
   const t = await getTranslations("manifesto")
   const tc = await getTranslations("home.categories.items")
-  const otherLang = locale === "tr" ? "en" : "tr"
 
   return (
     <article>
@@ -67,8 +66,9 @@ export default async function ManifestoPage({
         <div className="mx-auto grid max-w-[1440px] gap-12 px-4 py-20 sm:px-8 md:py-28 lg:grid-cols-[1fr_1.4fr]">
           <VoiceQuote
             quote={t("quote")}
-            lang={otherLang}
-            src={`/audio/manifesto-quote-${otherLang}.mp3`}
+            // Alıntı metni ve seslendirme sayfanın kendi dilinde (DECISIONS #089)
+            lang={locale}
+            src={`/audio/manifesto-quote-${locale}.mp3`}
             labels={{ listen: t("listen"), stop: t("stop") }}
           />
           <div className="space-y-8 text-xl leading-relaxed md:text-2xl">
