@@ -448,7 +448,7 @@ export default async function ProductPage({ params }: Props) {
       <section id="yorumlar" aria-labelledby="yorumlar-baslik" className="scroll-mt-36 mx-auto max-w-[1440px] px-4 py-20 sm:px-8">
         <p className="eyebrow text-ember">{tr("eyebrow")}</p>
         <h2 id="yorumlar-baslik" className="condensed mt-3 mb-10 text-headline">{tr("title")}</h2>
-        <ProductReviews handle={product.handle} sizes={options.find((o) => o.title === "Numara")?.values ?? []} />
+        <ProductReviews samples={tr.raw(`samples.${category}`)} handle={product.handle} sizes={options.find((o) => o.title === "Numara")?.values ?? []} />
       </section>
 
       {related.length ? (

@@ -855,7 +855,7 @@
       "emptyTitle": "Henüz yorum yok.",
       "emptyBody": "Bu modeli denediysen ilk yorumu sen yaz: puanın, numaran ve kalıbın nasıl oturduğu sonraki kişiye doğru numarayı seçtirir.",
       "write": "Yorum yaz",
-      "localNote": "Demo: yorumlar yalnızca bu tarayıcıda saklanır, kimseyle paylaşılmaz ve başka ziyaretçilere görünmez. Uydurma yorum göstermiyoruz.",
+      "localNote": "Senin yazdığın yorumlar yalnızca bu tarayıcıda saklanır, kimseyle paylaşılmaz ve başka ziyaretçilere görünmez.",
       "noneYet": "İlk yorumu yazan sen ol.",
       "anonymous": "İsimsiz",
       "sizeWorn": "Numara {size}",
@@ -880,7 +880,127 @@
         "rating": "Lütfen 1–5 arası bir puan seç.",
         "fit": "Kalıbın nasıl oturduğunu seç.",
         "body": "Yorum 10–600 karakter olmalı."
-      }
+      },
+      "samples": {
+        "topuklu": [
+          {
+            "name": "Elif",
+            "rating": 5,
+            "fit": "true",
+            "size": "38",
+            "body": "Bütün gün düğünde ayaktaydım, akşam hâlâ yürüyebiliyordum. Topuk sağlam, ses yapmıyor."
+          },
+          {
+            "name": "Selin",
+            "rating": 4,
+            "fit": "small",
+            "size": "37",
+            "body": "Çok şık ama ön kısım ilk günlerde biraz sıktı; yarım numara büyük alabilirdim."
+          },
+          {
+            "name": "Zeynep",
+            "rating": 5,
+            "fit": "true",
+            "size": "39",
+            "body": "Altın tonu fotoğraftakinden de güzel. Kalıp tam oturdu, topuk yüksekliği dengeli."
+          }
+        ],
+        "kislik-bot": [
+          {
+            "name": "Merve",
+            "rating": 5,
+            "fit": "true",
+            "size": "38",
+            "body": "Karda kaymadı, içi kuru kaldı. Kalın çorapla bile rahat."
+          },
+          {
+            "name": "Burak",
+            "rating": 4,
+            "fit": "large",
+            "size": "43",
+            "body": "Sıcak ve sağlam; ince çorapla biraz bol geldi, tabanlık ekledim."
+          },
+          {
+            "name": "Ayşe",
+            "rating": 5,
+            "fit": "true",
+            "size": "37",
+            "body": "İki kış giydim, deri güzel eskidi. Fermuar hâlâ ilk günkü gibi."
+          }
+        ],
+        "sneaker": [
+          {
+            "name": "Can",
+            "rating": 5,
+            "fit": "true",
+            "size": "42",
+            "body": "Günde 15 bin adım atıyorum, akşam ayağım şişmiyor. Taban yumuşak ama dağılmıyor."
+          },
+          {
+            "name": "Ece",
+            "rating": 4,
+            "fit": "true",
+            "size": "38",
+            "body": "Hafif ve nefes alıyor. Beyazı temiz tutmak biraz emek istiyor."
+          },
+          {
+            "name": "Emre",
+            "rating": 4,
+            "fit": "small",
+            "size": "44",
+            "body": "Burun kısmı biraz dar; geniş ayaklılar bir numara büyük almalı."
+          }
+        ],
+        "klasik": [
+          {
+            "name": "Mert",
+            "rating": 5,
+            "fit": "true",
+            "size": "42",
+            "body": "Ofiste bütün gün giydim, ilk haftadan sonra tam ayağımın şeklini aldı."
+          },
+          {
+            "name": "Kerem",
+            "rating": 4,
+            "fit": "small",
+            "size": "43",
+            "body": "İşçilik çok temiz. İlk birkaç gün sertti, sonra yumuşadı."
+          },
+          {
+            "name": "Onur",
+            "rating": 5,
+            "fit": "true",
+            "size": "41",
+            "body": "Düğünde de toplantıda da yakıştı. Cilasını iyi tutuyor."
+          }
+        ],
+        "cocuk": [
+          {
+            "name": "Derya (anne)",
+            "rating": 5,
+            "fit": "true",
+            "size": "31",
+            "body": "Oğlum okulda bütün gün giyiyor, cırt cırtı kendisi açıp kapatabiliyor."
+          },
+          {
+            "name": "Hakan (baba)",
+            "rating": 4,
+            "fit": "large",
+            "size": "28",
+            "body": "Büyüme payı bıraktık, biraz bol ama rahat koşuyor."
+          },
+          {
+            "name": "Seda (anne)",
+            "rating": 5,
+            "fit": "true",
+            "size": "30",
+            "body": "Taban esnek, burun kısmı sağlam; parkta yıpranmadı."
+          }
+        ]
+      },
+      "sample": "Örnek",
+      "samplesNote": "Demo: \"Örnek\" etiketli yorumlar sitenin nasıl görüneceğini göstermek için yazılmıştır, gerçek müşteri yorumu değildir.",
+      "countWithSamples": "{count, plural, other {# yorum}} · {samples} örnek"
     }
   },
   "cookies": {

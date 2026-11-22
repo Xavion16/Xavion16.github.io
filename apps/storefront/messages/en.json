@@ -855,7 +855,7 @@
       "emptyTitle": "No reviews yet.",
       "emptyBody": "If you have tried this model, write the first review: your rating, size and fit help the next person choose the right size.",
       "write": "Write a review",
-      "localNote": "Demo: reviews are stored only in this browser, shared with no one and not visible to other visitors. We never show made-up reviews.",
+      "localNote": "Reviews you write are stored only in this browser, shared with no one and not visible to other visitors.",
       "noneYet": "Be the first to write one.",
       "anonymous": "Anonymous",
       "sizeWorn": "Size {size}",
@@ -880,7 +880,127 @@
         "rating": "Please choose a rating from 1 to 5.",
         "fit": "Choose how it fitted.",
         "body": "Review must be 10–600 characters."
-      }
+      },
+      "samples": {
+        "topuklu": [
+          {
+            "name": "Elif",
+            "rating": 5,
+            "fit": "true",
+            "size": "38",
+            "body": "On my feet all day at a wedding and still walking fine at night. Heel is solid and quiet."
+          },
+          {
+            "name": "Selin",
+            "rating": 4,
+            "fit": "small",
+            "size": "37",
+            "body": "Very elegant, but the toe felt tight for the first few days; half a size up would have helped."
+          },
+          {
+            "name": "Zeynep",
+            "rating": 5,
+            "fit": "true",
+            "size": "39",
+            "body": "The gold tone is even nicer than the photo. True fit, well-balanced heel height."
+          }
+        ],
+        "kislik-bot": [
+          {
+            "name": "Merve",
+            "rating": 5,
+            "fit": "true",
+            "size": "38",
+            "body": "No slipping in snow, dry inside. Comfortable even with thick socks."
+          },
+          {
+            "name": "Burak",
+            "rating": 4,
+            "fit": "large",
+            "size": "43",
+            "body": "Warm and sturdy; a bit roomy with thin socks, so I added an insole."
+          },
+          {
+            "name": "Ayşe",
+            "rating": 5,
+            "fit": "true",
+            "size": "37",
+            "body": "Two winters in, the leather has aged nicely. Zip still like day one."
+          }
+        ],
+        "sneaker": [
+          {
+            "name": "Can",
+            "rating": 5,
+            "fit": "true",
+            "size": "42",
+            "body": "I walk 15k steps a day and my feet do not swell by evening. Soft but stable sole."
+          },
+          {
+            "name": "Ece",
+            "rating": 4,
+            "fit": "true",
+            "size": "38",
+            "body": "Light and breathable. Keeping the white clean takes some effort."
+          },
+          {
+            "name": "Emre",
+            "rating": 4,
+            "fit": "small",
+            "size": "44",
+            "body": "Toe box is a little narrow; wide feet should size up."
+          }
+        ],
+        "klasik": [
+          {
+            "name": "Mert",
+            "rating": 5,
+            "fit": "true",
+            "size": "42",
+            "body": "Wore them all day at the office; after the first week they took the shape of my foot."
+          },
+          {
+            "name": "Kerem",
+            "rating": 4,
+            "fit": "small",
+            "size": "43",
+            "body": "Very clean craftsmanship. Stiff for a few days, then softened."
+          },
+          {
+            "name": "Onur",
+            "rating": 5,
+            "fit": "true",
+            "size": "41",
+            "body": "Worked for a wedding and a meeting alike. Holds polish well."
+          }
+        ],
+        "cocuk": [
+          {
+            "name": "Derya (mum)",
+            "rating": 5,
+            "fit": "true",
+            "size": "31",
+            "body": "My son wears them all day at school and can do the strap himself."
+          },
+          {
+            "name": "Hakan (dad)",
+            "rating": 4,
+            "fit": "large",
+            "size": "28",
+            "body": "We left room to grow; a bit roomy but he runs comfortably."
+          },
+          {
+            "name": "Seda (mum)",
+            "rating": 5,
+            "fit": "true",
+            "size": "30",
+            "body": "Flexible sole, sturdy toe; survived the playground."
+          }
+        ]
+      },
+      "sample": "Sample",
+      "samplesNote": "Demo: reviews tagged \"Sample\" were written to show how the page will look; they are not real customer reviews.",
+      "countWithSamples": "{count, plural, one {# review} other {# reviews}} · {samples} sample"
     }
   },
   "cookies": {

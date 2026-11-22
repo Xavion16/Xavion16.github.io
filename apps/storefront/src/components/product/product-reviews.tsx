@@ -26,6 +26,10 @@ const ReviewSchema = z.object({
 })
 type Review = z.infer<typeof ReviewSchema>
 
+/** Örnek yorumlar (mesaj dosyasından): her zaman "Örnek" etiketiyle gösterilir, gerçek müşteri yorumu gibi sunulmaz. */
+const SampleSchema = z.array(ReviewSchema.pick({ rating: true, fit: true, size: true, name: true, body: true }))
+type Shown = Omit<Review, "id" | "createdAt"> & { id: string; createdAt: string | null; sample: boolean }
+
 const key = (handle: string) => `arion-reviews:${handle}`
 
 function readReviews(handle: string): Review[] {
@@ -45,7 +49,7 @@ function writeReviews(handle: string, list: Review[]) {
   }
 }
 
-export function ProductReviews({ handle, sizes }: { handle: string; sizes: string[] }) {
+export function ProductReviews({ handle, sizes, samples: rawSamples }: { handle: string; sizes: string[]; samples?: unknown }) {
   const t = useTranslations("shop.reviews")
   const format = useFormatter()
   const [reviews, setReviews] = useState<Review[]>([])
@@ -61,9 +65,12 @@ export function ProductReviews({ handle, sizes }: { handle: string; sizes: strin
     writeReviews(handle, list)
   }
 
-  const count = reviews.length
-  const avg = count ? reviews.reduce((s, r) => s + r.rating, 0) / count : 0
-  const fitCount = (f: Fit) => reviews.filter((r) => r.fit === f).length
+  const parsedSamples = SampleSchema.safeParse(rawSamples ?? [])
+  const samples: Shown[] = (parsedSamples.success ? parsedSamples.data : []).map((r, i) => ({ ...r, id: `sample-${i}`, createdAt: null, sample: true }))
+  const shown: Shown[] = [...reviews.map((r) => ({ ...r, sample: false })), ...samples]
+  const count = shown.length
+  const avg = count ? shown.reduce((s, r) => s + r.rating, 0) / count : 0
+  const fitCount = (f: Fit) => shown.filter((r) => r.fit === f).length
 
   return (
     <div className="grid gap-10 lg:grid-cols-[1fr_1.6fr]">
@@ -76,7 +83,7 @@ export function ProductReviews({ handle, sizes }: { handle: string; sizes: strin
               <span className="pb-2 text-smoke">/ 5</span>
             </p>
             <Stars value={Math.round(avg)} className="mt-2" label={t("ratingLabel", { value: format.number(avg, { maximumFractionDigits: 1 }) })} />
-            <p className="mt-2 text-sm text-smoke">{t("count", { count })}</p>
+            <p className="mt-2 text-sm text-smoke">{samples.length ? t("countWithSamples", { count, samples: samples.length }) : t("count", { count })}</p>
             <div className="mt-6 space-y-2">
               <p className="text-xs font-medium tracking-[0.12em] text-smoke uppercase">{t("fitTitle")}</p>
               {FITS.map((f) => (
@@ -101,7 +108,8 @@ export function ProductReviews({ handle, sizes }: { handle: string; sizes: strin
             {t("write")}
           </button>
         ) : null}
-        <p className="mt-4 text-xs leading-relaxed text-smoke">{t("localNote")}</p>
+        {samples.length ? <p className="mt-4 text-xs leading-relaxed text-smoke" data-testid="samples-note">{t("samplesNote")}</p> : null}
+        <p className="mt-2 text-xs leading-relaxed text-smoke">{t("localNote")}</p>
       </div>
 
       {/* Form + liste */}
@@ -118,24 +126,28 @@ export function ProductReviews({ handle, sizes }: { handle: string; sizes: strin
         ) : null}
         {count ? (
           <ul className={cn("space-y-6", open && "mt-10")} data-testid="reviews-list">
-            {reviews.map((r) => (
-              <li key={r.id} className="border-b border-chalk/15 pb-6">
+            {shown.map((r) => (
+              <li key={r.id} className="border-b border-chalk/15 pb-6" data-sample={r.sample || undefined}>
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <Stars value={r.rating} label={t("ratingLabel", { value: r.rating })} />
-                  <time dateTime={r.createdAt} className="text-xs text-smoke">
-                    {format.dateTime(new Date(r.createdAt), { day: "numeric", month: "long", year: "numeric" })}
-                  </time>
+                  {r.createdAt ? (
+                    <time dateTime={r.createdAt} className="text-xs text-smoke">
+                      {format.dateTime(new Date(r.createdAt), { day: "numeric", month: "long", year: "numeric" })}
+                    </time>
+                  ) : null}
                 </div>
                 <p className="mt-3 leading-relaxed whitespace-pre-line">{r.body}</p>
                 <p className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm text-smoke">
                   <span className="font-medium text-chalk">{r.name || t("anonymous")}</span>
                   {r.size ? <span>{t("sizeWorn", { size: r.size })}</span> : null}
                   <span>{t("fitWas", { fit: t(`fit.${r.fit}`) })}</span>
-                  <span className="rounded-[2px] border border-chalk/20 px-1.5 text-[0.65rem] tracking-[0.12em] uppercase">{t("yourDevice")}</span>
+                  <span className="rounded-[2px] border border-chalk/20 px-1.5 text-[0.65rem] tracking-[0.12em] uppercase">{r.sample ? t("sample") : t("yourDevice")}</span>
                 </p>
-                <button type="button" onClick={() => save(reviews.filter((x) => x.id !== r.id))} className="mt-3 text-xs text-smoke underline underline-offset-4 hover:text-chalk">
-                  {t("delete")}
-                </button>
+                {r.sample ? null : (
+                  <button type="button" onClick={() => save(reviews.filter((x) => x.id !== r.id))} className="mt-3 text-xs text-smoke underline underline-offset-4 hover:text-chalk">
+                    {t("delete")}
+                  </button>
+                )}
               </li>
             ))}
           </ul>
