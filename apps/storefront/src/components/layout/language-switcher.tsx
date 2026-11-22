@@ -23,7 +23,7 @@ export function LanguageSwitcher({ className }: { className?: string }) {
 
   return (
     <nav aria-label={t("language")} className={className}>
-      <ul className="flex items-center gap-1 text-xs font-semibold tracking-wide">
+      <ul className="flex items-center gap-1 text-[0.72rem] font-medium tracking-[0.12em] uppercase">
         {routing.locales.map((l, i) => (
           <li key={l} className="flex items-center gap-1">
             {i > 0 && (
@@ -35,7 +35,7 @@ export function LanguageSwitcher({ className }: { className?: string }) {
               <span
                 aria-current="true"
                 lang={l}
-                className="rounded-full bg-white/10 px-3 py-2 text-white"
+                className="px-2 py-2 text-chalk underline decoration-ember underline-offset-[6px]"
               >
                 {LABELS[l]}
               </span>
@@ -46,7 +46,7 @@ export function LanguageSwitcher({ className }: { className?: string }) {
                 hrefLang={l}
                 lang={l}
                 className={cn(
-                  "rounded-full px-3 py-2 text-smoke transition-colors hover:bg-white/10 hover:text-white",
+                  "px-2 py-2 text-smoke transition-colors hover:text-chalk",
                 )}
               >
                 {LABELS[l]}

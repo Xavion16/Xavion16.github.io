@@ -1,0 +1,664 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ARION — Konsept 4 · İki Kimlik</title>
+    <meta
+      name="description"
+      content="Konsept 4: İki Kimlik — kadın ve erkek iki ayrı dünya, tek ölçü sistemi."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400;62..125,600;62..125,900&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="ortak.css" />
+    <style>
+      :root {
+        --rose: #e8264a;
+        --rose-ink: #3d0611;
+        --petal: #f7d7dd;
+        --graphite: #141619;
+        --steel: #c9d1d9;
+        --olive: #a7b06a;
+        --paper: #f3f1ee;
+      }
+      body {
+        background: var(--paper);
+        color: #111;
+        font-family: Archivo, sans-serif;
+      }
+      .cond {
+        font-stretch: 62%;
+        font-weight: 900;
+        text-transform: uppercase;
+        line-height: 0.92;
+        letter-spacing: -0.01em;
+      }
+      .mono {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .pad {
+        padding-inline: clamp(16px, 4vw, 56px);
+      }
+
+      .nav {
+        position: fixed;
+        inset: 0 0 auto;
+        z-index: 50;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px clamp(16px, 4vw, 56px);
+        color: #fff;
+        mix-blend-mode: difference;
+      }
+      .nav .mark {
+        font-stretch: 125%;
+        font-weight: 900;
+        font-size: 22px;
+        letter-spacing: 0.06em;
+        text-decoration: none;
+      }
+      .nav ul {
+        display: flex;
+        gap: 24px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .nav a {
+        text-decoration: none;
+      }
+
+      /* Bölünmüş hero */
+      .split {
+        display: flex;
+        height: 100svh;
+        min-height: 620px;
+      }
+      .side {
+        position: relative;
+        flex: 1;
+        overflow: hidden;
+        color: #fff;
+        text-decoration: none;
+        transition: flex 0.9s cubic-bezier(0.7, 0, 0.2, 1);
+      }
+      .split:hover .side {
+        flex: 0.62;
+      }
+      .split .side:hover,
+      .split .side:focus-visible {
+        flex: 1.38;
+      }
+      .side img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition:
+          transform 1.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+          filter 0.8s;
+      }
+      .side:hover img {
+        transform: scale(1.05);
+      }
+      .side.w img {
+        object-position: 50% 30%;
+      }
+      .side.m img {
+        filter: grayscale(1) contrast(1.15);
+      }
+      .side::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+      }
+      .side.w::after {
+        background:
+          linear-gradient(0deg, rgb(61 6 17 / 0.85), transparent 55%),
+          linear-gradient(90deg, rgb(232 38 74 / 0.25), transparent);
+      }
+      .side.m::after {
+        background: linear-gradient(0deg, rgb(20 22 25 / 0.9), transparent 55%);
+      }
+      .side .in {
+        position: absolute;
+        z-index: 2;
+        left: clamp(16px, 3vw, 44px);
+        right: clamp(16px, 3vw, 44px);
+        bottom: clamp(28px, 6vh, 64px);
+      }
+      .side h2 {
+        font-size: clamp(80px, 13vw, 240px);
+        margin: 10px 0 14px;
+      }
+      .side.w h2 {
+        color: var(--petal);
+      }
+      .side.m h2 {
+        color: var(--steel);
+      }
+      .side p {
+        max-width: 30ch;
+        font-size: 17px;
+        line-height: 1.5;
+        margin: 0 0 18px;
+        opacity: 0.92;
+      }
+      .go {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        min-height: 48px;
+        padding: 0 22px;
+        border-radius: 999px;
+        font-weight: 600;
+      }
+      .w .go {
+        background: var(--rose);
+      }
+      .m .go {
+        background: var(--steel);
+        color: var(--graphite);
+      }
+      .center-mark {
+        position: absolute;
+        z-index: 5;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        text-align: center;
+        color: #fff;
+        mix-blend-mode: difference;
+      }
+      .center-mark b {
+        display: block;
+        font-stretch: 125%;
+        font-weight: 900;
+        font-size: clamp(40px, 6vw, 96px);
+        letter-spacing: 0.04em;
+      }
+      @media (max-width: 760px) {
+        .split {
+          flex-direction: column;
+          height: auto;
+        }
+        .side {
+          min-height: 74svh;
+        }
+        .split:hover .side,
+        .split .side:hover {
+          flex: 1;
+        }
+        .center-mark {
+          display: none;
+        }
+      }
+
+      /* Kadın dünyası */
+      .women {
+        background: var(--petal);
+        color: var(--rose-ink);
+        padding-block: clamp(90px, 12vw, 180px);
+      }
+      .head {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: end;
+        gap: 24px;
+        margin-bottom: clamp(40px, 6vw, 80px);
+      }
+      .women h3,
+      .men h3 {
+        font-size: clamp(64px, 10vw, 190px);
+        margin: 10px 0 0;
+      }
+      .women h3 span {
+        color: var(--rose);
+      }
+      .head p {
+        max-width: 40ch;
+        font-size: 18px;
+        line-height: 1.6;
+        margin: 0;
+      }
+      .rail {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: clamp(260px, 26vw, 400px);
+        gap: clamp(12px, 1.6vw, 24px);
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 18px;
+        scrollbar-width: thin;
+      }
+      .rail a {
+        scroll-snap-align: start;
+        text-decoration: none;
+      }
+      .rail .ph {
+        aspect-ratio: 3 / 4;
+        overflow: hidden;
+        border-radius: 28px;
+        background: #fff;
+      }
+      .rail img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      .rail a:hover img {
+        transform: scale(1.06);
+      }
+      .rail .meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        padding: 14px 6px 0;
+      }
+      .rail .meta b {
+        font-stretch: 75%;
+        font-weight: 900;
+        font-size: 26px;
+        text-transform: uppercase;
+      }
+      .wide-shot {
+        margin-top: clamp(60px, 8vw, 120px);
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        gap: clamp(12px, 1.6vw, 24px);
+      }
+      .wide-shot .ph {
+        overflow: hidden;
+        border-radius: 28px;
+      }
+      .wide-shot .ph img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .wide-shot .ph:first-child {
+        aspect-ratio: 16 / 11;
+      }
+      .quote-card {
+        border-radius: 28px;
+        background: var(--rose);
+        color: var(--petal);
+        padding: clamp(28px, 4vw, 56px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .quote-card p {
+        font-stretch: 75%;
+        font-weight: 900;
+        font-size: clamp(34px, 3.6vw, 64px);
+        line-height: 0.95;
+        text-transform: uppercase;
+        margin: 0;
+      }
+
+      /* Erkek dünyası */
+      .men {
+        background: var(--graphite);
+        color: var(--steel);
+        padding-block: clamp(90px, 12vw, 180px);
+      }
+      .men h3 span {
+        color: var(--olive);
+      }
+      .men .rail .ph {
+        background: #1f2226;
+        border-radius: 6px;
+      }
+      .men .rail .meta span {
+        color: var(--olive);
+      }
+      .men .wide-shot .ph,
+      .men .quote-card {
+        border-radius: 6px;
+      }
+      .men .quote-card {
+        background: var(--olive);
+        color: var(--graphite);
+      }
+      @media (max-width: 860px) {
+        .wide-shot {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Ortak ölçü */
+      .fit {
+        background: var(--paper);
+        padding-block: clamp(100px, 14vw, 200px);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(24px, 5vw, 80px);
+        align-items: center;
+      }
+      .fit h3 {
+        font-size: clamp(56px, 8vw, 150px);
+        margin: 12px 0 18px;
+      }
+      .fit p {
+        font-size: 18px;
+        line-height: 1.6;
+        max-width: 42ch;
+      }
+      .dial {
+        aspect-ratio: 1;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: conic-gradient(
+          var(--rose) 0 46%,
+          var(--graphite) 46% 92%,
+          #ddd 92%
+        );
+      }
+      .dial div {
+        width: 72%;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: var(--paper);
+        display: grid;
+        place-items: center;
+        text-align: center;
+      }
+      .dial b {
+        display: block;
+        font-stretch: 62%;
+        font-weight: 900;
+        font-size: clamp(80px, 11vw, 190px);
+        line-height: 0.8;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        min-height: 52px;
+        padding: 0 26px;
+        border-radius: 999px;
+        background: #111;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      @media (max-width: 860px) {
+        .fit {
+          grid-template-columns: 1fr;
+        }
+      }
+      footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 18px;
+        padding-block: 40px 90px;
+        border-top: 1px solid #ddd;
+        color: #555;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Görseller: Unsplash Lisansı ile ücretsiz fotoğraflar. Yalnızca konsept amaçlıdır. -->
+    <a class="sr-only" href="#icerik">İçeriğe geç</a>
+    <header class="nav">
+      <a href="#" class="mark" aria-label="ARION ana sayfa">ARION</a>
+      <nav aria-label="Ana menü">
+        <ul class="mono">
+          <li><a href="#kadin">Kadın</a></li>
+          <li><a href="#erkek">Erkek</a></li>
+          <li><a href="#olcu">Ayak İkizi</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="icerik">
+      <h1 class="sr-only">
+        ARION — kadın ve erkek ayakkabı: iki kimlik, tek ölçü
+      </h1>
+      <section class="split" aria-label="Koleksiyon seç">
+        <a class="side w" href="#kadin">
+          <img
+            src="https://images.unsplash.com/photo-1527189919029-aeb3d997547d?w=1600&q=80&auto=format&fit=crop"
+            alt="Kırmızı elbiseli kadın, şehir terasında"
+            fetchpriority="high"
+          />
+          <div class="in">
+            <span class="mono">01 · Kadın · Topuklu</span>
+            <h2 class="cond" data-split data-hero>Kadın</h2>
+            <p>
+              Yalnızca topuklu. Pera'dan Moda'ya, gecenin her anına bir
+              yükseklik.
+            </p>
+            <span class="go">Kadın dünyasına gir →</span>
+          </div>
+        </a>
+        <a class="side m" href="#erkek">
+          <img
+            src="https://images.unsplash.com/photo-1764937572078-5e2f75649219?w=1600&q=80&auto=format&fit=crop"
+            alt="Uzun paltolu adam, siyah beyaz şehir"
+            fetchpriority="high"
+          />
+          <div class="in">
+            <span class="mono">02 · Erkek</span>
+            <h2 class="cond" data-split data-hero>Erkek</h2>
+            <p>
+              Deri, dikiş, zaman. Oxford'dan Chelsea'ye, yıllarca yenilenebilen
+              ayakkabılar.
+            </p>
+            <span class="go">Erkek dünyasına gir →</span>
+          </div>
+        </a>
+      </section>
+
+      <section id="kadin" class="women pad" aria-labelledby="h-kadin">
+        <div class="head">
+          <div>
+            <span class="mono">01 · Kadın</span>
+            <h3 id="h-kadin" class="cond" data-split>
+              Yüksek<br /><span>sesle.</span>
+            </h3>
+          </div>
+          <p data-reveal>
+            Kadın tarafı tamamen topukluya ayrıldı. Her kalıp ön ayakta
+            milimetre hesabıyla çizildi; ağırlığın nereye düştüğünü sen
+            seçiyorsun.
+          </p>
+        </div>
+        <div class="rail" aria-label="Kadın topuklu modelleri">
+          <a href="#"
+            ><div class="ph">
+              <img
+                src="https://images.unsplash.com/photo-1670607231621-c00fd76d2387?w=800&q=80&auto=format&fit=crop"
+                alt="Kırmızı rugan bilekten bağlı topuklu"
+                loading="lazy"
+              />
+            </div>
+            <div class="meta"><b>Pera 65</b><span>₺3.490</span></div></a
+          >
+          <a href="#"
+            ><div class="ph">
+              <img
+                src="https://images.unsplash.com/photo-1789110519471-74ac17dd1cf6?w=800&q=80&auto=format&fit=crop"
+                alt="Siyah rugan bilekten bantlı sandalet"
+                loading="lazy"
+              />
+            </div>
+            <div class="meta"><b>Gece Sandalet</b><span>₺3.190</span></div></a
+          >
+          <a href="#"
+            ><div class="ph">
+              <img
+                src="https://images.unsplash.com/photo-1760473004054-eb0fd50ea9ae?w=800&q=80&auto=format&fit=crop"
+                alt="Fiyonklu kırmızı topuklu"
+                loading="lazy"
+              />
+            </div>
+            <div class="meta"><b>Moda 45</b><span>₺2.890</span></div></a
+          >
+          <a href="#"
+            ><div class="ph">
+              <img
+                src="https://images.unsplash.com/photo-1596703263926-eb0762ee17e4?w=800&q=80&auto=format&fit=crop"
+                alt="Elde tutulan siyah stiletto"
+                loading="lazy"
+              />
+            </div>
+            <div class="meta"><b>Pera 85</b><span>₺3.890</span></div></a
+          >
+          <a href="#"
+            ><div class="ph">
+              <img
+                src="https://images.unsplash.com/photo-1570800944273-d194d9c4cde0?w=800&q=80&auto=format&fit=crop"
+                alt="Taşlı kırmızı topuklu, yakın plan"
+                loading="lazy"
+              />
+            </div>
+            <div class="meta"><b>Işıltı</b><span>₺3.990</span></div></a
+          >
+        </div>
+        <div class="wide-shot">
+          <div class="ph" data-clip>
+            <img
+              src="https://images.unsplash.com/photo-1697647916715-f5b8bf94c8bf?w=1400&q=80&auto=format&fit=crop"
+              alt="Sandalyede oturan kadın, kırmızı topuklu"
+              loading="lazy"
+              data-zoom
+            />
+          </div>
+          <div class="quote-card" data-reveal>
+            <span class="mono">Pera kalıbı · 65 mm</span>
+            <p>Topuk sesinin bir ritmi var. Biz o ritmi ölçtük.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="erkek" class="men pad" aria-labelledby="h-erkek">
+        <div class="head">
+          <div>
+            <span class="mono">02 · Erkek</span>
+            <h3 id="h-erkek" class="cond" data-split>
+              Sakin<br /><span>güç.</span>
+            </h3>
+          </div>
+          <p data-reveal>
+            Erkek tarafı ayrı bir dil konuşuyor: grafit, zeytin, el cilası.
+            Goodyear dikişle bağlanan, pençesi defalarca yenilenen modeller.
+          </p>
+        </div>
+        <div class="rail" aria-label="Erkek modelleri">
+          <a href="#"
+            ><div class="ph">
+              <img
+                src="https://images.unsplash.com/photo-1777987601431-8d27d2039cc4?w=800&q=80&auto=format&fit=crop"
+                alt="Kahverengi brogue oxford"
+                loading="lazy"
+              />
+            </div>
+            <div class="meta"><b>Galata Oxford</b><span>₺4.490</span></div></a
+          >
+          <a href="#"
+            ><div class="ph">
+              <img
+                src="https://images.unsplash.com/photo-1668069226492-508742b03147?w=800&q=80&auto=format&fit=crop"
+                alt="Lacivert deri ayakkabı"
+                loading="lazy"
+              />
+            </div>
+            <div class="meta"><b>Galata Gece</b><span>₺4.490</span></div></a
+          >
+          <a href="#"
+            ><div class="ph">
+              <img
+                src="https://images.unsplash.com/photo-1616696038562-574c18066055?w=800&q=80&auto=format&fit=crop"
+                alt="Taba deri derby, turkuaz fon"
+                loading="lazy"
+              />
+            </div>
+            <div class="meta"><b>Nişantaşı Derby</b><span>₺3.990</span></div></a
+          >
+          <a href="#"
+            ><div class="ph">
+              <img
+                src="https://images.unsplash.com/photo-1658837407083-308b902ee99d?w=800&q=80&auto=format&fit=crop"
+                alt="Çift tokalı kahverengi loafer, çimen"
+                loading="lazy"
+              />
+            </div>
+            <div class="meta"><b>Beyoğlu Loafer</b><span>₺3.690</span></div></a
+          >
+          <a href="#"
+            ><div class="ph">
+              <img
+                src="https://images.unsplash.com/photo-1774868678834-e2537f930143?w=800&q=80&auto=format&fit=crop"
+                alt="Eskitilmiş deri bot"
+                loading="lazy"
+              />
+            </div>
+            <div class="meta"><b>Palandöken</b><span>₺3.790</span></div></a
+          >
+        </div>
+        <div class="wide-shot">
+          <div class="ph" data-clip>
+            <img
+              src="https://images.unsplash.com/photo-1646139498425-5bceb422ba6a?w=1400&q=80&auto=format&fit=crop"
+              alt="Deri erkek ayakkabıları, loş vitrin"
+              loading="lazy"
+              data-zoom
+            />
+          </div>
+          <div class="quote-card" data-reveal>
+            <span class="mono">Galata · Goodyear welt</span>
+            <p>Pençe biter, ayakkabı bitmez.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="olcu" class="fit pad" aria-labelledby="h-olcu">
+        <div>
+          <span class="mono">Ortak dil · Ayak İkizi</span>
+          <h3 id="h-olcu" class="cond" data-split>
+            İkisi de<br />milimetreyle.
+          </h3>
+          <p data-reveal>
+            Kadın ya da erkek, numara değil milimetre. Ayağını bir kez ölç; her
+            kalıp için uyum skorunu ve doğru numarayı gerekçesiyle gör.
+          </p>
+          <a class="btn" href="#" data-reveal>Ayak İkizini oluştur →</a>
+        </div>
+        <div class="dial" aria-hidden="true" data-reveal>
+          <div>
+            <span><b>94</b><span class="mono">uyum skoru</span></span>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="pad">
+      <span>ARION</span><span>Crafted in Türkiye</span
+      ><span>Görseller: Unsplash (konsept)</span>
+    </footer>
+    <a class="konsept-etiketi" href="index.html"
+      >← Konseptler · 4/5 İki Kimlik</a
+    >
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="ortak.js"></script>
+  </body>
+</html>

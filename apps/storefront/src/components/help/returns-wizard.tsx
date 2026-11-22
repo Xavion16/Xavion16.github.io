@@ -2,7 +2,7 @@
 
 import { useActionState, useState } from "react"
 import { useLocale, useTranslations } from "next-intl"
-import { ArrowIcon, buttonClass } from "@/components/ui/button"
+import { buttonClass } from "@/components/ui/button"
 import {
   lookupReturnAction,
   submitReturnAction,
@@ -36,7 +36,7 @@ export function ReturnsWizard() {
 
   if (result.ok && result.return_no) {
     return (
-      <section role="status" data-testid="return-success" className="glass rounded-[28px] p-6 sm:p-8">
+      <section role="status" data-testid="return-success" className="glass rounded-[4px] p-6 sm:p-8">
         <h2 className="condensed text-4xl">{t("successTitle")}</h2>
         <dl className="mt-6 grid gap-4 sm:grid-cols-2">
           <div>
@@ -63,7 +63,7 @@ export function ReturnsWizard() {
   return (
     <div className="space-y-6">
       {/* 1 — Sipariş */}
-      <form action={lookupAction} className="glass grid gap-4 rounded-[28px] p-6 sm:grid-cols-[1fr_1.4fr_auto] sm:items-end">
+      <form action={lookupAction} className="glass grid gap-4 rounded-[4px] p-6 sm:grid-cols-[1fr_1.4fr_auto] sm:items-end">
         <h2 className="text-lg font-bold sm:col-span-3">1 · {t("step1")}</h2>
         <div className="flex flex-col gap-1.5">
           <label htmlFor="ret-no" className="text-sm font-semibold">{t("orderNo")}</label>
@@ -84,19 +84,19 @@ export function ReturnsWizard() {
       </form>
 
       {lookup.status === "found" && lookup.order && elig ? (
-        <form action={submitAction} className="glass space-y-6 rounded-[28px] p-6 sm:p-8">
+        <form action={submitAction} className="glass space-y-6 rounded-[4px] p-6 sm:p-8">
           <input type="hidden" name="order_no" value={lookup.order_no} />
           <input type="hidden" name="email" value={lookup.email} />
           <h2 className="text-lg font-bold">2 · {t("step2")}</h2>
 
           {elig.within_withdrawal ? (
-            <p className="rounded-2xl bg-moss/10 px-4 py-3 text-sm">
+            <p className="rounded-[4px] bg-moss/10 px-4 py-3 text-sm">
               {elig.delivered
                 ? t("withinWindow", { days: elig.days_left, date: fmt.format(new Date(elig.withdrawal_deadline)) })
                 : t("notDelivered")}
             </p>
           ) : (
-            <div role="alert" data-testid="withdrawal-expired" className="rounded-2xl border border-ember/60 bg-ember/15 p-4">
+            <div role="alert" data-testid="withdrawal-expired" className="rounded-[4px] border border-ember/60 bg-ember/15 p-4">
               <p className="font-bold text-ember">{t("expiredTitle")}</p>
               <p className="mt-1 text-sm">
                 {t("expired", {
@@ -134,7 +134,7 @@ export function ReturnsWizard() {
                     onChange={() => setReason(r)}
                     className="peer sr-only"
                   />
-                  <span className="inline-flex min-h-11 cursor-pointer items-center rounded-full border border-white/20 px-4 text-sm font-semibold peer-checked:bg-white peer-checked:text-ink peer-focus-visible:outline-2 peer-focus-visible:outline-ember">
+                  <span className="inline-flex min-h-11 cursor-pointer items-center rounded-[2px] border border-white/20 px-4 text-sm font-semibold peer-checked:bg-white peer-checked:text-ink peer-focus-visible:outline-2 peer-focus-visible:outline-ember">
                     {t(`reasons.${r}`)}
                   </span>
                 </label>
@@ -143,7 +143,7 @@ export function ReturnsWizard() {
           </fieldset>
 
           {isDefect ? (
-            <fieldset className="rounded-2xl border border-white/15 p-4" data-testid="defect-path">
+            <fieldset className="rounded-[4px] border border-white/15 p-4" data-testid="defect-path">
               <legend className="px-1 text-sm font-semibold">{t("defectTitle")}</legend>
               <div className="mt-2 grid gap-2 sm:grid-cols-2">
                 {REMEDIES.map((m) => (
@@ -157,7 +157,7 @@ export function ReturnsWizard() {
           ) : null}
 
           {reason === "fit" ? (
-            <div className="space-y-4 rounded-2xl border border-white/15 p-4">
+            <div className="space-y-4 rounded-[4px] border border-white/15 p-4">
               <div className="flex flex-col gap-1.5">
                 <label htmlFor="fit-result" className="text-sm font-semibold">{t("fitResult")}</label>
                 <select id="fit-result" name="fit_result" defaultValue="other" className={fieldClass}>
@@ -192,7 +192,6 @@ export function ReturnsWizard() {
               className={cn(buttonClass({ size: "lg" }))}
             >
               {t("submit")}
-              <ArrowIcon />
             </button>
           </div>
         </form>

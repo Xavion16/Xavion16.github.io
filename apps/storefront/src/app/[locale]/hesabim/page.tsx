@@ -8,6 +8,7 @@ import { getPathname, Link } from "@/i18n/navigation"
 import { routing } from "@/i18n/routing"
 import { logoutAction } from "@/lib/actions/account-actions"
 import { formatMoney } from "@/lib/format"
+import { getMemberFitTwin } from "@/lib/fit/catalog"
 import { getCustomer, listMyOrders } from "@/lib/medusa/customer"
 
 export const dynamic = "force-dynamic"
@@ -27,6 +28,8 @@ export default async function AccountPage({ params }: PageProps<"/[locale]/hesab
   if (!customer) redirect(getPathname({ href: "/hesabim/giris", locale }))
   const t = await getTranslations("shop.account")
   const orders = await listMyOrders()
+  const twin = await getMemberFitTwin()
+  const tf = await getTranslations("fit")
   const dateFmt = new Intl.DateTimeFormat(locale === "tr" ? "tr-TR" : "en-GB", { dateStyle: "medium" })
 
   return (
@@ -47,6 +50,18 @@ export default async function AccountPage({ params }: PageProps<"/[locale]/hesab
         </form>
       </div>
 
+      <section aria-labelledby="ayak-ikizim" className="glass mt-10 flex flex-wrap items-center justify-between gap-4 rounded-[4px] p-6">
+        <div>
+          <h2 id="ayak-ikizim" className="text-lg font-bold">{tf("eyebrow")}</h2>
+          <p className="mt-1 text-sm text-smoke" data-testid="account-fit-twin">
+            {twin ? tf("result.summary", { length: twin.lengthMm, width: twin.ballWidthMm }) : tf("product.ctaHint")}
+          </p>
+        </div>
+        <Link href="/ayak-ikizi" className={buttonClass({ variant: "glass" })}>
+          {twin ? tf("product.update") : tf("product.cta")}
+        </Link>
+      </section>
+
       <section aria-labelledby="siparislerim" className="mt-12">
         <h2 id="siparislerim" className="condensed text-4xl">{t("orders")}</h2>
         {orders.length === 0 ? (
@@ -57,7 +72,7 @@ export default async function AccountPage({ params }: PageProps<"/[locale]/hesab
               <li key={o.id}>
                 <Link
                   href={{ pathname: "/siparis/[id]", params: { id: o.id } }}
-                  className="glass flex flex-wrap items-center justify-between gap-4 rounded-3xl p-5 hover:border-white/40"
+                  className="glass flex flex-wrap items-center justify-between gap-4 rounded-[4px] p-5 hover:border-white/40"
                 >
                   <span className="font-bold">{t("orderNo", { no: o.display_id ?? "" })}</span>
                   <span className="text-sm text-smoke">{o.created_at ? dateFmt.format(new Date(o.created_at)) : ""}</span>

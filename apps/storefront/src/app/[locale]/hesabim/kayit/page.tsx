@@ -28,7 +28,7 @@ export default async function RegisterPage({ params }: PageProps<"/[locale]/hesa
   return (
     <div className="mx-auto max-w-lg px-4 py-16 sm:px-8">
       <h1 className="condensed text-display">{t("register")}</h1>
-      <div className="glass mt-8 rounded-[28px] p-6 sm:p-8">
+      <div className="glass mt-8 rounded-[4px] p-6 sm:p-8">
         <RegisterForm
           consents={(["marketing_email", "marketing_sms"] as const).map((p) => ({
             purpose: p,

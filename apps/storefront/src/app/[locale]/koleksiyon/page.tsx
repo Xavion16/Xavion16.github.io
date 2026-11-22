@@ -19,5 +19,5 @@ export default async function CollectionPage({ params, searchParams }: PageProps
   setRequestLocale(locale)
   const sp = await searchParams
   const one = (v: string | string[] | undefined) => (typeof v === "string" ? v : undefined)
-  return <CollectionView filters={{ numara: one(sp.numara), genislik: one(sp.genislik) }} />
+  return <CollectionView filters={{ numara: one(sp.numara), genislik: one(sp.genislik), uyum: one(sp.uyum) }} />
 }

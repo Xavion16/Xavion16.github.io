@@ -35,9 +35,9 @@ export default async function LegalPage({ params }: PageProps<"/[locale]/yasal/[
       <div className="mx-auto max-w-4xl px-4 py-14 sm:px-8 md:py-20">
         <p className="eyebrow text-ember-ink">{t("eyebrow")}</p>
         {isTemplate ? (
-          <p className="mt-3 rounded-2xl border border-ink/15 bg-white px-4 py-3 text-sm text-ink">{t("template")}</p>
+          <p className="mt-3 rounded-[4px] border border-ink/15 bg-white px-4 py-3 text-sm text-ink">{t("template")}</p>
         ) : null}
-        <LegalDocView doc={doc} className="mt-4 rounded-[28px] bg-white p-6 sm:p-10" />
+        <LegalDocView doc={doc} className="mt-4 rounded-[4px] bg-white p-6 sm:p-10" />
         <p className="mt-6 text-xs text-ink-soft">{t("lawyer")}</p>
       </div>
     </div>

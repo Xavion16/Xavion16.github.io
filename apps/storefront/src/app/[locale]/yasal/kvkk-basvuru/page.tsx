@@ -32,8 +32,8 @@ export default async function DataRequestPage({ params }: PageProps<"/[locale]/y
     <div className="bg-chalk text-ink">
       <div className="mx-auto max-w-4xl px-4 py-14 sm:px-8 md:py-20">
         <p className="eyebrow text-ember-ink">{t("eyebrow")}</p>
-        <LegalDocView doc={getLegalDoc("kvkk-basvuru", locale)} className="mt-4 rounded-[28px] bg-white p-6 sm:p-10" />
-        <section aria-labelledby="dsr-form" className="mt-6 rounded-[28px] bg-white p-6 sm:p-10">
+        <LegalDocView doc={getLegalDoc("kvkk-basvuru", locale)} className="mt-4 rounded-[4px] bg-white p-6 sm:p-10" />
+        <section aria-labelledby="dsr-form" className="mt-6 rounded-[4px] bg-white p-6 sm:p-10">
           <h2 id="dsr-form" className="condensed text-3xl">{t("form.title")}</h2>
           <div className="mt-6">
             <DataRequestForm

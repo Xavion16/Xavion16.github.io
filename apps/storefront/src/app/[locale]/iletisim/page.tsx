@@ -27,7 +27,7 @@ export default async function ContactPage({ params }: PageProps<"/[locale]/ileti
     <div className="mx-auto max-w-[900px] px-4 pt-14 pb-24 sm:px-8">
       <h1 className="condensed text-display">{t("contact.title")}</h1>
       <p className="mt-4 text-smoke">{t("contact.intro")}</p>
-      <section aria-labelledby="kanallar" className="glass mt-10 rounded-[28px] p-6 sm:p-8">
+      <section aria-labelledby="kanallar" className="glass mt-10 rounded-[4px] p-6 sm:p-8">
         <h2 id="kanallar" className="text-lg font-bold">{t("contact.channels")}</h2>
         <dl className="mt-4 text-sm">
           <div className={row}><dt className="text-smoke">{t("contact.chat")}</dt><dd><OpenAreionButton className="font-semibold underline underline-offset-4">{t("quick.chat")}</OpenAreionButton></dd></div>

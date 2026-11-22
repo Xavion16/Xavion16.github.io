@@ -29,8 +29,8 @@ export const FAQ: FaqItem[] = [
     category: "fit",
     q: { tr: "İki numara arasında kaldım, hangisini almalıyım?", en: "I'm between two sizes. Which should I choose?" },
     a: {
-      tr: "Önce ürün sayfasındaki kalıp notuna bak: bazı kalıplarımız ön ayakta dar çalışır. Genel kural: ayak uzunluğunu milimetre olarak ölç, numara tablosundaki kalıp uzunluğundan 10–15 mm kısa olan numarayı seç. Ön ayağın genişse aynı numaranın W (geniş) seçeneği, yarım numara büyütmekten çoğu zaman daha iyi oturur. Ayak İkizi (Faz 5) bu hesabı senin için yapacak.",
-      en: "Check the last note on the product page first: some of our lasts run narrow at the forefoot. As a rule, measure your foot length in millimetres and choose the size whose last length is 10–15 mm longer. If your forefoot is wide, the W (wide) option in your usual size often fits better than going up half a size. Fit Twin (Phase 5) will do this calculation for you.",
+      tr: "Önce ürün sayfasındaki kalıp notuna bak: bazı kalıplarımız ön ayakta dar çalışır. Genel kural: ayak uzunluğunu milimetre olarak ölç, numara tablosundaki kalıp uzunluğundan 10–15 mm kısa olan numarayı seç. Ön ayağın genişse aynı numaranın W (geniş) seçeneği, yarım numara büyütmekten çoğu zaman daha iyi oturur. Ayak İkizi bu hesabı senin için yapar.",
+      en: "Check the last note on the product page first: some of our lasts run narrow at the forefoot. As a rule, measure your foot length in millimetres and choose the size whose last length is 10–15 mm longer. If your forefoot is wide, the W (wide) option in your usual size often fits better than going up half a size. Fit Twin does this calculation for you.",
     },
   },
   {
@@ -146,8 +146,8 @@ export const FAQ: FaqItem[] = [
     category: "care",
     q: { tr: "Ayakkabımı tamir ettirebilir miyim?", en: "Can I have my shoes repaired?" },
     a: {
-      tr: "Evet, ARION'un sözü bu. Goodyear welt modellerde pençe defalarca yenilenebilir; topuk uçları değiştirilebilir. Ömür Planı ve tamir talebi Faz 5'te açılacak; şimdilik talep formundan \"Bakım ve Tamir\" konusuyla yazabilirsin.",
-      en: "Yes, that's ARION's promise. Goodyear-welted models can be resoled again and again; heel tips can be replaced. The Lifetime Plan and repair requests open in Phase 5; for now, write to us via the request form with the topic \"Care & Repair\".",
+      tr: "Evet, ARION'un sözü bu. Goodyear welt modellerde pençe defalarca yenilenebilir; topuk uçları değiştirilebilir. Ömür Planı sayfasından tamir talebi açıp ücret tahmini ve ücretsiz gönderim kodu alabilirsin.",
+      en: "Yes, that's ARION's promise. Goodyear-welted models can be resoled again and again; heel tips can be replaced. Open a repair request from the Lifetime Plan page to get a price estimate and a free shipping code.",
     },
   },
   {

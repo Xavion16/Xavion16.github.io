@@ -290,8 +290,8 @@ export const EN_DOCS: Record<string, LegalDoc> = {
   },
   "kullanim-kosullari": {
     key: "kullanim-kosullari",
-    version: "1.0.0",
-    updatedAt: "2026-11-19",
+    version: "1.1.0",
+    updatedAt: "2026-11-21",
     title: "Terms of Use",
     sections: [
       {
@@ -309,7 +309,7 @@ export const EN_DOCS: Record<string, LegalDoc> = {
       {
         heading: "Intellectual property",
         paragraphs: [
-          "Designs, texts, drawings and software belong to ARION. AI-generated images are labelled and never misrepresent the product.",
+          "Designs, texts, drawings, images and software belong to ARION. Product images are illustrative; colour and texture may look different on screen.",
         ],
       },
       {

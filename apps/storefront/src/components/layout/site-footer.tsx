@@ -25,7 +25,7 @@ export async function SiteFooter() {
             <p className="condensed mt-8 text-5xl leading-[0.9] text-white">
               {t("footer.slogan")}
             </p>
-            <p className="eyebrow mt-4 text-smoke">{t("footer.tagline")}</p>
+            <p lang="en" className="eyebrow mt-4 text-smoke">{t("footer.tagline")}</p>
           </div>
 
           <div>
@@ -49,6 +49,16 @@ export async function SiteFooter() {
               <li>
                 <Link href="/manifesto" className={linkClass}>
                   {t("nav.manifesto")}
+                </Link>
+              </li>
+              <li>
+                <Link href="/omur-plani" className={linkClass}>
+                  {t("nav2.lifetime")}
+                </Link>
+              </li>
+              <li>
+                <Link href="/seffaflik" className={linkClass}>
+                  {t("nav2.transparency")}
                 </Link>
               </li>
             </ul>
@@ -85,7 +95,7 @@ export async function SiteFooter() {
               <li>
                 <CookiePrefsButton
                   label={t("footer.cookiePrefs")}
-                  className="mt-1 inline-flex rounded-full border border-white/25 px-4 py-2 font-semibold text-white transition-colors hover:bg-white hover:text-ink"
+                  className="mt-1 inline-flex rounded-[2px] border border-white/25 px-4 py-2 font-semibold text-white transition-colors hover:bg-white hover:text-ink"
                 />
               </li>
             </ul>

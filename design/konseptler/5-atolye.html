@@ -1,0 +1,717 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ARION — Konsept 5 · Atölye</title>
+    <meta
+      name="description"
+      content="Konsept 5: Atölye / Ham — brütalist ızgara, teknik etiketler, zanaatin çıplak hali."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=JetBrains+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="ortak.css" />
+    <style>
+      :root {
+        --paper: #ecebe6;
+        --ink: #0d0d0d;
+        --line: rgb(13 13 13 / 0.9);
+        --ember: #ff4b1f;
+        --blush: #ffb3c1;
+        --kraft: #c9a77c;
+      }
+      body {
+        background: var(--paper);
+        color: var(--ink);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 15px;
+      }
+      .u {
+        font-family: Unbounded, sans-serif;
+        font-weight: 900;
+        text-transform: uppercase;
+        line-height: 0.86;
+        letter-spacing: -0.02em;
+      }
+      .lab {
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        border-top: 2px solid var(--line);
+      }
+      .cell {
+        border-right: 2px solid var(--line);
+        border-bottom: 2px solid var(--line);
+        position: relative;
+      }
+      .cell:last-child {
+        border-right: 0;
+      }
+
+      .nav {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        border-bottom: 2px solid var(--line);
+        position: sticky;
+        top: 0;
+        z-index: 40;
+        background: var(--paper);
+      }
+      .nav > * {
+        padding: 14px 16px;
+        border-right: 2px solid var(--line);
+        display: flex;
+        align-items: center;
+      }
+      .nav > *:last-child {
+        border-right: 0;
+      }
+      .nav .mark {
+        grid-column: span 3;
+        font-family: Unbounded;
+        font-weight: 900;
+        font-size: 22px;
+        text-decoration: none;
+      }
+      .nav a {
+        text-decoration: none;
+      }
+      .nav a:hover {
+        background: var(--ink);
+        color: var(--paper);
+      }
+      .nav .sp {
+        grid-column: span 2;
+      }
+      .nav .wide {
+        grid-column: span 3;
+        justify-content: end;
+      }
+      @media (max-width: 860px) {
+        .nav {
+          grid-template-columns: repeat(4, 1fr);
+        }
+        .nav .mark {
+          grid-column: span 4;
+          border-right: 0;
+          border-bottom: 2px solid var(--line);
+        }
+        .nav .sp,
+        .nav .wide {
+          grid-column: span 2;
+        }
+        .nav .hide {
+          display: none;
+        }
+      }
+
+      /* Hero */
+      .hero {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        border-bottom: 2px solid var(--line);
+        min-height: calc(100svh - 54px);
+      }
+      .hero-type {
+        grid-column: span 7;
+        border-right: 2px solid var(--line);
+        padding: clamp(20px, 3vw, 40px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 32px;
+      }
+      .hero h1 {
+        font-size: clamp(64px, 10.5vw, 196px);
+        margin: 0;
+      }
+      .hero h1 .e {
+        color: var(--ember);
+      }
+      .hero-img {
+        grid-column: span 5;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(0.15) contrast(1.08);
+      }
+      .spec {
+        position: absolute;
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        background: var(--paper);
+        border: 2px solid var(--line);
+      }
+      .spec div {
+        padding: 10px 12px;
+        border-right: 2px solid var(--line);
+      }
+      .spec div:last-child {
+        border-right: 0;
+      }
+      .spec b {
+        display: block;
+        font-size: 18px;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0;
+        border: 2px solid var(--line);
+        width: fit-content;
+      }
+      .row a {
+        padding: 14px 20px;
+        text-decoration: none;
+        font-weight: 600;
+        border-right: 2px solid var(--line);
+      }
+      .row a:last-child {
+        border-right: 0;
+      }
+      .row a.fill {
+        background: var(--ember);
+      }
+      .row a:hover {
+        background: var(--ink);
+        color: var(--paper);
+      }
+      @media (max-width: 860px) {
+        .hero-type,
+        .hero-img {
+          grid-column: span 12;
+          border-right: 0;
+        }
+        .hero-img {
+          min-height: 70vh;
+          border-top: 2px solid var(--line);
+        }
+      }
+
+      .ticker {
+        overflow: hidden;
+        border-bottom: 2px solid var(--line);
+        background: var(--ink);
+        color: var(--paper);
+      }
+      .ticker div {
+        display: flex;
+        width: max-content;
+        animation: tick 26s linear infinite;
+      }
+      .ticker span {
+        padding: 12px 24px;
+        white-space: nowrap;
+        font-size: 13px;
+        letter-spacing: 0.1em;
+      }
+      .ticker span b {
+        color: var(--ember);
+      }
+      @keyframes tick {
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* Numune kartları */
+      .sec-head {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        border-bottom: 2px solid var(--line);
+      }
+      .sec-head .no {
+        grid-column: span 2;
+        padding: 20px 16px;
+        border-right: 2px solid var(--line);
+        font-family: Unbounded;
+        font-weight: 900;
+        font-size: clamp(40px, 5vw, 80px);
+        line-height: 1;
+      }
+      .sec-head h2 {
+        grid-column: span 6;
+        margin: 0;
+        padding: 20px 16px;
+        border-right: 2px solid var(--line);
+        font-size: clamp(42px, 6vw, 110px);
+      }
+      .sec-head p {
+        grid-column: span 4;
+        margin: 0;
+        padding: 20px 16px;
+        line-height: 1.6;
+        align-self: end;
+      }
+      .women .sec-head {
+        background: var(--blush);
+      }
+      .men .sec-head {
+        background: var(--kraft);
+      }
+      @media (max-width: 860px) {
+        .sec-head .no,
+        .sec-head h2,
+        .sec-head p {
+          grid-column: span 12;
+          border-right: 0;
+          border-bottom: 2px solid var(--line);
+        }
+      }
+
+      .specimens {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        border-bottom: 2px solid var(--line);
+      }
+      .specimen {
+        border-right: 2px solid var(--line);
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+      }
+      .specimen:last-child {
+        border-right: 0;
+      }
+      .specimen .ph {
+        aspect-ratio: 4 / 5;
+        overflow: hidden;
+        position: relative;
+        border-bottom: 2px solid var(--line);
+        background: #ddd;
+      }
+      .specimen img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      .specimen:hover img {
+        transform: scale(1.05);
+      }
+      .specimen .ph .mm {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: var(--ink);
+        color: var(--paper);
+        padding: 4px 8px;
+        font-size: 11px;
+      }
+      .specimen .info {
+        padding: 14px 16px;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 6px;
+      }
+      .specimen .info b {
+        font-family: Unbounded;
+        font-weight: 700;
+        font-size: 16px;
+        text-transform: uppercase;
+      }
+      .specimen:hover .info {
+        background: var(--ink);
+        color: var(--paper);
+      }
+      @media (max-width: 860px) {
+        .specimens {
+          grid-template-columns: 1fr 1fr;
+        }
+        .specimen:nth-child(2n) {
+          border-right: 0;
+        }
+      }
+
+      .bigshot {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        border-bottom: 2px solid var(--line);
+      }
+      .bigshot .ph {
+        grid-column: span 8;
+        overflow: hidden;
+        border-right: 2px solid var(--line);
+        aspect-ratio: 16 / 9;
+      }
+      .bigshot .ph img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .bigshot .txt {
+        grid-column: span 4;
+        padding: clamp(20px, 3vw, 40px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 24px;
+      }
+      .bigshot .txt p.u {
+        font-size: clamp(30px, 3vw, 54px);
+        margin: 0;
+      }
+      @media (max-width: 860px) {
+        .bigshot .ph,
+        .bigshot .txt {
+          grid-column: span 12;
+          border-right: 0;
+        }
+      }
+
+      .process {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border-bottom: 2px solid var(--line);
+      }
+      .step {
+        border-right: 2px solid var(--line);
+      }
+      .step:last-child {
+        border-right: 0;
+      }
+      .step .ph {
+        aspect-ratio: 1;
+        overflow: hidden;
+        border-bottom: 2px solid var(--line);
+      }
+      .step .ph img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(1) contrast(1.1);
+        transition: filter 0.6s;
+      }
+      .step:hover .ph img {
+        filter: none;
+      }
+      .step p {
+        margin: 0;
+        padding: 14px 16px;
+        line-height: 1.55;
+      }
+      .step p b {
+        font-family: Unbounded;
+        display: block;
+        margin-bottom: 6px;
+      }
+      @media (max-width: 860px) {
+        .process {
+          grid-template-columns: 1fr;
+        }
+        .step {
+          border-right: 0;
+        }
+      }
+
+      .end {
+        padding: clamp(60px, 10vw, 140px) 16px;
+        border-bottom: 2px solid var(--line);
+        text-align: center;
+      }
+      .end p {
+        font-size: clamp(48px, 9vw, 170px);
+        margin: 0 0 32px;
+      }
+      .end p .e {
+        color: var(--ember);
+      }
+      footer {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 16px;
+        padding: 18px 16px 90px;
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Görseller: Unsplash Lisansı ile ücretsiz fotoğraflar. Yalnızca konsept amaçlıdır. -->
+    <a class="sr-only" href="#icerik">İçeriğe geç</a>
+    <header class="nav">
+      <a href="#" class="mark" aria-label="ARION ana sayfa">ARION</a>
+      <a class="sp" href="#kadin">N°01 Kadın</a>
+      <a class="sp" href="#erkek">N°02 Erkek</a>
+      <a class="sp hide" href="#atolye">N°03 Atölye</a>
+      <a class="wide" href="#">Sepet [0]</a>
+    </header>
+
+    <main id="icerik">
+      <section class="hero" aria-labelledby="h-hero">
+        <div class="hero-type">
+          <div class="lab">Atölye notu 2026/11 · İstanbul · 41°N</div>
+          <h1 id="h-hero" class="u" data-split data-hero>
+            El<br />yapımı<br /><span class="e">arzu.</span>
+          </h1>
+          <div>
+            <p
+              style="max-width: 44ch; line-height: 1.6; margin: 0 0 20px"
+              data-reveal
+            >
+              Her çift 7 adım, 3 usta ve 21 günden geçer. Kesimden kalite
+              kontrole kadar her şeyi pasaportunda görürsün.
+            </p>
+            <div class="row" data-reveal>
+              <a class="fill" href="#kadin">Kadın · Topuklu</a
+              ><a href="#erkek">Erkek</a>
+            </div>
+          </div>
+        </div>
+        <div class="hero-img">
+          <img
+            src="https://images.unsplash.com/photo-1477517787936-70ba786643fd?w=1400&q=80&auto=format&fit=crop"
+            alt="Usta, ayakkabı kalıbı üzerinde deri işliyor"
+            fetchpriority="high"
+            data-zoom
+          />
+          <div class="spec lab">
+            <div>Kalıp<b>ARN-L01</b></div>
+            <div>Topuk<b>65 mm</b></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="ticker" aria-hidden="true">
+        <div>
+          <span>KESİM <b>✓</b></span
+          ><span>SAYA DİKİMİ <b>✓</b></span
+          ><span>KALIBA ÇEKME <b>●</b></span
+          ><span>TABAN MONTAJI</span><span>FİNİSAJ</span
+          ><span>KALİTE KONTROL</span><span>KESİM <b>✓</b></span
+          ><span>SAYA DİKİMİ <b>✓</b></span
+          ><span>KALIBA ÇEKME <b>●</b></span
+          ><span>TABAN MONTAJI</span><span>FİNİSAJ</span
+          ><span>KALİTE KONTROL</span>
+        </div>
+      </div>
+
+      <section id="kadin" class="women" aria-labelledby="h-kadin">
+        <div class="sec-head">
+          <span class="no" aria-hidden="true">01</span>
+          <h2 id="h-kadin" class="u" data-split>Topuklu</h2>
+          <p data-reveal>
+            Kadın bölümü yalnızca topukluya ayrıldı. Her numunede kalıp kodu,
+            topuk yüksekliği ve ön ayak genişliği yazar.
+          </p>
+        </div>
+        <div class="specimens">
+          <a class="specimen" href="#"
+            ><div class="ph">
+              <img
+                src="https://images.unsplash.com/photo-1670607231621-c00fd76d2387?w=800&q=80&auto=format&fit=crop"
+                alt="Kırmızı rugan bilekten bağlı topuklu"
+                loading="lazy"
+              /><span class="mm">H 65 mm · B 92 mm</span>
+            </div>
+            <div class="info">
+              <b>Pera 65</b><span>₺3.490</span
+              ><span class="lab">ARN-L01 · Rugan</span>
+            </div></a
+          >
+          <a class="specimen" href="#"
+            ><div class="ph">
+              <img
+                src="https://images.unsplash.com/photo-1559334417-1adb87b6e97f?w=800&q=80&auto=format&fit=crop"
+                alt="Siyah sivri burun stiletto çifti"
+                loading="lazy"
+              /><span class="mm">H 75 mm · B 90 mm</span>
+            </div>
+            <div class="info">
+              <b>Pera 75</b><span>₺3.790</span
+              ><span class="lab">ARN-L01 · Kadife</span>
+            </div></a
+          >
+          <a class="specimen" href="#"
+            ><div class="ph">
+              <img
+                src="https://images.unsplash.com/photo-1789110519471-74ac17dd1cf6?w=800&q=80&auto=format&fit=crop"
+                alt="Siyah rugan bilekten bantlı sandalet"
+                loading="lazy"
+              /><span class="mm">H 85 mm · Bilek kayışı</span>
+            </div>
+            <div class="info">
+              <b>Gece</b><span>₺3.190</span
+              ><span class="lab">ARN-L02 · Rugan</span>
+            </div></a
+          >
+          <a class="specimen" href="#"
+            ><div class="ph">
+              <img
+                src="https://images.unsplash.com/photo-1760473004054-eb0fd50ea9ae?w=800&q=80&auto=format&fit=crop"
+                alt="Fiyonklu kırmızı topuklu"
+                loading="lazy"
+              /><span class="mm">H 45 mm · Blok</span>
+            </div>
+            <div class="info">
+              <b>Moda 45</b><span>₺2.890</span
+              ><span class="lab">ARN-L01 · Süet</span>
+            </div></a
+          >
+        </div>
+        <div class="bigshot">
+          <div class="ph" data-clip="x">
+            <img
+              src="https://images.unsplash.com/photo-1770576568723-c557b096394b?w=1600&q=80&auto=format&fit=crop"
+              alt="Siyah çoraplı bacaklar ve stiletto, beyaz fon"
+              loading="lazy"
+              data-zoom
+            />
+          </div>
+          <div class="txt">
+            <span class="lab">Not · ön ayak</span>
+            <p class="u" data-split>
+              Ağırlık nereye düşüyorsa, kalıp oraya çizildi.
+            </p>
+            <span class="lab">→ Ayak İkizi ile ölç</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="erkek" class="men" aria-labelledby="h-erkek">
+        <div class="sec-head">
+          <span class="no" aria-hidden="true">02</span>
+          <h2 id="h-erkek" class="u" data-split>Erkek</h2>
+          <p data-reveal>
+            Erkek bölümü ayrı bir masa: Goodyear dikiş, bitkisel tabaklama,
+            tamir edilebilirlik puanı 10/10.
+          </p>
+        </div>
+        <div class="specimens">
+          <a class="specimen" href="#"
+            ><div class="ph">
+              <img
+                src="https://images.unsplash.com/photo-1777987601431-8d27d2039cc4?w=800&q=80&auto=format&fit=crop"
+                alt="Kahverengi brogue oxford"
+                loading="lazy"
+              /><span class="mm">Goodyear · 1120 g</span>
+            </div>
+            <div class="info">
+              <b>Galata</b><span>₺4.490</span
+              ><span class="lab">ARN-L07 · Oxford</span>
+            </div></a
+          >
+          <a class="specimen" href="#"
+            ><div class="ph">
+              <img
+                src="https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?w=800&q=80&auto=format&fit=crop"
+                alt="Taba deri bağcıklı ayakkabı"
+                loading="lazy"
+              /><span class="mm">Blake · 980 g</span>
+            </div>
+            <div class="info">
+              <b>Nişantaşı</b><span>₺3.990</span
+              ><span class="lab">ARN-L07 · Derby</span>
+            </div></a
+          >
+          <a class="specimen" href="#"
+            ><div class="ph">
+              <img
+                src="https://images.unsplash.com/photo-1658837407083-308b902ee99d?w=800&q=80&auto=format&fit=crop"
+                alt="Çift tokalı loafer"
+                loading="lazy"
+              /><span class="mm">Blake · 860 g</span>
+            </div>
+            <div class="info">
+              <b>Beyoğlu</b><span>₺3.690</span
+              ><span class="lab">ARN-L07 · Loafer</span>
+            </div></a
+          >
+          <a class="specimen" href="#"
+            ><div class="ph">
+              <img
+                src="https://images.unsplash.com/photo-1774868678834-e2537f930143?w=800&q=80&auto=format&fit=crop"
+                alt="Eskitilmiş deri bot"
+                loading="lazy"
+              /><span class="mm">Su geçirmez · 8 s</span>
+            </div>
+            <div class="info">
+              <b>Palandöken</b><span>₺3.790</span
+              ><span class="lab">ARN-L03 · Chelsea</span>
+            </div></a
+          >
+        </div>
+      </section>
+
+      <section id="atolye" aria-labelledby="h-atolye">
+        <div class="sec-head">
+          <span class="no" aria-hidden="true">03</span>
+          <h2 id="h-atolye" class="u" data-split>Atölye</h2>
+          <p data-reveal>
+            Gördüğün her adım, çiftin pasaportuna yazılır. Kişisel veri değil,
+            ayakkabının hikâyesi.
+          </p>
+        </div>
+        <div class="process">
+          <div class="step">
+            <div class="ph">
+              <img
+                src="https://images.unsplash.com/photo-1787005241178-c9006ea9610b?w=900&q=80&auto=format&fit=crop"
+                alt="Deri üzerine kalıp çizen el"
+                loading="lazy"
+              />
+            </div>
+            <p>
+              <b>01 Kesim</b>Deri damarına göre okunur; fire en aza indirilir.
+            </p>
+          </div>
+          <div class="step">
+            <div class="ph">
+              <img
+                src="https://images.unsplash.com/photo-1648343615199-03567050abbb?w=900&q=80&auto=format&fit=crop"
+                alt="Ahşap tezgâhta bitmiş siyah ayakkabılar"
+                loading="lazy"
+              />
+            </div>
+            <p><b>04 Taban</b>Goodyear dikiş: pençe defalarca yenilenebilir.</p>
+          </div>
+          <div class="step">
+            <div class="ph">
+              <img
+                src="https://images.unsplash.com/photo-1790253719855-e6f58150fc7f?w=900&q=80&auto=format&fit=crop"
+                alt="Ayakkabı tamir atölyesi tezgâhı"
+                loading="lazy"
+              />
+            </div>
+            <p><b>∞ Tamir</b>Ömür Planı: taban aşınınca yenileriz.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="end" aria-label="Manifesto">
+        <p class="u" data-split>
+          Ayakkabı biter. <span class="e">Söz</span> bitmez.
+        </p>
+        <div class="row" style="margin: 0 auto">
+          <a class="fill" href="#">Ayak İkizini oluştur</a
+          ><a href="#">Pasaport örneği</a>
+        </div>
+      </section>
+    </main>
+    <footer class="lab">
+      <span>ARION · Crafted in Türkiye</span
+      ><span>Görseller: Unsplash (konsept)</span>
+    </footer>
+    <a class="konsept-etiketi" href="index.html">← Konseptler · 5/5 Atölye</a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="ortak.js"></script>
+  </body>
+</html>

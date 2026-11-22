@@ -1,12 +1,12 @@
 import type { CategoryKey } from "./site"
 
-/** Kategori kartı renk geçişleri: mitten gelen palet (hız, Poseidon, Demeter, deri, çocuk). */
+/** Kategori kartı renk geçişleri: Altın & Gümüş paleti (altın, konyak, gümüş, eski altın, bej). */
 export const CATEGORY_GRADIENT: Record<CategoryKey, string> = {
-  topuklu: "from-[#ff5a36] via-[#e0283f] to-[#5c0a24]",
-  "kislik-bot": "from-[#3d7bff] via-[#2348c9] to-[#0a1446]",
-  sneaker: "from-[#2bd47d] via-[#12925a] to-[#06331f]",
-  klasik: "from-[#d59457] via-[#8a4f22] to-[#2c160a]",
-  cocuk: "from-[#b18cff] via-[#d94f9a] to-[#4a0f3d]",
+  topuklu: "from-[#d9b770] via-[#7a5a1c] to-[#1a150e]",
+  "kislik-bot": "from-[#8a6a46] via-[#3e2f20] to-[#110d09]",
+  sneaker: "from-[#d6d8db] via-[#6b6e74] to-[#15140f]",
+  klasik: "from-[#c9a253] via-[#5c4520] to-[#120e08]",
+  cocuk: "from-[#e6d6b8] via-[#9c8660] to-[#1d1812]",
 }
 
 export function isCategoryKey(v: string | undefined | null): v is CategoryKey {

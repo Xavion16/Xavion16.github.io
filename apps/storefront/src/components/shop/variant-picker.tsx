@@ -2,7 +2,7 @@
 
 import { useActionState, useMemo, useState } from "react"
 import { useTranslations } from "next-intl"
-import { ArrowIcon, buttonClass } from "@/components/ui/button"
+import { buttonClass } from "@/components/ui/button"
 import { Link } from "@/i18n/navigation"
 import { addToCartAction, type ActionState } from "@/lib/actions/cart-actions"
 import { cn } from "@/lib/utils"
@@ -19,9 +19,18 @@ const OPTION_LABEL: Record<string, "color" | "size" | "width"> = {
 export function VariantPicker({
   options,
   variants,
+  onSelectionChange,
+  swatches,
+  formId,
 }: {
   options: PickerOption[]
   variants: PickerVariant[]
+  /** Seçim değişince (ör. galerinin rengi) */
+  onSelectionChange?: (selected: Record<string, string>) => void
+  /** Renk adı → hex (renk örneği noktası) */
+  swatches?: Record<string, string>
+  /** Form kimliği: sayfadaki başka bir düğme (mobil sepet çubuğu) aynı formu gönderebilsin */
+  formId?: string
 }) {
   const t = useTranslations("shop")
   const [selected, setSelected] = useState<Record<string, string>>(() => {
@@ -55,7 +64,7 @@ export function VariantPicker({
   const soldOut = variant !== undefined && stock !== null && stock <= 0
 
   return (
-    <form action={formAction} className="flex flex-col gap-6">
+    <form id={formId} action={formAction} className="flex flex-col gap-6">
       {options.map((o) => {
         const key = OPTION_LABEL[o.title] ?? "size"
         return (
@@ -79,17 +88,28 @@ export function VariantPicker({
                       name={`opt-${o.title}`}
                       value={value}
                       checked={selected[o.title] === value}
-                      onChange={() => setSelected((s) => ({ ...s, [o.title]: value }))}
+                      onChange={() => {
+                        const next = { ...selected, [o.title]: value }
+                        setSelected(next)
+                        onSelectionChange?.(next)
+                      }}
                       className="peer sr-only"
                     />
                     <span
                       className={cn(
-                        "inline-flex min-h-11 min-w-14 cursor-pointer items-center justify-center rounded-full border px-4 text-sm font-semibold transition-colors",
+                        "inline-flex min-h-11 min-w-14 cursor-pointer items-center justify-center rounded-[2px] border px-4 text-sm font-semibold transition-colors",
                         "border-white/20 peer-hover:border-white peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-ember",
                         "peer-checked:border-white peer-checked:bg-white peer-checked:text-ink",
                         !ok && "text-smoke line-through decoration-1",
                       )}
                     >
+                      {key === "color" && swatches?.[value] ? (
+                        <span
+                          aria-hidden="true"
+                          className="mr-2 size-3.5 rounded-full border border-white/40"
+                          style={{ backgroundColor: swatches[value] }}
+                        />
+                      ) : null}
                       {value}
                     </span>
                   </label>
@@ -119,20 +139,19 @@ export function VariantPicker({
         className={buttonClass({ size: "lg", className: "w-full" })}
       >
         {pending ? t("product.adding") : t("product.addToCart")}
-        {!pending ? <ArrowIcon /> : null}
       </button>
       {!variant ? <p className="-mt-3 text-xs text-smoke">{t("product.selectVariant")}</p> : null}
 
       <div aria-live="polite" className="min-h-6">
         {state.ok ? (
-          <p className="flex items-center justify-between gap-3 rounded-2xl bg-moss/15 px-4 py-3 text-sm">
+          <p className="flex items-center justify-between gap-3 rounded-[4px] bg-moss/15 px-4 py-3 text-sm">
             <span className="font-semibold text-moss">{t("product.added")}</span>
             <Link href="/sepet" className="font-semibold underline underline-offset-4">
               {t("product.goToCart")}
             </Link>
           </p>
         ) : state.error ? (
-          <p role="alert" className="rounded-2xl bg-ember/15 px-4 py-3 text-sm text-ember">
+          <p role="alert" className="rounded-[4px] bg-ember/15 px-4 py-3 text-sm text-ember">
             {t(`errors.${state.error === "selectVariant" ? "selectVariant" : "addFailed"}`)}
           </p>
         ) : null}

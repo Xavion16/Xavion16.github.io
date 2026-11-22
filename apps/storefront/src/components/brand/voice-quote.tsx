@@ -6,7 +6,7 @@ type Props = {
   quote: string
   lang: string
   src: string
-  labels: { listen: string; stop: string; voice: string }
+  labels: { listen: string; stop: string }
 }
 
 const BARS = [0, 1, 2, 3, 4]
@@ -15,7 +15,7 @@ const BARS = [0, 1, 2, 3, 4]
  * Manifesto alıntı kutusu: fare üstüne gelince alıntının seslendirmesini çalar; çalarken kutu
  * öne çıkar, ses dalgası çubukları oynar, altta ilerleme çizgisi dolar.
  * Buton klavye için ve tarayıcı otomatik oynatmayı engellediğinde (sayfaya hiç tıklanmamışsa) çalışır.
- * Ses yapay zekâ ile üretildi → etiket her zaman görünür. Hareketler prefers-reduced-motion'da durur.
+ * Hareketler prefers-reduced-motion'da durur.
  */
 export function VoiceQuote({ quote, lang, src, labels }: Props) {
   const audio = useRef<HTMLAudioElement | null>(null)
@@ -73,7 +73,7 @@ export function VoiceQuote({ quote, lang, src, labels }: Props) {
       onMouseEnter={play}
       data-testid="voice-quote"
       data-playing={playing ? "true" : "false"}
-      className={`voice-quote relative self-start overflow-hidden rounded-3xl bg-ink p-8 text-white lg:sticky lg:top-28 ${
+      className={`voice-quote relative self-start overflow-hidden rounded-[4px] bg-ink p-8 text-white lg:sticky lg:top-28 ${
         playing ? "is-playing" : ""
       }`}
     >
@@ -96,12 +96,11 @@ export function VoiceQuote({ quote, lang, src, labels }: Props) {
           type="button"
           onClick={toggle}
           aria-pressed={playing}
-          className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/25 px-4 text-sm font-semibold transition-colors hover:border-ember hover:text-ember focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember"
+          className="inline-flex min-h-11 items-center gap-2 rounded-[2px] border border-white/25 px-4 text-sm font-semibold transition-colors hover:border-ember hover:text-ember focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember"
         >
           <span aria-hidden="true">{playing ? "■" : "▶"}</span>
           {playing ? labels.stop : labels.listen}
         </button>
-        <span className="text-xs font-semibold tracking-wide text-smoke uppercase">{labels.voice}</span>
       </figcaption>
 
       <span

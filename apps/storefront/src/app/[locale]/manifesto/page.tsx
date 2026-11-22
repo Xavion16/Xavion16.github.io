@@ -3,7 +3,7 @@ import { hasLocale } from "next-intl"
 import { getTranslations, setRequestLocale } from "next-intl/server"
 import { notFound } from "next/navigation"
 import { ShoeDrawing } from "@/components/illustrations/shoe-drawings"
-import { ArrowIcon, buttonClass } from "@/components/ui/button"
+import { buttonClass } from "@/components/ui/button"
 import { Link } from "@/i18n/navigation"
 import { routing } from "@/i18n/routing"
 import { localizedAlternates } from "@/lib/metadata"
@@ -15,11 +15,11 @@ const PRINCIPLES = ["fit", "explain", "repair", "measure"] as const
 const PRINCIPLE_ACCENT = ["text-ember", "text-tide", "text-moss", "text-white"] as const
 
 const CATEGORY_DOT: Record<CategoryKey, string> = {
-  topuklu: "from-[#ff5a36] to-[#5c0a24]",
-  "kislik-bot": "from-[#3d7bff] to-[#0a1446]",
-  sneaker: "from-[#2bd47d] to-[#06331f]",
-  klasik: "from-[#d59457] to-[#2c160a]",
-  cocuk: "from-[#b18cff] to-[#4a0f3d]",
+  topuklu: "from-[#d9b770] to-[#1a150e]",
+  "kislik-bot": "from-[#8a6a46] to-[#110d09]",
+  sneaker: "from-[#d6d8db] to-[#15140f]",
+  klasik: "from-[#c9a253] to-[#120e08]",
+  cocuk: "from-[#e6d6b8] to-[#1d1812]",
 }
 
 export async function generateMetadata({
@@ -57,7 +57,7 @@ export default async function ManifestoPage({
         <div className="relative mx-auto max-w-[1440px] px-4 pt-20 pb-20 sm:px-8 md:pt-28 md:pb-28">
           <p className="eyebrow text-ember">{t("eyebrow")}</p>
           <h1 className="condensed mt-4 text-mega">{t("title")}</h1>
-          <p className="glass mt-10 max-w-3xl rounded-3xl p-6 text-xl leading-snug font-semibold sm:p-8 sm:text-2xl">
+          <p className="glass mt-10 max-w-3xl rounded-[4px] p-6 text-xl leading-snug font-semibold sm:p-8 sm:text-2xl">
             {t("lead")}
           </p>
         </div>
@@ -69,7 +69,7 @@ export default async function ManifestoPage({
             quote={t("quote")}
             lang={otherLang}
             src={`/audio/manifesto-quote-${otherLang}.mp3`}
-            labels={{ listen: t("listen"), stop: t("stop"), voice: t("voiceLabel") }}
+            labels={{ listen: t("listen"), stop: t("stop") }}
           />
           <div className="space-y-8 text-xl leading-relaxed md:text-2xl">
             {PARAGRAPHS.map((p) => (
@@ -89,7 +89,7 @@ export default async function ManifestoPage({
           </h2>
           <ol className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {PRINCIPLES.map((key, i) => (
-              <li key={key} className="glass flex flex-col rounded-3xl p-6">
+              <li key={key} className="glass flex flex-col rounded-[4px] p-6">
                 <span className={`condensed text-6xl ${PRINCIPLE_ACCENT[i]}`}>0{i + 1}</span>
                 <h3 className="condensed mt-8 text-3xl">{t(`principles.${key}.title`)}</h3>
                 <p className="mt-3 leading-relaxed text-smoke">{t(`principles.${key}.body`)}</p>
@@ -108,10 +108,10 @@ export default async function ManifestoPage({
             {CATEGORY_KEYS.map((key) => (
               <li
                 key={key}
-                className="grid items-center gap-6 rounded-3xl border border-white/10 bg-white/[0.03] p-4 sm:p-6 md:grid-cols-[240px_1fr_1.5fr]"
+                className="grid items-center gap-6 rounded-[4px] border border-white/10 bg-white/[0.03] p-4 sm:p-6 md:grid-cols-[240px_1fr_1.5fr]"
               >
                 <div
-                  className={`grid aspect-[2/1] place-items-center rounded-2xl bg-gradient-to-br ${CATEGORY_DOT[key]} p-3`}
+                  className={`grid aspect-[2/1] place-items-center rounded-[4px] bg-gradient-to-br ${CATEGORY_DOT[key]} p-3`}
                 >
                   <ShoeDrawing category={key} className="w-full text-white" />
                 </div>
@@ -126,7 +126,6 @@ export default async function ManifestoPage({
 
           <Link href="/" className={buttonClass({ variant: "light", size: "lg", className: "mt-14" })}>
             {t("back")}
-            <ArrowIcon />
           </Link>
         </div>
       </section>

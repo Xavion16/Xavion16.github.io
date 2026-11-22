@@ -2,7 +2,7 @@
 
 import { useActionState } from "react"
 import { useTranslations } from "next-intl"
-import { ArrowIcon, buttonClass } from "@/components/ui/button"
+import { buttonClass } from "@/components/ui/button"
 import { Link } from "@/i18n/navigation"
 import { loginAction, registerAction } from "@/lib/actions/account-actions"
 import type { ActionState } from "@/lib/actions/cart-actions"
@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils"
 
 const inputClass = (invalid: boolean) =>
   cn(
-    "min-h-12 rounded-2xl border bg-carbon px-4 text-white",
+    "min-h-12 rounded-[4px] border bg-carbon px-4 text-white",
     invalid ? "border-ember" : "border-white/20 focus:border-white",
   )
 
@@ -66,13 +66,12 @@ export function LoginForm({ next }: { next?: string }) {
       <div aria-live="polite">
         {state.error ? (
           <p role="alert" className="text-sm text-ember">
-            {t("errors.invalidCredentials")}
+            {state.error === "demoOnly" ? t("errors.demoOnly") : t("errors.invalidCredentials")}
           </p>
         ) : null}
       </div>
       <button type="submit" disabled={pending} className={buttonClass({ size: "lg" })}>
         {t("submitLogin")}
-        <ArrowIcon />
       </button>
     </form>
   )
@@ -122,7 +121,7 @@ export function RegisterForm({ consents }: { consents: RegisterConsent[] }) {
       </div>
 
       {/* Açık rızalar: AYRI kutular, hiçbiri önceden işaretli değil, üyeliğin ön koşulu değil (Rapor §7.1.3, §7.4) */}
-      <fieldset className="rounded-2xl border border-white/15 p-4">
+      <fieldset className="rounded-[4px] border border-white/15 p-4">
         <legend className="px-1 text-sm font-semibold">{t("registerForm.marketingTitle")}</legend>
         <ul className="mt-2 space-y-3">
           {consents.map((c) => (
@@ -150,15 +149,16 @@ export function RegisterForm({ consents }: { consents: RegisterConsent[] }) {
       <div aria-live="polite">
         {state.error ? (
           <p role="alert" className="text-sm text-ember">
-            {state.fieldErrors?.accept_membership
-              ? t("registerForm.membershipRequired")
-              : t(`errors.${state.error === "registerFailed" ? "registerFailed" : "invalidRegister"}`)}
+            {state.error === "demoOnly"
+              ? t("errors.demoOnly")
+              : state.fieldErrors?.accept_membership
+                ? t("registerForm.membershipRequired")
+                : t(`errors.${state.error === "registerFailed" ? "registerFailed" : "invalidRegister"}`)}
           </p>
         ) : null}
       </div>
       <button type="submit" disabled={pending} className={buttonClass({ size: "lg" })}>
         {t("submitRegister")}
-        <ArrowIcon />
       </button>
     </form>
   )

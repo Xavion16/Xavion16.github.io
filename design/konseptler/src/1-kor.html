@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ARION — Konsept 1 · Kor</title>
+    <meta
+      name="description"
+      content="Konsept 1: Kor / Ateş — karanlık, sıcak, cüretkâr."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;800;900&family=Manrope:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="ortak.css" />
+    <style>
+      :root {
+        --ink: #0b0706;
+        --coal: #151010;
+        --ember: #ff3d1f;
+        --ember-deep: #b3170a;
+        --bone: #f4ece6;
+        --smoke: #b9aaa3;
+        --steel: #1a1c1e;
+        --amber: #e8a24a;
+      }
+      body {
+        background: var(--ink);
+        color: var(--bone);
+        font-family: Manrope, sans-serif;
+      }
+      .display {
+        font-family: "Big Shoulders Display", sans-serif;
+        font-weight: 900;
+        text-transform: uppercase;
+        line-height: 0.92;
+        letter-spacing: -0.01em;
+      }
+      .eyebrow {
+        font:
+          700 12px/1 Manrope,
+          sans-serif;
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+      }
+
+      /* Üst menü */
+      .nav {
+        position: fixed;
+        inset: 0 0 auto;
+        z-index: 50;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 22px clamp(16px, 4vw, 56px);
+        mix-blend-mode: difference;
+        color: #fff;
+      }
+      .logo {
+        font-family: "Big Shoulders Display";
+        font-weight: 900;
+        font-size: 30px;
+        letter-spacing: 0.08em;
+        text-decoration: none;
+      }
+      .nav ul {
+        display: flex;
+        gap: clamp(14px, 3vw, 36px);
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        font-weight: 700;
+        font-size: 14px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .nav a {
+        text-decoration: none;
+      }
+      @media (max-width: 720px) {
+        .nav ul li:nth-child(n + 3) {
+          display: none;
+        }
+      }
+
+      /* Hero */
+      .hero {
+        position: relative;
+        height: 100svh;
+        min-height: 640px;
+        overflow: hidden;
+      }
+      .hero img {
+        position: absolute;
+        inset: -6% 0;
+        height: 112%;
+        width: 100%;
+        object-fit: cover;
+        object-position: 60% 50%;
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(
+            120% 90% at 70% 40%,
+            transparent 30%,
+            rgb(11 7 6 / 0.85) 80%
+          ),
+          linear-gradient(0deg, var(--ink) 2%, transparent 40%);
+      }
+      .hero-copy {
+        position: absolute;
+        z-index: 2;
+        left: clamp(16px, 4vw, 56px);
+        right: clamp(16px, 4vw, 56px);
+        bottom: clamp(32px, 7vh, 80px);
+      }
+      .hero h1 {
+        font-size: clamp(76px, 15.5vw, 280px);
+        margin: 0;
+      }
+      .hero h1 .hot {
+        color: var(--ember);
+      }
+      .hero-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: end;
+        justify-content: space-between;
+        gap: 24px;
+        margin-top: 24px;
+      }
+      .hero p {
+        max-width: 34ch;
+        font-size: clamp(17px, 1.5vw, 21px);
+        line-height: 1.5;
+        color: var(--bone);
+        margin: 0;
+      }
+      .cta {
+        display: inline-flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        min-height: 52px;
+        padding: 0 26px;
+        border-radius: 999px;
+        font-weight: 700;
+        text-decoration: none;
+        letter-spacing: 0.04em;
+        transition:
+          background 0.25s,
+          color 0.25s,
+          transform 0.25s;
+      }
+      .btn-ember {
+        background: var(--ember);
+        color: var(--ink);
+      }
+      .btn-ember:hover {
+        background: var(--bone);
+      }
+      .btn-ghost {
+        border: 1px solid rgb(244 236 230 / 0.5);
+      }
+      .btn-ghost:hover {
+        background: var(--bone);
+        color: var(--ink);
+      }
+      .glow {
+        position: absolute;
+        z-index: 1;
+        width: 60vw;
+        height: 60vw;
+        right: -12vw;
+        top: -18vw;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgb(255 61 31 / 0.55),
+          transparent 65%
+        );
+        filter: blur(40px);
+        mix-blend-mode: screen;
+        animation: breathe 6s ease-in-out infinite;
+      }
+      @keyframes breathe {
+        50% {
+          transform: scale(1.12);
+          opacity: 0.7;
+        }
+      }
+
+      /* Şerit */
+      .marquee {
+        overflow: hidden;
+        border-block: 1px solid rgb(255 61 31 / 0.4);
+        background: var(--ember);
+        color: var(--ink);
+      }
+      .marquee-track {
+        display: flex;
+        width: max-content;
+        animation: slide 22s linear infinite;
+      }
+      .marquee span {
+        font-family: "Big Shoulders Display";
+        font-weight: 900;
+        font-size: clamp(34px, 5vw, 72px);
+        text-transform: uppercase;
+        padding: 10px 28px;
+        white-space: nowrap;
+      }
+      @keyframes slide {
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* Kadın */
+      section {
+        position: relative;
+      }
+      .wrap {
+        padding: clamp(80px, 12vw, 180px) clamp(16px, 4vw, 56px);
+      }
+      .women {
+        background: linear-gradient(
+          180deg,
+          var(--ink),
+          #1d0705 60%,
+          var(--ink)
+        );
+      }
+      .women-grid {
+        display: grid;
+        grid-template-columns: 1.15fr 1fr;
+        gap: clamp(24px, 5vw, 80px);
+        align-items: center;
+      }
+      .women h2 {
+        font-size: clamp(64px, 10vw, 180px);
+        margin: 18px 0 0;
+      }
+      .women h2 em {
+        font-style: normal;
+        color: var(--ember);
+      }
+      .lede {
+        font-size: clamp(18px, 1.6vw, 22px);
+        line-height: 1.6;
+        color: var(--smoke);
+        max-width: 42ch;
+        margin: 28px 0 0;
+      }
+      .frame {
+        position: relative;
+        overflow: hidden;
+        border-radius: 4px;
+      }
+      .frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .tall {
+        aspect-ratio: 3 / 4.2;
+      }
+      .tag {
+        position: absolute;
+        left: 16px;
+        bottom: 16px;
+        font: 700 12px/1 Manrope;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        background: var(--ink);
+        padding: 10px 12px;
+      }
+      .products {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: clamp(14px, 2vw, 28px);
+        margin-top: clamp(60px, 8vw, 120px);
+      }
+      .card {
+        text-decoration: none;
+      }
+      .card .frame {
+        aspect-ratio: 4 / 5;
+        background: var(--coal);
+      }
+      .card .frame img {
+        transition:
+          transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1),
+          filter 0.6s;
+        filter: saturate(1.05) contrast(1.05);
+      }
+      .card:hover .frame img {
+        transform: scale(1.06);
+      }
+      .card-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 12px;
+        padding-top: 14px;
+      }
+      .card-meta b {
+        font-family: "Big Shoulders Display";
+        font-weight: 800;
+        font-size: 28px;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+      }
+      .card-meta span {
+        color: var(--smoke);
+      }
+      .card-meta s {
+        color: var(--smoke);
+        opacity: 0.6;
+        margin-right: 8px;
+      }
+
+      /* Galeri */
+      .strip {
+        display: grid;
+        grid-template-columns: 1fr 1.4fr 1fr;
+        gap: clamp(10px, 1.6vw, 22px);
+        padding: 0 clamp(16px, 4vw, 56px);
+      }
+      .strip .frame {
+        aspect-ratio: 3 / 4.4;
+      }
+      .strip .frame:nth-child(2) {
+        aspect-ratio: auto;
+        margin-top: 12vh;
+      }
+      .strip .frame:nth-child(3) {
+        margin-top: -6vh;
+      }
+
+      /* Erkek */
+      .men {
+        background: var(--steel);
+        color: #e9e6e1;
+      }
+      .men .eyebrow {
+        color: var(--amber);
+      }
+      .men h2 {
+        font-size: clamp(64px, 10vw, 180px);
+        margin: 18px 0 0;
+        color: #e9e6e1;
+      }
+      .men h2 em {
+        font-style: normal;
+        color: var(--amber);
+      }
+      .men-hero {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 92vh;
+      }
+      .men-hero .frame {
+        border-radius: 0;
+      }
+      .men-copy {
+        padding: clamp(40px, 6vw, 96px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .men .card .frame {
+        background: #222;
+      }
+      .men .btn-ember {
+        background: var(--amber);
+      }
+
+      /* Manifesto */
+      .manifesto {
+        text-align: center;
+        background: var(--ink);
+      }
+      .manifesto p {
+        font-family: "Big Shoulders Display";
+        font-weight: 800;
+        text-transform: uppercase;
+        font-size: clamp(44px, 7.4vw, 132px);
+        line-height: 0.9;
+        margin: 0 auto;
+        max-width: 14ch;
+      }
+      .manifesto p .hot {
+        color: var(--ember);
+      }
+
+      footer {
+        padding: 56px clamp(16px, 4vw, 56px) 96px;
+        border-top: 1px solid rgb(244 236 230 / 0.12);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+        justify-content: space-between;
+        color: var(--smoke);
+        font-size: 14px;
+      }
+      footer .logo {
+        color: var(--bone);
+      }
+
+      @media (max-width: 860px) {
+        .women-grid,
+        .men-hero {
+          grid-template-columns: 1fr;
+        }
+        .products {
+          grid-template-columns: 1fr;
+        }
+        .strip {
+          grid-template-columns: 1fr 1fr;
+        }
+        .strip .frame:nth-child(3) {
+          display: none;
+        }
+        .strip .frame:nth-child(2) {
+          margin-top: 6vh;
+          aspect-ratio: 3 / 4.4;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Görseller: Unsplash Lisansı ile ücretsiz fotoğraflar (images.unsplash.com). Yalnızca konsept amaçlıdır; seçilen yön için ARION'a özel çekim ya da etiketli AI görsel kullanılacak. -->
+    <a class="sr-only" href="#icerik">İçeriğe geç</a>
+    <header class="nav">
+      <a href="#" class="logo" aria-label="ARION ana sayfa">ARION</a>
+      <nav aria-label="Ana menü">
+        <ul>
+          <li><a href="#kadin">Kadın</a></li>
+          <li><a href="#erkek">Erkek</a></li>
+          <li><a href="#manifesto">Manifesto</a></li>
+          <li><a href="#">Ayak İkizi</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="icerik">
+      <section class="hero" aria-labelledby="h-hero">
+        <img
+          src="{{W3:2200}}"
+          alt="Kırmızı rugan stiletto ve file çorap, karanlık fon"
+          fetchpriority="high"
+          data-parallax="6"
+        />
+        <div class="glow" aria-hidden="true"></div>
+        <div class="hero-copy">
+          <p class="eyebrow" style="color: var(--ember); margin-bottom: 22px">
+            Kış 2026 · Kor koleksiyonu
+          </p>
+          <h1 id="h-hero" class="display" data-split data-hero>
+            Ateşten<br /><span class="hot">yapıldı.</span>
+          </h1>
+          <div class="hero-row">
+            <p data-reveal>
+              Topuğun sesi, kalbin ritmi. İstanbul atölyesinde elde kalıplanan,
+              adım attığın her yerde iz bırakan ayakkabılar.
+            </p>
+            <div class="cta" data-reveal>
+              <a class="btn btn-ember" href="#kadin">Kadın · Topuklu →</a>
+              <a class="btn btn-ghost" href="#erkek">Erkek</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <span>Pera 65 ✦</span><span>Moda 45 ✦</span
+          ><span>Gece yarısı kırmızısı ✦</span><span>Elde kalıp ✦</span
+          ><span>Pera 65 ✦</span><span>Moda 45 ✦</span
+          ><span>Gece yarısı kırmızısı ✦</span><span>Elde kalıp ✦</span>
+        </div>
+      </div>
+
+      <section id="kadin" class="women" aria-labelledby="h-kadin">
+        <div class="wrap">
+          <div class="women-grid">
+            <div>
+              <p class="eyebrow" style="color: var(--ember)">Kadın · Topuklu</p>
+              <h2 id="h-kadin" class="display" data-split>
+                65 milimetre<br /><em>cesaret.</em>
+              </h2>
+              <p class="lede" data-reveal>
+                Pera kalıbı ağırlığı topuktan ön ayağa senin istediğin kadar
+                taşır. Badem burun, çelik şank, saatlerce dans etmek için
+                hesaplanmış bir eğim.
+              </p>
+              <div class="cta" style="margin-top: 36px" data-reveal>
+                <a class="btn btn-ember" href="#">Topukluları keşfet →</a>
+              </div>
+            </div>
+            <div class="frame tall" data-clip>
+              <img
+                src="{{W1:1400}}"
+                alt="Kırmızı elbise ve kırmızı stiletto ile hareket halinde kadın"
+                loading="lazy"
+                data-zoom
+              /><span class="tag">Pera 65 · Kor</span>
+            </div>
+          </div>
+
+          <div class="products">
+            <a class="card" href="#" data-reveal
+              ><div class="frame">
+                <img
+                  src="{{W2:900}}"
+                  alt="Kırmızı rugan bilekten bağlı topuklu"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-meta">
+                <b>Pera 65 Stiletto</b><span>₺3.490</span>
+              </div></a
+            >
+            <a class="card" href="#" data-reveal
+              ><div class="frame">
+                <img
+                  src="{{W8:900}}"
+                  alt="Fiyonklu kırmızı topuklu, kırmızı fon"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-meta">
+                <b>Moda 45 Blok</b><span>₺2.890</span>
+              </div></a
+            >
+            <a class="card" href="#" data-reveal
+              ><div class="frame">
+                <img
+                  src="{{W14:900}}"
+                  alt="Siyah örgü dokulu stiletto, yakın plan"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-meta">
+                <b>Pera 65 · Gece</b><span>₺3.490</span>
+              </div></a
+            >
+          </div>
+        </div>
+
+        <div class="strip" aria-label="Kor lookbook">
+          <div class="frame">
+            <img
+              src="{{W4:900}}"
+              alt="File çorap ve kırmızı topuklu, kırmızı fon"
+              loading="lazy"
+              data-zoom
+            />
+          </div>
+          <div class="frame">
+            <img
+              src="{{W21:1200}}"
+              alt="Siyah body ve topuklularla beton terasta yürüyen kadın"
+              loading="lazy"
+              data-zoom
+            />
+          </div>
+          <div class="frame">
+            <img
+              src="{{W9:900}}"
+              alt="Bilekten bağlı siyah sandalet ve kırmızı etek"
+              loading="lazy"
+              data-zoom
+            />
+          </div>
+        </div>
+        <div style="height: clamp(80px, 12vw, 180px)"></div>
+      </section>
+
+      <section id="erkek" class="men" aria-labelledby="h-erkek">
+        <div class="men-hero">
+          <div class="frame" data-clip="x">
+            <img
+              src="{{M4:1400}}"
+              alt="Kahverengi deri erkek ayakkabıları, loş vitrin"
+              loading="lazy"
+              data-zoom
+            />
+          </div>
+          <div class="men-copy">
+            <p class="eyebrow">Erkek · Kömür</p>
+            <h2 id="h-erkek" class="display" data-split>
+              Sessiz<br /><em>güç.</em>
+            </h2>
+            <p class="lede" style="color: #a9a49c" data-reveal>
+              Goodyear dikiş, bitkisel tabaklanmış taban, defalarca
+              yenilenebilen pençe. Erkek koleksiyonu gürültü yapmaz; yıllarca
+              seninle yürür.
+            </p>
+            <div class="cta" style="margin-top: 36px" data-reveal>
+              <a class="btn btn-ember" href="#">Erkek koleksiyonu →</a>
+            </div>
+          </div>
+        </div>
+        <div class="wrap" style="padding-top: clamp(40px, 6vw, 80px)">
+          <div class="products" style="margin-top: 0">
+            <a class="card" href="#" data-reveal
+              ><div class="frame">
+                <img
+                  src="{{M6:900}}"
+                  alt="Kahverengi brogue oxford, gri fon"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-meta">
+                <b>Galata Oxford</b><span>₺4.490</span>
+              </div></a
+            >
+            <a class="card" href="#" data-reveal
+              ><div class="frame">
+                <img
+                  src="{{M7:900}}"
+                  alt="Kahverengi deri derby, loş ışık"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-meta">
+                <b>Nişantaşı Derby</b><span>₺3.990</span>
+              </div></a
+            >
+            <a class="card" href="#" data-reveal
+              ><div class="frame">
+                <img
+                  src="{{M11:900}}"
+                  alt="Eskitilmiş deri bot ve kot paça"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-meta">
+                <b>Palandöken Chelsea</b><span>₺3.790</span>
+              </div></a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section id="manifesto" class="manifesto" aria-labelledby="h-man">
+        <div class="wrap">
+          <h2 id="h-man" class="sr-only">Manifesto</h2>
+          <p data-split>
+            Ayakkabı biter.<br /><span class="hot">Söz</span> bitmez.
+          </p>
+          <div
+            class="cta"
+            style="justify-content: center; margin-top: 48px"
+            data-reveal
+          >
+            <a class="btn btn-ghost" href="#">Ömür Planı</a
+            ><a class="btn btn-ember" href="#">Ayak İkizini oluştur →</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <a href="#" class="logo">ARION</a>
+      <span>Crafted in Türkiye · İstanbul atölyesi</span>
+      <span>Görseller: Unsplash (konsept)</span>
+    </footer>
+    <a class="konsept-etiketi" href="index.html">← Konseptler · 1/5 Kor</a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="ortak.js"></script>
+  </body>
+</html>

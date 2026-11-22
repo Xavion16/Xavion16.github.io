@@ -4,6 +4,8 @@ import { createStep, createWorkflow, StepResponse, WorkflowResponse } from "@med
 import { getIysAdapter, type IysChannel } from "../lib/iys"
 import { CONSENT_MODULE } from "../modules/consent"
 import type ConsentModuleService from "../modules/consent/service"
+import { FIT_TWIN_MODULE } from "../modules/fit-twin"
+import type FitTwinModuleService from "../modules/fit-twin/service"
 
 export const COOKIE_PURPOSES = ["cookie_functional", "cookie_analytics", "cookie_marketing"] as const
 export type AnyPurpose = ConsentPurpose | (typeof COOKIE_PURPOSES)[number]
@@ -116,11 +118,27 @@ const syncIysStep = createStep(
   },
 )
 
+/** Ayak İkizi rızası geri alınırsa ölçüler kalıcı olarak silinir (Rapor §6.1). */
+const purgeFitTwinOnRevokeStep = createStep(
+  "purge-fit-twin-on-revoke",
+  async (input: { subject_type: string; subject_ref: string; changed: Array<[AnyPurpose, boolean]> }, { container }) => {
+    const revoked = input.changed.some(([p, g]) => p === "fit_twin" && !g)
+    if (!revoked || input.subject_type !== "customer") return new StepResponse({ purged: 0 })
+    const svc: FitTwinModuleService = container.resolve(FIT_TWIN_MODULE)
+    return new StepResponse({ purged: await svc.purge(input.subject_ref) })
+  },
+)
+
 export const recordConsentsWorkflow = createWorkflow(
   "record-consents",
   (input: RecordConsentsInput) => {
     const result = recordConsentsStep(input)
     syncIysStep({
+      subject_type: input.subject_type,
+      subject_ref: input.subject_ref,
+      changed: result.changed,
+    })
+    purgeFitTwinOnRevokeStep({
       subject_type: input.subject_type,
       subject_ref: input.subject_ref,
       changed: result.changed,

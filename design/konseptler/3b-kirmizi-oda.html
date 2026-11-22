@@ -1,0 +1,841 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ARION — Kırmızı Oda (Hikâye)</title>
+    <meta
+      name="description"
+      content="Kadife ailesi B: bir gece, dört perde — yatay sahneler, kaydırmayla okunan manifesto, sesli marka."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;1,6..96,400&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="ortak.css" />
+    <link rel="stylesheet" href="kadife-ortak.css" />
+    <style>
+      :root {
+        --black: #0a0507;
+        --blood: #b0102e;
+        --rose: #ff2e63;
+        --champ: #e8d2b0;
+        --chrome: #f6f2f3;
+        --muted: #bfa9b0;
+      }
+      body {
+        background: var(--black);
+        color: var(--chrome);
+        font-family: "Space Grotesk", sans-serif;
+      }
+      .bodoni {
+        font-family: "Bodoni Moda", serif;
+      }
+      .eyebrow {
+        font: 500 12px/1 "Space Grotesk";
+        letter-spacing: 0.34em;
+        text-transform: uppercase;
+        color: var(--rose);
+      }
+      .pad {
+        padding-inline: clamp(16px, 4vw, 64px);
+      }
+      .nav {
+        position: fixed;
+        inset: 0 0 auto;
+        z-index: 60;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 22px clamp(16px, 4vw, 64px);
+        mix-blend-mode: difference;
+      }
+      .nav .mark {
+        font-family: "Bodoni Moda";
+        font-weight: 700;
+        font-size: 24px;
+        letter-spacing: 0.3em;
+        text-decoration: none;
+      }
+      .nav ul {
+        display: flex;
+        gap: 26px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        font-size: 12px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+      }
+      .nav a {
+        text-decoration: none;
+      }
+      @media (max-width: 700px) {
+        .nav ul li:nth-child(n + 3) {
+          display: none;
+        }
+      }
+
+      .hero {
+        position: relative;
+        height: 100svh;
+        min-height: 620px;
+        overflow: hidden;
+        display: grid;
+        place-items: end start;
+      }
+      .hero img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 60%;
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          0deg,
+          var(--black) 0%,
+          rgb(10 5 7 / 0.2) 55%,
+          rgb(10 5 7 / 0.6) 100%
+        );
+      }
+      .hero .in {
+        position: relative;
+        z-index: 2;
+        padding: 0 clamp(16px, 4vw, 64px) clamp(36px, 9vh, 100px);
+      }
+      .hero h1 {
+        font-family: "Bodoni Moda";
+        font-weight: 400;
+        font-size: clamp(64px, 11vw, 200px);
+        line-height: 0.88;
+        margin: 14px 0 22px;
+      }
+      .hero h1 i {
+        color: var(--rose);
+      }
+      .hero p {
+        max-width: 40ch;
+        font-size: 18px;
+        line-height: 1.6;
+        color: var(--muted);
+      }
+      .scroll-cue {
+        display: inline-flex;
+        gap: 10px;
+        align-items: center;
+        margin-top: 10px;
+        font-size: 12px;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+      }
+      .scroll-cue::before {
+        content: "";
+        width: 1px;
+        height: 40px;
+        background: var(--rose);
+        animation: cue 1.8s ease-in-out infinite;
+        transform-origin: top;
+      }
+      @keyframes cue {
+        0% {
+          transform: scaleY(0);
+        }
+        50% {
+          transform: scaleY(1);
+        }
+        100% {
+          transform: scaleY(0);
+          transform-origin: bottom;
+        }
+      }
+
+      /* Dört perde */
+      .acts {
+        position: relative;
+        height: 100svh;
+        overflow: hidden;
+      }
+      .act {
+        position: absolute;
+        inset: 0;
+        clip-path: inset(0 0 0 100%);
+      }
+      .act:first-child {
+        clip-path: inset(0 0 0 0);
+      }
+      .act img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: scale(1.12);
+      }
+      .act::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          90deg,
+          rgb(10 5 7 / 0.85) 0%,
+          rgb(10 5 7 / 0.1) 60%
+        );
+      }
+      .act .txt {
+        position: absolute;
+        z-index: 2;
+        left: clamp(16px, 4vw, 64px);
+        top: 50%;
+        transform: translateY(-50%);
+        max-width: min(560px, 88vw);
+      }
+      .act .no {
+        font-family: "Bodoni Moda";
+        font-style: italic;
+        font-size: clamp(90px, 14vw, 240px);
+        line-height: 0.8;
+        color: var(--rose);
+        opacity: 0.9;
+      }
+      .act h2 {
+        font-family: "Bodoni Moda";
+        font-weight: 400;
+        font-size: clamp(44px, 6vw, 104px);
+        line-height: 0.95;
+        margin: 8px 0 16px;
+      }
+      .act p {
+        font-size: 18px;
+        line-height: 1.6;
+        color: var(--muted);
+      }
+      .act .prod {
+        display: inline-flex;
+        gap: 14px;
+        align-items: center;
+        margin-top: 10px;
+        padding: 10px 16px 10px 10px;
+        border-radius: 999px;
+        background: rgb(246 242 243 / 0.08);
+        border: 1px solid rgb(246 242 243 / 0.18);
+        text-decoration: none;
+        backdrop-filter: blur(6px);
+      }
+      .act .prod img {
+        position: static;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        transform: none;
+      }
+      .chapters {
+        position: absolute;
+        z-index: 5;
+        left: 50%;
+        bottom: 28px;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 8px;
+      }
+      .chapters button {
+        min-height: 40px;
+        padding: 0 14px;
+        border-radius: 999px;
+        border: 1px solid rgb(246 242 243 / 0.3);
+        background: rgb(10 5 7 / 0.55);
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        backdrop-filter: blur(6px);
+      }
+      .chapters button[aria-current="true"] {
+        background: var(--rose);
+        color: var(--black);
+        border-color: var(--rose);
+      }
+      .act-bar {
+        position: absolute;
+        z-index: 5;
+        left: 0;
+        top: 0;
+        height: 3px;
+        background: var(--rose);
+        width: 0;
+      }
+      .rm .acts {
+        height: auto;
+      }
+      .rm .act {
+        position: relative;
+        height: 100svh;
+        clip-path: none;
+      }
+      .rm .chapters,
+      .rm .act-bar {
+        display: none;
+      }
+
+      /* Manifesto + ses */
+      .manifesto {
+        padding-block: clamp(120px, 16vw, 240px);
+      }
+      .manifesto p.big {
+        font-family: "Bodoni Moda";
+        font-size: clamp(38px, 5.6vw, 96px);
+        line-height: 1.08;
+        margin: 0;
+        max-width: 20ch;
+      }
+      .manifesto .mw {
+        opacity: 0.14;
+        transition: opacity 0.2s;
+      }
+      .rm .manifesto .mw {
+        opacity: 1;
+      }
+      .voice {
+        margin-top: 48px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 16px;
+      }
+      .voice button {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        min-height: 56px;
+        padding: 0 22px 0 10px;
+        border-radius: 999px;
+        border: 1px solid rgb(246 242 243 / 0.3);
+        background: transparent;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+      }
+      .voice button .ic {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: var(--rose);
+        color: var(--black);
+      }
+      .voice .bars {
+        display: flex;
+        gap: 3px;
+        align-items: end;
+        height: 22px;
+      }
+      .voice .bars i {
+        width: 3px;
+        height: 30%;
+        background: var(--rose);
+        border-radius: 2px;
+      }
+      .voice.playing .bars i {
+        animation: vb 0.8s ease-in-out infinite;
+      }
+      .voice.playing .bars i:nth-child(2) {
+        animation-delay: 0.1s;
+      }
+      .voice.playing .bars i:nth-child(3) {
+        animation-delay: 0.2s;
+      }
+      .voice.playing .bars i:nth-child(4) {
+        animation-delay: 0.3s;
+      }
+      @keyframes vb {
+        50% {
+          height: 100%;
+        }
+      }
+      .ai-label {
+        font-size: 11px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--muted);
+        border: 1px dashed rgb(246 242 243 / 0.3);
+        padding: 6px 10px;
+        border-radius: 999px;
+      }
+
+      /* Erkek: üst üste binen kartlar */
+      .men {
+        padding-block: clamp(90px, 12vw, 170px);
+        background: #0d0b0c;
+      }
+      .men .eyebrow {
+        color: var(--champ);
+      }
+      .men h2 {
+        font-family: "Bodoni Moda";
+        font-weight: 400;
+        font-size: clamp(54px, 8vw, 150px);
+        line-height: 0.9;
+        margin: 14px 0 50px;
+      }
+      .men h2 i {
+        color: var(--champ);
+      }
+      .stack {
+        display: grid;
+        gap: 0;
+      }
+      .scard {
+        position: sticky;
+        top: 90px;
+        height: 74vh;
+        border-radius: 28px;
+        overflow: hidden;
+        margin-bottom: 6vh;
+        display: grid;
+        grid-template-columns: 1.4fr 1fr;
+        background: #1a1517;
+        box-shadow: 0 -20px 60px rgb(0 0 0 / 0.5);
+        transform-origin: top center;
+      }
+      .scard img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .scard .t {
+        padding: clamp(24px, 4vw, 56px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .scard .t b {
+        font-family: "Bodoni Moda";
+        font-weight: 400;
+        font-size: clamp(36px, 4vw, 70px);
+        line-height: 0.95;
+      }
+      .scard .t span.p {
+        font-size: 22px;
+        color: var(--champ);
+      }
+      .scard .t p {
+        color: #b8aea7;
+        line-height: 1.6;
+      }
+      @media (max-width: 860px) {
+        .scard {
+          grid-template-columns: 1fr;
+          height: auto;
+          position: relative;
+          top: 0;
+        }
+        .scard img {
+          aspect-ratio: 4 / 3;
+        }
+      }
+      footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 40px clamp(16px, 4vw, 64px) 90px;
+        color: var(--muted);
+        font-size: 14px;
+        border-top: 1px solid rgb(246 242 243 / 0.1);
+      }
+      #iz {
+        position: fixed;
+        inset: 0;
+        z-index: 110;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Görseller: Unsplash Lisansı (konsept). Ses: ElevenLabs ile üretilmiş marka seslendirmesi (yapay zekâ, etiketli). -->
+    <div class="preloader" aria-hidden="true">
+      <div class="pl-in">
+        <div class="pl-mark">ARION · KIRMIZI ODA</div>
+        <div data-count>00</div>
+        <div class="pl-bar"></div>
+      </div>
+    </div>
+    <a class="sr-only" href="#icerik">İçeriğe geç</a>
+    <header class="nav">
+      <a href="#" class="mark" aria-label="ARION ana sayfa">ARION</a>
+      <nav aria-label="Ana menü">
+        <ul>
+          <li><a href="#perdeler">Kadın</a></li>
+          <li><a href="#salon">Erkek</a></li>
+          <li><a href="#">Ayak İkizi</a></li>
+          <li><a href="#">Sepet</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="icerik">
+      <section class="hero" aria-labelledby="h-hero">
+        <img
+          src="https://images.unsplash.com/photo-1779398646547-8fe51e5b5c23?w=2000&q=80&auto=format&fit=crop"
+          alt="Siyah rugan kıyafetli kadın, damalı zeminde uzanıyor"
+          fetchpriority="high"
+          data-parallax="8"
+        />
+        <div class="in">
+          <p class="eyebrow">Kırmızı Oda · Kış 2026</p>
+          <h1 id="h-hero" data-split data-hero>
+            Bir gece,<br /><i>dört perde.</i>
+          </h1>
+          <p data-reveal>
+            Hazırlıktan eve dönüşe kadar bir gecenin hikâyesi; her perdede bir
+            çift topuklu.
+          </p>
+          <span class="scroll-cue">Kaydır</span>
+        </div>
+      </section>
+
+      <section id="perdeler" class="acts" aria-label="Dört perde">
+        <div class="act-bar" aria-hidden="true"></div>
+        <article class="act" aria-labelledby="p1">
+          <img
+            src="https://images.unsplash.com/photo-1697647916715-f5b8bf94c8bf?w=1800&q=80&auto=format&fit=crop"
+            alt="Sandalyede oturan kadın, kırmızı topuklular"
+            loading="lazy"
+          />
+          <div class="txt">
+            <span class="no" aria-hidden="true">I</span>
+            <h2 id="p1">Hazırlık</h2>
+            <p>
+              Ayna, ruj, son bir bakış. İlk çift her zaman en cesur olanıdır.
+            </p>
+            <a class="prod" href="#" data-cursor="Ürün"
+              ><img
+                src="https://images.unsplash.com/photo-1670607231621-c00fd76d2387?w=200&q=80&auto=format&fit=crop"
+                alt=""
+              />Pera 65 · ₺3.490</a
+            >
+          </div>
+        </article>
+        <article class="act" aria-labelledby="p2">
+          <img
+            src="https://images.unsplash.com/photo-1784047704771-58a53faadf33?w=1800&q=80&auto=format&fit=crop"
+            alt="Kırmızı etek ve bilekten bağlı sandalet"
+            loading="lazy"
+          />
+          <div class="txt">
+            <span class="no" aria-hidden="true">II</span>
+            <h2 id="p2">İlk adım</h2>
+            <p>
+              Kapı açılır, topuk sesi koridoru doldurur. Bilek kayışı tam
+              yerinde.
+            </p>
+            <a class="prod" href="#" data-cursor="Ürün"
+              ><img
+                src="https://images.unsplash.com/photo-1789110519471-74ac17dd1cf6?w=200&q=80&auto=format&fit=crop"
+                alt=""
+              />Gece Sandalet · ₺3.190</a
+            >
+          </div>
+        </article>
+        <article class="act" aria-labelledby="p3">
+          <img
+            src="https://images.unsplash.com/photo-1686668572519-1793f1f5f37f?w=1800&q=80&auto=format&fit=crop"
+            alt="Kırmızı elbiseyle dans eden kadın, kırmızı stiletto"
+            loading="lazy"
+          />
+          <div class="txt">
+            <span class="no" aria-hidden="true">III</span>
+            <h2 id="p3">Dans</h2>
+            <p>Ağırlık ön ayakta, kalıp onu taşır. Gece uzar, ayak yorulmaz.</p>
+            <a class="prod" href="#" data-cursor="Ürün"
+              ><img
+                src="https://images.unsplash.com/photo-1686668572494-278de081af6a?w=200&q=80&auto=format&fit=crop"
+                alt=""
+              />Rugan Kor · ₺3.490</a
+            >
+          </div>
+        </article>
+        <article class="act" aria-labelledby="p4">
+          <img
+            src="https://images.unsplash.com/photo-1792588220212-848f3ad91966?w=1800&q=80&auto=format&fit=crop"
+            alt="Gece terasta yürüyen kadın"
+            loading="lazy"
+          />
+          <div class="txt">
+            <span class="no" aria-hidden="true">IV</span>
+            <h2 id="p4">Eve dönüş</h2>
+            <p>Şafak yaklaşırken bile iz bırakan bir yürüyüş.</p>
+            <a class="prod" href="#" data-cursor="Ürün"
+              ><img
+                src="https://images.unsplash.com/photo-1559334417-1adb87b6e97f?w=200&q=80&auto=format&fit=crop"
+                alt=""
+              />Pera 75 · ₺3.790</a
+            >
+          </div>
+        </article>
+        <nav class="chapters" aria-label="Perdeler">
+          <button type="button" data-go="0" aria-current="true">I</button
+          ><button type="button" data-go="1">II</button
+          ><button type="button" data-go="2">III</button
+          ><button type="button" data-go="3">IV</button>
+        </nav>
+      </section>
+
+      <section class="manifesto pad" aria-labelledby="h-man">
+        <p class="eyebrow" id="h-man">Manifesto</p>
+        <p class="big" id="manifesto">
+          Efsanede Arion, savaş kaybedildiğinde bile sahibini eve taşıdı. Biz
+          ayakkabıyı aynı sözle yaparız: seni gecenin sonunda da taşıyacak bir
+          çift.
+        </p>
+        <div class="voice" id="voice">
+          <button type="button" aria-pressed="false" data-magnet="0.25">
+            <span class="ic" aria-hidden="true">▶</span
+            ><span class="lbl">Manifestoyu dinle</span
+            ><span class="bars" aria-hidden="true"
+              ><i></i><i></i><i></i><i></i
+            ></span>
+          </button>
+          <span class="ai-label">Yapay zekâ ile üretilmiş ses</span>
+          <audio src="assets/manifesto-quote-tr.mp3" preload="none"></audio>
+        </div>
+      </section>
+
+      <section id="salon" class="men pad" aria-labelledby="h-salon">
+        <p class="eyebrow">Erkek · Salon</p>
+        <h2 id="h-salon" data-split>Gecenin<br /><i>öteki yarısı.</i></h2>
+        <div class="stack">
+          <article class="scard">
+            <img
+              src="https://images.unsplash.com/photo-1617137977259-bb83e191f377?w=1400&q=80&auto=format&fit=crop"
+              alt="Siyah paltolu adam, şehir meydanında"
+              loading="lazy"
+            />
+            <div class="t">
+              <span class="eyebrow">01 · Galata Oxford</span
+              ><b>Akşam yemeğinden şafağa.</b>
+              <p>
+                Goodyear dikiş, siyah dana derisi, pençe defalarca
+                yenilenebilir.
+              </p>
+              <span class="p">₺4.490</span>
+            </div>
+          </article>
+          <article class="scard">
+            <img
+              src="https://images.unsplash.com/photo-1549290127-7f758fdadff7?w=1400&q=80&auto=format&fit=crop"
+              alt="Kahverengi deri ayakkabılar, neon ışıklar"
+              loading="lazy"
+            />
+            <div class="t">
+              <span class="eyebrow">02 · Nişantaşı Derby</span
+              ><b>Konyak tonunda sessiz güç.</b>
+              <p>El boyası, gün geçtikçe derinleşen bir patina.</p>
+              <span class="p">₺3.990</span>
+            </div>
+          </article>
+          <article class="scard">
+            <img
+              src="https://images.unsplash.com/photo-1563434649554-58f91d22ec2c?w=1400&q=80&auto=format&fit=crop"
+              alt="Kahverengi derby, karanlık fon"
+              loading="lazy"
+            />
+            <div class="t">
+              <span class="eyebrow">03 · Beyoğlu Loafer</span
+              ><b>Bağcıksız, ödünsüz.</b>
+              <p>Çift tokalı, yumuşak burun; dans pistine hazır.</p>
+              <span class="p">₺3.690</span>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <span class="bodoni" style="letter-spacing: 0.3em">ARION</span
+      ><span>Ses: yapay zekâ (ElevenLabs) · Görseller: Unsplash</span>
+    </footer>
+    <canvas id="iz" aria-hidden="true"></canvas>
+    <a class="konsept-etiketi" href="index.html"
+      >← Konseptler · Kadife B · Kırmızı Oda</a
+    >
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="ortak.js"></script>
+    <script src="kadife-ortak.js"></script>
+    <script>
+      // Manifesto kelimeleri (kaydırmayla yanar) — metin bölünmeden önce erişilebilir ad korunur
+      const man = document.getElementById("manifesto")
+      man.setAttribute("aria-label", man.textContent)
+      man.innerHTML = man.textContent
+        .split(" ")
+        .map((w) => `<span class="mw" aria-hidden="true">${w}</span>`)
+        .join(" ")
+
+      // Ses: kullanıcı başlatır (otomatik oynatma yok), etiketli
+      ;(() => {
+        const box = document.getElementById("voice"),
+          btn = box.querySelector("button"),
+          audio = box.querySelector("audio")
+        const set = (on) => {
+          box.classList.toggle("playing", on)
+          btn.setAttribute("aria-pressed", String(on))
+          btn.querySelector(".ic").textContent = on ? "❚❚" : "▶"
+          btn.querySelector(".lbl").textContent = on
+            ? "Duraklat"
+            : "Manifestoyu dinle"
+        }
+        btn.addEventListener("click", () =>
+          audio.paused
+            ? audio
+                .play()
+                .then(() => set(true))
+                .catch(() => set(false))
+            : (audio.pause(), set(false)),
+        )
+        audio.addEventListener("ended", () => set(false))
+      })()
+
+      document.addEventListener("arion:motion", () => {
+        const { gsap, ScrollTrigger, lenis } = window.ARION_MOTION
+        // Dört perde: dikey kaydırma → yatay perde geçişi (silme efekti)
+        const acts = gsap.utils.toArray(".act")
+        const btns = [...document.querySelectorAll(".chapters button")]
+        const tl = gsap.timeline({ defaults: { ease: "none" } })
+        acts.forEach((a, i) => {
+          tl.to(a.querySelector("img"), { scale: 1, duration: 1 }, i)
+          if (i > 0)
+            tl.to(a, { clipPath: "inset(0 0 0 0%)", duration: 0.6 }, i - 0.3)
+        })
+        const st = ScrollTrigger.create({
+          trigger: ".acts",
+          pin: true,
+          start: "top top",
+          end: () => "+=" + innerHeight * 3.2,
+          scrub: 0.6,
+          animation: tl,
+          onUpdate: (s) => {
+            document.querySelector(".act-bar").style.width =
+              s.progress * 100 + "%"
+            const cur = Math.min(3, Math.floor(s.progress * 3.999))
+            btns.forEach((b, k) =>
+              b.setAttribute("aria-current", String(k === cur)),
+            )
+          },
+        })
+        btns.forEach((b) =>
+          b.addEventListener("click", () =>
+            lenis.scrollTo(
+              st.start + (st.end - st.start) * (Number(b.dataset.go) / 3) + 2,
+            ),
+          ),
+        )
+
+        // Manifesto: kelime kelime yanma
+        const words = document.querySelectorAll(".mw")
+        ScrollTrigger.create({
+          trigger: ".manifesto",
+          start: "top 75%",
+          end: "bottom 60%",
+          scrub: true,
+          onUpdate: (s) => {
+            const n = Math.round(s.progress * words.length)
+            words.forEach((w, k) => (w.style.opacity = k < n ? 1 : 0.14))
+          },
+        })
+
+        // Erkek kartları: alttaki kart üstteki geldiğinde küçülür
+        const cards = gsap.utils.toArray(".scard")
+        if (innerWidth > 860)
+          cards.forEach((c, i) => {
+            if (i === cards.length - 1) return
+            gsap.to(c, {
+              scale: 0.92,
+              opacity: 0.55,
+              ease: "none",
+              scrollTrigger: {
+                trigger: cards[i + 1],
+                start: "top bottom",
+                end: "top 90px",
+                scrub: true,
+              },
+            })
+          })
+      })
+
+      // İmleç izi: gül yaprağı parçacıkları (yalnızca hassas işaretçi, hareket serbestken)
+      ;(() => {
+        if (
+          matchMedia("(prefers-reduced-motion: reduce)").matches ||
+          !matchMedia("(hover: hover) and (pointer: fine)").matches
+        )
+          return
+        const c = document.getElementById("iz"),
+          ctx = c.getContext("2d")
+        const dpr = Math.min(devicePixelRatio, 1.5)
+        const fit = () => {
+          c.width = innerWidth * dpr
+          c.height = innerHeight * dpr
+        }
+        fit()
+        addEventListener("resize", fit)
+        const parts = []
+        let raf = 0,
+          lx = 0,
+          ly = 0
+        addEventListener(
+          "pointermove",
+          (e) => {
+            const d = Math.hypot(e.clientX - lx, e.clientY - ly)
+            if (d > 14) {
+              lx = e.clientX
+              ly = e.clientY
+              parts.push({
+                x: lx,
+                y: ly,
+                vx: (Math.random() - 0.5) * 0.6,
+                vy: Math.random() * 0.6 + 0.2,
+                r: Math.random() * 3 + 2,
+                a: 0.9,
+                rot: Math.random() * 6,
+              })
+            }
+            if (parts.length > 60) parts.shift()
+            if (!raf) raf = requestAnimationFrame(draw)
+          },
+          { passive: true },
+        )
+        function draw() {
+          ctx.clearRect(0, 0, c.width, c.height)
+          for (let i = parts.length - 1; i >= 0; i--) {
+            const p = parts[i]
+            p.x += p.vx
+            p.y += p.vy
+            p.a -= 0.018
+            p.rot += 0.05
+            if (p.a <= 0) {
+              parts.splice(i, 1)
+              continue
+            }
+            ctx.save()
+            ctx.translate(p.x * dpr, p.y * dpr)
+            ctx.rotate(p.rot)
+            ctx.fillStyle = `rgba(255,46,99,${p.a})`
+            ctx.beginPath()
+            ctx.ellipse(0, 0, p.r * dpr * 1.6, p.r * dpr, 0, 0, Math.PI * 2)
+            ctx.fill()
+            ctx.restore()
+          }
+          raf =
+            parts.length && !document.hidden ? requestAnimationFrame(draw) : 0
+        }
+      })()
+    </script>
+  </body>
+</html>

@@ -33,6 +33,7 @@ import {
   PRODUCTS,
   type ProductSeed,
 } from "./data/arion-catalog"
+import { seedWorkshop } from "./seed-workshop"
 
 /**
  * ARION demo verisi. Tekrar çalıştırılabilir: ARION ürünlerini, kalıpları, teknik kayıtları
@@ -43,6 +44,17 @@ import {
 
 const DAY_MS = 24 * 60 * 60 * 1000
 const STARTER_HANDLES = ["t-shirt", "sweatshirt", "sweatpants", "shorts"]
+/** Yeniden adlandırılan ürünlerin eski adresleri (DECISIONS #084): tekrar çalıştırmada temizlenir */
+const LEGACY_HANDLES = [
+  "pera-65-stiletto", "moda-45-blok-topuk", "kackar-su-gecirmez-bot", "uludag-termal-bot", "palandoken-chelsea",
+  "ruzgar-kosu", "bogaz-gunluk-sneaker", "kadikoy-vulkanize", "galata-oxford", "beyoglu-loafer",
+  "nisantasi-derby", "fidan-cirtli", "filiz-cocuk-botu",
+  // ara sürüm adları (taş adları)
+  "obsidyen-oxford", "akik-loafer", "kehribar-derby", "granit-chelsea", "bazalt-dag-botu",
+  "grafit-termal-bot", "meteor-kosu", "mermer-sneaker", "cakil-vulkanize",
+  // Türkçe ad sürümü (#084)
+  "mehtap-stiletto", "safak-blok-topuk", "yakut-topuklu-cizme", "ayla-bilek-bot", "sirma-slingback", "inci-sandalet", "elmas-mule", "kaan-oxford", "tuna-loafer", "arda-derby", "kerem-chelsea", "doruk-dag-botu", "ayaz-termal-bot", "atlas-kosu", "ege-sneaker", "cinar-vulkanize", "serce-cirtli", "marti-cocuk-botu",
+]
 const REGION_NAME = "Türkiye"
 const LOCATION_NAME = "İstanbul Atölye"
 
@@ -242,9 +254,13 @@ export default async function seedArion({ container }: ExecArgs) {
   const { data: oldProducts } = await query.graph({
     entity: "product",
     fields: ["id"],
-    filters: { handle: [...STARTER_HANDLES, ...PRODUCTS.map((p) => p.handle)] },
+    filters: { handle: [...STARTER_HANDLES, ...LEGACY_HANDLES, ...PRODUCTS.map((p) => p.handle)] },
   })
   if (oldProducts.length) {
+    // Demo siparişlerinin stok rezervasyonları ürün silmeyi engeller; demo verisi olduğu için temizlenir
+    const inventory = container.resolve(Modules.INVENTORY)
+    const reservations = await inventory.listReservationItems({}, { select: ["id"] })
+    if (reservations.length) await inventory.deleteReservationItems(reservations.map((r) => r.id))
     logger.info(`${oldProducts.length} eski ürün siliniyor…`)
     await deleteProductsWorkflow(container).run({ input: { ids: oldProducts.map((p) => p.id) } })
   }
@@ -316,6 +332,8 @@ export default async function seedArion({ container }: ExecArgs) {
           metadata: {
             title_en: p.title_en,
             description_en: p.description_en,
+            name_story: p.story?.tr,
+            name_story_en: p.story?.en,
             is_demo: true,
             last_code: p.last,
             made_to_order: p.made_to_order ?? false,
@@ -392,6 +410,8 @@ export default async function seedArion({ container }: ExecArgs) {
   })
   await history.createPriceHistoryEntries(entries)
   logger.info(`${entries.length} fiyat geçmişi kaydı oluşturuldu.`)
+
+  await seedWorkshop(container)
 
   logger.info(
     `ARION seed tamamlandı: ${CATEGORIES.length} kategori, ${LASTS.length} kalıp, ${created.length} ürün, ${skus.length} varyant.`,

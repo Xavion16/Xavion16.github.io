@@ -27,7 +27,7 @@ export default async function HelpPage({ params }: PageProps<"/[locale]/yardim">
   ) as Record<FaqCategory, string>
   const items = FAQ.map((f) => ({ id: f.id, category: f.category, q: f.q[locale], a: f.a[locale] }))
 
-  const card = "glass flex flex-col gap-1 rounded-3xl p-5 transition-colors hover:border-white/40"
+  const card = "glass flex flex-col gap-1 rounded-[4px] p-5 transition-colors hover:border-white/40"
   return (
     <div className="relative -mt-[76px] overflow-hidden pt-[76px]">
       <div aria-hidden="true" className="absolute inset-x-0 top-0 h-[520px]">

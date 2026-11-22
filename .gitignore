@@ -67,3 +67,7 @@ e2e/.report
 
 # Geliştirme e-posta kutusu (outbox provider)
 apps/backend/.outbox
+
+# Statik yayın (DECISIONS #087): sarmalayıcılar derlemede üretilir
+**/*.static.tsx
+**/.next-static/

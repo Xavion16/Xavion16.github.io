@@ -85,8 +85,8 @@ export const TR_TERMS: Record<string, LegalDoc> = {
 
   "kullanim-kosullari": {
     key: "kullanim-kosullari",
-    version: "1.0.0",
-    updatedAt: "2026-11-19",
+    version: "1.1.0",
+    updatedAt: "2026-11-21",
     title: "Kullanım Koşulları",
     sections: [
       {
@@ -104,7 +104,7 @@ export const TR_TERMS: Record<string, LegalDoc> = {
       {
         heading: "Fikri mülkiyet",
         paragraphs: [
-          "Sitedeki tasarım, metin, çizim ve yazılımlar ARION'a aittir. Yapay zekâ ile üretilen görseller 'Yapay zekâ ile üretilmiştir' etiketi taşır ve ürünü olduğundan farklı göstermez.",
+          "Sitedeki tasarım, metin, çizim, görsel ve yazılımlar ARION'a aittir. Ürün görselleri temsilidir; renk ve doku ekrana göre farklı görünebilir.",
         ],
       },
       {

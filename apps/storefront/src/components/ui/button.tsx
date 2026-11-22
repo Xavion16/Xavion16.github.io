@@ -1,23 +1,26 @@
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
-/** shadcn/ui deseninde hap (pill) butonlar, ARION v2 token'larıyla. */
+/**
+ * Kadife Gece butonları (DECISIONS #077): köşeli (2 px), küçük büyük harf, ölçülü harf aralığı.
+ * Parlama gölgesi, basınca küçülme ve ok ikonu yok; hiyerarşiyi dolgu / çizgi ayrımı taşır.
+ */
 export const buttonVariants = cva(
-  "group/btn inline-flex items-center justify-center gap-2 rounded-full font-sans font-semibold tracking-tight transition-[background-color,color,transform,box-shadow] duration-200 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 rounded-[2px] font-sans font-medium uppercase tracking-[0.14em] transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-chalk disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        // Kor zemin üzerinde metin her zaman koyu (kontrast 6.4:1)
-        primary:
-          "bg-ember text-ink shadow-[0_10px_30px_-10px_rgb(255_90_54/0.7)] hover:bg-white",
-        light: "bg-white text-ink hover:bg-ember",
-        dark: "bg-ink text-white hover:bg-ember hover:text-ink",
-        glass: "glass text-white hover:bg-white hover:text-ink",
-        outline: "border border-ink/80 text-ink hover:bg-ink hover:text-white",
+        // Gül zemin üzerinde metin her zaman koyu (CLAUDE.md)
+        primary: "bg-ember text-ink hover:bg-chalk",
+        light: "bg-chalk text-ink hover:bg-ember",
+        dark: "bg-ink text-chalk hover:bg-ember hover:text-ink",
+        // Eski "glass" hap: ince çizgili ikincil buton
+        glass: "btn-glass border border-chalk/40 text-chalk hover:border-chalk hover:bg-chalk hover:text-ink",
+        outline: "border border-ink/80 text-ink hover:bg-ink hover:text-chalk",
       },
       size: {
-        md: "min-h-11 px-5 text-sm",
-        lg: "min-h-13 px-7 text-base",
+        md: "min-h-11 px-6 text-[0.72rem]",
+        lg: "min-h-13 px-8 text-[0.78rem]",
       },
     },
     defaultVariants: { variant: "primary", size: "md" },
@@ -31,25 +34,4 @@ export function buttonClass(
 ): string {
   const { className, ...variants } = props
   return cn(buttonVariants(variants), className)
-}
-
-export function ArrowIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 16 16"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      focusable="false"
-      className={cn(
-        "transition-transform duration-200 group-hover/btn:translate-x-0.5",
-        className,
-      )}
-    >
-      <path d="M3 8h10M9 4l4 4-4 4" />
-    </svg>
-  )
 }

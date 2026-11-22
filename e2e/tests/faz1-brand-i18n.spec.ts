@@ -14,7 +14,9 @@ test.describe("dil yönlendirmesi", () => {
   test("çevrilmiş slug'lar çalışır", async ({ page }) => {
     await page.goto("/en/fit-twin")
     await expect(page.locator("html")).toHaveAttribute("lang", "en")
-    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Fit Twin")
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+      "Choose by millimetre, not by size number.",
+    )
   })
 })
 
@@ -24,28 +26,42 @@ test.describe("Türkçe karakterler", () => {
   }) => {
     await page.goto("/tr")
     const h1 = page.getByRole("heading", { level: 1 })
-    await expect(h1).toHaveText("Seni eve taşır.")
+    await expect(h1).toHaveText(/İstanbul atölyesinden kadın topukluları/)
+    const title = page.getByRole("heading", { level: 2, name: "Gece senin." })
+    await expect(title).toBeVisible()
 
-    // Başlık fontu Archivo (next/font, latin-ext alt kümesi) olmalı, yedek font değil
+    // Başlık fontu Bodoni Moda (next/font, latin-ext), yedek font değil (DECISIONS #070, #078)
     await page.evaluate(() => document.fonts.ready)
-    const family = await h1.evaluate((el) => getComputedStyle(el).fontFamily)
-    expect(family).toMatch(/Archivo/i)
+    const family = await title.evaluate((el) => getComputedStyle(el).fontFamily)
+    expect(family).toMatch(/Bodoni/i)
     const loaded = await page.evaluate(() =>
       [...document.fonts].some(
-        (f) => /Archivo/i.test(f.family) && f.status === "loaded",
+        (f) => /Bodoni/i.test(f.family) && f.status === "loaded",
       ),
     )
     expect(loaded).toBe(true)
 
-    // text-transform: uppercase + lang="tr" → "SENİ EVE TAŞIR." (noktalı büyük İ)
-    const upper = await h1.evaluate((el) => (el as HTMLElement).innerText)
-    expect(upper).toContain("SENİ EVE TAŞIR.")
+    // uppercase + lang="tr": "Kadın" → "KADIN" (noktasız I), "Ayak İkizi" → "AYAK İKİZİ" (noktalı İ)
+    const eyebrow = page.getByText("Kadın · Topuklu").first()
+    const upper = await eyebrow.evaluate((el) => (el as HTMLElement).innerText)
+    expect(upper).toContain("KADIN")
+    const nav = page
+      .getByRole("navigation")
+      .getByRole("link", { name: "Ayak İkizi" })
+      .first()
+    if (await nav.isVisible()) {
+      expect(
+        await nav.evaluate((el) => (el as HTMLElement).innerText),
+      ).toContain("AYAK İKİZİ")
+    }
 
-    // İngilizce slogan lang="en" ile işaretli → "ARION" (noktasız), "ARİON" değil
-    const slogan = page.getByText("Carried by Arion.").first()
-    expect(
-      await slogan.evaluate((el) => (el as HTMLElement).innerText),
-    ).toContain("ARION")
+    // İngilizce etiket lang="en" ile işaretli → "CRAFTED IN" (noktasız I), "CRAFTED İN" değil
+    const tagline = page
+      .getByRole("contentinfo")
+      .getByText("Crafted in Türkiye.")
+    const tag = await tagline.evaluate((el) => (el as HTMLElement).innerText)
+    expect(tag).toContain("CRAFTED IN")
+    expect(tag).not.toContain("İN")
   })
 })
 
@@ -126,7 +142,8 @@ test("mobil menü klavye ve aria-expanded ile çalışır", async ({
     page.getByRole("button", { name: "Menüyü kapat" }),
   ).toHaveAttribute("aria-expanded", "true")
   const nav = page.getByRole("navigation", { name: "Ana menü" })
-  await expect(nav.getByRole("link", { name: "Manifesto" })).toBeVisible()
+  await expect(nav.getByRole("link", { name: "Kadın" })).toBeVisible()
+  await expect(nav.getByRole("link", { name: "Erkek" })).toBeVisible()
   await page.keyboard.press("Escape")
   await expect(nav).toBeHidden()
 })
@@ -144,4 +161,53 @@ test.describe("ekran görüntüleri", () => {
       })
     })
   }
+})
+
+// Açılış: bir taraf Kadın, bir taraf Erkek; üzerine gelinen taraf büyür (DECISIONS #078)
+test("açılışta Kadın / Erkek ikiye bölünür, üzerine gelinen taraf genişler", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 900 })
+  await page.goto("/tr")
+  const women = page.locator("[data-side='women']")
+  const men = page.locator("[data-side='men']")
+  await expect(
+    women.getByRole("heading", { name: "Gece senin." }),
+  ).toBeVisible()
+  await expect(
+    men.getByRole("heading", { name: "Sessiz özgüven." }),
+  ).toBeVisible()
+  await expect(
+    men.getByRole("link", { name: /Salonu keşfet/ }),
+  ).toHaveAttribute("href", "/tr/koleksiyon/erkek")
+  await expect(
+    women.getByRole("link", { name: /Vitrini keşfet/ }),
+  ).toHaveAttribute("href", "/tr/koleksiyon/topuklu")
+  await expect(page.getByRole("heading", { level: 1 })).toHaveCount(1)
+
+  const width = (l: typeof women) =>
+    l.evaluate((el) => el.getBoundingClientRect().width)
+  await men.hover()
+  await expect
+    .poll(async () => (await width(men)) - (await width(women)), {
+      timeout: 5000,
+    })
+    .toBeGreaterThan(250)
+  await women.hover()
+  await expect
+    .poll(async () => (await width(women)) - (await width(men)), {
+      timeout: 5000,
+    })
+    .toBeGreaterThan(250)
+})
+
+// Deneme cam görünümü (DECISIONS #079): anahtar <html data-skin> özniteliğini açıp kapatır
+test("görünüm anahtarı Altın ↔ Cam arasında geçer", async ({ page }) => {
+  await page.goto("/tr")
+  const sw = page.getByTestId("skin-switch")
+  await expect(page.locator("html")).not.toHaveAttribute("data-skin", "glass")
+  await sw.getByRole("button", { name: "Cam" }).click()
+  await expect(page.locator("html")).toHaveAttribute("data-skin", "glass")
+  await sw.getByRole("button", { name: "Altın" }).click()
+  await expect(page.locator("html")).not.toHaveAttribute("data-skin", "glass")
 })

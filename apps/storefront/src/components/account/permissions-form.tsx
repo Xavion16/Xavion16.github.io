@@ -26,7 +26,7 @@ export function PermissionsForm({ items }: { items: PermissionItem[] }) {
   return (
     <form action={action} className="space-y-3">
       {items.map((it) => (
-        <div key={it.purpose} className="glass rounded-3xl p-5">
+        <div key={it.purpose} className="glass rounded-[4px] p-5">
           <div className="flex items-start justify-between gap-4">
             <label htmlFor={`perm-${it.purpose}`} className="font-semibold leading-snug">
               {it.label}
@@ -60,7 +60,7 @@ export function PermissionsForm({ items }: { items: PermissionItem[] }) {
         {state.ok === false && state.saved === false ? <span className="text-sm text-ember">{t("error")}</span> : null}
       </div>
 
-      <div className="glass mt-6 flex flex-wrap items-center justify-between gap-3 rounded-3xl p-5">
+      <div className="glass mt-6 flex flex-wrap items-center justify-between gap-3 rounded-[4px] p-5">
         <div>
           <p className="font-semibold">{t("cookies")}</p>
           <p className="text-sm text-smoke">{t("cookiesNote")}</p>

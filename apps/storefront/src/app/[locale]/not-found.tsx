@@ -1,5 +1,5 @@
 import { getTranslations } from "next-intl/server"
-import { ArrowIcon, buttonClass } from "@/components/ui/button"
+import { buttonClass } from "@/components/ui/button"
 import { Link } from "@/i18n/navigation"
 
 export default async function NotFound() {
@@ -22,7 +22,6 @@ export default async function NotFound() {
         <p className="mt-6 max-w-xl text-lg text-smoke">{t("body")}</p>
         <Link href="/" className={buttonClass({ size: "lg", className: "mt-10" })}>
           {t("back")}
-          <ArrowIcon />
         </Link>
       </div>
     </section>

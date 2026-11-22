@@ -19,7 +19,7 @@ export async function AccountNav({ current }: { current: (typeof ITEMS)[number][
               href={i.href}
               aria-current={current === i.href ? "page" : undefined}
               className={cn(
-                "inline-flex min-h-11 items-center rounded-full border border-white/20 px-5 text-sm font-semibold whitespace-nowrap",
+                "inline-flex min-h-11 items-center rounded-[2px] border border-white/20 px-5 text-sm font-semibold whitespace-nowrap",
                 current === i.href ? "bg-white text-ink" : "hover:bg-white/10",
               )}
             >

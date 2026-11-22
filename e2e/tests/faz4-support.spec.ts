@@ -6,7 +6,7 @@ import {
 } from "@playwright/test"
 import { readdir, readFile } from "node:fs/promises"
 import path from "node:path"
-import { addFirstInStock } from "./helpers"
+import { adminToken, BACKEND, placeOrder, unique } from "./helpers"
 
 /*
  * Faz 4 kabul (Rapor §12):
@@ -14,58 +14,7 @@ import { addFirstInStock } from "./helpers"
  *  - AI, sağlık sorusunda tavsiye vermeyip yönlendirir.
  *  - Sohbet temsilciye devredilebilir.
  */
-const BACKEND = process.env.BACKEND_URL ?? "http://localhost:9000"
 const OUTBOX = path.resolve(__dirname, "../../apps/backend/.outbox")
-const unique = (p: string) =>
-  `${p}+${Date.now()}${Math.floor(Math.random() * 1000)}@example.test`
-
-async function adminToken(request: APIRequestContext): Promise<string> {
-  const env = await readFile(
-    path.resolve(__dirname, "../../apps/backend/.env"),
-    "utf8",
-  )
-  const email = /ARION_ADMIN_EMAIL=(.+)/.exec(env)?.[1]?.trim() ?? ""
-  const password = /ARION_ADMIN_PASSWORD=(.+)/.exec(env)?.[1]?.trim() ?? ""
-  const res = await request.post(`${BACKEND}/auth/user/emailpass`, {
-    data: { email, password },
-  })
-  return ((await res.json()) as { token: string }).token
-}
-
-async function placeOrder(
-  page: Page,
-  email: string,
-): Promise<{ id: string; no: string }> {
-  await addFirstInStock(page, "kadikoy-vulkanize", {
-    color: "Ekru",
-    sizes: ["41", "42", "40", "43", "39", "44", "38", "45", "37"],
-  })
-  await page.goto("/tr/odeme")
-  await page.getByRole("textbox", { name: "E-posta", exact: true }).fill(email)
-  await page.getByRole("textbox", { name: "Ad", exact: true }).fill("Mert")
-  await page.getByRole("textbox", { name: "Soyad", exact: true }).fill("Aydın")
-  await page
-    .getByRole("textbox", { name: "Açık adres", exact: true })
-    .fill("Örnek Mah. İade Sk. No:7")
-  await page.getByRole("textbox", { name: "İl", exact: true }).fill("İzmir")
-  await page.getByRole("textbox", { name: "İlçe", exact: true }).fill("Konak")
-  await page.getByRole("button", { name: "Adresi kaydet ve devam et" }).click()
-  await page.getByRole("button", { name: /Standart Kargo/ }).click()
-  await page
-    .getByLabel("Ön Bilgilendirme Formu’nu okudum, bilgilendirildim.")
-    .check()
-  await page
-    .getByLabel("Mesafeli Satış Sözleşmesi’ni okudum, onaylıyorum.")
-    .check()
-  await page.getByRole("button", { name: "Siparişi Onayla ve Öde" }).click()
-  await page.getByRole("link", { name: "Ödemeyi onayla" }).click()
-  await expect(page).toHaveURL(/\/tr\/siparis\/order_/)
-  const id = /order_[A-Za-z0-9]+/.exec(page.url())![0]
-  const no = ((await page.getByTestId("order-number").textContent()) ?? "")
-    .replace("#", "")
-    .trim()
-  return { id, no }
-}
 
 async function lookup(page: Page, no: string, email: string) {
   await page.goto("/tr/yardim/iade")
@@ -98,7 +47,7 @@ test.describe("yardım merkezi", () => {
     await page.getByLabel("E-posta").fill(unique("talep"))
     await page
       .getByLabel("Mesajın")
-      .fill("Galata Oxford pençe yenileme ne kadar sürer?")
+      .fill("Adrastus Oxford pençe yenileme ne kadar sürer?")
     await page.getByRole("button", { name: "Talebi gönder" }).click()
     await expect(page.getByTestId("ticket-success")).toContainText(
       /ARN-DST-2026-[A-F0-9]{6}/,
@@ -141,7 +90,7 @@ test.describe("sipariş takibi ve iade sihirbazı", () => {
         /Siparişin henüz teslim edilmedi|Cayma süren devam ediyor/,
       ),
     ).toBeVisible()
-    await page.getByRole("checkbox", { name: /Kadıköy Vulkanize/ }).check()
+    await page.getByRole("checkbox", { name: /Hephaistos Vulkanize/ }).check()
     await page.getByText("Beğenmedim", { exact: true }).click()
     await page.getByRole("button", { name: "Talebi oluştur" }).click()
     await expect(page.getByTestId("return-success")).toBeVisible()
@@ -173,7 +122,7 @@ test.describe("sipariş takibi ve iade sihirbazı", () => {
     await expect(warning).toContainText("14 günlük cayma süresi doldu")
     await expect(warning).toContainText("Kusurlu")
 
-    await page.getByRole("checkbox", { name: /Kadıköy Vulkanize/ }).check()
+    await page.getByRole("checkbox", { name: /Hephaistos Vulkanize/ }).check()
     await page.getByText("Beğenmedim", { exact: true }).click()
     await expect(
       page.getByRole("button", { name: "Talebi oluştur" }),
@@ -227,28 +176,27 @@ test.describe("sipariş takibi ve iade sihirbazı", () => {
   })
 })
 
-test.describe("Areion AI danışman", () => {
-  test("rıza olmadan sohbet API'si çalışmaz", async ({ request }) => {
+// Areion gösterim amaçlıdır (DECISIONS #087): yapay zekâ bağlantısı yok, yanıtlar hazır metinlerdir
+test.describe("Areion gösterim danışmanı", () => {
+  test("yapay zekâ API'si kaldırıldı", async ({ request }) => {
     const res = await request.post("/api/areion", {
       data: { locale: "tr", messages: [{ role: "user", text: "Merhaba" }] },
     })
-    expect(res.status()).toBe(403)
+    expect(res.status()).toBe(404)
   })
 
-  test("yapay zekâ olduğunu söyler; sağlık sorusunda tavsiye vermez; temsilciye devreder", async ({
+  test("gösterim amaçlı olduğunu söyler; sağlık sorusunda tavsiye vermez; konu sorusunda bağlantı verir; temsilciye devreder", async ({
     page,
   }, info) => {
     await page.goto("/tr")
     await page.getByRole("button", { name: "Areion'a sor" }).click()
     const chat = page.getByRole("dialog", { name: /Areion/ })
     await expect(chat.getByTestId("ai-disclosure")).toContainText(
-      "yapay zekâ asistanıyım, insan değilim",
+      "yapay zekâ ya da dış servis kullanılmaz",
     )
-    await expect(chat.getByTestId("ai-consent")).toBeVisible()
-    await chat.getByRole("button", { name: "Kabul ediyorum, başla" }).click()
 
     await chat
-      .getByRole("textbox")
+      .getByRole("textbox", { name: /Sorunu yaz/ })
       .fill("Halluks valgusum var, ağrıyor. Hangi ayakkabıyı almalıyım?")
     await chat.getByRole("button", { name: "Gönder" }).click()
     const reply = chat.locator("[data-role=assistant]").last()
@@ -260,7 +208,18 @@ test.describe("Areion AI danışman", () => {
       /halluks valgusunuz var|teşhis edildi/i,
     )
 
-    // Temsilciye devir: form + bilet numarası + Chatwoot (mock) konuşması
+    await chat
+      .getByRole("textbox", { name: /Sorunu yaz/ })
+      .fill("41 mi 42 mi almalıyım?")
+    await chat.getByRole("button", { name: "Gönder" }).click()
+    await expect(
+      chat
+        .locator("[data-role=assistant]")
+        .last()
+        .getByRole("link", { name: "Ayak İkizi'ni aç" }),
+    ).toBeVisible()
+
+    // Temsilciye devir: form + bilet numarası (backend'de gerçek talep açılır)
     const form = chat.getByTestId("handoff-form")
     await expect(form).toBeVisible()
     await form.getByLabel("Ad soyad").fill("Zeynep Er")

@@ -34,14 +34,14 @@ export default async function DataRequestsPage({ params }: PageProps<"/[locale]/
       <p className="mt-4 max-w-2xl leading-relaxed text-smoke">{t("intro")}</p>
 
       <div className="mt-8 grid gap-3 md:grid-cols-2">
-        <div className="glass rounded-3xl p-6">
+        <div className="glass rounded-[4px] p-6">
           {/* Düz bağlantı: dosya indirme */}
           <a href="/api/hesabim/veri-indir" download className={buttonClass({ variant: "light" })}>
             {t("download")}
           </a>
           <p className="mt-3 text-sm text-smoke">{t("downloadNote")}</p>
         </div>
-        <div className="glass rounded-3xl p-6">
+        <div className="glass rounded-[4px] p-6">
           <Link href="/yasal/kvkk-basvuru" className={buttonClass({ variant: "glass" })}>
             {t("newRequest")}
           </Link>
@@ -57,10 +57,10 @@ export default async function DataRequestsPage({ params }: PageProps<"/[locale]/
         ) : (
           <ul className="space-y-3">
             {requests.map((r) => (
-              <li key={r.reference} className="glass flex flex-wrap items-center justify-between gap-3 rounded-3xl p-5">
+              <li key={r.reference} className="glass flex flex-wrap items-center justify-between gap-3 rounded-[4px] p-5">
                 <span className="font-mono text-sm font-semibold">{r.reference}</span>
                 <span className="text-sm">{t(`types.${r.type}`)}</span>
-                <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold">{t(`statuses.${r.status}`)}</span>
+                <span className="rounded-[2px] bg-white/10 px-3 py-1 text-xs font-semibold">{t(`statuses.${r.status}`)}</span>
                 <span className="text-xs text-smoke">{t("due", { date: fmt.format(new Date(r.due_at)) })}</span>
               </li>
             ))}

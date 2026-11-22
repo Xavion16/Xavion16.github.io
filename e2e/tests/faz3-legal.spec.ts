@@ -36,7 +36,7 @@ async function browse(page: Page) {
   for (const url of [
     "/tr",
     "/tr/koleksiyon",
-    "/tr/urun/galata-oxford",
+    "/tr/urun/adrastus-oxford",
     "/tr/manifesto",
   ]) {
     await page.goto(url)
@@ -258,7 +258,7 @@ test.describe("ödeme adımındaki yasal onaylar", () => {
   }) => {
     await page.goto("/tr")
     await rejectCookies(page)
-    await addFirstInStock(page, "beyoglu-loafer", {
+    await addFirstInStock(page, "castor-loafer", {
       color: "Bordo",
       sizes: ["42", "43", "41", "44", "40", "45", "39"],
     })
@@ -295,7 +295,7 @@ test.describe("ödeme adımındaki yasal onaylar", () => {
     const preBox = page.getByTestId("pre-contract")
     await expect(preBox).toContainText("arabulucuya başvurmak zorunludur")
     await expect(preBox).toContainText("İADE KARGO ÜCRETİ SATICIYA AİTTİR")
-    await expect(preBox).toContainText("Beyoğlu Loafer")
+    await expect(preBox).toContainText("Castor Loafer")
     await expect(preBox).toContainText("Ali Can")
     await expect(page.getByTestId("distance-sales")).toContainText(
       "Mesafeli Satış Sözleşmesi",

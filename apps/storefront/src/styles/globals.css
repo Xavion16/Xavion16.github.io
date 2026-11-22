@@ -1,36 +1,41 @@
 @import "tailwindcss";
 
 /*
- * ARION tasarım sistemi v2 — "Performans × Cam" (DECISIONS #026)
- * Koyu zemin, mitten gelen üç canlı vurgu (hız · Poseidon · Demeter), buzlu cam yüzeyler,
- * kalın-sıkışık büyük harf tipografi. Spor markası dili; başka markaların logosu/fontu/sloganı kullanılmaz.
+ * ARION tasarım sistemi v4 — "Altın & Gümüş" (DECISIONS #078, #070'in yerini alır)
+ * Sıcak siyah zemin, altın ana vurgu, bej/fildişi metin, gümüş erkek vurgusu. Mor/bordo yok.
+ * Bodoni Moda başlık + Jost gövde (#077). Kadın = altın, Erkek = gümüş.
+ * Token adları korunur (void, ember, tide…): ember = altın, tide = gümüş, chalk = fildişi.
  *
- * Kontrast (WCAG 2.2 AA) — void (#09090B) zemine göre:
- *   white 19.6:1 · smoke 7.7:1 · ember 6.3:1 · moss 10.4:1 · tide 5.0:1
- * chalk (#F4F4F1) zemine göre: ink 18.4:1 · ink-soft 7.9:1 · ember-ink 5.0:1
- * ember (#FF5A36) zemin üzerinde metin her zaman ink (6.4:1), asla beyaz değil.
+ * Kontrast (WCAG 2.2 AA) — void (#0A0908) zemine göre:
+ *   chalk 17.4:1 · smoke 9.1:1 · ember(altın) 8.4:1 · tide(gümüş) 11.6:1 · moss 9.6:1
+ * chalk (#EFE7D8) zemine göre: ink 17.4:1 · ink-soft 8.0:1 · ember-ink 5.2:1
+ * ember (altın) zemin üzerinde metin her zaman ink (8.4:1).
  */
 @theme {
-  --color-void: #09090b;
-  --color-carbon: #131316;
-  --color-chalk: #f4f4f1;
-  --color-ink: #0b0b0c;
-  --color-ink-soft: #46464d;
-  --color-smoke: #a6a6ad;
-  --color-ember: #ff5a36;
-  --color-ember-ink: #c2361a;
-  --color-tide: #3d7bff;
-  --color-moss: #2bd47d;
+  --color-void: #0a0908;
+  --color-carbon: #15130f;
+  --color-velvet: #221d15;
+  --color-chalk: #efe7d8;
+  --color-sand: #d6c29c;
+  --color-ink: #0a0908;
+  --color-ink-soft: #4d4438;
+  --color-smoke: #b8ae9f;
+  --color-ember: #c9a253;
+  --color-ember-ink: #7a5a1c;
+  --color-tide: #c4c7cc;
+  --color-moss: #8fbf8a;
 
-  --font-sans: var(--font-archivo), "Segoe UI", system-ui, sans-serif;
-  --font-mono: var(--font-jetbrains), ui-monospace, "Cascadia Mono", monospace;
+  --font-sans: var(--font-jost), "Futura", "Century Gothic", system-ui, sans-serif;
+  --font-display: var(--font-bodoni), "Bodoni 72", Didot, Georgia, serif;
+  /* Ayrı mono font yok (DECISIONS #077): etiketler gövde fontuyla, rakamlar tabular */
+  --font-mono: var(--font-jost), "Futura", system-ui, sans-serif;
 
-  --text-mega: clamp(3.4rem, 1.2rem + 10.5vw, 11rem);
-  --text-mega--line-height: 0.86;
-  --text-display: clamp(2.6rem, 1.3rem + 5.6vw, 6.5rem);
-  --text-display--line-height: 0.9;
-  --text-headline: clamp(2rem, 1.2rem + 3.2vw, 4rem);
-  --text-headline--line-height: 0.95;
+  --text-mega: clamp(3.4rem, 1.2rem + 10vw, 10.5rem);
+  --text-mega--line-height: 0.9;
+  --text-display: clamp(2.6rem, 1.3rem + 5.4vw, 6.4rem);
+  --text-display--line-height: 0.94;
+  --text-headline: clamp(2rem, 1.2rem + 3vw, 3.8rem);
+  --text-headline--line-height: 1;
 
   --ease-snap: cubic-bezier(0.2, 0.8, 0.1, 1);
 }
@@ -43,7 +48,7 @@
 
   body {
     background-color: var(--color-void);
-    color: #fff;
+    color: var(--color-chalk);
     font-family: var(--font-sans);
     font-feature-settings: "kern", "liga";
   }
@@ -71,29 +76,48 @@
 }
 
 @layer components {
-  /* Kalın, sıkışık büyük harf başlık — Archivo değişken genişlik ekseni */
+  /* Başlık: Bodoni Moda (didone). Sınıf adı geçmişten kalır; artık sıkışık değil, zarif serif. */
   .condensed {
-    font-weight: 800;
-    font-stretch: 68%;
-    font-variation-settings: "wdth" 68;
-    text-transform: uppercase;
-    letter-spacing: -0.01em;
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    text-transform: none;
+  }
+  /* Başlık içindeki vurgu kelimesi: italik altın */
+  .condensed em,
+  .condensed i {
+    font-style: italic;
+    color: var(--color-ember);
   }
 
   .eyebrow {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
     font-weight: 500;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
   }
+
+  /* Büyük başlık rengi. Krom degrade kaldırıldı (DECISIONS #077): düz krem, Bodoni kendi başına yeterli */
+  .chrome-text {
+    color: var(--color-chalk);
+  }
+
+  /* Gece zemini: sıcak, çok hafif altın ışık havuzları (sınıf adı geçmişten kalır) */
+  .velvet-bg {
+    background:
+      radial-gradient(90% 60% at 20% 10%, #241d13 0%, transparent 70%),
+      radial-gradient(80% 60% at 90% 85%, #17140f 0%, transparent 70%),
+      var(--color-void);
+  }
+
 
   /*
    * Buzlu cam. Arkası ne olursa olsun metin kontrastı korunsun diye panel yeterince koyu;
    * backdrop-filter desteklenmezse opak yedek zemine düşer.
    */
   .glass {
-    background: rgb(20 20 24 / 0.86);
+    background: rgb(21 19 15 / 0.9);
     border: 1px solid rgb(255 255 255 / 0.14);
     box-shadow:
       inset 0 1px 0 rgb(255 255 255 / 0.12),
@@ -108,7 +132,7 @@
 
   @supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
     .glass {
-      background: rgb(16 16 20 / 0.55);
+      background: rgb(21 19 15 / 0.6);
       -webkit-backdrop-filter: blur(22px) saturate(160%);
       backdrop-filter: blur(22px) saturate(160%);
     }
@@ -123,7 +147,7 @@
   .demo-badge {
     display: inline-flex;
     align-items: center;
-    border-radius: 999px;
+    border-radius: 2px;
     border: 1px solid currentColor;
     padding: 0.1rem 0.5rem;
     font-family: var(--font-mono);
@@ -159,16 +183,16 @@
 }
 
 .orb-ember {
-  background: radial-gradient(circle at 30% 30%, #ff7a4d, #ff3d1f 60%, transparent 70%);
+  background: radial-gradient(circle at 30% 30%, #d9b770, #7a5a1c 60%, transparent 70%);
 }
 
 .orb-tide {
-  background: radial-gradient(circle at 40% 40%, #5b8dff, #2a55e0 60%, transparent 70%);
+  background: radial-gradient(circle at 40% 40%, #4a3f2c, #221d15 60%, transparent 70%);
   animation-duration: 22s;
 }
 
 .orb-moss {
-  background: radial-gradient(circle at 50% 50%, #4ff0a0, #14a85d 60%, transparent 70%);
+  background: radial-gradient(circle at 50% 50%, #c4c7cc, #5b5f66 60%, transparent 70%);
   animation-duration: 26s;
 }
 
@@ -284,7 +308,7 @@
   transform: translateY(-6px) scale(1.02) rotate(-0.6deg);
   box-shadow:
     0 0 0 2px var(--color-ember),
-    0 24px 60px -20px rgb(255 90 54 / 0.65);
+    0 24px 60px -20px rgb(201 162 83 / 0.45);
 }
 .voice-quote.is-playing .voice-quote-text {
   animation: voice-breathe 2.4s ease-in-out infinite;
@@ -321,6 +345,41 @@
   }
 }
 
+/* Ayak İkizi ölçüm çizimi */
+.measure-line {
+  stroke-dasharray: 260;
+  stroke-dashoffset: 260;
+  animation: measure-draw 2.4s ease-in-out infinite;
+}
+.measure-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: measure-pulse 1.2s ease-in-out infinite;
+}
+@keyframes measure-draw {
+  0% {
+    stroke-dashoffset: 260;
+  }
+  55%,
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes measure-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.6);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .measure-line {
+    stroke-dashoffset: 0;
+  }
+}
+
 /* prefers-reduced-motion: bütün hareket durur (Rapor §4) */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -345,4 +404,100 @@
   .voice-quote.is-playing {
     transform: none;
   }
+}
+
+
+/* Açılış: ikiye bölünmüş Kadın / Erkek sahnesi (DECISIONS #078) */
+.split-side {
+  --lx: 50%;
+  --ly: 55%;
+  transition: flex-grow 0.9s var(--ease-snap);
+}
+.split-img {
+  transition:
+    filter 0.9s var(--ease-snap),
+    transform 1.4s var(--ease-snap);
+}
+/* Işık: varsayılan olarak ortada sabit, yumuşak bir spot */
+.split-light {
+  background: radial-gradient(circle 52vmin at var(--lx) var(--ly), rgb(201 162 83 / 0.08), transparent 60%, rgb(10 9 8 / 0.35) 100%);
+}
+.split-reveal {
+  transition:
+    opacity 0.6s ease,
+    transform 0.8s var(--ease-snap);
+}
+/* Açıklama: kapalıyken yer kaplamaz, taraf genişleyince açılır */
+.split-collapse {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition:
+    grid-template-rows 0.8s var(--ease-snap),
+    opacity 0.6s ease;
+}
+.split-collapse > * {
+  min-height: 0;
+  overflow: hidden;
+}
+@media (min-width: 768px) {
+  /* Üzerine gelinen (ya da klavyeyle odaklanılan) taraf büyür, öteki daralır ve loşlaşır */
+  .split-side:hover,
+  .split-side:focus-within {
+    flex-grow: 1.85;
+  }
+  .split-hero:has(.split-side:hover) .split-side:not(:hover) .split-img,
+  .split-hero:has(.split-side:focus-within) .split-side:not(:focus-within) .split-img {
+    filter: brightness(0.4) saturate(0.15);
+  }
+  .split-side:hover .split-img,
+  .split-side:focus-within .split-img {
+    filter: brightness(1.08) saturate(1.05);
+    transform: scale(1.03);
+  }
+  /* İkincil metin genişleyen tarafta açılır (fare cihazlarında) */
+  @media (hover: hover) {
+    .split-side .split-reveal {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    .split-side .split-collapse {
+      grid-template-rows: 0fr;
+      opacity: 0;
+    }
+    .split-side:hover .split-reveal,
+    .split-side:focus-within .split-reveal {
+      opacity: 1;
+      transform: none;
+    }
+    .split-side:hover .split-collapse,
+    .split-side:focus-within .split-collapse {
+      grid-template-rows: 1fr;
+      opacity: 1;
+    }
+  }
+}
+/* İmleç takibi: aydınlık alan imleci izler, dışı karanlıkta kalır */
+.split-hero[data-light="follow"] .split-side:hover .split-light {
+  background: radial-gradient(circle 36vmin at var(--lx) var(--ly), rgb(240 220 170 / 0.18), transparent 55%, rgb(10 9 8 / 0.55) 100%);
+}
+
+/* Kodlar ve sıra numaraları: ayrı mono font yerine tabular rakam (DECISIONS #077) */
+.font-mono {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+/* Ürün galerisi: görsel değişince yumuşak geçiş (DECISIONS #083) */
+.gallery-in {
+  animation: gallery-in 0.45s ease-out both;
+}
+@keyframes gallery-in {
+  from {
+    opacity: 0;
+  }
+}
+/* Mobil sepet çubuğu görünürken sabit düğmeler yukarı kalkar */
+html[data-buybar="on"] [data-testid="areion-launcher"],
+html[data-buybar="on"] [data-testid="skin-switch"] {
+  bottom: 5.25rem;
 }

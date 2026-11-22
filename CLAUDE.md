@@ -28,13 +28,12 @@ Medusa'ya özel dizin yapısı, kurallar ve yasak yollar için [AGENTS.md](./AGE
 - Ayak İkizi verisi şifreli saklanır, AI'a gönderilmez, sağlık teşhisi dili kullanılmaz.
 - Üstü çizili fiyat sadece price_history'den hesaplanır.
 - Yasal metin değişirse LegalTextVersion artırılır.
-- AI üretimi medya "Yapay zekâ ile üretilmiştir" etiketi taşır.
 
 ## Tasarım
 
-- Tasarım yönü: "Performans × Cam" (DECISIONS #026) — koyu zemin, kor/mavi/yeşil vurgular, buzlu cam yüzeyler, Archivo sıkışık büyük harf. Token'lar `apps/storefront/src/styles/globals.css`. Rapor §4'teki palet bunun yerini almıştır.
+- Tasarım yönü: "Altın & Gümüş" (DECISIONS #078, #070 yerine) — sıcak siyah zemin, altın (#c9a253) ana vurgu, gümüş (#c4c7cc) erkek vurgusu, bej/fildişi metin; mor/bordo yok. Açılış ikiye bölünmüş Kadın / Erkek. Cam görünümü yalnızca deneme anahtarı (#079). Bodoni Moda + Jost (#077: hap buton, mono etiket, krom metin yok; köşeli butonlar), fotoğraf ağırlıklı. Kadın = yalnızca topuklu, Erkek ayrı dünya. Token'lar `apps/storefront/src/styles/globals.css`.
 - Başka markaların logosu, fontu, sloganı ya da görselleri kullanılmaz.
-- Cam panellerde metin kontrastı AA'yı geçmeli; kor zemin üzerinde metin her zaman koyu.
+- Cam panellerde metin kontrastı AA'yı geçmeli; altın (ember) zemin üzerinde metin her zaman koyu.
 - prefers-reduced-motion'a saygı göster. WCAG 2.2 AA hedefi.
 
 ## Çalışma şekli

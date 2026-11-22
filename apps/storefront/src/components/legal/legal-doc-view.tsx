@@ -30,7 +30,7 @@ export async function LegalDocView({
         {t("version", { version: doc.version, date })} · {t("hash")}: {contentHash(doc)}
       </p>
       {locale === "en" ? (
-        <p className="mt-3 rounded-2xl bg-ink/5 px-4 py-3 text-sm font-semibold">{t("binding")}</p>
+        <p className="mt-3 rounded-[4px] bg-ink/5 px-4 py-3 text-sm font-semibold">{t("binding")}</p>
       ) : null}
       {doc.intro ? <p className="mt-5 leading-relaxed">{doc.intro}</p> : null}
 
@@ -52,7 +52,7 @@ export async function LegalDocView({
             </ul>
           ) : null}
           {s.table ? (
-            <div className="mt-4 overflow-x-auto rounded-2xl border border-ink/10" tabIndex={0} role="region" aria-label={s.heading ?? doc.title}>
+            <div className="mt-4 overflow-x-auto rounded-[4px] border border-ink/10" tabIndex={0} role="region" aria-label={s.heading ?? doc.title}>
               <table className="w-full text-left text-sm">
                 <thead className="bg-ink/5">
                   <tr>

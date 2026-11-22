@@ -45,6 +45,18 @@ export function CookieConsent({
     dialogRef.current?.showModal()
   }, [choice])
 
+  // Statik yayında sunucu çerezi okunamaz: tercih bu tarayıcıda saklanır (DECISIONS #087)
+  useEffect(() => {
+    if (process.env.NEXT_PUBLIC_ARION_STATIC !== "1" || initial !== null) return
+    try {
+      const raw = localStorage.getItem("arion-cookie-choice")
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- tarayıcı deposu yalnızca istemcide okunur
+      if (raw) setChoice(JSON.parse(raw) as NonNullable<ClientChoice>)
+    } catch {
+      // gizli pencere vb.
+    }
+  }, [initial])
+
   useEffect(() => {
     const handler = () => openPrefs()
     window.addEventListener(OPEN_PREFS_EVENT, handler)
@@ -60,7 +72,7 @@ export function CookieConsent({
   }
 
   const btn =
-    "inline-flex min-h-11 flex-1 items-center justify-center rounded-full px-5 text-sm font-semibold transition-colors sm:flex-none"
+    "inline-flex min-h-11 flex-1 items-center justify-center rounded-[2px] px-5 text-sm font-semibold transition-colors sm:flex-none"
 
   return (
     <>
@@ -70,7 +82,7 @@ export function CookieConsent({
         <section
           role="region"
           aria-labelledby={bannerTitleId}
-          className="glass fixed inset-x-3 bottom-3 z-[80] mx-auto max-w-3xl rounded-[28px] bg-[rgb(16_16_20/0.94)] p-5 sm:inset-x-6 sm:p-6"
+          className="glass fixed inset-x-3 bottom-3 z-[80] mx-auto max-w-3xl rounded-[4px] bg-[rgb(14_12_10/0.94)] p-5 sm:inset-x-6 sm:p-6"
         >
           <h2 id={bannerTitleId} className="text-lg font-bold">
             {t("title")}
@@ -116,7 +128,7 @@ export function CookieConsent({
       <dialog
         ref={dialogRef}
         aria-labelledby={titleId}
-        className="glass m-auto w-[min(640px,calc(100vw-2rem))] rounded-[28px] bg-[rgb(16_16_20/0.96)] p-0 text-white backdrop:bg-black/70"
+        className="glass m-auto w-[min(640px,calc(100vw-2rem))] rounded-[4px] bg-[rgb(14_12_10/0.96)] p-0 text-white backdrop:bg-black/70"
       >
         <form
           method="dialog"
@@ -134,7 +146,7 @@ export function CookieConsent({
             {categories.map((c) => {
               const id = `cookie-${c.key}`
               return (
-                <li key={c.key} className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+                <li key={c.key} className="rounded-[4px] border border-white/10 bg-white/[0.04] p-4">
                   <div className="flex items-start justify-between gap-4">
                     <label htmlFor={id} className="font-semibold">
                       {c.name}

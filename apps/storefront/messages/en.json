@@ -21,7 +21,17 @@
     "menuClose": "Close menu",
     "language": "Language",
     "switchTo": "Türkçe",
-    "switchToLabel": "Türkçe'ye geç"
+    "switchToLabel": "Türkçe'ye geç",
+    "women": "Women",
+    "men": "Men",
+    "kids": "Kids",
+    "mega": {
+      "allWomen": "All heels",
+      "allMen": "All men's",
+      "classic": "Classic",
+      "boots": "Winter boots",
+      "sneakers": "Sneakers"
+    }
   },
   "footer": {
     "tagline": "Crafted in Türkiye.",
@@ -160,6 +170,19 @@
         "finishing": "Finishing",
         "qc": "Quality check",
         "shipping": "Shipping"
+      },
+      "more": "See the workshop",
+      "stepDesc": {
+        "cutting": "Leather is cut by hand over a paper pattern, grain running the same way in every piece.",
+        "upper": "Upper pieces are hand-stitched with waxed thread and two needles.",
+        "lasting": "The upper is pulled over a wooden last; this step gives the shoe its shape.",
+        "finishing": "The final polish goes on by hand, cloth and wax, layer by layer."
+      },
+      "craftAlt": {
+        "cutting": "A shoemaker's hands cutting cognac leather over a paper pattern",
+        "upper": "A shoemaker's hands stitching a brown upper with waxed thread",
+        "lasting": "A shoemaker's hands pulling an upper over a wooden last with pliers",
+        "finishing": "A shoemaker's hands polishing the toe of a finished oxford"
       }
     },
     "promises": {
@@ -193,6 +216,58 @@
       "m4": "Shoe Passport",
       "m5": "Lifetime Plan",
       "m6": "Free return shipping"
+    },
+    "kadife": {
+      "hero": {
+        "eyebrow": "Women · Heels",
+        "title": "The night is <em>yours.</em>",
+        "lead": "Velvet, satin, patent. Heels shaped like sculpture in our Istanbul workshop; every model made for line, balance and light. Every pair fitted to the millimetre with Fit Twin.",
+        "cta": "Explore the vitrine",
+        "ctaAlt": "See the stiletto",
+        "imageAlt": "A gold slingback stiletto under a spotlight on a black reflective floor"
+      },
+      "room": {
+        "eyebrow": "Women · Heels only",
+        "title": "The Heel <em>Vitrine.</em>",
+        "lead": "The women's collection is devoted to one thing: heels. Each model is treated like sculpture; line, balance and light.",
+        "cta": "Discover heels",
+        "see3d": "See Artemis",
+        "tiles": {
+          "stiletto": "Selene Stiletto",
+          "cizme": "Artemis Knee Boot",
+          "slingback": "Aurea Slingback",
+          "bot": "Hera Ankle Boot"
+        },
+        "tileAlt": "{name}, on a warm black studio backdrop"
+      },
+      "salon": {
+        "eyebrow": "Men · Salon",
+        "title": "The Men's <em>Salon.</em>",
+        "lead": "A separate salon for men: cognac leathers, hand polish, quiet confidence. Goodyear welted, resoleable.",
+        "cta": "Men's collection",
+        "imageAlt": "A black oxford, a burgundy loafer and a tan derby side by side"
+      },
+      "explore": {
+        "title": "Three worlds, <em>one fit.</em>",
+        "women": "Women",
+        "womenSub": "Heels",
+        "men": "Men",
+        "menSub": "Classics · Boots · Sneakers",
+        "kids": "Kids",
+        "kidsSub": "With growing room"
+      },
+      "credit": "Images are for DEMO purposes.",
+      "heroMen": {
+        "eyebrow": "Men · Salon",
+        "title": "Quiet <em>confidence.</em>",
+        "lead": "Cognac leathers, hand-burnished finish, Goodyear welt. Men's shoes with resoleable soles, made to stay with you for years. Every pair fitted to the millimetre with Fit Twin.",
+        "cta": "Explore the salon",
+        "ctaAlt": "See the workshop",
+        "imageAlt": "A polished cognac brogue oxford under a spotlight on a black reflective floor"
+      },
+      "split": {
+        "title": "ARION: women's heels and men's shoes from an Istanbul workshop"
+      }
     }
   },
   "manifesto": {
@@ -233,7 +308,6 @@
       "cocuk": "A flexible sole, a wide toe box and room to grow. Measuring reminders as the foot grows."
     },
     "back": "Back to home",
-    "voiceLabel": "AI-generated voice",
     "listen": "Listen",
     "stop": "Stop"
   },
@@ -279,7 +353,16 @@
       "clear": "Clear",
       "madeToOrder": "Made in the atelier",
       "manifesto": "Why we build it this way",
-      "colors": "{count} colours"
+      "colors": "{count} colours",
+      "groups": {
+        "erkek": {
+          "name": "Men",
+          "manifesto": "The Men's Salon: classics, boots and sneakers. Goodyear welted, resoleable, quietly confident.",
+          "tab": "Men"
+        }
+      },
+      "shotAlt": "{name}, side view on a warm black studio backdrop",
+      "shotTopAlt": "{name}, top view"
     },
     "product": {
       "color": "Colour",
@@ -358,7 +441,172 @@
       "ballWidthMm": "Forefoot width (mm)",
       "fitting": "Width",
       "chartNote": "The fit engine works in millimetres, not sizes. UK/US equivalents are approximate.",
-      "related": "From the same category"
+      "related": "From the same category",
+      "viewer": {
+        "tabs": {
+          "drawing": "Drawing",
+          "model": "3D · AR",
+          "anatomy": "Anatomy"
+        },
+        "tabsLabel": "Product view",
+        "load": "Load 3D model",
+        "loading": "Loading model…",
+        "ar": "View in your room (AR)",
+        "rotateHint": "Drag to rotate, pinch to zoom.",
+        "demoModel": "Representative 3D model (DEMO) — not a scan of the actual product.",
+        "modelAlt": "Representative 3D model of {name}",
+        "anatomy": {
+          "title": "Inside the shoe",
+          "lead": "Separate the layers and see what each part does.",
+          "explode": "Separate layers",
+          "layers": "Layers",
+          "canvasLabel": "Exploded 3D view of the layers of {name}",
+          "reducedMotion": "Reduced motion is on: auto-rotate is off."
+        },
+        "layers": {
+          "upper": {
+            "name": "Upper",
+            "desc": "The surface that wraps the foot. Leather or textile; it should breathe and hold its shape."
+          },
+          "lining": {
+            "name": "Lining",
+            "desc": "The inside of the upper. Reduces friction and moves moisture away."
+          },
+          "membrane": {
+            "name": "Waterproof membrane",
+            "desc": "Between upper and lining; keeps water out while letting vapour escape."
+          },
+          "insole": {
+            "name": "Insole",
+            "desc": "Where the foot rests; it takes the shape of your foot over time."
+          },
+          "shank": {
+            "name": "Shank",
+            "desc": "A stiff strip under the arch; stops the shoe folding in the middle and spreads the load in heels."
+          },
+          "midsole": {
+            "name": "Midsole",
+            "desc": "The cushioning layer. Foam in sneakers, a thin leather filler in classics."
+          },
+          "outsole": {
+            "name": "Outsole",
+            "desc": "The part that meets the ground: grip, wear and repairability are decided here."
+          },
+          "heel": {
+            "name": "Heel",
+            "desc": "Carries the centre of gravity. Its height and angle directly affect balance."
+          },
+          "tongue": {
+            "name": "Tongue",
+            "desc": "Spreads lace pressure and protects the top of the foot."
+          },
+          "laces": {
+            "name": "Laces",
+            "desc": "Adjust the upper to the volume of your foot; they matter with a high arch."
+          },
+          "straps": {
+            "name": "Hook-and-loop straps",
+            "desc": "So children can put them on and take them off themselves."
+          },
+          "accent": {
+            "name": "Mane line",
+            "desc": "ARION's side accent; a demo reflective material."
+          }
+        },
+        "stories": {
+          "topuklu": {
+            "title": "Heels: engineered balance",
+            "points": [
+              "Centre of gravity: the higher the heel, the more load shifts to the forefoot, so the last is kept wider there.",
+              "Heel angle: the heel tip is set at the angle that puts it right under the centre of gravity.",
+              "Shank: a steel strip carries the arch and stops the shoe collapsing in the middle."
+            ]
+          },
+          "kislik-bot": {
+            "title": "Winter boots: dry inside, grippy outside",
+            "points": [
+              "The membrane sits between upper and lining; seams are sealed with tape.",
+              "Stitch line: where sole meets upper is the weakest point for water, so it is double stitched.",
+              "Lugs: deep, spaced lugs shed snow and mud."
+            ]
+          },
+          "sneaker": {
+            "title": "Sneakers: light and responsive",
+            "points": [
+              "Midsole foam absorbs impact and returns energy.",
+              "The heel lock stops the foot sliding while the forefoot stays free.",
+              "The outsole is only thickened where it wears."
+            ]
+          },
+          "klasik": {
+            "title": "Classics: built to be resoled",
+            "points": [
+              "The Goodyear welt lets a new sole be fitted without separating the upper.",
+              "The leather insole takes the shape of your foot over time.",
+              "The shank supports the arch on long walks."
+            ]
+          },
+          "cocuk": {
+            "title": "Kids: room for growing feet",
+            "points": [
+              "A wide toe box lets the toes move freely.",
+              "A flexible outsole doesn't fight the natural bend of each step.",
+              "The last includes 12 mm of growing room."
+            ]
+          }
+        },
+        "stageTitle": "3D product stage",
+        "stageLabel": "Interactive 3D model of {name}",
+        "demoShort": "3D · DEMO",
+        "anatomyToggle": "Anatomy",
+        "arTitle": "View in augmented reality",
+        "arClose": "Close",
+        "arHint": "AR works on phones and tablets: Scene Viewer opens on Android, Quick Look on iPhone. On desktop you can rotate and inspect the model.",
+        "rotateLeft": "Rotate left",
+        "rotateRight": "Rotate right",
+        "pause": "Pause",
+        "play": "Rotate",
+        "reset": "Reset",
+        "modelAdapted": "materials reassigned by ARION",
+        "view3d": "View in 3D",
+        "viewPhoto": "Photo",
+        "viewSide": "Side view",
+        "viewTop": "Top view",
+        "thumbs": "Product images"
+      },
+      "durability": {
+        "whatItMeans": "What does this mean?",
+        "meanings": {
+          "flex_cycles": "How many times the sole can bend without cracking. Higher means a longer-lasting sole.",
+          "abrasion": "Volume of material lost in a standard rubbing test. Lower means slower wear.",
+          "waterproof_hours": "How long the shoe stays dry inside while flexing under water.",
+          "slip_wet": "Slip resistance coefficient on wet floors. Higher means better grip.",
+          "slip_dry": "Slip resistance coefficient on dry floors.",
+          "weight": "Total weight of a pair. Lightness isn't a priority in every category.",
+          "heel_stability": "How far the heel splays sideways under load. Lower means a steadier heel."
+        },
+        "compareTitle": "Priorities by category",
+        "compareLead": "The same tests don't carry the same weight in every category.",
+        "priority": {
+          "high": "High priority",
+          "medium": "Medium priority",
+          "low": "Low priority"
+        }
+      },
+      "page": {
+        "onThisPage": "On this page",
+        "fit": "Fit",
+        "anatomy": "Anatomy",
+        "lifetime": "Lifetime",
+        "anatomyLead": "The layers of this model and why it is built this way.",
+        "openAnatomy": "Separate layers on the stage",
+        "lifetimeTitle": "Let this pair grow old with you",
+        "lifetimeBody": "Every pair comes with a passport: last, materials, maker and repair history. When the sole wears we resole it; at the end of its life we take it back and give it a second life.",
+        "repairability": "Repairability",
+        "passportSample": "See a sample passport",
+        "lifetimePlan": "Lifetime Plan"
+      },
+      "chooseSize": "Choose size"
     },
     "cart": {
       "title": "Cart",
@@ -461,7 +709,8 @@
       "errors": {
         "invalidCredentials": "Email or password is incorrect.",
         "invalidRegister": "Please check the highlighted fields.",
-        "registerFailed": "Account could not be created. This email may already be registered."
+        "registerFailed": "Account could not be created. This email may already be registered.",
+        "demoOnly": "This is a coursework site: membership is for demonstration only; no account is created."
       },
       "nav": {
         "overview": "Overview",
@@ -480,7 +729,7 @@
         "lastChange": "Last change: {date}",
         "cookies": "Cookie preferences",
         "cookiesNote": "Cookie permissions are managed per browser.",
-        "fitTwinPhase": "Fit Twin opens in Phase 5; you can already give or refuse this consent.",
+        "fitTwinPhase": "If you withdraw this consent, your saved Fit Twin is permanently deleted.",
         "openCookies": "Open cookie preferences"
       },
       "dataRequests": {
@@ -519,6 +768,13 @@
     "errors": {
       "selectVariant": "Please choose all options.",
       "addFailed": "The item could not be added. It may be out of stock."
+    },
+    "staticCart": {
+      "shippingFree": "Free",
+      "checkout": "Complete order (demo)",
+      "demoNote": "This is a coursework site: no payment is taken, no order is created and nothing is shipped.",
+      "doneTitle": "Thank you.",
+      "doneBody": "Your demo order is complete. As this is a coursework site, no payment was taken and no real order was created."
     }
   },
   "cookies": {
@@ -695,28 +951,404 @@
     "open": "Ask Areion",
     "close": "Close chat",
     "title": "Areion",
-    "subtitle": "AI advisor",
-    "disclosure": "I'm an AI assistant, not a person. I don't give health advice and I never ask for card details.",
-    "consentTitle": "Before we start",
-    "consentAccept": "I agree, start",
-    "consentDecline": "I'd rather talk to a person",
-    "privacy": "Privacy notice",
+    "subtitle": "Shoe advisor · demo",
+    "disclosure": "I'm a demonstration assistant: my answers are prepared texts; no AI or external service is used. I never ask for card details.",
     "placeholder": "Type your question… (e.g. 41 or 42?)",
     "send": "Send",
-    "thinking": "Areion is thinking…",
+    "thinking": "Areion is typing…",
     "handoff": "Talk to a person",
     "handoffName": "Full name",
     "handoffEmail": "Email",
     "handoffSubmit": "Send to an agent",
-    "handoffDone": "I've connected you to an agent. Your ticket number is {ticket}. Your conversation (with personal details masked) was passed on.",
-    "error": "I can't answer right now. I can connect you to a person if you like.",
+    "handoffDone": "Your request was received as {ticket} (demo). As this is a coursework site it is not sent to a real agent.",
     "greeting": "Hi, I'm Areion. Ask me about sizes, lasts, shipping, returns or our products.",
-    "masked": "Personal details are masked before sending."
+    "replies": {
+      "health": "I can't give advice on health matters; for pain or discomfort in your feet, please consult a doctor. Fit Twin measurements are only for size and last recommendations.",
+      "size": "The surest way to your size is Fit Twin: it measures your foot on A4 paper and scores every model by its last. If you're between sizes, go half a size up in heels.",
+      "returns": "You can return within 14 days of delivery under your right of withdrawal; return shipping is on us. The returns wizard walks you through it.",
+      "shipping": "Orders ship within 1–3 business days. You can follow the status on the order tracking page.",
+      "repair": "ARION shoes are repairable: resoling and welt renewal are covered by the Lifetime Plan. Open a request with the code in your shoe passport.",
+      "heels": "The women's collection is heels only: Selene Stiletto, Eos Block Heel, Artemis Heeled Knee Boot, Hera Ankle Boot, Aurea Slingback, Aphrodite Sandal and Astra Mule.",
+      "men": "The men's salon has classics such as Adrastus Oxford, Castor Loafer, Pollux Derby and Herakles Chelsea, plus boots and sneakers.",
+      "kids": "Our kids' models leave 10–12 mm of growing room: Iris Strap Shoe, Triton Kids' Boot, Hebe Kids' Sneaker and Delphinus Kids' Sandal.",
+      "fallback": "I didn't quite get that. Ask me about sizing, lasts, shipping, returns, repairs or our shoes; I can also pass you to an agent."
+    },
+    "links": {
+      "fitTwin": "Open Fit Twin",
+      "returns": "Returns wizard",
+      "help": "Help centre",
+      "lifetime": "Lifetime Plan",
+      "heels": "See the heels",
+      "men": "Men's salon",
+      "kids": "Kids' models"
+    }
   },
   "footerHelp": {
     "helpCenter": "Help centre",
     "tracking": "Order tracking",
     "returns": "Returns & exchanges",
     "contact": "Contact"
+  },
+  "fit": {
+    "meta": {
+      "title": "Fit Twin",
+      "description": "Enter your foot measurements and see a 0–100 fit score and recommended size for every last."
+    },
+    "eyebrow": "Fit Twin",
+    "title": "Choose by millimetre, not by size number.",
+    "lead": "Measure your foot once and see the fit score, recommended size and width for every ARION last, with reasons.",
+    "privacy": {
+      "title": "Where are your measurements kept?",
+      "guest": "If you're not signed in, your measurements stay in this tab only; they never reach our servers and are deleted when you close the tab.",
+      "member": "If you're signed in and give explicit consent, your measurements are stored encrypted in your account. Without consent, nothing is saved.",
+      "noAi": "Fit Twin data is never sent to AI services and is not used for any health assessment.",
+      "notice": "Privacy notice"
+    },
+    "steps": {
+      "method": "Method",
+      "length": "Length",
+      "width": "Width",
+      "arch": "Arch",
+      "preference": "Preference",
+      "result": "Result"
+    },
+    "progress": "Step {current} of {total}",
+    "next": "Continue",
+    "back": "Back",
+    "method": {
+      "title": "How would you like to measure?",
+      "manual": "Measure with a ruler",
+      "manualHint": "A sheet of paper, a pen and a ruler. About 3 minutes.",
+      "paper": "A4 paper photo (experimental)",
+      "paperHint": "Stand on an A4 sheet and take a photo. The photo is processed only in your browser and never uploaded."
+    },
+    "length": {
+      "title": "Foot length",
+      "steps": [
+        "Place the paper on the floor against a wall and put your heel against the wall.",
+        "Stand with your weight on that foot and mark the tip of your longest toe.",
+        "Measure from the wall to the mark in millimetres. Measure both feet and use the larger one."
+      ],
+      "label": "Length (mm)",
+      "hint": "Example: 26.5 cm = 265 mm. Measuring in the evening gives more accurate results."
+    },
+    "width": {
+      "title": "Forefoot width",
+      "steps": [
+        "With your foot on the paper, mark the two widest points across the big-toe and little-toe joints.",
+        "Measure the distance between the marks in millimetres."
+      ],
+      "label": "Width (mm)",
+      "girth": "Forefoot girth (mm, optional)",
+      "girthHint": "Wrap a tape measure around the widest part. Leave empty if unsure."
+    },
+    "arch": {
+      "title": "Arch profile",
+      "hint": "Step on paper with a wet foot and look at the print. This is not a health assessment; it only helps choose the upper volume.",
+      "flat": "Low",
+      "flatHint": "Most of the print is visible",
+      "normal": "Medium",
+      "normalHint": "The middle of the print clearly narrows",
+      "high": "High",
+      "highHint": "A thin strip between heel and forefoot"
+    },
+    "preference": {
+      "title": "How do you like shoes to feel?",
+      "snug": "Snug",
+      "snugHint": "Hugs the foot, no movement",
+      "regular": "Balanced",
+      "regularHint": "Right for most people",
+      "roomy": "Roomy",
+      "roomyHint": "More space for the toes"
+    },
+    "paper": {
+      "title": "A4 method",
+      "intro": "Place your foot on an A4 sheet with your heel touching the short edge. Take a photo from above with all four corners of the paper visible.",
+      "choose": "Choose photo",
+      "local": "The photo is processed on your device; it is not uploaded and is discarded when you leave the page.",
+      "instructions": "Tap in order: the 4 corners of the paper (top left, top right, bottom right, bottom left), heel, tip of the longest toe, and the two widest points of the forefoot.",
+      "pointLabels": [
+        "Top-left corner",
+        "Top-right corner",
+        "Bottom-right corner",
+        "Bottom-left corner",
+        "Heel",
+        "Toe tip",
+        "Width point 1",
+        "Width point 2"
+      ],
+      "next": "Next: {label}",
+      "done": "Measured: length {length} mm, width {width} mm",
+      "reset": "Reset points",
+      "use": "Use these measurements",
+      "canvasLabel": "Area for marking points on the photo"
+    },
+    "errors": {
+      "length_range": "Length must be between 100 and 340 mm.",
+      "width_range": "Width must be between 40 and 140 mm.",
+      "girth_range": "Girth must be between 120 and 340 mm.",
+      "ratio": "Width and length don't seem to match; could you check the measurement again?"
+    },
+    "result": {
+      "title": "Your Fit Twin is ready",
+      "summary": "Length {length} mm · Width {width} mm",
+      "recommendations": "Lasts that fit you best",
+      "scoreLabel": "Fit score",
+      "size": "Recommended: {size} {width}",
+      "viewProduct": "View product",
+      "browse": "See what fits me",
+      "edit": "Edit measurements"
+    },
+    "save": {
+      "guestTitle": "Kept in this tab",
+      "guestBody": "Deleted when you close the tab. To keep it, sign in and give explicit consent.",
+      "signIn": "Sign in",
+      "memberTitle": "Save to your account",
+      "consentHint": "Your measurements are not saved unless the box is ticked.",
+      "save": "Save encrypted",
+      "saved": "Your Fit Twin has been saved to your account, encrypted.",
+      "consentRequired": "Tick the explicit consent box to save.",
+      "error": "Couldn't save. Please try again.",
+      "delete": "Delete my Fit Twin",
+      "deleteConfirm": "Your measurements will be permanently deleted and your consent withdrawn. Are you sure?",
+      "deleted": "Your Fit Twin has been permanently deleted.",
+      "clearGuest": "Remove from this tab"
+    },
+    "reasons": {
+      "length_ok": "Length is within the ideal toe allowance for this last.",
+      "length_short": "Even in the recommended size your foot is {mm} mm longer than the ideal allowance; this last may feel short.",
+      "length_long": "Even in the smallest size your foot is {mm} mm shorter than the ideal allowance; the shoe may feel loose.",
+      "width_ok": "Your forefoot width matches this last.",
+      "width_narrow": "{suggest, select, W {Your forefoot is {mm} mm wider than this last's standard width; we recommend the W (wide) option.} N {Your forefoot is {mm} mm wider than this last.} other {Your forefoot is {mm} mm wider than this last; there's no wide option for this model.}}",
+      "width_wide": "{suggest, select, N {Your forefoot is {mm} mm narrower than this last; we recommend the N (narrow) option.} other {Your forefoot is {mm} mm narrower than this last; the shoe may feel loose at the front.}}",
+      "girth_tight": "Your forefoot girth is {mm} mm above this last; laced styles make the upper easier to adjust.",
+      "extra_sock": "An extra {mm} mm is included for thick winter socks.",
+      "extra_growth": "Growing room is included for the kids' last. Re-measure children's feet every 3–4 months.",
+      "arch_high": "With a high arch profile, upper volume matters; adjusting the laces makes a difference.",
+      "preference": "{preference, select, snug {Allowance reduced for your snug-fit preference.} other {Allowance increased for your roomy-fit preference.}}",
+      "no_good_size": "None of the sizes in this last fits you well."
+    },
+    "bands": {
+      "great": "Great fit",
+      "good": "Good fit",
+      "fair": "Fair fit",
+      "poor": "Poor fit"
+    },
+    "product": {
+      "title": "Your fit",
+      "cta": "Create your Fit Twin",
+      "ctaHint": "Enter your measurements to see your score and size for this last.",
+      "recommended": "Recommended size",
+      "widthLabel": "Width",
+      "fromTwin": "{source, select, member {Based on the Fit Twin in your account} other {Based on the Fit Twin in this tab}}",
+      "table": "Score by size",
+      "update": "Update measurements"
+    },
+    "filter": {
+      "fitsMe": "Fits me",
+      "fitsMeHint": "Fit score {threshold} and above",
+      "needTwin": "Create Fit Twin",
+      "sortByFit": "Sort by fit",
+      "none": "Based on your Fit Twin, nothing in this list scores {threshold} or above.",
+      "badge": "Fit {score}",
+      "density": "Grid view",
+      "wide": "Wide",
+      "dense": "Dense"
+    }
+  },
+  "passport": {
+    "metaTitle": "Shoe Passport {code}",
+    "eyebrow": "Shoe Passport",
+    "notFound": "No passport was found with this code.",
+    "lookup": {
+      "label": "Passport code",
+      "placeholder": "ARN-2026-000123",
+      "submit": "Open passport"
+    },
+    "privacy": "The passport belongs to the product, not its owner: it contains no personal data.",
+    "product": "Model",
+    "last": "Last",
+    "options": "Option",
+    "produced": "Made",
+    "batch": "Batch",
+    "craftsman": "Craftsperson",
+    "since": "Since {year}",
+    "materials": "Materials and origin",
+    "tests": "Test card",
+    "care": "Care instructions",
+    "repairs": "Repair history",
+    "noRepairs": "No repairs yet.",
+    "recycle": "At the end of its life",
+    "recycleBody": "Send the pair to the Take Back – Reborn programme: repairable parts are reused, the rest is sorted by material and recycled. You receive a discount credit in return.",
+    "dpp": "Digital product passport data",
+    "dppRecycled": "Recycled material share",
+    "dppCarbon": "Estimated carbon footprint",
+    "repairCta": "Request a repair for this pair",
+    "viewProduct": "Product page",
+    "specialties": {
+      "cutting": "Cutting",
+      "closing": "Closing",
+      "lasting": "Lasting",
+      "sole": "Sole attaching",
+      "finishing": "Finishing",
+      "qc": "Quality control"
+    },
+    "careByCategory": {
+      "topuklu": [
+        "Replace the heel tip before it wears to the line.",
+        "Moisturise leather monthly; only brush suede.",
+        "Store with a shoe tree to keep the toe shape."
+      ],
+      "kislik-bot": [
+        "After a wet day, stuff with paper and dry at room temperature; never on a radiator.",
+        "Apply water-repellent spray at the start of each season.",
+        "Ask for a new sole when the lugs drop below 3 mm."
+      ],
+      "sneaker": [
+        "Clean by hand with lukewarm water and a soft brush; no machine wash.",
+        "Remove the insole and dry it separately.",
+        "Patch the outsole heel when it wears to extend its life."
+      ],
+      "klasik": [
+        "Use a shoe tree after every wear.",
+        "Cream monthly, polish each season.",
+        "When the sole wears, ask for a Goodyear resole; the upper lasts for years."
+      ],
+      "cocuk": [
+        "Keep the hook-and-loop straps free of lint and sand.",
+        "Check foot size every 3–4 months.",
+        "Send outgrown pairs to the Take Back – Reborn programme."
+      ]
+    }
+  },
+  "repair": {
+    "types": {
+      "resole": "Resole",
+      "heel": "Heel repair",
+      "stitch": "Stitch repair",
+      "clean": "Care and cleaning",
+      "recraft": "Take Back – Reborn"
+    },
+    "typeHints": {
+      "resole": "A worn outsole is replaced; the upper and lining are kept.",
+      "heel": "The heel tip or heel block is replaced.",
+      "stitch": "Opened seams are re-stitched.",
+      "clean": "Deep clean, conditioning and polish.",
+      "recraft": "Send your old pair; we'll give it a second life or recycle it. You get a discount credit."
+    }
+  },
+  "lifetime": {
+    "metaTitle": "Lifetime Plan",
+    "metaDescription": "Care, repair and Take Back – Reborn: the plan to make ARION shoes last longer.",
+    "eyebrow": "Lifetime Plan",
+    "title": "Shoes wear out. Promises don't.",
+    "lead": "Care reminders, repairs with a price estimate, and a take-back programme that gives your old pair a second life.",
+    "reminders": {
+      "title": "Care reminders",
+      "body": "We email you according to your model's care schedule: first polish, seasonal care, sole check. Apart from transactional order information, reminders are only sent if you have opted in to commercial messages.",
+      "manage": "Manage my permissions"
+    },
+    "form": {
+      "title": "Repair or take-back request",
+      "type": "What should we do?",
+      "passport": "Passport code (optional)",
+      "passportHint": "Printed on the QR label inside the tongue. If given, the estimate is based on the model.",
+      "description": "Briefly describe the issue",
+      "photos": "Photos (up to 3, optional)",
+      "photosHint": "Photos are resized in your browser and sent only for this request; they are deleted at the end of the retention period after the request closes.",
+      "name": "Full name",
+      "email": "Email",
+      "quote": "Get a price estimate",
+      "quoteResult": "Estimated price: {min} – {max} (DEMO)",
+      "creditResult": "Estimated discount credit: {credit} (DEMO)",
+      "notFeasible": "Resoling isn't possible for this model; look at care or Take Back – Reborn instead.",
+      "passportNotFound": "This passport code was not found.",
+      "submit": "Send request",
+      "sending": "Sending…",
+      "success": "Your request has been received.",
+      "reference": "Request no.",
+      "shipping": "Free shipping code",
+      "shippingHint": "Box up the pair and give this code at the courier. The price is confirmed after our craftsperson inspects it; nothing is done without your approval.",
+      "error": "The request couldn't be sent. Please check the fields.",
+      "removePhoto": "Remove photo",
+      "privacy": "Your details are processed only to handle this request."
+    }
+  },
+  "transparency": {
+    "metaTitle": "Transparency Panel",
+    "metaDescription": "ARION's measurable promises: return rate, repairs, shoe lifetime and customer service response time.",
+    "eyebrow": "Measurable promises",
+    "title": "Data, not claims.",
+    "lead": "We measure our promises. The values below are calculated from our database when this page opens.",
+    "demo": "DEMO environment: values are calculated from demo orders and sample records, not real business data.",
+    "generated": "Calculated: {date}",
+    "returnRate": "Return rate",
+    "returnRateHow": "{returns} return requests / {orders} orders",
+    "reasons": "Return reasons",
+    "reasonLabels": {
+      "fit": "Fit",
+      "dislike": "Didn't like it",
+      "defective": "Defective",
+      "wrong_item": "Wrong item"
+    },
+    "repaired": "Pairs repaired",
+    "repairedHow": "Completed repair records",
+    "recrafted": "Pairs taken back and given a second life",
+    "recraftedHow": "Records completed through Take Back – Reborn",
+    "lifetime": "Average time in use",
+    "lifetimeValue": "{months} months",
+    "lifetimeHow": "For pairs with a repair or take-back record, time from production to the latest record ({n} pairs)",
+    "response": "Average first response time",
+    "responseValue": "{hours} hours",
+    "responseHow": "For answered support requests, time from request to first response ({n} requests)",
+    "noData": "Not enough data yet"
+  },
+  "atelier": {
+    "metaTitle": "Atelier",
+    "metaDescription": "ARION craftspeople, production steps and the latest pairs to leave the workshop.",
+    "eyebrow": "Atelier",
+    "title": "Every pair has a maker.",
+    "lead": "In our Istanbul workshop every pair goes through seven steps. For made-to-order models you can follow your order through these steps.",
+    "steps": "Production steps",
+    "artisans": "Craftspeople",
+    "recent": "Latest from the workshop",
+    "recentHint": "Every pair leaves with a passport. Tap a code to open it.",
+    "demo": "Craftspeople and records are for demo purposes and fictional.",
+    "stepNames": {
+      "cutting": "Cutting",
+      "closing": "Closing",
+      "lasting": "Lasting",
+      "sole": "Sole attaching",
+      "finishing": "Finishing",
+      "qc": "Quality control",
+      "shipping": "Shipping"
+    },
+    "stepDescs": {
+      "cutting": "The leather is read by its grain and pieces are cut with minimal waste.",
+      "closing": "Upper pieces are joined; twin-needle and hand stitching.",
+      "lasting": "The upper is pulled over the last by hand and left to set; this is where the shoe takes shape.",
+      "sole": "The sole is attached by Goodyear, Blake or cemented construction.",
+      "finishing": "Edges are sanded, dyed and polished.",
+      "qc": "A 24-point checklist; the passport label is attached at this step.",
+      "shipping": "Boxed and handed to the courier."
+    },
+    "timeline": {
+      "title": "Atelier tracking",
+      "lead": "This order is being made for you in our workshop. Estimated delivery: {date} ({days} days).",
+      "current": "Now",
+      "done": "Done",
+      "planned": "Planned",
+      "by": "Craftsperson: {name}",
+      "note": "Step dates are planned from the lead time (DEMO). For distance sales, delivery is within 30 days at most."
+    }
+  },
+  "nav2": {
+    "lifetime": "Lifetime Plan",
+    "transparency": "Transparency"
+  },
+  "skin": {
+    "label": "Look (trial)",
+    "gold": "Gold",
+    "glass": "Glass"
   }
 }

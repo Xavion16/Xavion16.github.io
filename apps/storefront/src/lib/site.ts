@@ -37,3 +37,10 @@ export type CategoryKey = (typeof CATEGORY_KEYS)[number]
 export function legalHref<S extends LegalSlug>(slug: S): `/yasal/${S}` {
   return `/yasal/${slug}`
 }
+
+/** Kategori grupları (DECISIONS #070): Erkek = klasik + kışlık bot + sneaker. Kadın tarafı yalnızca topuklu. */
+export const CATEGORY_GROUPS = { erkek: ["klasik", "kislik-bot", "sneaker"] } as const satisfies Record<string, readonly CategoryKey[]>
+export type GroupKey = keyof typeof CATEGORY_GROUPS
+export function isGroupKey(v: string | undefined | null): v is GroupKey {
+  return v === "erkek"
+}

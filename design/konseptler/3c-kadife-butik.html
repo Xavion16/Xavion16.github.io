@@ -1,0 +1,1344 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ARION — Kadife Butik (Alışveriş)</title>
+    <meta
+      name="description"
+      content="Kadife ailesi C: alışverişe dokunan görseller, hızlı bakış, uyum skoru, uçan sepet."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;1,6..96,400&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="ortak.css" />
+    <link rel="stylesheet" href="kadife-ortak.css" />
+    <style>
+      :root {
+        --plum: #1c0613;
+        --plum-2: #2c0a1e;
+        --blush: #f2c7cf;
+        --rose: #ff2e63;
+        --chrome: #f6f2f3;
+        --muted: #c9b2ba;
+        --gold: #e3c08d;
+        --line: rgb(246 242 243 / 0.14);
+      }
+      body {
+        background: var(--plum);
+        color: var(--chrome);
+        font-family: "Space Grotesk", sans-serif;
+      }
+      .bodoni {
+        font-family: "Bodoni Moda", serif;
+      }
+      .eyebrow {
+        font: 500 12px/1 "Space Grotesk";
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--rose);
+      }
+      .pad {
+        padding-inline: clamp(16px, 4vw, 56px);
+      }
+      button {
+        cursor: pointer;
+        background: none;
+        border: 0;
+      }
+
+      /* Üst menü + mega menü */
+      .top {
+        position: sticky;
+        top: 0;
+        z-index: 70;
+        background: rgb(28 6 19 / 0.88);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--line);
+      }
+      .bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        min-height: 68px;
+      }
+      .mark {
+        font-family: "Bodoni Moda";
+        font-weight: 700;
+        font-size: 24px;
+        letter-spacing: 0.3em;
+        text-decoration: none;
+      }
+      .menu {
+        display: flex;
+        gap: 6px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .menu > li > button,
+      .menu > li > a {
+        min-height: 44px;
+        padding: 0 14px;
+        border-radius: 999px;
+        font-size: 13px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+      }
+      .menu > li > button[aria-expanded="true"],
+      .menu > li > button:hover {
+        background: rgb(246 242 243 / 0.08);
+      }
+      .mega {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 100%;
+        background: var(--plum-2);
+        border-bottom: 1px solid var(--line);
+        display: grid;
+        grid-template-columns: 1fr 1fr 1.4fr;
+        gap: 28px;
+        padding: 28px clamp(16px, 4vw, 56px) 36px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-8px);
+        transition:
+          opacity 0.3s,
+          transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+          visibility 0.3s;
+      }
+      .mega.open {
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+      }
+      .mega h3 {
+        margin: 0 0 12px;
+        font-family: "Bodoni Moda";
+        font-weight: 400;
+        font-size: 28px;
+      }
+      .mega ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 4px;
+      }
+      .mega ul a {
+        text-decoration: none;
+        color: var(--muted);
+        display: block;
+        padding: 6px 0;
+      }
+      .mega ul a:hover {
+        color: var(--chrome);
+      }
+      .mega .feat {
+        border-radius: 18px;
+        overflow: hidden;
+        position: relative;
+        min-height: 220px;
+      }
+      .mega .feat img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .mega .feat span {
+        position: absolute;
+        left: 16px;
+        bottom: 16px;
+        font-family: "Bodoni Moda";
+        font-size: 26px;
+      }
+      .tools {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+      .cart-btn {
+        position: relative;
+        min-height: 44px;
+        padding: 0 16px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        font-size: 14px;
+      }
+      .cart-btn .count {
+        display: inline-grid;
+        place-items: center;
+        min-width: 22px;
+        height: 22px;
+        margin-left: 8px;
+        border-radius: 999px;
+        background: var(--rose);
+        color: var(--plum);
+        font-weight: 700;
+        font-size: 12px;
+      }
+      .cart-btn.bump .count {
+        animation: bump 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      @keyframes bump {
+        40% {
+          transform: scale(1.5);
+        }
+      }
+      @media (max-width: 760px) {
+        .menu > li:nth-child(n + 3) {
+          display: none;
+        }
+        .mega {
+          grid-template-columns: 1fr;
+        }
+        .mega .feat {
+          display: none;
+        }
+      }
+
+      /* Alışverişe dokunan hero */
+      .shop-hero {
+        display: grid;
+        grid-template-columns: 1fr 1.25fr;
+        gap: clamp(20px, 4vw, 64px);
+        align-items: center;
+        padding-block: clamp(36px, 6vw, 80px);
+      }
+      .shop-hero h1 {
+        font-family: "Bodoni Moda";
+        font-weight: 400;
+        font-size: clamp(56px, 8vw, 150px);
+        line-height: 0.9;
+        margin: 14px 0 20px;
+      }
+      .shop-hero h1 i {
+        color: var(--rose);
+      }
+      .shop-hero p {
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.6;
+        max-width: 40ch;
+      }
+      .look {
+        position: relative;
+        aspect-ratio: 4 / 5;
+        border-radius: 28px;
+        overflow: hidden;
+      }
+      .look img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .hot {
+        position: absolute;
+        width: 44px;
+        height: 44px;
+        margin: -22px 0 0 -22px;
+        border-radius: 50%;
+        background: rgb(246 242 243 / 0.92);
+        color: var(--plum);
+        font-weight: 700;
+        display: grid;
+        place-items: center;
+        box-shadow: 0 0 0 0 rgb(246 242 243 / 0.6);
+        animation: pulse 2.2s infinite;
+      }
+      .hot:focus-visible {
+        outline: 3px solid var(--rose);
+      }
+      @keyframes pulse {
+        70% {
+          box-shadow: 0 0 0 18px rgb(246 242 243 / 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgb(246 242 243 / 0);
+        }
+      }
+      .hot-tip {
+        position: absolute;
+        left: 54px;
+        top: 50%;
+        transform: translateY(-50%);
+        white-space: nowrap;
+        background: var(--plum);
+        color: var(--chrome);
+        padding: 8px 12px;
+        border-radius: 999px;
+        font-size: 13px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s;
+      }
+      .hot:hover .hot-tip,
+      .hot:focus-visible .hot-tip {
+        opacity: 1;
+      }
+      @media (max-width: 860px) {
+        .shop-hero {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Filtre + ızgara */
+      .filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 0 0 28px;
+      }
+      .chip {
+        min-height: 44px;
+        padding: 0 18px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        font-size: 14px;
+      }
+      .chip[aria-pressed="true"] {
+        background: var(--chrome);
+        color: var(--plum);
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: clamp(12px, 1.8vw, 24px);
+        padding-bottom: clamp(90px, 12vw, 170px);
+      }
+      .item {
+        position: relative;
+      }
+      .item[hidden] {
+        display: none;
+      }
+      .item .ph {
+        aspect-ratio: 3 / 4;
+        border-radius: 22px;
+        overflow: hidden;
+        position: relative;
+        background: var(--plum-2);
+      }
+      .item .ph img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 1.1s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      .item:hover .ph img {
+        transform: scale(1.05);
+      }
+      .item .qv {
+        position: absolute;
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        min-height: 46px;
+        border-radius: 999px;
+        background: rgb(246 242 243 / 0.92);
+        color: var(--plum);
+        font-weight: 700;
+        opacity: 0;
+        transform: translateY(10px);
+        transition:
+          opacity 0.3s,
+          transform 0.4s;
+      }
+      .item:hover .qv,
+      .item .qv:focus-visible {
+        opacity: 1;
+        transform: none;
+      }
+      @media (hover: none) {
+        .item .qv {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      .item .meta {
+        display: flex;
+        justify-content: space-between;
+        padding: 12px 4px 0;
+      }
+      .item .meta b {
+        font-family: "Bodoni Moda";
+        font-weight: 400;
+        font-size: 21px;
+      }
+      .item .meta small {
+        display: block;
+        color: var(--muted);
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-top: 4px;
+      }
+      .heart {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        z-index: 2;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: rgb(28 6 19 / 0.55);
+        backdrop-filter: blur(6px);
+        display: grid;
+        place-items: center;
+        color: var(--chrome);
+        font-size: 18px;
+      }
+      .heart[aria-pressed="true"] {
+        color: var(--rose);
+      }
+      .burst {
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--rose);
+        pointer-events: none;
+      }
+      @media (max-width: 960px) {
+        .grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      /* Hızlı bakış ve sepet çekmeceleri */
+      dialog.drawer {
+        margin: 0 0 0 auto;
+        height: 100dvh;
+        max-height: none;
+        width: min(520px, 100vw);
+        border: 0;
+        padding: 0;
+        background: var(--plum-2);
+        color: var(--chrome);
+      }
+      dialog.drawer::backdrop {
+        background: rgb(8 2 6 / 0.65);
+        backdrop-filter: blur(3px);
+      }
+      dialog.drawer[open] {
+        animation: slidein 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      @keyframes slidein {
+        from {
+          transform: translateX(100%);
+        }
+      }
+      .dw {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+      .dw-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px 22px;
+        border-bottom: 1px solid var(--line);
+      }
+      .dw-head h2 {
+        margin: 0;
+        font-family: "Bodoni Moda";
+        font-weight: 400;
+        font-size: 26px;
+      }
+      .close {
+        min-height: 44px;
+        min-width: 44px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+      }
+      .dw-body {
+        overflow: auto;
+        padding: 22px;
+        flex: 1;
+      }
+      .qv-img {
+        aspect-ratio: 4 / 4.4;
+        border-radius: 20px;
+        overflow: hidden;
+      }
+      .qv-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: opacity 0.3s;
+      }
+      .thumbs {
+        display: flex;
+        gap: 8px;
+        margin-top: 10px;
+      }
+      .thumbs button {
+        width: 64px;
+        height: 64px;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 2px solid transparent;
+        padding: 0;
+      }
+      .thumbs button[aria-pressed="true"] {
+        border-color: var(--rose);
+      }
+      .thumbs img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .qv-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin: 18px 0 6px;
+      }
+      .qv-title b {
+        font-family: "Bodoni Moda";
+        font-weight: 400;
+        font-size: 34px;
+      }
+      .sizes {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 10px 0 4px;
+      }
+      .size {
+        min-width: 52px;
+        min-height: 46px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        font-weight: 600;
+        position: relative;
+      }
+      .size[aria-pressed="true"] {
+        background: var(--chrome);
+        color: var(--plum);
+      }
+      .size[disabled] {
+        opacity: 0.35;
+        text-decoration: line-through;
+        cursor: not-allowed;
+      }
+      .size.best::after {
+        content: "★";
+        position: absolute;
+        top: -6px;
+        right: -4px;
+        font-size: 12px;
+        color: var(--gold);
+      }
+      .fit {
+        margin-top: 16px;
+        padding: 16px;
+        border-radius: 18px;
+        border: 1px solid var(--line);
+        background: rgb(246 242 243 / 0.04);
+      }
+      .fit label {
+        font-size: 14px;
+        color: var(--muted);
+      }
+      .fit input {
+        width: 110px;
+        min-height: 44px;
+        margin-left: 10px;
+        border-radius: 12px;
+        border: 1px solid var(--line);
+        background: var(--plum);
+        color: var(--chrome);
+        padding: 0 12px;
+        font: inherit;
+      }
+      .fit output {
+        display: block;
+        margin-top: 10px;
+        font-size: 15px;
+      }
+      .fit output b {
+        color: var(--gold);
+      }
+      .add {
+        width: 100%;
+        min-height: 56px;
+        margin-top: 18px;
+        border-radius: 999px;
+        background: var(--rose);
+        color: var(--plum);
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+      .add[disabled] {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      .hint {
+        min-height: 22px;
+        color: var(--muted);
+        font-size: 14px;
+        margin-top: 8px;
+      }
+      .lines {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 14px;
+      }
+      .line {
+        display: grid;
+        grid-template-columns: 72px 1fr auto;
+        gap: 14px;
+        align-items: center;
+      }
+      .line img {
+        width: 72px;
+        height: 84px;
+        object-fit: cover;
+        border-radius: 12px;
+      }
+      .qty {
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        margin-top: 6px;
+      }
+      .qty button {
+        width: 34px;
+        height: 34px;
+      }
+      .ship {
+        margin-bottom: 18px;
+      }
+      .ship .track {
+        height: 6px;
+        border-radius: 999px;
+        background: rgb(246 242 243 / 0.1);
+        overflow: hidden;
+        margin-top: 8px;
+      }
+      .ship .track i {
+        display: block;
+        height: 100%;
+        background: var(--gold);
+        width: 0;
+        transition: width 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      .dw-foot {
+        padding: 18px 22px;
+        border-top: 1px solid var(--line);
+      }
+      .total {
+        display: flex;
+        justify-content: space-between;
+        font-size: 18px;
+        margin-bottom: 12px;
+      }
+      .flyer {
+        position: fixed;
+        z-index: 180;
+        width: 80px;
+        height: 96px;
+        border-radius: 14px;
+        overflow: hidden;
+        pointer-events: none;
+        box-shadow: 0 20px 40px rgb(0 0 0 / 0.4);
+      }
+      .flyer img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .empty {
+        color: var(--muted);
+      }
+      footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 40px clamp(16px, 4vw, 56px) 90px;
+        color: var(--muted);
+        font-size: 14px;
+        border-top: 1px solid var(--line);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Görseller: Unsplash Lisansı (konsept). Ürün verisi ve uyum hesabı DEMO'dur (gerçek sitede @arion/fit-engine). -->
+    <a class="sr-only" href="#icerik">İçeriğe geç</a>
+    <header class="top">
+      <div class="bar pad">
+        <a href="#" class="mark" aria-label="ARION ana sayfa">ARION</a>
+        <nav aria-label="Ana menü">
+          <ul class="menu">
+            <li>
+              <button
+                type="button"
+                aria-expanded="false"
+                aria-controls="mega-kadin"
+              >
+                Kadın
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                aria-expanded="false"
+                aria-controls="mega-erkek"
+              >
+                Erkek
+              </button>
+            </li>
+            <li><a href="#">Ayak İkizi</a></li>
+            <li><a href="#">Ömür Planı</a></li>
+          </ul>
+        </nav>
+        <div class="tools">
+          <button
+            class="cart-btn"
+            type="button"
+            id="cartBtn"
+            aria-haspopup="dialog"
+          >
+            Sepet<span class="count" id="cartCount">0</span>
+          </button>
+        </div>
+      </div>
+      <div class="mega" id="mega-kadin">
+        <div>
+          <h3>Topuklu</h3>
+          <ul>
+            <li><a href="#" data-jump="stiletto">Stiletto</a></li>
+            <li><a href="#" data-jump="blok">Blok topuk</a></li>
+            <li><a href="#" data-jump="sandalet">Sandalet</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Seçkiler</h3>
+          <ul>
+            <li><a href="#">Kırmızı Oda</a></li>
+            <li><a href="#">Kadife</a></li>
+            <li><a href="#">Gelin</a></li>
+          </ul>
+        </div>
+        <a class="feat" href="#"
+          ><img
+            src="https://images.unsplash.com/photo-1686668572519-1793f1f5f37f?w=900&q=80&auto=format&fit=crop"
+            alt=""
+            loading="lazy"
+          /><span>Kırmızı Oda →</span></a
+        >
+      </div>
+      <div class="mega" id="mega-erkek">
+        <div>
+          <h3>Erkek</h3>
+          <ul>
+            <li><a href="#" data-jump="erkek">Oxford</a></li>
+            <li><a href="#" data-jump="erkek">Derby</a></li>
+            <li><a href="#" data-jump="erkek">Loafer</a></li>
+            <li><a href="#" data-jump="erkek">Bot</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Salon</h3>
+          <ul>
+            <li><a href="#">Goodyear dikiş</a></li>
+            <li><a href="#">Tamir ve bakım</a></li>
+          </ul>
+        </div>
+        <a class="feat" href="#"
+          ><img
+            src="https://images.unsplash.com/photo-1646139498425-5bceb422ba6a?w=900&q=80&auto=format&fit=crop"
+            alt=""
+            loading="lazy"
+          /><span>Kadife Salon →</span></a
+        >
+      </div>
+    </header>
+
+    <main id="icerik">
+      <section class="shop-hero pad" aria-labelledby="h-hero">
+        <div>
+          <p class="eyebrow">Kadife Butik · Alışverişe dokun</p>
+          <h1 id="h-hero" data-split data-hero>Gördüğünü<br /><i>giy.</i></h1>
+          <p data-reveal>
+            Fotoğraftaki noktalara dokun: ürün hızlı bakışta açılır, ayak
+            uzunluğunu yaz, sana uygun numara yıldızla işaretlensin.
+          </p>
+        </div>
+        <div class="look" data-clip>
+          <img
+            src="https://images.unsplash.com/photo-1697647916715-f5b8bf94c8bf?w=1400&q=80&auto=format&fit=crop"
+            alt="Sandalyeye yaslanmış kadın, kırmızı rugan topuklular"
+            fetchpriority="high"
+          />
+          <button
+            class="hot"
+            type="button"
+            style="left: 72%; top: 88%"
+            data-qv="pera75"
+            aria-label="Pera 75 Kadife — hızlı bakış"
+          >
+            +<span class="hot-tip">Pera 75 · ₺3.790</span>
+          </button>
+          <button
+            class="hot"
+            type="button"
+            style="left: 31%; top: 66%"
+            data-qv="pera65"
+            aria-label="Pera 65 Stiletto — hızlı bakış"
+          >
+            +<span class="hot-tip">Pera 65 · ₺3.490</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="pad" aria-labelledby="h-grid">
+        <h2 id="h-grid" class="sr-only">Ürünler</h2>
+        <div class="filters" role="group" aria-label="Filtre">
+          <button class="chip" type="button" data-f="hepsi" aria-pressed="true">
+            Hepsi
+          </button>
+          <button
+            class="chip"
+            type="button"
+            data-f="stiletto"
+            aria-pressed="false"
+          >
+            Stiletto
+          </button>
+          <button class="chip" type="button" data-f="blok" aria-pressed="false">
+            Blok
+          </button>
+          <button
+            class="chip"
+            type="button"
+            data-f="sandalet"
+            aria-pressed="false"
+          >
+            Sandalet
+          </button>
+          <button
+            class="chip"
+            type="button"
+            data-f="erkek"
+            aria-pressed="false"
+          >
+            Erkek
+          </button>
+        </div>
+        <div class="grid" id="grid"></div>
+      </section>
+    </main>
+    <footer>
+      <span class="bodoni" style="letter-spacing: 0.3em">ARION</span
+      ><span>Ürün ve uyum verisi DEMO · Görseller: Unsplash</span>
+    </footer>
+
+    <dialog class="drawer" id="qv" aria-labelledby="qv-name">
+      <div class="dw">
+        <div class="dw-head">
+          <h2 id="qv-name">Hızlı bakış</h2>
+          <button class="close" type="button" data-close aria-label="Kapat">
+            ✕
+          </button>
+        </div>
+        <div class="dw-body">
+          <div class="qv-img"><img id="qv-img" alt="" /></div>
+          <div
+            class="thumbs"
+            id="qv-thumbs"
+            role="group"
+            aria-label="Görseller"
+          ></div>
+          <div class="qv-title">
+            <b id="qv-title"></b><span id="qv-price"></span>
+          </div>
+          <p
+            id="qv-desc"
+            style="color: var(--muted); line-height: 1.6; margin: 0"
+          ></p>
+          <p class="eyebrow" style="margin-top: 20px; color: var(--muted)">
+            Numara
+          </p>
+          <div
+            class="sizes"
+            id="qv-sizes"
+            role="group"
+            aria-label="Numara seç"
+          ></div>
+          <div class="fit">
+            <label for="foot">Ayak uzunluğun (mm)</label
+            ><input id="foot" inputmode="numeric" placeholder="ör. 245" />
+            <output id="fit-out" for="foot" aria-live="polite"
+              >Uyum skorunu görmek için ölçünü yaz.</output
+            >
+          </div>
+          <button class="add" type="button" id="add" disabled>
+            Önce numara seç
+          </button>
+          <p class="hint" id="hint" aria-live="polite"></p>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog class="drawer" id="cart" aria-labelledby="cart-h">
+      <div class="dw">
+        <div class="dw-head">
+          <h2 id="cart-h">Sepetin</h2>
+          <button class="close" type="button" data-close aria-label="Kapat">
+            ✕
+          </button>
+        </div>
+        <div class="dw-body">
+          <div class="ship">
+            <span id="ship-txt">Ücretsiz kargoya ₺5.000 kaldı</span>
+            <div class="track"><i id="ship-bar"></i></div>
+          </div>
+          <ul class="lines" id="lines"></ul>
+        </div>
+        <div class="dw-foot">
+          <div class="total"><span>Toplam</span><b id="total">₺0</b></div>
+          <button class="add" type="button" style="margin: 0">
+            Ödemeye geç (DEMO)
+          </button>
+        </div>
+      </div>
+    </dialog>
+
+    <a class="konsept-etiketi" href="index.html"
+      >← Konseptler · Kadife C · Butik</a
+    >
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="ortak.js"></script>
+    <script src="kadife-ortak.js"></script>
+    <script>
+      const tl = (n) =>
+        new Intl.NumberFormat("tr-TR", {
+          style: "currency",
+          currency: "TRY",
+          maximumFractionDigits: 0,
+        }).format(n)
+      const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches
+      // DEMO ürün verisi (gerçek sitede Medusa'dan gelir)
+      const P = {
+        pera65: {
+          name: "Pera 65 Stiletto",
+          type: "stiletto",
+          price: 3490,
+          desc: "Badem burun, çelik şank, 65 mm. Pera kalıbı ön ayakta milimetre hesabıyla çizildi.",
+          imgs: [
+            "https://images.unsplash.com/photo-1670607231621-c00fd76d2387?w=900&q=80&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1686668572494-278de081af6a?w=900&q=80&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1689914667397-a77effb740da?w=900&q=80&auto=format&fit=crop",
+          ],
+          sizes: [36, 37, 38, 39, 40],
+          soldOut: [40],
+          allowance: 10,
+        },
+        pera75: {
+          name: "Pera 75 Kadife",
+          type: "stiletto",
+          price: 3790,
+          desc: "İpek kadife saya, 75 mm lake topuk.",
+          imgs: [
+            "https://images.unsplash.com/photo-1559334417-1adb87b6e97f?w=900&q=80&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1760615095065-33da9ea0aff9?w=900&q=80&auto=format&fit=crop",
+          ],
+          sizes: [36, 37, 38, 39, 40],
+          soldOut: [],
+          allowance: 10,
+        },
+        moda45: {
+          name: "Moda 45 Blok",
+          type: "blok",
+          price: 2890,
+          desc: "45 mm blok topuk, fiyonklu süet. Gece boyu dans için.",
+          imgs: [
+            "https://images.unsplash.com/photo-1760473004054-eb0fd50ea9ae?w=900&q=80&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1697647916715-f5b8bf94c8bf?w=900&q=80&auto=format&fit=crop",
+          ],
+          sizes: [36, 37, 38, 39, 40, 41],
+          soldOut: [36],
+          allowance: 11,
+        },
+        gece: {
+          name: "Gece Sandalet",
+          type: "sandalet",
+          price: 3190,
+          desc: "Rugan bilek kayışı, 85 mm.",
+          imgs: [
+            "https://images.unsplash.com/photo-1789110519471-74ac17dd1cf6?w=900&q=80&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1784047704771-58a53faadf33?w=900&q=80&auto=format&fit=crop",
+          ],
+          sizes: [36, 37, 38, 39, 40],
+          soldOut: [],
+          allowance: 8,
+        },
+        isilti: {
+          name: "Işıltı",
+          type: "stiletto",
+          price: 3990,
+          desc: "Taşlı saten, özel geceler için.",
+          imgs: [
+            "https://images.unsplash.com/photo-1570800944256-13bc68bfb2bc?w=900&q=80&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1570800944273-d194d9c4cde0?w=900&q=80&auto=format&fit=crop",
+          ],
+          sizes: [36, 37, 38, 39],
+          soldOut: [38],
+          allowance: 10,
+        },
+        galata: {
+          name: "Galata Oxford",
+          type: "erkek",
+          price: 4490,
+          desc: "Goodyear welt, pençesi defalarca yenilenir.",
+          imgs: [
+            "https://images.unsplash.com/photo-1777987601431-8d27d2039cc4?w=900&q=80&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1603191659812-ee978eeeef76?w=900&q=80&auto=format&fit=crop",
+          ],
+          sizes: [40, 41, 42, 43, 44],
+          soldOut: [],
+          allowance: 12,
+        },
+        nisantasi: {
+          name: "Nişantaşı Derby",
+          type: "erkek",
+          price: 3990,
+          desc: "El boyası dana derisi, Blake dikiş.",
+          imgs: [
+            "https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?w=900&q=80&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1616696038562-574c18066055?w=900&q=80&auto=format&fit=crop",
+          ],
+          sizes: [40, 41, 42, 43, 44, 45],
+          soldOut: [45],
+          allowance: 12,
+        },
+        beyoglu: {
+          name: "Beyoğlu Loafer",
+          type: "erkek",
+          price: 3690,
+          desc: "Çift tokalı, yumuşak burun.",
+          imgs: [
+            "https://images.unsplash.com/photo-1658837407083-308b902ee99d?w=900&q=80&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1563434649554-58f91d22ec2c?w=900&q=80&auto=format&fit=crop",
+          ],
+          sizes: [39, 40, 41, 42, 43, 44],
+          soldOut: [],
+          allowance: 12,
+        },
+      }
+      const PARIS = 20 / 3
+
+      // Izgara
+      const grid = document.getElementById("grid")
+      grid.innerHTML = Object.entries(P)
+        .map(
+          ([id, p]) => `
+      <article class="item" data-type="${p.type}" data-flip-id="${id}">
+        <button class="heart" type="button" aria-pressed="false" aria-label="${p.name} favorilere ekle">♥</button>
+        <div class="ph"><img src="${p.imgs[0]}" alt="${p.name}" loading="lazy" /><button class="qv" type="button" data-qv="${id}">Hızlı bakış</button></div>
+        <div class="meta"><div><b>${p.name}</b><small>${p.type === "erkek" ? "Erkek" : "Kadın · " + p.type}</small></div><span>${tl(p.price)}</span></div>
+      </article>`,
+        )
+        .join("")
+
+      // Filtre (GSAP Flip ile yeniden dizilim)
+      const chips = document.querySelectorAll(".chip")
+      const applyFilter = (f) => {
+        chips.forEach((c) =>
+          c.setAttribute("aria-pressed", String(c.dataset.f === f)),
+        )
+        const items = [...grid.children]
+        const state = window.Flip && !reduced ? Flip.getState(items) : null
+        items.forEach(
+          (el) => (el.hidden = f !== "hepsi" && el.dataset.type !== f),
+        )
+        if (state)
+          Flip.from(state, {
+            duration: 0.7,
+            ease: "power3.inOut",
+            absolute: true,
+            scale: true,
+            onEnter: (els) =>
+              gsap.fromTo(
+                els,
+                { opacity: 0, scale: 0.85 },
+                { opacity: 1, scale: 1, duration: 0.6 },
+              ),
+            onLeave: (els) =>
+              gsap.to(els, { opacity: 0, scale: 0.85, duration: 0.4 }),
+          })
+      }
+      chips.forEach((c) =>
+        c.addEventListener("click", () => applyFilter(c.dataset.f)),
+      )
+
+      // Favori patlaması
+      grid.addEventListener("click", (e) => {
+        const h = e.target.closest(".heart")
+        if (!h) return
+        const on = h.getAttribute("aria-pressed") !== "true"
+        h.setAttribute("aria-pressed", String(on))
+        if (!on || reduced) return
+        for (let i = 0; i < 10; i++) {
+          const d = document.createElement("i")
+          d.className = "burst"
+          h.appendChild(d)
+          const a = (i / 10) * Math.PI * 2
+          gsap.fromTo(
+            d,
+            { x: 19, y: 19, opacity: 1 },
+            {
+              x: 19 + Math.cos(a) * 34,
+              y: 19 + Math.sin(a) * 34,
+              opacity: 0,
+              duration: 0.6,
+              ease: "power2.out",
+              onComplete: () => d.remove(),
+            },
+          )
+        }
+        gsap.fromTo(
+          h,
+          { scale: 0.7 },
+          { scale: 1, duration: 0.5, ease: "back.out(3)" },
+        )
+      })
+
+      // Mega menü (tıklama + klavye + dışarı tıklama)
+      const megaBtns = document.querySelectorAll(".menu button[aria-controls]")
+      const closeMega = () =>
+        megaBtns.forEach((b) => {
+          b.setAttribute("aria-expanded", "false")
+          document
+            .getElementById(b.getAttribute("aria-controls"))
+            .classList.remove("open")
+        })
+      megaBtns.forEach((b) => {
+        const panel = document.getElementById(b.getAttribute("aria-controls"))
+        const open = () => {
+          closeMega()
+          b.setAttribute("aria-expanded", "true")
+          panel.classList.add("open")
+        }
+        b.addEventListener("click", () =>
+          b.getAttribute("aria-expanded") === "true" ? closeMega() : open(),
+        )
+        if (matchMedia("(hover: hover)").matches)
+          b.addEventListener("pointerenter", open)
+        panel.addEventListener("pointerleave", closeMega)
+      })
+      addEventListener("keydown", (e) => e.key === "Escape" && closeMega())
+      document.addEventListener("click", (e) => {
+        if (!e.target.closest(".top")) closeMega()
+      })
+      document.querySelectorAll("[data-jump]").forEach((a) =>
+        a.addEventListener("click", (e) => {
+          e.preventDefault()
+          closeMega()
+          applyFilter(a.dataset.jump)
+          document
+            .getElementById("grid")
+            .scrollIntoView({
+              behavior: reduced ? "auto" : "smooth",
+              block: "start",
+            })
+        }),
+      )
+
+      // Hızlı bakış
+      const qv = document.getElementById("qv")
+      let cur = null,
+        size = null
+      const sizesEl = document.getElementById("qv-sizes"),
+        add = document.getElementById("add"),
+        out = document.getElementById("fit-out"),
+        foot = document.getElementById("foot")
+      const openQV = (id) => {
+        cur = id
+        size = null
+        const p = P[id]
+        document.getElementById("qv-name").textContent = p.name
+        document.getElementById("qv-title").textContent = p.name
+        document.getElementById("qv-price").textContent = tl(p.price)
+        document.getElementById("qv-desc").textContent = p.desc
+        const img = document.getElementById("qv-img")
+        img.src = p.imgs[0]
+        img.alt = p.name
+        document.getElementById("qv-thumbs").innerHTML = p.imgs
+          .map(
+            (s, i) =>
+              `<button type="button" aria-pressed="${i === 0}" aria-label="Görsel ${i + 1}"><img src="${s}" alt="" /></button>`,
+          )
+          .join("")
+        sizesEl.innerHTML = p.sizes
+          .map(
+            (s) =>
+              `<button class="size" type="button" aria-pressed="false" ${p.soldOut.includes(s) ? 'disabled aria-label="' + s + ' tükendi"' : ""} data-s="${s}">${s}</button>`,
+          )
+          .join("")
+        add.disabled = true
+        add.textContent = "Önce numara seç"
+        document.getElementById("hint").textContent = ""
+        fitCalc()
+        qv.showModal()
+      }
+      document.addEventListener("click", (e) => {
+        const b = e.target.closest("[data-qv]")
+        if (b) openQV(b.dataset.qv)
+      })
+      document.getElementById("qv-thumbs").addEventListener("click", (e) => {
+        const b = e.target.closest("button")
+        if (!b) return
+        const i = [...b.parentElement.children].indexOf(b)
+        ;[...b.parentElement.children].forEach((x) =>
+          x.setAttribute("aria-pressed", String(x === b)),
+        )
+        const img = document.getElementById("qv-img")
+        img.style.opacity = 0
+        setTimeout(() => {
+          img.src = P[cur].imgs[i]
+          img.style.opacity = 1
+        }, 180)
+      })
+      sizesEl.addEventListener("click", (e) => {
+        const b = e.target.closest(".size")
+        if (!b || b.disabled) return
+        size = Number(b.dataset.s)
+        ;[...sizesEl.children].forEach((x) =>
+          x.setAttribute("aria-pressed", String(x === b)),
+        )
+        add.disabled = false
+        add.textContent = "Sepete ekle · " + tl(P[cur].price)
+      })
+      // DEMO uyum: kalıp uzunluğu = numara × 6,67 mm; ideal pay kategoriye göre (gerçekte @arion/fit-engine)
+      function fitCalc() {
+        const mm = Number(foot.value)
+        ;[...sizesEl.children].forEach((x) => x.classList.remove("best"))
+        if (!mm || mm < 180 || mm > 320) {
+          out.textContent = "Uyum skorunu görmek için ölçünü yaz."
+          return
+        }
+        const p = P[cur]
+        const scored = p.sizes
+          .filter((s) => !p.soldOut.includes(s))
+          .map((s) => {
+            const d = s * PARIS - mm - p.allowance
+            return {
+              s,
+              score: Math.max(0, Math.round(100 - (d < 0 ? -d * 7 : d * 3.5))),
+            }
+          })
+          .sort((a, b) => b.score - a.score)
+        const best = scored[0]
+        if (!best) return
+        sizesEl.querySelector(`[data-s="${best.s}"]`)?.classList.add("best")
+        out.innerHTML = `Önerilen numara <b>${best.s}</b> · uyum skoru <b>${best.score}/100</b>`
+      }
+      foot.addEventListener("input", fitCalc)
+
+      // Sepet
+      const cart = []
+      const cartDlg = document.getElementById("cart"),
+        cartBtn = document.getElementById("cartBtn")
+      const renderCart = () => {
+        const total = cart.reduce((a, l) => a + l.qty * P[l.id].price, 0)
+        document.getElementById("cartCount").textContent = cart.reduce(
+          (a, l) => a + l.qty,
+          0,
+        )
+        document.getElementById("total").textContent = tl(total)
+        const left = Math.max(0, 5000 - total)
+        document.getElementById("ship-txt").textContent = left
+          ? `Ücretsiz kargoya ${tl(left)} kaldı`
+          : "Kargo ücretsiz ✓"
+        document.getElementById("ship-bar").style.width =
+          Math.min(100, (total / 5000) * 100) + "%"
+        document.getElementById("lines").innerHTML = cart.length
+          ? cart
+              .map(
+                (l, i) =>
+                  `<li class="line"><img src="${P[l.id].imgs[0]}" alt="" /><div><b>${P[l.id].name}</b><div style="color:var(--muted);font-size:13px">No ${l.size}</div><div class="qty"><button type="button" data-q="${i}" data-d="-1" aria-label="Azalt">−</button><span>${l.qty}</span><button type="button" data-q="${i}" data-d="1" aria-label="Artır">+</button></div></div><span>${tl(l.qty * P[l.id].price)}</span></li>`,
+              )
+              .join("")
+          : `<li class="empty">Sepetin boş. Kırmızı Oda'ya bir göz at.</li>`
+      }
+      document.getElementById("lines").addEventListener("click", (e) => {
+        const b = e.target.closest("[data-q]")
+        if (!b) return
+        const l = cart[Number(b.dataset.q)]
+        l.qty += Number(b.dataset.d)
+        if (l.qty <= 0) cart.splice(Number(b.dataset.q), 1)
+        renderCart()
+      })
+      add.addEventListener("click", () => {
+        if (!size) return
+        const ex = cart.find((l) => l.id === cur && l.size === size)
+        ex ? ex.qty++ : cart.push({ id: cur, size, qty: 1 })
+        // Uçan küçük görsel → sepet
+        const from = document.getElementById("qv-img").getBoundingClientRect(),
+          to = cartBtn.getBoundingClientRect()
+        document.getElementById("hint").textContent = "Sepete eklendi."
+        const done = () => {
+          renderCart()
+          cartBtn.classList.remove("bump")
+          void cartBtn.offsetWidth
+          cartBtn.classList.add("bump")
+        }
+        qv.close()
+        if (reduced) return done()
+        const f = document.createElement("div")
+        f.className = "flyer"
+        f.innerHTML = `<img src="${P[cur].imgs[0]}" alt="" />`
+        document.body.appendChild(f)
+        gsap.set(f, {
+          left: from.left + from.width / 2 - 40,
+          top: from.top + from.height / 2 - 48,
+        })
+        gsap.to(f, {
+          left: to.left + to.width / 2 - 40,
+          top: to.top - 20,
+          scale: 0.25,
+          rotate: 12,
+          duration: 0.85,
+          ease: "power3.in",
+          onComplete: () => {
+            f.remove()
+            done()
+          },
+        })
+      })
+      cartBtn.addEventListener("click", () => {
+        renderCart()
+        cartDlg.showModal()
+      })
+      document.querySelectorAll("dialog").forEach((d) => {
+        d.addEventListener("click", (e) => {
+          if (e.target === d || e.target.closest("[data-close]")) d.close()
+        })
+      })
+      renderCart()
+    </script>
+  </body>
+</html>

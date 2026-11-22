@@ -1,37 +1,10 @@
 "use server"
 
 import { maskPII } from "@arion/ai-guard"
-import { cookies } from "next/headers"
 import { z } from "zod"
-import { AI_CONSENT_COOKIE } from "@/lib/ai/config"
-import { getOrCreateAnonId } from "@/lib/consent"
 import { sdk } from "@/lib/medusa/client"
 import { getAuthHeaders } from "@/lib/medusa/cookies"
 
-/**
- * Areion açık rızası (yurt dışına aktarım — ai_chat_transfer, Rapor §7.1.6).
- * Backend'de rıza kaydı + tarayıcıda zorunlu httpOnly çerez.
- */
-export async function acceptAiConsentAction(): Promise<{ ok: boolean }> {
-  const anonymous_id = await getOrCreateAnonId()
-  try {
-    await sdk.client.fetch("/store/arion/consents", {
-      method: "POST",
-      headers: await getAuthHeaders(),
-      body: { channel: "other", anonymous_id, changes: { ai_chat_transfer: true } },
-    })
-  } catch {
-    return { ok: false }
-  }
-  ;(await cookies()).set(AI_CONSENT_COOKIE, "1", {
-    httpOnly: true,
-    sameSite: "lax",
-    secure: process.env.NODE_ENV === "production",
-    path: "/",
-    maxAge: 60 * 60 * 24 * 182,
-  })
-  return { ok: true }
-}
 
 const HandoffSchema = z.object({
   full_name: z.string().trim().min(2).max(120),

@@ -23,7 +23,7 @@ async function pick(page: Page, group: RegExp, value: string) {
 }
 
 async function addKackarToCart(page: Page) {
-  await addFirstInStock(page, "kackar-su-gecirmez-bot", {
+  await addFirstInStock(page, "olympos-dag-botu", {
     color: "Kahverengi",
     width: "W",
     sizes: ["42", "43", "41", "44", "40", "39"],
@@ -91,15 +91,15 @@ test.describe("indirim gösterimi (10 gün kuralı)", () => {
   test("gerçek indirim üstü çizili gösterilir, şişirilmiş fiyatta gösterilmez", async ({
     page,
   }) => {
-    await page.goto("/tr/urun/bogaz-gunluk-sneaker")
+    await page.goto("/tr/urun/helios-sneaker")
     const del = page.locator("main del").first()
     await expect(del).toHaveText(/2\.790/)
     await expect(del).toHaveAttribute("aria-label", /son 10 günün en düşüğü/)
     await expect(page.getByText("%18 indirim").first()).toBeVisible()
 
     // Fiyat indirimden önce 3.990'a şişirildi → yasal referans 3.290 < 3.790 → üstü çizili YOK
-    await page.goto("/tr/urun/palandoken-chelsea")
-    await expect(page.locator("main h1")).toHaveText("Palandöken Chelsea")
+    await page.goto("/tr/urun/herakles-chelsea")
+    await expect(page.locator("main h1")).toHaveText("Herakles Chelsea")
     await expect(
       page.locator("main section, main > div").first().locator("del"),
     ).toHaveCount(0)
@@ -109,11 +109,11 @@ test.describe("indirim gösterimi (10 gün kuralı)", () => {
     page,
   }) => {
     await page.goto("/tr/koleksiyon/sneaker")
-    const card = page.getByRole("link", { name: /Boğaz Günlük Sneaker/ })
+    const card = page.getByRole("link", { name: /Helios Sneaker/ })
     await expect(card.locator("del")).toHaveText(/2\.790/)
     await page.goto("/tr/koleksiyon/kislik-bot")
     await expect(
-      page.getByRole("link", { name: /Palandöken Chelsea/ }).locator("del"),
+      page.getByRole("link", { name: /Herakles Chelsea/ }).locator("del"),
     ).toHaveCount(0)
   })
 })
@@ -214,7 +214,7 @@ test.describe("katalog", () => {
   test("ürün sayfası: teknik yapı, Dayanıklılık Kartı (DEMO), kalıp tablosu", async ({
     page,
   }, info) => {
-    await page.goto("/tr/urun/pera-65-stiletto")
+    await page.goto("/tr/urun/selene-stiletto")
     await expect(
       page.getByRole("heading", { name: "Teknik yapı" }),
     ).toBeVisible()
@@ -229,7 +229,9 @@ test.describe("katalog", () => {
     await expect(
       page.getByRole("heading", { name: /Kalıp · Pera/ }),
     ).toBeVisible()
-    await expect(page.getByRole("table")).toContainText("36")
+    await expect(
+      page.getByRole("table").filter({ hasText: "Kalıp uzunluğu" }),
+    ).toContainText("36")
     await expect(page.getByText("ARN-L01")).toBeVisible()
     await page.screenshot({
       path: `${SHOTS}/urun-${info.project.name}.png`,
@@ -238,13 +240,13 @@ test.describe("katalog", () => {
   })
 
   test("EN dilinde ürün adı ve çevrilmiş yol", async ({ page }) => {
-    await page.goto("/en/product/galata-oxford")
+    await page.goto("/en/product/adrastus-oxford")
     await expect(page.locator("html")).toHaveAttribute("lang", "en")
     await expect(page.getByRole("heading", { level: 1 })).toHaveText(
-      "Galata Oxford",
+      "Adrastus Oxford",
     )
     await expect(
-      page.getByRole("button", { name: "Add to cart" }),
+      page.locator("#urun-formu").getByRole("button", { name: "Add to cart" }),
     ).toBeVisible()
   })
 })

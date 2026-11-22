@@ -1,0 +1,55 @@
+# ARION storefront — GitHub Pages'e statik yayın (DECISIONS #087)
+# Backend gerekmez: ürün verisi apps/storefront/snapshot/ içinden okunur.
+name: Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      # Yalnızca storefront ve bağımlı olduğu workspace paketleri kurulur (backend kurulmaz)
+      - name: Bağımlılıklar
+        run: pnpm install --frozen-lockfile --filter "@dtc/storefront..."
+
+      - name: Paylaşılan paketler
+        run: pnpm --filter @arion/legal-texts build
+
+      - name: Statik derleme
+        working-directory: apps/storefront
+        run: node scripts/static-export.mjs
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: apps/storefront/out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

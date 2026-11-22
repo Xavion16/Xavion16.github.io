@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server"
 import { ManeMark } from "@/components/brand/mane-mark"
-import { ArrowIcon, buttonClass } from "@/components/ui/button"
+import { buttonClass } from "@/components/ui/button"
 import { Link } from "@/i18n/navigation"
 
 /** Henüz yazılmamış bölümler için dürüst yer tutucu (kırık link yerine). */
@@ -14,7 +14,7 @@ export async function ComingSoon({ title, body }: { title: string; body: string 
         <div className="tech-grid absolute inset-0" />
       </div>
       <div className="relative mx-auto max-w-[1440px] px-4 py-24 sm:px-8 md:py-36">
-        <div className="glass max-w-3xl rounded-[32px] p-8 sm:p-12">
+        <div className="glass max-w-3xl rounded-[4px] p-8 sm:p-12">
           <p className="eyebrow inline-flex items-center gap-2 text-moss">
             <ManeMark className="size-5" strokeWidth={5} />
             {t("eyebrow")}
@@ -23,7 +23,6 @@ export async function ComingSoon({ title, body }: { title: string; body: string 
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-smoke">{body}</p>
           <Link href="/" className={buttonClass({ variant: "light", className: "mt-10" })}>
             {t("back")}
-            <ArrowIcon />
           </Link>
         </div>
       </div>

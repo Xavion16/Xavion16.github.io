@@ -4,7 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server"
 import { notFound } from "next/navigation"
 import { ShoeDrawing } from "@/components/illustrations/shoe-drawings"
 import { CartTotals } from "@/components/shop/cart-totals"
-import { ArrowIcon, buttonClass } from "@/components/ui/button"
+import { buttonClass } from "@/components/ui/button"
 import { Link } from "@/i18n/navigation"
 import { routing } from "@/i18n/routing"
 import { updateLineAction } from "@/lib/actions/cart-actions"
@@ -36,11 +36,10 @@ export default async function CartPage({ params }: PageProps<"/[locale]/sepet">)
       <h1 className="condensed text-display">{t("title")}</h1>
 
       {!cart || items.length === 0 ? (
-        <div className="glass mt-10 flex flex-col items-start gap-6 rounded-[28px] p-8">
+        <div className="glass mt-10 flex flex-col items-start gap-6 rounded-[4px] p-8">
           <p className="text-lg">{t("empty")}</p>
           <Link href="/koleksiyon" className={buttonClass({ size: "lg" })}>
             {t("emptyCta")}
-            <ArrowIcon />
           </Link>
         </div>
       ) : (
@@ -51,9 +50,9 @@ export default async function CartPage({ params }: PageProps<"/[locale]/sepet">)
               const category = isCategoryKey(cat) ? cat : "sneaker"
               const title = localized(item.product_title ?? item.title, item.product?.metadata, "title_en", locale)
               return (
-                <li key={item.id} className="glass flex gap-4 rounded-[28px] p-4">
+                <li key={item.id} className="glass flex gap-4 rounded-[4px] p-4">
                   <div
-                    className={`grid size-24 shrink-0 place-items-center rounded-2xl bg-gradient-to-br sm:size-28 ${CATEGORY_GRADIENT[category]}`}
+                    className={`grid size-24 shrink-0 place-items-center rounded-[4px] bg-gradient-to-br sm:size-28 ${CATEGORY_GRADIENT[category]}`}
                   >
                     <ShoeDrawing category={category} className="w-[85%] text-white" />
                   </div>
@@ -102,11 +101,10 @@ export default async function CartPage({ params }: PageProps<"/[locale]/sepet">)
             })}
           </ul>
 
-          <aside className="glass h-fit rounded-[28px] p-6 lg:sticky lg:top-24">
+          <aside className="glass h-fit rounded-[4px] p-6 lg:sticky lg:top-24">
             <CartTotals cart={cart} />
             <Link href="/odeme" className={buttonClass({ size: "lg", className: "mt-6 w-full" })}>
               {t("checkout")}
-              <ArrowIcon />
             </Link>
             <Link
               href="/koleksiyon"

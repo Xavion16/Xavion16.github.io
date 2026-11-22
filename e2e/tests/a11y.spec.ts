@@ -12,8 +12,8 @@ const PAGES = [
   "/tr/olmayan-sayfa",
   "/tr/koleksiyon",
   "/tr/koleksiyon/topuklu",
-  "/tr/urun/kackar-su-gecirmez-bot",
-  "/en/product/bogaz-gunluk-sneaker",
+  "/tr/urun/olympos-dag-botu",
+  "/en/product/helios-sneaker",
   "/tr/sepet",
   "/tr/odeme",
   "/tr/hesabim/giris",
@@ -26,6 +26,12 @@ const PAGES = [
   "/tr/yardim/iade",
   "/tr/yardim/talep",
   "/tr/iletisim",
+  "/en/fit-twin",
+  "/tr/pasaport/ARN-2026-000123",
+  "/tr/omur-plani",
+  "/tr/seffaflik",
+  "/tr/atolye",
+  "/en/transparency",
 ]
 
 for (const url of PAGES) {

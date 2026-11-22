@@ -2,7 +2,7 @@
 
 import { useActionState } from "react"
 import { useTranslations } from "next-intl"
-import { ArrowIcon, buttonClass } from "@/components/ui/button"
+import { buttonClass } from "@/components/ui/button"
 import { saveAddressAction, type ActionState } from "@/lib/actions/cart-actions"
 import { cn } from "@/lib/utils"
 
@@ -62,7 +62,7 @@ export function AddressForm({ defaults }: { defaults: AddressDefaults }) {
               aria-invalid={invalid || undefined}
               aria-describedby={invalid ? `${id}-err` : undefined}
               className={cn(
-                "min-h-12 rounded-2xl border bg-carbon px-4 text-white placeholder:text-smoke",
+                "min-h-12 rounded-[4px] border bg-carbon px-4 text-white placeholder:text-smoke",
                 invalid ? "border-ember" : "border-white/20 focus:border-white",
               )}
             />
@@ -82,7 +82,6 @@ export function AddressForm({ defaults }: { defaults: AddressDefaults }) {
         ) : null}
         <button type="submit" disabled={pending} className={buttonClass({ variant: "light", size: "lg" })}>
           {t("saveAddress")}
-          <ArrowIcon />
         </button>
       </div>
     </form>

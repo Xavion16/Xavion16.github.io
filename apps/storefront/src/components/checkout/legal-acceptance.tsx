@@ -2,7 +2,7 @@
 
 import { useState, type ReactNode } from "react"
 import { useTranslations } from "next-intl"
-import { ArrowIcon, buttonClass } from "@/components/ui/button"
+import { buttonClass } from "@/components/ui/button"
 import { acceptAndPayAction } from "@/lib/actions/cart-actions"
 
 /**
@@ -23,7 +23,7 @@ export function LegalAcceptance({
   const [dist, setDist] = useState(false)
   const ready = pre && dist
 
-  const box = "mt-3 max-h-72 overflow-y-auto rounded-2xl bg-white p-5 text-sm focus-visible:outline-ember"
+  const box = "mt-3 max-h-72 overflow-y-auto rounded-[4px] bg-white p-5 text-sm focus-visible:outline-ember"
   return (
     <form action={acceptAndPayAction} className="mt-6 space-y-6">
       <input type="hidden" name="pre_contract_hash" value={hashes.pre} />
@@ -78,7 +78,6 @@ export function LegalAcceptance({
         className={buttonClass({ size: "lg", className: "w-full sm:w-auto" })}
       >
         {t("pay")}
-        <ArrowIcon />
       </button>
     </form>
   )

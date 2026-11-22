@@ -1,11 +1,11 @@
 import { getTranslations } from "next-intl/server"
 import { Logo } from "@/components/brand/logo"
-import { ArrowIcon, buttonClass } from "@/components/ui/button"
 import { Link } from "@/i18n/navigation"
 import { cartItemCount, getCart } from "@/lib/medusa/cart"
 import { getCustomer } from "@/lib/medusa/customer"
 import { LanguageSwitcher } from "./language-switcher"
 import { MainNav } from "./main-nav"
+import { StaticCartBadge } from "@/components/static/static-cart-badge"
 
 export async function SiteHeader() {
   const t = await getTranslations()
@@ -16,7 +16,7 @@ export async function SiteHeader() {
     <>
       <a
         href="#icerik"
-        className="sr-only z-[70] rounded-full bg-white px-4 py-3 text-ink focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
+        className="sr-only z-[70] rounded-[2px] bg-white px-4 py-3 text-ink focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
       >
         {t("nav.skip")}
       </a>
@@ -28,9 +28,10 @@ export async function SiteHeader() {
         </p>
       </aside>
 
-      <header className="sticky top-0 z-50 px-3 pt-3 sm:px-6">
-        <div className="glass relative mx-auto flex h-16 max-w-[1440px] items-center justify-between gap-4 rounded-full pr-2 pl-5 sm:pl-6">
-          <Link href="/" aria-label={t("nav.home")} className="rounded-full py-2">
+      {/* Tam genişlik, düz üst çubuk (yüzen cam kapsül yerine, DECISIONS #077) */}
+      <header className="sticky top-0 z-50 border-b border-chalk/10 bg-void/90 backdrop-blur-md">
+        <div className="relative mx-auto flex h-16 max-w-[1440px] items-center justify-between gap-4 px-4 sm:px-8">
+          <Link href="/" aria-label={t("nav.home")} className="py-2">
             <Logo />
           </Link>
           <MainNav />
@@ -39,7 +40,7 @@ export async function SiteHeader() {
             <Link
               href={customer ? "/hesabim" : "/hesabim/giris"}
               aria-label={t("shop.nav.account")}
-              className="grid size-11 place-items-center rounded-full hover:bg-white/10"
+              className="grid size-11 place-items-center text-chalk/85 hover:text-chalk"
             >
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="size-5" aria-hidden="true">
                 <circle cx="12" cy="8" r="4" />
@@ -49,13 +50,15 @@ export async function SiteHeader() {
             <Link
               href="/sepet"
               aria-label={t("shop.nav.cartCount", { count })}
-              className="relative grid size-11 place-items-center rounded-full hover:bg-white/10"
+              className="relative grid size-11 place-items-center text-chalk/85 hover:text-chalk"
             >
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="size-5" aria-hidden="true">
                 <path d="M5 8h14l-1.2 12H6.2L5 8Z" strokeLinejoin="round" />
                 <path d="M9 8V6a3 3 0 0 1 6 0v2" strokeLinecap="round" />
               </svg>
-              {count > 0 ? (
+              {process.env.NEXT_PUBLIC_ARION_STATIC === "1" ? (
+                <StaticCartBadge />
+              ) : count > 0 ? (
                 <span
                   aria-hidden="true"
                   data-testid="cart-count"
@@ -64,13 +67,6 @@ export async function SiteHeader() {
                   {count}
                 </span>
               ) : null}
-            </Link>
-            <Link
-              href="/ayak-ikizi"
-              className={buttonClass({ size: "md", className: "hidden sm:inline-flex" })}
-            >
-              {t("nav.fitTwin")}
-              <ArrowIcon />
             </Link>
           </div>
         </div>

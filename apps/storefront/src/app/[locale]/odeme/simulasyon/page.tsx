@@ -41,11 +41,11 @@ export default async function PaymentSimulationPage({
         <div className="tech-grid absolute inset-0" />
       </div>
       <div className="relative mx-auto max-w-xl px-4 py-24 sm:px-8">
-        <div className="glass rounded-[32px] p-8">
+        <div className="glass rounded-[4px] p-8">
           <p className="eyebrow text-ember">{t("eyebrow")}</p>
           <h1 className="condensed mt-4 text-headline">{t("title")}</h1>
           <p className="mt-4 leading-relaxed text-smoke">{t("body")}</p>
-          <dl className="mt-6 flex items-baseline justify-between rounded-2xl bg-white/5 p-4">
+          <dl className="mt-6 flex items-baseline justify-between rounded-[4px] bg-white/5 p-4">
             <dt className="text-sm text-smoke">{t("amount")}</dt>
             <dd className="text-2xl font-bold">{formatMoney(Number(session.amount), locale)}</dd>
           </dl>

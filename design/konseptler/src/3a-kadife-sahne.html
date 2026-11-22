@@ -1,0 +1,1141 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ARION — Kadife Sahne (3D)</title>
+    <meta
+      name="description"
+      content="Kadife ailesi A: canlı 3D topuklu, kadife malzeme, kaydırmayla katmanlarına ayrılan sahne."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;1,6..96,400&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="ortak.css" />
+    <link rel="stylesheet" href="kadife-ortak.css" />
+    <style>
+      :root {
+        --night: #0e0208;
+        --velvet: #3b0716;
+        --rose: #ff2e63;
+        --chrome: #f6f2f3;
+        --muted: #c4aab3;
+        --gold: #e3c08d;
+      }
+      body {
+        background: var(--night);
+        color: var(--chrome);
+        font-family: "Space Grotesk", sans-serif;
+      }
+      .bodoni {
+        font-family: "Bodoni Moda", serif;
+      }
+      .eyebrow {
+        font: 500 12px/1 "Space Grotesk";
+        letter-spacing: 0.34em;
+        text-transform: uppercase;
+        color: var(--rose);
+      }
+      .pad {
+        padding-inline: clamp(16px, 4vw, 64px);
+      }
+      .nav {
+        position: fixed;
+        inset: 0 0 auto;
+        z-index: 60;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 22px clamp(16px, 4vw, 64px);
+      }
+      .nav .mark {
+        font-family: "Bodoni Moda";
+        font-weight: 700;
+        font-size: 24px;
+        letter-spacing: 0.3em;
+        text-decoration: none;
+      }
+      .nav ul {
+        display: flex;
+        gap: 26px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        font-size: 12px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+      }
+      .nav a {
+        text-decoration: none;
+      }
+      @media (max-width: 700px) {
+        .nav ul li:nth-child(n + 3) {
+          display: none;
+        }
+      }
+
+      /* 3D sahne: yapışkan kanvas + bölümler */
+      .scene {
+        position: relative;
+        height: 420vh;
+      }
+      .stage {
+        position: sticky;
+        top: 0;
+        height: 100svh;
+        overflow: hidden;
+        background: radial-gradient(
+          70% 70% at 60% 45%,
+          #4a0a1f 0%,
+          #1a0410 45%,
+          var(--night) 75%
+        );
+      }
+      .stage canvas {
+        position: absolute;
+        inset: 0;
+        width: 100% !important;
+        height: 100% !important;
+      }
+      .poster {
+        position: absolute;
+        inset: 0;
+        display: none;
+      }
+      .poster img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.55;
+      }
+      .no-webgl .poster {
+        display: block;
+      }
+      .chapters {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+      }
+      .ch {
+        position: absolute;
+        left: clamp(16px, 4vw, 64px);
+        bottom: clamp(36px, 9vh, 110px);
+        max-width: min(560px, 90vw);
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 0.7s,
+          transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+        pointer-events: none;
+      }
+      .ch.on {
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+      }
+      .ch.right {
+        left: auto;
+        right: clamp(16px, 4vw, 64px);
+        text-align: right;
+      }
+      .ch h1,
+      .ch h2 {
+        font-family: "Bodoni Moda";
+        font-weight: 400;
+        line-height: 0.9;
+        margin: 14px 0 18px;
+        letter-spacing: -0.02em;
+      }
+      .ch h1 {
+        font-size: clamp(64px, 10vw, 180px);
+      }
+      .ch h2 {
+        font-size: clamp(46px, 6vw, 110px);
+      }
+      .ch h1 i,
+      .ch h2 i {
+        color: var(--rose);
+      }
+      .ch p {
+        font-size: 18px;
+        line-height: 1.6;
+        color: var(--muted);
+        margin: 0 0 20px;
+      }
+      .layers {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 8px;
+      }
+      .layers li {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        border-bottom: 1px solid rgb(246 242 243 / 0.15);
+        padding: 8px 0;
+        font-size: 15px;
+      }
+      .layers li span {
+        color: var(--muted);
+      }
+      .swatches {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .ch.right .swatches {
+        justify-content: end;
+      }
+      .sw {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        min-height: 46px;
+        padding: 0 16px 0 8px;
+        border-radius: 999px;
+        border: 1px solid rgb(246 242 243 / 0.25);
+        background: rgb(14 2 8 / 0.5);
+        backdrop-filter: blur(6px);
+        font-size: 14px;
+      }
+      .sw i {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: block;
+        box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.25);
+      }
+      .sw[aria-pressed="true"] {
+        border-color: var(--rose);
+        background: rgb(255 46 99 / 0.16);
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        min-height: 52px;
+        padding: 0 26px;
+        border-radius: 999px;
+        text-decoration: none;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        font-size: 13px;
+      }
+      .btn-rose {
+        background: var(--rose);
+        color: var(--night);
+      }
+      .btn-line {
+        border: 1px solid rgb(246 242 243 / 0.4);
+      }
+      .progress {
+        position: absolute;
+        right: clamp(16px, 4vw, 64px);
+        top: 50%;
+        transform: translateY(-50%);
+        display: grid;
+        gap: 10px;
+      }
+      .progress span {
+        width: 2px;
+        height: 28px;
+        background: rgb(246 242 243 / 0.2);
+      }
+      .progress span.on {
+        background: var(--rose);
+      }
+      .price-tag {
+        position: absolute;
+        right: clamp(16px, 4vw, 64px);
+        top: 96px;
+        text-align: right;
+      }
+      .price-tag b {
+        display: block;
+        font-family: "Bodoni Moda";
+        font-size: 34px;
+        font-weight: 400;
+      }
+      .rm .scene {
+        height: auto;
+      }
+      .rm .stage {
+        position: relative;
+      }
+      @media (max-width: 760px) {
+        .progress,
+        .price-tag {
+          display: none;
+        }
+        .ch,
+        .ch.right {
+          left: 16px;
+          right: 16px;
+          text-align: left;
+          bottom: 20px;
+        }
+        .ch.right .swatches {
+          justify-content: start;
+        }
+        .ch h1 {
+          font-size: 54px;
+          margin: 8px 0 10px;
+        }
+        .ch h2 {
+          font-size: 40px;
+        }
+        .ch p {
+          font-size: 15px;
+          margin-bottom: 12px;
+        }
+        .sw {
+          min-height: 40px;
+          font-size: 13px;
+          padding: 0 12px 0 6px;
+        }
+        .sw i {
+          width: 22px;
+          height: 22px;
+        }
+        .swatches {
+          gap: 6px;
+        }
+      }
+
+      /* Ürünler */
+      .shelf {
+        padding-block: clamp(100px, 13vw, 190px);
+      }
+      .shelf h2 {
+        font-family: "Bodoni Moda";
+        font-weight: 400;
+        font-size: clamp(54px, 8vw, 150px);
+        line-height: 0.9;
+        margin: 14px 0 50px;
+      }
+      .shelf h2 i {
+        color: var(--rose);
+      }
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: clamp(12px, 1.8vw, 24px);
+      }
+      .card {
+        text-decoration: none;
+      }
+      .card .ph {
+        aspect-ratio: 3 / 4;
+        border-radius: 22px;
+        overflow: hidden;
+        position: relative;
+        background: #1d0912;
+      }
+      .card .ph img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition:
+          transform 1.1s cubic-bezier(0.2, 0.8, 0.2, 1),
+          opacity 0.5s;
+      }
+      .card .ph img + img {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+      }
+      .card:hover .ph img + img {
+        opacity: 1;
+      }
+      .card:hover .ph img {
+        transform: scale(1.05);
+      }
+      .card .meta {
+        display: flex;
+        justify-content: space-between;
+        padding: 14px 4px 0;
+      }
+      .card .meta b {
+        font-family: "Bodoni Moda";
+        font-weight: 400;
+        font-size: 22px;
+      }
+      .card .dots {
+        display: flex;
+        gap: 6px;
+        padding: 8px 4px 0;
+      }
+      .card .dots i {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+      }
+      @media (max-width: 900px) {
+        .cards {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .men {
+        background: #0b0a0b;
+        padding-block: clamp(100px, 13vw, 190px);
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        gap: clamp(24px, 5vw, 80px);
+        align-items: center;
+      }
+      .men h2 {
+        font-family: "Bodoni Moda";
+        font-weight: 400;
+        font-size: clamp(54px, 8vw, 150px);
+        line-height: 0.9;
+        margin: 14px 0 22px;
+      }
+      .men h2 i {
+        color: var(--gold);
+      }
+      .men .eyebrow {
+        color: var(--gold);
+      }
+      .men p {
+        color: #b8aea7;
+        font-size: 18px;
+        line-height: 1.65;
+        max-width: 42ch;
+      }
+      .reveal {
+        position: relative;
+        aspect-ratio: 5 / 4;
+        border-radius: 22px;
+        overflow: hidden;
+      }
+      .reveal img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .reveal .base {
+        filter: grayscale(1) brightness(0.55);
+      }
+      .reveal .lit {
+        --x: 50%;
+        --y: 50%;
+        -webkit-mask-image: radial-gradient(
+          circle 160px at var(--x) var(--y),
+          #000 30%,
+          transparent 75%
+        );
+        mask-image: radial-gradient(
+          circle 160px at var(--x) var(--y),
+          #000 30%,
+          transparent 75%
+        );
+      }
+      @media (hover: none) {
+        .reveal .lit {
+          -webkit-mask-image: none;
+          mask-image: none;
+        }
+      }
+      @media (max-width: 860px) {
+        .men {
+          grid-template-columns: 1fr;
+        }
+      }
+      footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 40px clamp(16px, 4vw, 64px) 90px;
+        color: var(--muted);
+        font-size: 14px;
+        border-top: 1px solid rgb(246 242 243 / 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Görseller: Unsplash Lisansı (konsept). 3D modeller (Sketchfab, CC BY 4.0, malzemeler ARION tarafından yeniden atandı): "High_heels" by gemma1; "Classic high heel pumps" by Andrey (Earl_1). -->
+    <div class="preloader" aria-hidden="true">
+      <div class="pl-in">
+        <div class="pl-mark">ARION · KADİFE</div>
+        <div data-count>00</div>
+        <div class="pl-bar"></div>
+      </div>
+    </div>
+    <a class="sr-only" href="#icerik">İçeriğe geç</a>
+    <header class="nav">
+      <a href="#" class="mark" aria-label="ARION ana sayfa">ARION</a>
+      <nav aria-label="Ana menü">
+        <ul>
+          <li><a href="#topuklu">Kadın</a></li>
+          <li><a href="#salon">Erkek</a></li>
+          <li><a href="#">Ayak İkizi</a></li>
+          <li><a href="#">Sepet</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="icerik">
+      <section class="scene" aria-label="Pera 65 kadife — 3D sahne">
+        <div class="stage">
+          <div class="poster" aria-hidden="true">
+            <img src="{{W3:1800}}" alt="" />
+          </div>
+          <canvas
+            id="sahne"
+            aria-label="Pera 65 kadife topuklunun etkileşimli 3D modeli"
+            role="img"
+          ></canvas>
+          <div class="price-tag">
+            <span class="eyebrow">Pera 100 · Stiletto</span><b>₺3.990</b>
+          </div>
+          <div class="progress" aria-hidden="true">
+            <span class="on"></span><span></span><span></span><span></span>
+          </div>
+          <div class="chapters">
+            <div class="ch on" data-ch="0">
+              <p class="eyebrow">Kadın · Topuklu · 3D</p>
+              <h1 data-split data-hero>Kırmızı<br /><i>sahnede.</i></h1>
+              <p>
+                Modeli seç, fareyle sürükle; rengini ve yüzeyini canlı değiştir.
+              </p>
+              <div class="swatches" role="group" aria-label="Renk seç">
+                <button
+                  class="sw"
+                  type="button"
+                  data-color="kirmizi"
+                  aria-pressed="true"
+                  data-magnet="0.2"
+                >
+                  <i style="background: #a80d1d"></i>Kırmızı
+                </button>
+                <button
+                  class="sw"
+                  type="button"
+                  data-color="bordo"
+                  aria-pressed="false"
+                  data-magnet="0.2"
+                >
+                  <i style="background: #5c0b22"></i>Bordo
+                </button>
+                <button
+                  class="sw"
+                  type="button"
+                  data-color="gece"
+                  aria-pressed="false"
+                  data-magnet="0.2"
+                >
+                  <i style="background: #16141c"></i>Gece
+                </button>
+                <button
+                  class="sw"
+                  type="button"
+                  data-color="pudra"
+                  aria-pressed="false"
+                  data-magnet="0.2"
+                >
+                  <i style="background: #e7b6b0"></i>Pudra
+                </button>
+                <button
+                  class="sw"
+                  type="button"
+                  data-color="sampanya"
+                  aria-pressed="false"
+                  data-magnet="0.2"
+                >
+                  <i style="background: #d9c08f"></i>Şampanya
+                </button>
+              </div>
+              <div
+                class="swatches models"
+                role="group"
+                aria-label="Model seç"
+                style="margin-bottom: 10px"
+              >
+                <button
+                  class="sw"
+                  type="button"
+                  data-model="assets/high-heels-arion.glb"
+                  data-name="Pera 100 · Stiletto"
+                  data-price="₺3.990"
+                  aria-pressed="true"
+                >
+                  Pera 100 · Stiletto
+                </button>
+                <button
+                  class="sw"
+                  type="button"
+                  data-model="assets/pumps-arion.glb"
+                  data-name="Pera 65 · Klasik"
+                  data-price="₺3.490"
+                  aria-pressed="false"
+                >
+                  Pera 65 · Klasik
+                </button>
+              </div>
+              <div
+                class="swatches finish"
+                role="group"
+                aria-label="Yüzey seç"
+                style="margin-top: 10px"
+              >
+                <button
+                  class="sw"
+                  type="button"
+                  data-finish="rugan"
+                  aria-pressed="true"
+                >
+                  <i
+                    style="
+                      background: linear-gradient(
+                        135deg,
+                        #fff 0%,
+                        #a80d1d 35%,
+                        #3a0309 100%
+                      );
+                    "
+                  ></i
+                  >Rugan
+                </button>
+                <button
+                  class="sw"
+                  type="button"
+                  data-finish="kadife"
+                  aria-pressed="false"
+                >
+                  <i
+                    style="
+                      background: radial-gradient(
+                        circle at 35% 30%,
+                        #ff4a5e,
+                        #5c0b22 70%
+                      );
+                    "
+                  ></i
+                  >Kadife
+                </button>
+              </div>
+            </div>
+            <div class="ch right" data-ch="1">
+              <p class="eyebrow">01 · Kalıp</p>
+              <h2>65 mm,<br /><i>tam ağırlık merkezinde.</i></h2>
+              <p>
+                Topuk ucu ağırlık merkezinin tam altına oturur; ön ayak kalıbı
+                bu yüzden daha geniş çizildi.
+              </p>
+            </div>
+            <div class="ch" data-ch="2">
+              <p class="eyebrow">02 · Malzeme</p>
+              <h2>Rugan ya da <i>kadife.</i></h2>
+              <ul class="layers">
+                <li>Saya <span>Rugan ya da ipek kadife</span></li>
+                <li>Astar <span>Ten rengi keçi derisi</span></li>
+                <li>Taban <span>Kösele, mat</span></li>
+                <li>Topuk <span>Sayayla aynı kaplama</span></li>
+                <li>Topuk ucu <span>Kauçuk, sessiz adım</span></li>
+              </ul>
+            </div>
+            <div class="ch right" data-ch="3">
+              <p class="eyebrow">03 · Senin</p>
+              <h2>Numaran<br /><i>milimetresiyle.</i></h2>
+              <p>
+                Ayak İkizi ile bu kalıp için uyum skorunu gör; misafirken
+                ölçülerin bu sekmeden çıkmaz.
+              </p>
+              <a class="btn btn-rose" href="#" data-magnet
+                >Ayak İkizini oluştur</a
+              >
+              <a
+                class="btn btn-line"
+                href="#topuklu"
+                data-magnet
+                style="margin-left: 8px"
+                >Koleksiyon</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="topuklu" class="shelf pad" aria-labelledby="h-shelf">
+        <p class="eyebrow">Kırmızı Oda · Topuklular</p>
+        <h2 id="h-shelf" data-split>Her gece<br /><i>bir yükseklik.</i></h2>
+        <div class="cards">
+          <a class="card" href="#" data-cursor="İncele" data-reveal
+            ><div class="ph">
+              <img
+                src="{{W3:800}}"
+                alt="Kırmızı rugan stiletto"
+                loading="lazy"
+              /><img src="{{W4:800}}" alt="" loading="lazy" />
+            </div>
+            <div class="meta"><b>Pera 65</b><span>₺3.490</span></div>
+            <div class="dots">
+              <i style="background: #c1121f"></i
+              ><i style="background: #16141c"></i></div
+          ></a>
+          <a class="card" href="#" data-cursor="İncele" data-reveal
+            ><div class="ph">
+              <img
+                src="{{W13:800}}"
+                alt="Siyah çorap ve stiletto"
+                loading="lazy"
+              /><img src="{{W12:800}}" alt="" loading="lazy" />
+            </div>
+            <div class="meta"><b>Pera 75 Kadife</b><span>₺3.790</span></div>
+            <div class="dots">
+              <i style="background: #5c0b22"></i
+              ><i style="background: #16141c"></i
+              ><i style="background: #e7b6b0"></i></div
+          ></a>
+          <a class="card" href="#" data-cursor="İncele" data-reveal
+            ><div class="ph">
+              <img
+                src="{{W7:800}}"
+                alt="Taşlı stiletto sandalet"
+                loading="lazy"
+              /><img src="{{W6:800}}" alt="" loading="lazy" />
+            </div>
+            <div class="meta"><b>Işıltı</b><span>₺3.990</span></div>
+            <div class="dots">
+              <i style="background: #d9c08f"></i
+              ><i style="background: #c1121f"></i></div
+          ></a>
+          <a class="card" href="#" data-cursor="İncele" data-reveal
+            ><div class="ph">
+              <img
+                src="{{W8:800}}"
+                alt="Fiyonklu kırmızı topuklu"
+                loading="lazy"
+              /><img src="{{W5:800}}" alt="" loading="lazy" />
+            </div>
+            <div class="meta"><b>Moda 45</b><span>₺2.890</span></div>
+            <div class="dots"><i style="background: #c1121f"></i></div
+          ></a>
+        </div>
+      </section>
+
+      <section id="salon" class="men pad" aria-labelledby="h-salon">
+        <div>
+          <p class="eyebrow">Erkek · Salon</p>
+          <h2 id="h-salon" data-split>Konyak<br /><i>ve gölge.</i></h2>
+          <p data-reveal>
+            Fareyi fotoğrafın üstünde gezdir: deri ışıkta rengini bulur. Erkek
+            salonu Goodyear dikişli, pençesi yenilenebilen modellerden oluşur.
+          </p>
+          <a class="btn btn-line" href="#" data-magnet>Erkek salonu</a>
+        </div>
+        <div class="reveal" data-cursor="Işık">
+          <img
+            class="base"
+            src="{{M4:1400}}"
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+          /><img
+            class="lit"
+            src="{{M4:1400}}"
+            alt="Deri erkek ayakkabıları, loş vitrin"
+            loading="lazy"
+          />
+        </div>
+      </section>
+    </main>
+    <footer>
+      <span class="bodoni" style="letter-spacing: 0.3em">ARION</span
+      ><span
+        >3D modeller: "<a
+          href="https://sketchfab.com/3d-models/high-heels-ad6e3ba46d044cf09c6e455ceb338917"
+          rel="noopener"
+          >High_heels</a
+        >" — gemma1 · "<a
+          href="https://sketchfab.com/3d-models/classic-high-heel-pumps-e968fd35a2f1474996bc1536ae85970f"
+          rel="noopener"
+          >Classic high heel pumps</a
+        >" — Andrey (Earl_1) ·
+        <a href="http://creativecommons.org/licenses/by/4.0/" rel="noopener"
+          >CC BY 4.0</a
+        >; malzemeler ARION tarafından yeniden atandı · Görseller:
+        Unsplash</span
+      >
+    </footer>
+    <a class="konsept-etiketi" href="index.html"
+      >← Konseptler · Kadife A · Sahne</a
+    >
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="ortak.js"></script>
+    <script src="kadife-ortak.js"></script>
+    <script>
+      // Erkek bölümü: imleç ışığı
+      document.querySelectorAll(".reveal").forEach((el) => {
+        const lit = el.querySelector(".lit")
+        el.addEventListener("pointermove", (e) => {
+          const r = el.getBoundingClientRect()
+          lit.style.setProperty("--x", e.clientX - r.left + "px")
+          lit.style.setProperty("--y", e.clientY - r.top + "px")
+        })
+      })
+    </script>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.183.2/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.183.2/examples/jsm/"
+        }
+      }
+    </script>
+    <script type="module">
+      import * as THREE from "three"
+      import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js"
+      import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js"
+
+      const canvas = document.getElementById("sahne")
+      const stage = canvas.parentElement
+      const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches
+      let renderer
+      try {
+        renderer = new THREE.WebGLRenderer({
+          canvas,
+          antialias: true,
+          alpha: true,
+          powerPreference: "high-performance",
+        })
+      } catch {
+        stage.classList.add("no-webgl")
+      }
+
+      if (renderer) {
+        renderer.setPixelRatio(Math.min(devicePixelRatio, 1.75))
+        renderer.toneMapping = THREE.ACESFilmicToneMapping
+        renderer.toneMappingExposure = 1.1
+        renderer.shadowMap.enabled = true
+        renderer.shadowMap.type = THREE.PCFShadowMap
+
+        // Çizim döngüsü durumu (talep üzerine çizim)
+        let visible = true,
+          needs = true,
+          last = performance.now(),
+          loopOn = false
+        const scene = new THREE.Scene()
+        const pmrem = new THREE.PMREMGenerator(renderer)
+        scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture
+        scene.environmentIntensity = 0.55
+
+        const camera = new THREE.PerspectiveCamera(30, 1, 0.01, 10)
+        const target = new THREE.Vector3(0, 0.07, 0)
+
+        // Işıklar: imleci izleyen gül spot, arkadan soğuk kontur
+        const spot = new THREE.SpotLight("#ff6a8e", 9, 3, Math.PI / 7, 0.6, 1.2)
+        spot.position.set(0.5, 0.7, 0.6)
+        spot.castShadow = true
+        spot.shadow.mapSize.set(1024, 1024)
+        scene.add(spot, spot.target)
+        const rim = new THREE.DirectionalLight("#7f9cff", 1.6)
+        rim.position.set(-0.6, 0.4, -0.8)
+        scene.add(rim, new THREE.AmbientLight("#ffd6e0", 0.25))
+
+        const floor = new THREE.Mesh(
+          new THREE.CircleGeometry(0.6, 64),
+          new THREE.ShadowMaterial({ opacity: 0.45 }),
+        )
+        floor.rotation.x = -Math.PI / 2
+        floor.receiveShadow = true
+        scene.add(floor)
+
+        // ── Malzemeler: rugan (parlak üst kat) / kadife (sheen) + mat taban, ten astar, siyah topuk ucu ──
+        const COLORS = {
+          kirmizi: { color: "#a80d1d", sheen: "#ff4a5e" },
+          bordo: { color: "#5c0b22", sheen: "#ff3b6e" },
+          gece: { color: "#121116", sheen: "#8a8fb8" },
+          pudra: { color: "#e2b2a8", sheen: "#fff1ee" },
+          sampanya: { color: "#d6bf8f", sheen: "#fff4d6" },
+        }
+        const patent = new THREE.MeshPhysicalMaterial({
+          color: COLORS.kirmizi.color,
+          roughness: 0.26,
+          metalness: 0,
+          clearcoat: 1,
+          clearcoatRoughness: 0.05,
+        })
+        const velvet = new THREE.MeshPhysicalMaterial({
+          color: COLORS.kirmizi.color,
+          roughness: 0.92,
+          sheen: 1,
+          sheenRoughness: 0.3,
+          sheenColor: COLORS.kirmizi.sheen,
+        })
+        let upperMat = patent
+        const soleMat = new THREE.MeshStandardMaterial({
+          color: "#2a1a14",
+          roughness: 0.8,
+        })
+        // Astar: sayanın koyu, mat tonu (düşük çokgenli modellerde iç sınır tırtıklı görünmesin)
+        const liningMat = new THREE.MeshStandardMaterial({
+          color: new THREE.Color(COLORS.kirmizi.color).multiplyScalar(0.62),
+          roughness: 0.62,
+        })
+        const topliftMat = new THREE.MeshStandardMaterial({
+          color: "#0b0b0c",
+          roughness: 0.5,
+        })
+        // Kaynak modelde bir tekin sarım yönü ters: iki yüzlü çizim dış yüzeyin kaybolmasını önler
+        ;[patent, velvet, soleMat, liningMat, topliftMat].forEach((m) => {
+          m.side = THREE.DoubleSide
+        })
+
+        const pivot = new THREE.Group()
+        scene.add(pivot)
+        const layers = []
+        const shoes = []
+        // Parçalar scripts/segment-pumps.ts ile önceden ayrıldı (upper / sole / lining / toplift)
+        const PART = { sole: soleMat, lining: liningMat, toplift: topliftMat }
+        let frameR = 0.15
+        let current = null
+        const cache = {}
+        const loader = new GLTFLoader()
+        // Model değiştirici: iki gerçek model (CC BY 4.0), aynı malzeme sistemi
+        const loadModel = (url) => {
+          stage.dataset.loaded = "false"
+          const done = (gltf) => {
+            if (current) pivot.remove(current)
+            shoes.length = 0
+            placeModel(gltf.scene)
+          }
+          if (cache[url]) return done(cache[url])
+          loader.load(url, (gltf) => {
+            cache[url] = gltf
+            done(gltf)
+          })
+        }
+        const placeModel = (model) => {
+          current = model
+          model.scale.setScalar(1)
+          model.position.set(0, 0, 0)
+          model.traverse((o) => {
+            if (o.isMesh) {
+              o.userData.part ??= o.material?.name
+              const name = o.userData.part
+              if (name === "upper") shoes.push(o)
+              o.material =
+                name === "upper" ? upperMat : (PART[name] ?? o.material)
+              o.castShadow = true
+              o.receiveShadow = true
+            }
+          })
+          // ≈ 25 cm boya ölçekle, ortala, zemine oturt
+          model.updateMatrixWorld(true)
+          const size = new THREE.Box3()
+            .setFromObject(model)
+            .getSize(new THREE.Vector3())
+          model.scale.setScalar(0.25 / Math.max(size.x, size.z))
+          model.updateMatrixWorld(true)
+          const box = new THREE.Box3().setFromObject(model)
+          const c = box.getCenter(new THREE.Vector3())
+          model.position.set(-c.x, -box.min.y, -c.z)
+          frameR = box.getBoundingSphere(new THREE.Sphere()).radius
+          pivot.add(model)
+          stage.dataset.loaded = "true"
+          requestRender()
+        }
+        loadModel("assets/high-heels-arion.glb")
+        document.querySelectorAll("[data-model]").forEach((btn) =>
+          btn.addEventListener("click", () => {
+            document
+              .querySelectorAll("[data-model]")
+              .forEach((x) => x.setAttribute("aria-pressed", String(x === btn)))
+            document.querySelector(".price-tag .eyebrow").textContent =
+              btn.dataset.name
+            document.querySelector(".price-tag b").textContent =
+              btn.dataset.price
+            loadModel(btn.dataset.model)
+          }),
+        )
+
+        const setUpper = (m) => {
+          upperMat = m
+          shoes.forEach((sh) => {
+            sh.material = m
+          })
+          requestRender()
+        }
+        document.querySelectorAll("[data-finish]").forEach((btn) =>
+          btn.addEventListener("click", () => {
+            document
+              .querySelectorAll("[data-finish]")
+              .forEach((x) => x.setAttribute("aria-pressed", String(x === btn)))
+            setUpper(btn.dataset.finish === "kadife" ? velvet : patent)
+          }),
+        )
+
+        // Renk değişimi (yumuşak geçiş, rugan ve kadifede birlikte)
+        const swatches = document.querySelectorAll(".sw[data-color]")
+        swatches.forEach((btn) =>
+          btn.addEventListener("click", () => {
+            swatches.forEach((x) =>
+              x.setAttribute("aria-pressed", String(x === btn)),
+            )
+            const c = COLORS[btn.dataset.color]
+            const from = patent.color.clone(),
+              fromS = velvet.sheenColor.clone()
+            const to = new THREE.Color(c.color),
+              toS = new THREE.Color(c.sheen)
+            const t0 = performance.now()
+            const step = (now) => {
+              const k = Math.min(1, (now - t0) / 600)
+              patent.color.copy(from).lerp(to, k)
+              velvet.color.copy(patent.color)
+              liningMat.color.copy(patent.color).multiplyScalar(0.62)
+              velvet.sheenColor.copy(fromS).lerp(toS, k)
+              requestRender()
+              if (k < 1) requestAnimationFrame(step)
+            }
+            requestAnimationFrame(step)
+          }),
+        )
+
+        // İmleç: spot ışığı ve hafif paralaks
+        const pointer = { x: 0, y: 0, tx: 0, ty: 0 }
+        stage.addEventListener("pointermove", (e) => {
+          const r = stage.getBoundingClientRect()
+          pointer.tx = ((e.clientX - r.left) / r.width) * 2 - 1
+          pointer.ty = ((e.clientY - r.top) / r.height) * 2 - 1
+          requestRender()
+        })
+        // Sürükleyerek döndürme
+        let drag = null,
+          spin = 0,
+          spinV = 0
+        canvas.addEventListener("pointerdown", (e) => {
+          drag = e.clientX
+          canvas.setPointerCapture(e.pointerId)
+        })
+        canvas.addEventListener("pointermove", (e) => {
+          if (drag !== null) {
+            spinV = (e.clientX - drag) * 0.008
+            spin += spinV
+            drag = e.clientX
+            requestRender()
+          }
+        })
+        canvas.addEventListener("pointerup", () => {
+          drag = null
+        })
+
+        // Kaydırma ilerlemesi → bölüm, patlatma, kamera
+        let progress = 0
+        const chapters = [...document.querySelectorAll(".ch")]
+        const bars = [...document.querySelectorAll(".progress span")]
+        const setChapter = (i) => {
+          chapters.forEach((c, k) => c.classList.toggle("on", k === i))
+          bars.forEach((b, k) => b.classList.toggle("on", k <= i))
+        }
+        if (!reduced && window.ScrollTrigger) {
+          ScrollTrigger.create({
+            trigger: ".scene",
+            start: "top top",
+            end: "bottom bottom",
+            scrub: true,
+            onUpdate: (st) => {
+              progress = st.progress
+              setChapter(Math.min(3, Math.floor(progress * 4)))
+              requestRender()
+            },
+          })
+        }
+
+        const resize = () => {
+          const w = stage.clientWidth,
+            h = stage.clientHeight
+          renderer.setSize(w, h, false)
+          camera.aspect = w / h
+          camera.updateProjectionMatrix()
+          requestRender()
+        }
+        addEventListener("resize", resize)
+        resize()
+
+        const smooth = (a, b, x) => {
+          const t = Math.min(1, Math.max(0, (x - a) / (b - a)))
+          return t * t * (3 - 2 * t)
+        }
+        new IntersectionObserver(([e]) => {
+          visible = e.isIntersecting
+          if (visible) requestRender()
+        }).observe(stage)
+        document.addEventListener("visibilitychange", () => requestRender())
+        function requestRender() {
+          needs = true
+          if (!loopOn) {
+            loopOn = true
+            requestAnimationFrame(frame)
+          }
+        }
+        function frame(now) {
+          const dt = Math.min(0.05, (now - last) / 1000)
+          last = now
+          if (!visible || document.hidden) {
+            loopOn = false
+            return
+          }
+          pointer.x += (pointer.tx - pointer.x) * 0.08
+          pointer.y += (pointer.ty - pointer.y) * 0.08
+          // Patlatma: 2. bölümde ayrışır, 4. bölümde birleşir
+          const ex =
+            smooth(0.42, 0.62, progress) * (1 - smooth(0.8, 0.95, progress))
+          layers.forEach((m) => {
+            m.position.y +=
+              ((m.userData.explode ?? 0) * ex * 0.95 - m.position.y) * 0.12
+          })
+          // Kamera yolu
+          const closeUp =
+            smooth(0.2, 0.4, progress) * (1 - smooth(0.45, 0.6, progress))
+          const fit =
+            (frameR / Math.sin(THREE.MathUtils.degToRad(camera.fov / 2))) *
+            (innerWidth > 760 ? 1.25 : 1.9)
+          const dist = fit * (1 - closeUp * 0.35)
+          const yaw = -0.6 + progress * 2.4
+          camera.position.set(
+            Math.sin(yaw) * dist,
+            frameR * 0.9 - pointer.y * frameR * 0.15,
+            Math.cos(yaw) * dist,
+          )
+          // Masaüstünde model metnin sağına kayar (hedef sola alınır)
+          const shift = innerWidth > 760 ? frameR * 0.75 : 0
+          // Mobilde model ekranın üst yarısında kalır, metin altta
+          const lift = innerWidth > 760 ? 0 : frameR * 0.72
+          target.set(-shift - closeUp * frameR * 0.3, frameR * 0.35 - lift, 0)
+          camera.lookAt(target)
+          // Döndürme: yavaş platform + sürükleme ataleti
+          if (!reduced && drag === null) {
+            spinV *= 0.94
+            spin += spinV + dt * 0.25 * (1 - ex)
+          }
+          pivot.rotation.y = spin
+          spot.position.set(0.5 + pointer.x * 0.5, 0.7 - pointer.y * 0.3, 0.6)
+          renderer.render(scene, camera)
+          const moving =
+            !reduced ||
+            Math.abs(pointer.tx - pointer.x) > 0.001 ||
+            Math.abs(spinV) > 0.0005
+          if (moving || needs) {
+            needs = false
+            requestAnimationFrame(frame)
+          } else loopOn = false
+        }
+        requestRender()
+      }
+    </script>
+  </body>
+</html>

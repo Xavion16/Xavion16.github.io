@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ARION — Tasarım Konseptleri</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500;62..125,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="ortak.css" />
+    <style>
+      body {
+        background: #0b0b0c;
+        color: #f2efea;
+        font-family: Archivo, sans-serif;
+        padding: clamp(24px, 4vw, 56px);
+      }
+      h1 {
+        font-stretch: 62%;
+        font-weight: 900;
+        text-transform: uppercase;
+        font-size: clamp(56px, 9vw, 150px);
+        line-height: 0.85;
+        margin: 0;
+      }
+      .lead {
+        max-width: 60ch;
+        color: #b3ada6;
+        font-size: 18px;
+        line-height: 1.6;
+        margin: 20px 0 48px;
+      }
+      ol {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr));
+        gap: 20px;
+      }
+      a.card {
+        display: block;
+        text-decoration: none;
+        border-radius: 24px;
+        overflow: hidden;
+        background: #161617;
+        transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      a.card:hover {
+        transform: translateY(-6px);
+      }
+      .ph {
+        aspect-ratio: 16 / 10;
+        overflow: hidden;
+      }
+      .ph img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      a.card:hover img {
+        transform: scale(1.05);
+      }
+      .txt {
+        padding: 20px 22px 24px;
+      }
+      .txt b {
+        display: block;
+        font-stretch: 75%;
+        font-weight: 900;
+        font-size: 30px;
+        text-transform: uppercase;
+      }
+      .txt p {
+        margin: 8px 0 0;
+        color: #b3ada6;
+        line-height: 1.5;
+      }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 14px;
+      }
+      .chips span {
+        font-size: 12px;
+        padding: 5px 10px;
+        border-radius: 999px;
+        border: 1px solid #3a3836;
+        color: #d8d3cc;
+      }
+      .note {
+        margin-top: 48px;
+        color: #8b857e;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>ARION<br />5 yön</h1>
+      <p class="lead">
+        Kadın tarafı yalnızca topuklu, erkek tarafı ayrı bir dünya. Beş farklı
+        sanat yönetimi önerisi; birini seç, sitenin tamamını o dile taşıyalım.
+        Görseller ücretsiz Unsplash fotoğraflarıdır ve yalnızca konsept içindir.
+      </p>
+      <ol>
+        <li>
+          <a class="card" href="1-kor.html"
+            ><div class="ph"><img src="{{W3:900}}" alt="" /></div>
+            <div class="txt">
+              <b>1 · Kor</b>
+              <p>
+                Karanlık, sıcak, cüretkâr. Kırmızı kor ışığı, dev sıkışık
+                harfler; topuklu bir parfüm reklamı gibi.
+              </p>
+              <div class="chips">
+                <span>Siyah + kor</span><span>Big Shoulders</span
+                ><span>Parallax</span>
+              </div>
+            </div></a
+          >
+        </li>
+        <li>
+          <a class="card" href="2-editoryal.html"
+            ><div class="ph"><img src="{{W20:900}}" alt="" /></div>
+            <div class="txt">
+              <b>2 · Editoryal / İpek</b>
+              <p>
+                Dergi kapağı, çıplak tonlar, italik serif. Yatay kayan lookbook,
+                imleçle görünen ürün dizini.
+              </p>
+              <div class="chips">
+                <span>Blush + şarap</span><span>Fraunces</span
+                ><span>Yatay lookbook</span>
+              </div>
+            </div></a
+          >
+        </li>
+        <li>
+          <a class="card" href="3-kadife.html"
+            ><div class="ph"><img src="{{W23:900}}" alt="" /></div>
+            <div class="txt">
+              <b>3 · Kadife Gece</b>
+              <p>
+                Bordo kadife, krom harfler. Siyah-beyaz sahne imlecin ışığıyla
+                renkleniyor; "Kırmızı Oda" ve "Kadife Salon".
+              </p>
+              <div class="chips">
+                <span>Bordo + krom</span><span>Bodoni</span
+                ><span>Spot ışığı</span>
+              </div>
+            </div></a
+          >
+        </li>
+        <li>
+          <a class="card" href="4-iki-kimlik.html"
+            ><div class="ph"><img src="{{W24:900}}" alt="" /></div>
+            <div class="txt">
+              <b>4 · İki Kimlik</b>
+              <p>
+                Ekran ikiye bölünüyor: Kadın ve Erkek. Üzerine geldiğin taraf
+                büyüyor; iki ayrı renk dünyası, tek ölçü.
+              </p>
+              <div class="chips">
+                <span>Gül + grafit</span><span>Archivo</span
+                ><span>Bölünmüş hero</span>
+              </div>
+            </div></a
+          >
+        </li>
+        <li>
+          <a class="card" href="5-atolye.html"
+            ><div class="ph"><img src="{{A1:900}}" alt="" /></div>
+            <div class="txt">
+              <b>5 · Atölye / Ham</b>
+              <p>
+                Brütalist ızgara, teknik etiketler, numune kartları. Zanaati ve
+                ölçüyü çıplak gösteren cesur bir yön.
+              </p>
+              <div class="chips">
+                <span>Kâğıt + mürekkep</span><span>Unbounded</span
+                ><span>Izgara</span>
+              </div>
+            </div></a
+          >
+        </li>
+      </ol>
+      <h2
+        style="
+          font-stretch: 62%;
+          font-weight: 900;
+          text-transform: uppercase;
+          font-size: clamp(44px, 6vw, 96px);
+          line-height: 0.85;
+          margin: 72px 0 12px;
+        "
+      >
+        Kadife ailesi
+      </h2>
+      <p class="lead" style="margin-top: 0">
+        Kadife Gece yönünden üç yeni sayfa; her biri farklı bir yeteneği
+        kanıtlar.
+        <a href="yetenekler.html" style="color: #ff2e63"
+          >Neler eklenebilir? →</a
+        >
+      </p>
+      <ol>
+        <li>
+          <a class="card" href="3a-kadife-sahne.html"
+            ><div class="ph"><img src="{{W3:900}}" alt="" /></div>
+            <div class="txt">
+              <b>A · Kadife Sahne</b>
+              <p>
+                Gerçek 3D topuklu: model değiştir, rugan ↔ kadife, 5 renk,
+                kaydırmayla sinematik kamera, perde ön yükleyici.
+              </p>
+              <div class="chips">
+                <span>three.js</span><span>3D model</span
+                ><span>Canlı renk</span>
+              </div>
+            </div></a
+          >
+        </li>
+        <li>
+          <a class="card" href="3b-kirmizi-oda.html"
+            ><div class="ph"><img src="{{W22:900}}" alt="" /></div>
+            <div class="txt">
+              <b>B · Kırmızı Oda</b>
+              <p>
+                Bir gece, dört perde: yatay kayan sahneler, kaydırmayla yanan
+                manifesto, yapay zekâ seslendirme, imleç izi.
+              </p>
+              <div class="chips">
+                <span>Pin + scrub</span><span>Ses</span><span>Canvas</span>
+              </div>
+            </div></a
+          >
+        </li>
+        <li>
+          <a class="card" href="3c-kadife-butik.html"
+            ><div class="ph"><img src="{{W5:900}}" alt="" /></div>
+            <div class="txt">
+              <b>C · Kadife Butik</b>
+              <p>
+                Fotoğrafa dokun → hızlı bakış, ayak ölçüsüyle uyum skoru, uçan
+                sepet, animasyonlu filtre, mega menü.
+              </p>
+              <div class="chips">
+                <span>E-ticaret</span><span>FLIP</span><span>Uyum</span>
+              </div>
+            </div></a
+          >
+        </li>
+        <li>
+          <a class="card" href="yetenekler.html"
+            ><div
+              class="ph"
+              style="display: grid; place-items: center; background: #1c0613"
+            >
+              <span
+                style="
+                  font-family: serif;
+                  font-style: italic;
+                  font-size: 64px;
+                  color: #ff2e63;
+                "
+                >+16</span
+              >
+            </div>
+            <div class="txt">
+              <b>Neler eklenebilir?</b>
+              <p>
+                Kanıtlanan 16 yetenek ve gerçek siteye taşınacak sıradaki
+                adımlar.
+              </p>
+            </div></a
+          >
+        </li>
+      </ol>
+      <p class="note">
+        Tüm sayfalar hareket azaltma tercihine uyar; GSAP + Lenis ile kaydırma
+        animasyonları içerir.
+      </p>
+    </main>
+  </body>
+</html>

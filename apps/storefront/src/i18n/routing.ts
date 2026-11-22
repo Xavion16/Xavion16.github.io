@@ -4,11 +4,7 @@ import { defineRouting } from "next-intl/routing"
  * TR varsayılan, EN ikinci dil (Rapor 4.1).
  * URL slug'ları dile göre çevrilir: /tr/ayak-ikizi ↔ /en/fit-twin
  */
-export const routing = defineRouting({
-  locales: ["tr", "en"],
-  defaultLocale: "tr",
-  localePrefix: "always",
-  pathnames: {
+const PATHNAMES = {
     "/": "/",
     "/manifesto": "/manifesto",
     "/ayak-ikizi": { tr: "/ayak-ikizi", en: "/fit-twin" },
@@ -25,6 +21,9 @@ export const routing = defineRouting({
     "/hesabim/izinlerim": { tr: "/hesabim/izinlerim", en: "/account/permissions" },
     "/hesabim/veri-taleplerim": { tr: "/hesabim/veri-taleplerim", en: "/account/data-requests" },
     "/atolye": { tr: "/atolye", en: "/atelier" },
+    "/pasaport/[kod]": { tr: "/pasaport/[kod]", en: "/passport/[kod]" },
+    "/omur-plani": { tr: "/omur-plani", en: "/lifetime-plan" },
+    "/seffaflik": { tr: "/seffaflik", en: "/transparency" },
     "/yardim": { tr: "/yardim", en: "/help" },
     "/yardim/siparis-takip": { tr: "/yardim/siparis-takip", en: "/help/order-tracking" },
     "/yardim/iade": { tr: "/yardim/iade", en: "/help/returns" },
@@ -44,7 +43,22 @@ export const routing = defineRouting({
     "/yasal/ticari-ileti": { tr: "/yasal/ticari-ileti", en: "/legal/commercial-messages" },
     "/yasal/kunye": { tr: "/yasal/kunye", en: "/legal/imprint" },
     "/yasal/erisilebilirlik": { tr: "/yasal/erisilebilirlik", en: "/legal/accessibility" },
-  },
+} as const
+
+/**
+ * Statik yayında (GitHub Pages, DECISIONS #087) yol çevirisini yapacak bir sunucu katmanı yoktur:
+ * İngilizce sayfalar da Türkçe yol adlarını kullanır (/en/urun/…). Anahtarlar ve tipler aynı kalır.
+ */
+const STATIC = process.env.NEXT_PUBLIC_ARION_STATIC === "1"
+const pathnames = (
+  STATIC ? Object.fromEntries(Object.keys(PATHNAMES).map((k) => [k, k])) : PATHNAMES
+) as typeof PATHNAMES
+
+export const routing = defineRouting({
+  locales: ["tr", "en"],
+  defaultLocale: "tr",
+  localePrefix: "always",
+  pathnames,
 })
 
 export type Locale = (typeof routing.locales)[number]

@@ -92,6 +92,7 @@ export type ProductDetails = {
   last: {
     code: string
     name: string
+    category: string
     toe_shape: string
     notes: string | null
     size_table: { rows: SizeRow[] }
@@ -133,6 +134,12 @@ export function localized(
 
 export function productTitle(p: HttpTypes.StoreProduct, locale: Locale): string {
   return localized(p.title, p.metadata, "title_en", locale)
+}
+
+/** İsmin hikâyesi (mitolojideki karşılığı), yoksa null — DECISIONS #085 */
+export function productNameStory(p: HttpTypes.StoreProduct, locale: Locale): string | null {
+  const tr = p.metadata?.name_story
+  return typeof tr === "string" && tr ? localized(tr, p.metadata, "name_story_en", locale) : null
 }
 
 export function productDescription(p: HttpTypes.StoreProduct, locale: Locale): string {

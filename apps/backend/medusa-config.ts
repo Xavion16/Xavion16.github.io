@@ -23,6 +23,8 @@ module.exports = defineConfig({
     { resolve: "./src/modules/price-history" },
     { resolve: "./src/modules/consent" },
     { resolve: "./src/modules/support" },
+    { resolve: "./src/modules/fit-twin" },
+    { resolve: "./src/modules/passport" },
 
     // ── Ödeme: iyzico Checkout Form (mock | live) ─────────────────────
     {

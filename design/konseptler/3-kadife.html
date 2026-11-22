@@ -1,0 +1,748 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ARION — Konsept 3 · Kadife Gece</title>
+    <meta
+      name="description"
+      content="Konsept 3: Kadife Gece — bordo kadife, krom harfler, imleçle aydınlanan sahne."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;1,6..96,400&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="ortak.css" />
+    <style>
+      :root {
+        --night: #12030a;
+        --velvet: #3b0716;
+        --velvet-2: #5c0b22;
+        --rose: #ff2e63;
+        --chrome-1: #f6f2f3;
+        --chrome-2: #a59aa0;
+        --muted: #c4aab3;
+        --gold: #e3c08d;
+      }
+      body {
+        background: var(--night);
+        color: var(--chrome-1);
+        font-family: "Space Grotesk", sans-serif;
+      }
+      .bodoni {
+        font-family: "Bodoni Moda", serif;
+      }
+      .chrome {
+        background: linear-gradient(
+          180deg,
+          #ffffff 0%,
+          #e8dfe3 38%,
+          #8d7f86 52%,
+          #f7f1f3 66%,
+          #b5a7ae 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      /* Kelime animasyonunda her kelime kendi krom degradesini taşır */
+      .chrome .wi {
+        background: linear-gradient(
+          180deg,
+          #ffffff 0%,
+          #e8dfe3 38%,
+          #8d7f86 52%,
+          #f7f1f3 66%,
+          #b5a7ae 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .chrome i .wi {
+        background: none;
+        color: var(--rose);
+        -webkit-text-fill-color: var(--rose);
+      }
+      .salon .chrome i .wi {
+        color: var(--gold);
+        -webkit-text-fill-color: var(--gold);
+      }
+      .eyebrow {
+        font: 500 12px/1 "Space Grotesk";
+        letter-spacing: 0.34em;
+        text-transform: uppercase;
+        color: var(--rose);
+      }
+      .pad {
+        padding-inline: clamp(16px, 4vw, 64px);
+      }
+
+      .nav {
+        position: fixed;
+        inset: 0 0 auto;
+        z-index: 50;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 22px clamp(16px, 4vw, 64px);
+      }
+      .nav .mark {
+        font-family: "Bodoni Moda";
+        font-weight: 700;
+        font-size: 26px;
+        letter-spacing: 0.3em;
+        text-decoration: none;
+      }
+      .nav ul {
+        display: flex;
+        gap: 28px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        font-size: 13px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+      .nav a {
+        text-decoration: none;
+      }
+      .nav a:hover {
+        color: var(--rose);
+      }
+      @media (max-width: 700px) {
+        .nav ul li:nth-child(n + 3) {
+          display: none;
+        }
+      }
+
+      /* Spot ışığı hero */
+      .stage {
+        position: relative;
+        height: 100svh;
+        min-height: 640px;
+        overflow: hidden;
+        background: var(--night);
+      }
+      .stage .layer {
+        position: absolute;
+        inset: 0;
+      }
+      .stage .layer img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 40% 45%;
+      }
+      .stage .base img {
+        filter: grayscale(1) contrast(1.1) brightness(0.42);
+      }
+      .stage .lit {
+        --x: 62%;
+        --y: 44%;
+        --r: 22vmax;
+        -webkit-mask-image: radial-gradient(
+          circle var(--r) at var(--x) var(--y),
+          #000 0%,
+          rgb(0 0 0 / 0.85) 35%,
+          transparent 72%
+        );
+        mask-image: radial-gradient(
+          circle var(--r) at var(--x) var(--y),
+          #000 0%,
+          rgb(0 0 0 / 0.85) 35%,
+          transparent 72%
+        );
+      }
+      .stage .lit img {
+        filter: saturate(1.25) contrast(1.05);
+      }
+      .stage::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(0deg, var(--night) 0%, transparent 45%),
+          linear-gradient(90deg, rgb(18 3 10 / 0.75), transparent 55%);
+        pointer-events: none;
+      }
+      .stage-copy {
+        position: absolute;
+        z-index: 3;
+        left: clamp(16px, 4vw, 64px);
+        bottom: clamp(36px, 8vh, 96px);
+        right: clamp(16px, 4vw, 64px);
+        display: grid;
+        grid-template-columns: 1.4fr 1fr;
+        align-items: end;
+        gap: 28px;
+      }
+      .stage h1 {
+        font-family: "Bodoni Moda";
+        font-weight: 400;
+        font-size: clamp(70px, 12vw, 220px);
+        line-height: 0.86;
+        margin: 0;
+        letter-spacing: -0.02em;
+      }
+      .stage h1 i {
+        color: var(--rose);
+        -webkit-text-fill-color: var(--rose);
+      }
+      .stage p {
+        font-size: 18px;
+        line-height: 1.6;
+        color: var(--muted);
+        margin: 0 0 22px;
+        max-width: 36ch;
+      }
+      .hint {
+        position: absolute;
+        z-index: 3;
+        top: 50%;
+        right: clamp(16px, 4vw, 64px);
+        writing-mode: vertical-rl;
+        font-size: 11px;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--chrome-2);
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        min-height: 52px;
+        padding: 0 26px;
+        border-radius: 999px;
+        text-decoration: none;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        font-size: 13px;
+        transition:
+          box-shadow 0.3s,
+          background 0.3s,
+          color 0.3s;
+      }
+      .btn-rose {
+        background: var(--rose);
+        color: #12030a;
+        box-shadow: 0 0 0 0 rgb(255 46 99 / 0.6);
+      }
+      .btn-rose:hover {
+        box-shadow: 0 0 40px 4px rgb(255 46 99 / 0.55);
+      }
+      .btn-line {
+        border: 1px solid rgb(246 242 243 / 0.4);
+      }
+      .btn-line:hover {
+        background: var(--chrome-1);
+        color: var(--night);
+      }
+      @media (max-width: 860px) {
+        .stage-copy {
+          grid-template-columns: 1fr;
+        }
+        .hint {
+          display: none;
+        }
+      }
+
+      .neon {
+        overflow: hidden;
+        padding-block: 18px;
+        border-block: 1px solid rgb(255 46 99 / 0.35);
+      }
+      .neon-track {
+        display: flex;
+        width: max-content;
+        animation: neon 30s linear infinite;
+      }
+      .neon span {
+        font-family: "Bodoni Moda";
+        font-style: italic;
+        font-size: clamp(30px, 4vw, 60px);
+        padding: 0 36px;
+        white-space: nowrap;
+        color: var(--rose);
+        text-shadow: 0 0 18px rgb(255 46 99 / 0.7);
+      }
+      @keyframes neon {
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* Kırmızı Oda */
+      .room {
+        background:
+          radial-gradient(90% 60% at 20% 10%, var(--velvet-2), transparent 70%),
+          radial-gradient(80% 60% at 90% 80%, var(--velvet), transparent 70%),
+          var(--night);
+        padding-block: clamp(100px, 14vw, 200px);
+      }
+      .room-head {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+        align-items: end;
+        margin-bottom: clamp(48px, 7vw, 100px);
+      }
+      .room h2 {
+        font-family: "Bodoni Moda";
+        font-weight: 400;
+        font-size: clamp(60px, 9vw, 170px);
+        line-height: 0.88;
+        margin: 14px 0 0;
+      }
+      .room h2 i {
+        color: var(--rose);
+        -webkit-text-fill-color: var(--rose);
+      }
+      .room-head p {
+        font-size: 18px;
+        line-height: 1.65;
+        color: var(--muted);
+        max-width: 44ch;
+        justify-self: end;
+      }
+      .mosaic {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-auto-rows: 8vw;
+        gap: clamp(10px, 1.4vw, 20px);
+      }
+      .tile {
+        position: relative;
+        overflow: hidden;
+        border-radius: 18px;
+        background: var(--velvet);
+      }
+      .tile img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      .tile:hover img {
+        transform: scale(1.06);
+      }
+      .tile .cap {
+        position: absolute;
+        left: 14px;
+        bottom: 14px;
+        right: 14px;
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        font-size: 13px;
+        letter-spacing: 0.06em;
+      }
+      .tile .cap b {
+        font-family: "Bodoni Moda";
+        font-size: 22px;
+        font-weight: 400;
+        font-style: italic;
+      }
+      .tile::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(0deg, rgb(18 3 10 / 0.85), transparent 45%);
+        pointer-events: none;
+      }
+      .tile .cap {
+        z-index: 2;
+      }
+      .t1 {
+        grid-column: 1 / span 5;
+        grid-row: span 8;
+      }
+      .t2 {
+        grid-column: 6 / span 4;
+        grid-row: span 4;
+      }
+      .t3 {
+        grid-column: 10 / span 3;
+        grid-row: span 5;
+      }
+      .t4 {
+        grid-column: 6 / span 4;
+        grid-row: span 4;
+      }
+      .t5 {
+        grid-column: 10 / span 3;
+        grid-row: span 3;
+      }
+      @media (max-width: 860px) {
+        .room-head {
+          grid-template-columns: 1fr;
+        }
+        .room-head p {
+          justify-self: start;
+        }
+        .mosaic {
+          grid-template-columns: 1fr 1fr;
+          grid-auto-rows: 52vw;
+        }
+        .mosaic .tile {
+          grid-column: auto;
+          grid-row: auto;
+        }
+        .t1 {
+          grid-column: span 2 !important;
+        }
+      }
+
+      /* Kadife Salon (erkek) */
+      .salon {
+        background: #0d0b0c;
+        padding-block: clamp(100px, 14vw, 200px);
+      }
+      .salon .eyebrow {
+        color: var(--gold);
+      }
+      .salon-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.25fr;
+        gap: clamp(24px, 5vw, 80px);
+        align-items: center;
+      }
+      .salon h2 {
+        font-family: "Bodoni Moda";
+        font-weight: 400;
+        font-size: clamp(56px, 8vw, 150px);
+        line-height: 0.9;
+        margin: 14px 0 22px;
+      }
+      .salon h2 i {
+        color: var(--gold);
+        -webkit-text-fill-color: var(--gold);
+      }
+      .salon p {
+        color: #b8aea7;
+        font-size: 18px;
+        line-height: 1.65;
+        max-width: 42ch;
+      }
+      .salon .frame {
+        position: relative;
+        aspect-ratio: 5 / 4;
+        overflow: hidden;
+        border-radius: 18px;
+      }
+      .salon .frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .shelf {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: clamp(12px, 2vw, 28px);
+        margin-top: clamp(56px, 8vw, 110px);
+      }
+      .shelf a {
+        text-decoration: none;
+      }
+      .shelf .ph {
+        aspect-ratio: 1;
+        overflow: hidden;
+        border-radius: 18px;
+        background: #1b1617;
+      }
+      .shelf img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      .shelf a:hover img {
+        transform: scale(1.05);
+      }
+      .shelf .meta {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 14px;
+      }
+      .shelf .meta b {
+        font-family: "Bodoni Moda";
+        font-weight: 400;
+        font-size: 24px;
+      }
+      .shelf .meta span {
+        color: var(--gold);
+      }
+      @media (max-width: 860px) {
+        .salon-grid,
+        .shelf {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .finale {
+        text-align: center;
+        padding-block: clamp(110px, 16vw, 240px);
+        background: radial-gradient(
+          60% 50% at 50% 50%,
+          var(--velvet-2),
+          var(--night) 70%
+        );
+      }
+      .finale p {
+        font-family: "Bodoni Moda";
+        font-size: clamp(48px, 7.6vw, 140px);
+        line-height: 0.92;
+        margin: 0 auto 40px;
+        max-width: 13ch;
+      }
+      footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 40px clamp(16px, 4vw, 64px) 90px;
+        color: var(--chrome-2);
+        font-size: 14px;
+        border-top: 1px solid rgb(246 242 243 / 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Görseller: Unsplash Lisansı ile ücretsiz fotoğraflar. Yalnızca konsept amaçlıdır. -->
+    <a class="sr-only" href="#icerik">İçeriğe geç</a>
+    <header class="nav">
+      <a href="#" class="mark chrome" aria-label="ARION ana sayfa">ARION</a>
+      <nav aria-label="Ana menü">
+        <ul>
+          <li><a href="#kirmizi-oda">Kadın</a></li>
+          <li><a href="#salon">Erkek</a></li>
+          <li><a href="#">Ayak İkizi</a></li>
+          <li><a href="#">Sepet</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="icerik">
+      <section class="stage" aria-labelledby="h-stage">
+        <div class="layer base" aria-hidden="true">
+          <img
+            src="https://images.unsplash.com/photo-1768610284937-05943995407c?w=2000&q=80&auto=format&fit=crop"
+            alt=""
+            fetchpriority="high"
+          />
+        </div>
+        <div class="layer lit">
+          <img
+            src="https://images.unsplash.com/photo-1768610284937-05943995407c?w=2000&q=80&auto=format&fit=crop"
+            alt="Loş bir odada kırmızı elbiseli kadın, topuklu ayakkabılar"
+          />
+        </div>
+        <span class="hint" aria-hidden="true"
+          >İmleci gezdir · ışık seninle</span
+        >
+        <div class="stage-copy">
+          <h1 id="h-stage" class="chrome" data-split data-hero>
+            Gece<br /><i>senin.</i>
+          </h1>
+          <div data-reveal>
+            <p>
+              Kadife, saten, rugan. Işıkların kısıldığı yerde parlamak için
+              tasarlanmış topuklular ve onlara eşlik eden bir erkek salonu.
+            </p>
+            <a class="btn btn-rose" href="#kirmizi-oda">Kırmızı Oda'ya gir</a>
+            <a class="btn btn-line" href="#salon" style="margin-left: 8px"
+              >Erkek salonu</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <div class="neon" aria-hidden="true">
+        <div class="neon-track">
+          <span>Kadife</span><span>✦</span><span>Saten</span><span>✦</span
+          ><span>Rugan</span><span>✦</span><span>Gece yarısı</span><span>✦</span
+          ><span>Kadife</span><span>✦</span><span>Saten</span><span>✦</span
+          ><span>Rugan</span><span>✦</span><span>Gece yarısı</span
+          ><span>✦</span>
+        </div>
+      </div>
+
+      <section id="kirmizi-oda" class="room pad" aria-labelledby="h-room">
+        <div class="room-head">
+          <div>
+            <p class="eyebrow">Kadın · Topuklu</p>
+            <h2 id="h-room" class="chrome" data-split>
+              Kırmızı<br /><i>Oda.</i>
+            </h2>
+          </div>
+          <p data-reveal>
+            Kadın topuklularına ayrılmış özel bir oda. Her model gecenin bir anı
+            için: ilk adım, ilk dans, eve dönüş. Ayak İkizi ile numaran
+            milimetresine kadar hazır.
+          </p>
+        </div>
+        <div class="mosaic">
+          <a href="#" class="tile t1" data-clip
+            ><img
+              src="https://images.unsplash.com/photo-1689914667397-a77effb740da?w=1200&q=80&auto=format&fit=crop"
+              alt="File çorap ve kırmızı topuklu"
+              loading="lazy"
+              data-zoom
+            /><span class="cap"><b>Pera 65</b><span>₺3.490</span></span></a
+          >
+          <a href="#" class="tile t2" data-clip
+            ><img
+              src="https://images.unsplash.com/photo-1760615095065-33da9ea0aff9?w=900&q=80&auto=format&fit=crop"
+              alt="Siyah çoraplı bacaklar ve siyah stiletto"
+              loading="lazy"
+            /><span class="cap"
+              ><b>Pera 75 Kadife</b><span>₺3.790</span></span
+            ></a
+          >
+          <a href="#" class="tile t3" data-clip
+            ><img
+              src="https://images.unsplash.com/photo-1570800944256-13bc68bfb2bc?w=900&q=80&auto=format&fit=crop"
+              alt="Taşlı kırmızı stiletto sandalet, yakın plan"
+              loading="lazy"
+            /><span class="cap"><b>Işıltı</b><span>₺3.990</span></span></a
+          >
+          <a href="#" class="tile t4" data-clip
+            ><img
+              src="https://images.unsplash.com/photo-1686668572494-278de081af6a?w=900&q=80&auto=format&fit=crop"
+              alt="Kırmızı rugan topuklu, karanlık"
+              loading="lazy"
+            /><span class="cap"><b>Rugan Kor</b><span>₺3.490</span></span></a
+          >
+          <a href="#" class="tile t5" data-clip
+            ><img
+              src="https://images.unsplash.com/photo-1792731410749-6a5a768964a7?w=700&q=80&auto=format&fit=crop"
+              alt="Siyah saten topuklular, siyah beyaz"
+              loading="lazy"
+            /><span class="cap"><b>Saten</b><span>₺3.290</span></span></a
+          >
+        </div>
+      </section>
+
+      <section id="salon" class="salon pad" aria-labelledby="h-salon">
+        <div class="salon-grid">
+          <div>
+            <p class="eyebrow">Erkek · Salon</p>
+            <h2 id="h-salon" class="chrome" data-split>
+              Kadife<br /><i>Salon.</i>
+            </h2>
+            <p data-reveal>
+              Erkekler için ayrı bir salon: konyak rengi deriler, el cilası,
+              sessiz bir özgüven. Akşam yemeğinden gece kulübüne aynı çift.
+            </p>
+            <a
+              class="btn btn-line"
+              href="#"
+              style="margin-top: 22px"
+              data-reveal
+              >Salona gir</a
+            >
+          </div>
+          <div class="frame" data-clip="x">
+            <img
+              src="https://images.unsplash.com/photo-1549290127-7f758fdadff7?w=1400&q=80&auto=format&fit=crop"
+              alt="Kahverengi deri ayakkabılar, neon ışıklar"
+              loading="lazy"
+              data-zoom
+            />
+          </div>
+        </div>
+        <div class="shelf">
+          <a href="#" data-reveal
+            ><div class="ph">
+              <img
+                src="https://images.unsplash.com/photo-1563434649554-58f91d22ec2c?w=800&q=80&auto=format&fit=crop"
+                alt="Kahverengi deri derby, karanlık fon"
+                loading="lazy"
+              />
+            </div>
+            <div class="meta"><b>Nişantaşı Derby</b><span>₺3.990</span></div></a
+          >
+          <a href="#" data-reveal
+            ><div class="ph">
+              <img
+                src="https://images.unsplash.com/photo-1668069226492-508742b03147?w=800&q=80&auto=format&fit=crop"
+                alt="Lacivert deri erkek ayakkabısı"
+                loading="lazy"
+              />
+            </div>
+            <div class="meta"><b>Galata Gece</b><span>₺4.490</span></div></a
+          >
+          <a href="#" data-reveal
+            ><div class="ph">
+              <img
+                src="https://images.unsplash.com/photo-1603191659812-ee978eeeef76?w=800&q=80&auto=format&fit=crop"
+                alt="Taba brogue ayakkabılar"
+                loading="lazy"
+              />
+            </div>
+            <div class="meta"><b>Galata Oxford</b><span>₺4.490</span></div></a
+          >
+        </div>
+      </section>
+
+      <section class="finale pad" aria-label="Manifesto">
+        <p class="chrome" data-split>Işık sönünce de iz bırak.</p>
+        <a class="btn btn-rose" href="#">Ayak İkizini oluştur</a>
+      </section>
+    </main>
+    <footer>
+      <span class="chrome bodoni" style="font-size: 20px; letter-spacing: 0.3em"
+        >ARION</span
+      ><span>Crafted in Türkiye</span><span>Görseller: Unsplash (konsept)</span>
+    </footer>
+    <a class="konsept-etiketi" href="index.html"
+      >← Konseptler · 3/5 Kadife Gece</a
+    >
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+    <script src="ortak.js"></script>
+    <script>
+      // Spot ışığı: imleci yumuşak takip eder; dokunmatikte ve hareket azaltmada sabit, geniş ışık
+      ;(() => {
+        const lit = document.querySelector(".stage .lit")
+        const stage = document.querySelector(".stage")
+        const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches
+        if (reduced || !matchMedia("(hover: hover)").matches) {
+          lit.style.setProperty("--r", "40vmax")
+          return
+        }
+        let x = 0.62,
+          y = 0.44,
+          tx = x,
+          ty = y,
+          raf = 0
+        const tick = () => {
+          x += (tx - x) * 0.09
+          y += (ty - y) * 0.09
+          lit.style.setProperty("--x", x * 100 + "%")
+          lit.style.setProperty("--y", y * 100 + "%")
+          raf =
+            Math.abs(tx - x) + Math.abs(ty - y) > 0.001
+              ? requestAnimationFrame(tick)
+              : 0
+        }
+        stage.addEventListener("pointermove", (e) => {
+          const r = stage.getBoundingClientRect()
+          tx = (e.clientX - r.left) / r.width
+          ty = (e.clientY - r.top) / r.height
+          if (!raf) raf = requestAnimationFrame(tick)
+        })
+        stage.addEventListener("pointerleave", () => {
+          tx = 0.62
+          ty = 0.44
+          if (!raf) raf = requestAnimationFrame(tick)
+        })
+      })()
+    </script>
+  </body>
+</html>

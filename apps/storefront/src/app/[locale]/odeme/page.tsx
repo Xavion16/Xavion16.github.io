@@ -4,7 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server"
 import { notFound } from "next/navigation"
 import { AddressForm } from "@/components/shop/address-form"
 import { CartTotals } from "@/components/shop/cart-totals"
-import { ArrowIcon, buttonClass } from "@/components/ui/button"
+import { buttonClass } from "@/components/ui/button"
 import { Link } from "@/i18n/navigation"
 import { routing } from "@/i18n/routing"
 import {
@@ -58,11 +58,10 @@ export default async function CheckoutPage({ params, searchParams }: PageProps<"
     return (
       <div className="mx-auto max-w-[1440px] px-4 pt-10 pb-24 sm:px-8">
         <h1 className="condensed text-display">{t("title")}</h1>
-        <div className="glass mt-10 flex flex-col items-start gap-6 rounded-[28px] p-8">
+        <div className="glass mt-10 flex flex-col items-start gap-6 rounded-[4px] p-8">
           <p className="text-lg">{tc("empty")}</p>
           <Link href="/koleksiyon" className={buttonClass({ size: "lg" })}>
             {tc("emptyCta")}
-            <ArrowIcon />
           </Link>
         </div>
       </div>
@@ -83,7 +82,7 @@ export default async function CheckoutPage({ params, searchParams }: PageProps<"
   const contractInput = cartToContractInput(cart as unknown as CartLike)
   const accDocs = acceptanceDocs(cart as unknown as CartLike, locale)
 
-  const stepClass = "glass rounded-[28px] p-6 sm:p-8"
+  const stepClass = "glass rounded-[4px] p-6 sm:p-8"
   const stepTitle = (n: number, label: string, done: boolean) => (
     <h2 className="flex items-center gap-3 text-xl font-bold">
       <span
@@ -104,7 +103,7 @@ export default async function CheckoutPage({ params, searchParams }: PageProps<"
       <h1 className="condensed text-display">{t("title")}</h1>
 
       {errorCode ? (
-        <p role="alert" className="mt-6 rounded-2xl border border-ember/50 bg-ember/15 px-5 py-4 text-ember">
+        <p role="alert" className="mt-6 rounded-[4px] border border-ember/50 bg-ember/15 px-5 py-4 text-ember">
           {t(`errors.${errorCode}`)}
         </p>
       ) : null}
@@ -170,7 +169,7 @@ export default async function CheckoutPage({ params, searchParams }: PageProps<"
                           type="submit"
                           aria-pressed={active}
                           className={cn(
-                            "flex w-full flex-col items-start gap-1 rounded-2xl border p-4 text-left transition-colors",
+                            "flex w-full flex-col items-start gap-1 rounded-[4px] border p-4 text-left transition-colors",
                             active ? "border-white bg-white text-ink" : "border-white/20 hover:border-white",
                           )}
                         >
@@ -203,7 +202,7 @@ export default async function CheckoutPage({ params, searchParams }: PageProps<"
           </section>
         </div>
 
-        <aside aria-labelledby="ozet" className="glass h-fit rounded-[28px] p-6 lg:sticky lg:top-24">
+        <aside aria-labelledby="ozet" className="glass h-fit rounded-[4px] p-6 lg:sticky lg:top-24">
           <h2 id="ozet" className="text-lg font-bold">{t("summary")}</h2>
           <ul className="mt-4 space-y-3 border-b border-white/15 pb-4 text-sm">
             {cart.items.map((i) => (

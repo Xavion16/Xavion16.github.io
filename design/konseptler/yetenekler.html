@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ARION — Neler Eklenebilir</title>
+    <meta
+      name="description"
+      content="Kadife ailesinde kanıtlanan etkileşimler ve gerçek siteye eklenebilecekler."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="ortak.css" />
+    <style>
+      :root {
+        --night: #12030a;
+        --rose: #ff2e63;
+        --chrome: #f6f2f3;
+        --muted: #c4aab3;
+        --line: rgb(246 242 243 / 0.14);
+        --moss: #2bd47d;
+        --gold: #e3c08d;
+      }
+      body {
+        background: var(--night);
+        color: var(--chrome);
+        font-family: "Space Grotesk", sans-serif;
+        padding: clamp(24px, 4vw, 64px);
+      }
+      h1 {
+        font-family: "Bodoni Moda";
+        font-weight: 400;
+        font-size: clamp(56px, 9vw, 150px);
+        line-height: 0.9;
+        margin: 0;
+      }
+      h1 i {
+        color: var(--rose);
+      }
+      .lead {
+        color: var(--muted);
+        max-width: 62ch;
+        font-size: 18px;
+        line-height: 1.6;
+        margin: 20px 0 48px;
+      }
+      h2 {
+        font-family: "Bodoni Moda";
+        font-weight: 400;
+        font-size: clamp(34px, 4vw, 60px);
+        margin: 64px 0 18px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 15px;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 14px 12px;
+        border-bottom: 1px solid var(--line);
+        vertical-align: top;
+      }
+      th {
+        font-size: 12px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--muted);
+        font-weight: 500;
+      }
+      td b {
+        display: block;
+        font-size: 16px;
+      }
+      td small {
+        color: var(--muted);
+        line-height: 1.5;
+        display: block;
+        margin-top: 4px;
+      }
+      .ok {
+        color: var(--moss);
+        font-weight: 700;
+        white-space: nowrap;
+      }
+      .next {
+        color: var(--gold);
+        font-weight: 700;
+        white-space: nowrap;
+      }
+      a.try {
+        display: inline-flex;
+        min-height: 36px;
+        align-items: center;
+        padding: 0 12px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        text-decoration: none;
+        font-size: 13px;
+        white-space: nowrap;
+      }
+      a.try:hover {
+        background: var(--chrome);
+        color: var(--night);
+      }
+      .wrap {
+        overflow-x: auto;
+      }
+      @media (max-width: 760px) {
+        table {
+          min-width: 720px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Neler<br /><i>eklenebilir?</i></h1>
+      <p class="lead">
+        Aşağıdakilerin hepsi Kadife ailesinde çalışır halde; "Dene" bağlantısı
+        ilgili sayfayı açar. Son bölüm, gerçek ARION sitesine taşınabilecek
+        sıradaki adımları gösterir. Tüm efektler dokunmatikte, hareket azaltma
+        tercihinde ve JavaScript kapalıyken sayfayı bozmaz.
+      </p>
+
+      <div class="wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Yetenek</th>
+              <th>Durum</th>
+              <th>Nerede</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <b>Gerçek 3D ayakkabı, canlı renk ve yüzey</b
+                ><small
+                  >İki gerçekçi topuklu modeli (CC BY 4.0): rugan ↔ kadife
+                  malzeme, 5 renk, sürükleyerek döndürme, imleci izleyen spot
+                  ışığı, gölge.</small
+                >
+              </td>
+              <td class="ok">Çalışıyor</td>
+              <td>Kadife Sahne</td>
+              <td><a class="try" href="3a-kadife-sahne.html">Dene →</a></td>
+            </tr>
+            <tr>
+              <td>
+                <b>Model değiştirici</b
+                ><small
+                  >Pera 100 Stiletto ↔ Pera 65 Klasik; fiyat ve ad 3D ile
+                  birlikte değişir.</small
+                >
+              </td>
+              <td class="ok">Çalışıyor</td>
+              <td>Kadife Sahne</td>
+              <td><a class="try" href="3a-kadife-sahne.html">Dene →</a></td>
+            </tr>
+            <tr>
+              <td>
+                <b>Kaydırmayla sinematik kamera</b
+                ><small
+                  >Dört bölüm boyunca kamera dolaşır, yakın plana girer;
+                  ilerleme çubuğu bölümü gösterir.</small
+                >
+              </td>
+              <td class="ok">Çalışıyor</td>
+              <td>Kadife Sahne</td>
+              <td><a class="try" href="3a-kadife-sahne.html">Dene →</a></td>
+            </tr>
+            <tr>
+              <td>
+                <b>Otomatik malzeme ayrıştırma</b
+                ><small
+                  >Tek malzemeli 3D modeller, ışın testiyle saya / astar / taban
+                  / topuk ucu olarak ayrılıyor
+                  (scripts/segment-pumps.ts).</small
+                >
+              </td>
+              <td class="ok">Çalışıyor</td>
+              <td>Araç</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                <b>Perde ön yükleyici, özel imleç, mıknatıslı düğmeler, gren</b
+                ><small
+                  >Yüzde sayaçlı perde; imleç bağlantı üstünde büyür ve "İncele"
+                  yazar.</small
+                >
+              </td>
+              <td class="ok">Çalışıyor</td>
+              <td>Tüm Kadife sayfaları</td>
+              <td><a class="try" href="3b-kirmizi-oda.html">Dene →</a></td>
+            </tr>
+            <tr>
+              <td>
+                <b>Yatay perdeler (sabitlenmiş hikâye)</b
+                ><small
+                  >Dikey kaydırma 4 perdeyi silme efektiyle yatay geçirir; perde
+                  düğmeleriyle atlanır.</small
+                >
+              </td>
+              <td class="ok">Çalışıyor</td>
+              <td>Kırmızı Oda</td>
+              <td><a class="try" href="3b-kirmizi-oda.html">Dene →</a></td>
+            </tr>
+            <tr>
+              <td>
+                <b>Kaydırmayla yanan manifesto</b
+                ><small
+                  >Kelimeler okuma hızında yanar; ekran okuyucu metni tek parça
+                  okur.</small
+                >
+              </td>
+              <td class="ok">Çalışıyor</td>
+              <td>Kırmızı Oda</td>
+              <td><a class="try" href="3b-kirmizi-oda.html">Dene →</a></td>
+            </tr>
+            <tr>
+              <td>
+                <b>Sesli marka (yapay zekâ etiketli)</b
+                ><small
+                  >ElevenLabs seslendirmesi; yalnızca kullanıcı başlatır, ses
+                  dalgası animasyonu.</small
+                >
+              </td>
+              <td class="ok">Çalışıyor</td>
+              <td>Kırmızı Oda</td>
+              <td><a class="try" href="3b-kirmizi-oda.html">Dene →</a></td>
+            </tr>
+            <tr>
+              <td>
+                <b>İmleç izi (gül yaprakları)</b
+                ><small
+                  >Canvas parçacıklar; ekran dışında ve sekme gizliyken
+                  durur.</small
+                >
+              </td>
+              <td class="ok">Çalışıyor</td>
+              <td>Kırmızı Oda</td>
+              <td><a class="try" href="3b-kirmizi-oda.html">Dene →</a></td>
+            </tr>
+            <tr>
+              <td>
+                <b>Üst üste binen kartlar</b
+                ><small
+                  >Erkek salonunda kartlar yapışır, alttaki küçülüp
+                  kararır.</small
+                >
+              </td>
+              <td class="ok">Çalışıyor</td>
+              <td>Kırmızı Oda</td>
+              <td>
+                <a class="try" href="3b-kirmizi-oda.html#salon">Dene →</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Alışverişe dokunan görsel (hotspot)</b
+                ><small
+                  >Fotoğraftaki noktalar ürünün hızlı bakışını açar.</small
+                >
+              </td>
+              <td class="ok">Çalışıyor</td>
+              <td>Kadife Butik</td>
+              <td><a class="try" href="3c-kadife-butik.html">Dene →</a></td>
+            </tr>
+            <tr>
+              <td>
+                <b>Hızlı bakış + uyum skoru</b
+                ><small
+                  >Görsel galeri, tükenen numara, ayak uzunluğuna göre önerilen
+                  numara (★) ve 0–100 skor.</small
+                >
+              </td>
+              <td class="ok">Çalışıyor</td>
+              <td>Kadife Butik</td>
+              <td><a class="try" href="3c-kadife-butik.html">Dene →</a></td>
+            </tr>
+            <tr>
+              <td>
+                <b>Uçan sepet + kargo eşiği</b
+                ><small
+                  >Ürün küçülerek sepete uçar, sayaç zıplar; çekmecede ücretsiz
+                  kargo çubuğu ve adet.</small
+                >
+              </td>
+              <td class="ok">Çalışıyor</td>
+              <td>Kadife Butik</td>
+              <td><a class="try" href="3c-kadife-butik.html">Dene →</a></td>
+            </tr>
+            <tr>
+              <td>
+                <b>Animasyonlu filtre (FLIP)</b
+                ><small>Izgara filtrelenirken kartlar yerlerine kayar.</small>
+              </td>
+              <td class="ok">Çalışıyor</td>
+              <td>Kadife Butik</td>
+              <td><a class="try" href="3c-kadife-butik.html">Dene →</a></td>
+            </tr>
+            <tr>
+              <td>
+                <b>Mega menü, favori patlaması</b
+                ><small
+                  >Klavye ve Esc ile çalışır; kalp tıklanınca parçacık
+                  patlaması.</small
+                >
+              </td>
+              <td class="ok">Çalışıyor</td>
+              <td>Kadife Butik</td>
+              <td><a class="try" href="3c-kadife-butik.html">Dene →</a></td>
+            </tr>
+            <tr>
+              <td>
+                <b>İmleçle aydınlanan fotoğraf</b
+                ><small>Siyah-beyaz görsel imlecin çevresinde renklenir.</small>
+              </td>
+              <td class="ok">Çalışıyor</td>
+              <td>Kadife Gece, Kadife Sahne</td>
+              <td><a class="try" href="3-kadife.html">Dene →</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Sıradaki adımlar (gerçek siteye)</h2>
+      <div class="wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Öneri</th>
+              <th>Durum</th>
+              <th>Not</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <b>AR'da dene (telefonda odanda gör)</b
+                ><small
+                  >Mevcut ürün sayfasındaki model-viewer AR'ı bu gerçekçi
+                  modellerle.</small
+                >
+              </td>
+              <td class="next">Hazır altyapı</td>
+              <td>
+                <small
+                  >Storefront'ta model-viewer kurulu; yalnızca GLB
+                  değişir.</small
+                >
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Ayak İkizi ile kişisel vitrin</b
+                ><small
+                  >Ana sayfa ve Kırmızı Oda, misafirin tarayıcıdaki ölçüsüne
+                  göre "sana en uygun" çiftleri öne alır.</small
+                >
+              </td>
+              <td class="next">Hazır altyapı</td>
+              <td>
+                <small>Uyum motoru ve "Bana uyanlar" Faz 5'te var.</small>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Sayfa geçişleri (View Transitions)</b
+                ><small
+                  >Ürün kartından ürün sayfasına görselin büyüyerek
+                  geçmesi.</small
+                >
+              </td>
+              <td class="next">Eklenebilir</td>
+              <td>
+                <small
+                  >Next 16 + tarayıcı API'si; desteklemeyen tarayıcıda normal
+                  geçiş.</small
+                >
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>360° fotoğraf döndürme</b
+                ><small
+                  >Gerçek çekim karelerinden kaydırmayla dönen ürün.</small
+                >
+              </td>
+              <td class="next">Çekim gerekli</td>
+              <td><small>24–36 karelik ürün çekimi gerekir.</small></td>
+            </tr>
+            <tr>
+              <td>
+                <b>Yapay zekâ ile ürün videosu</b
+                ><small
+                  >Faz 6 medya hattı: stüdyo görselinden turntable video,
+                  etiketli.</small
+                >
+              </td>
+              <td class="next">Faz 6</td>
+              <td>
+                <small>Gemini anahtarı ile; maliyet onaylı ilerler.</small>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Kadife dokusu için gerçek kumaş taraması</b
+                ><small
+                  >Normal/rough haritalarıyla daha da gerçekçi kadife.</small
+                >
+              </td>
+              <td class="next">Varlık gerekli</td>
+              <td><small>PBR doku seti (CC0 kaynaklar) eklenebilir.</small></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="lead" style="margin-top: 40px">
+        3D modeller: "High_heels" — gemma1 ve "Classic high heel pumps" — Andrey
+        (Earl_1), Sketchfab, CC BY 4.0. Görseller: Unsplash.
+        <a href="index.html">← Konseptlere dön</a>
+      </p>
+    </main>
+  </body>
+</html>

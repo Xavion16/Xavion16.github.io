@@ -1,38 +1,44 @@
 import type { Metadata, Viewport } from "next"
-import { Archivo, JetBrains_Mono } from "next/font/google"
+import { Bodoni_Moda, Jost } from "next/font/google"
 import { notFound } from "next/navigation"
 import { hasLocale, NextIntlClientProvider } from "next-intl"
 import { getTranslations, setRequestLocale } from "next-intl/server"
-import { CONSENT_TEXTS, COOKIE_CATEGORIES, type CookieCategory } from "@arion/legal-texts"
-import { cookies } from "next/headers"
+import { COOKIE_CATEGORIES, type CookieCategory } from "@arion/legal-texts"
 import { AreionChat } from "@/components/areion/areion-chat"
-import { AI_CONSENT_COOKIE } from "@/lib/ai/config"
 import { getCustomer } from "@/lib/medusa/customer"
 import { CookieConsent } from "@/components/consent/cookie-consent"
+import { FitTwinProvider } from "@/components/fit/fit-twin-provider"
+import { getMemberFitTwin } from "@/lib/fit/catalog"
 import { SiteFooter } from "@/components/layout/site-footer"
 import { SiteHeader } from "@/components/layout/site-header"
 import { routing } from "@/i18n/routing"
 import { readCookieChoice } from "@/lib/consent"
 import { SITE_URL } from "@/lib/site"
 import "@/styles/globals.css"
+// DENEME (DECISIONS #079): cam görünümü. Geri almak için bu import, SkinSwitch ve skin-glass.css silinir.
+import "@/styles/skin-glass.css"
+import { SkinSwitch } from "@/components/dev/skin-switch"
 
 // Türkçe karakterler (ğ, ş, İ, ı, ç, ö, ü) latin-ext alt kümesindedir — zorunlu.
-// Archivo: değişken genişlik (wdth 62–125) ekseniyle hem sıkışık başlık hem gövde.
-const archivo = Archivo({
+// Kadife Gece: Bodoni Moda (başlık, didone) + Jost (gövde). DECISIONS #070, #077
+const bodoni = Bodoni_Moda({
   subsets: ["latin", "latin-ext"],
-  axes: ["wdth"],
-  variable: "--font-archivo",
+  style: ["normal", "italic"],
+  axes: ["opsz"],
+  variable: "--font-bodoni",
   display: "swap",
 })
 
-const jetbrains = JetBrains_Mono({
+// Jost: Futura çizgisinde geometrik sans; Bodoni ile moda dergisi eşleşmesi (DECISIONS #077)
+const jost = Jost({
   subsets: ["latin", "latin-ext"],
-  variable: "--font-jetbrains",
+  variable: "--font-jost",
   display: "swap",
 })
+
 
 export const viewport: Viewport = {
-  themeColor: "#09090b",
+  themeColor: "#0a0908",
   colorScheme: "dark",
 }
 
@@ -72,8 +78,8 @@ export default async function LocaleLayout({
   if (!hasLocale(routing.locales, locale)) notFound()
   setRequestLocale(locale)
   const choice = await readCookieChoice()
-  const aiConsent = (await cookies()).get(AI_CONSENT_COOKIE)?.value === "1"
   const customer = await getCustomer()
+  const memberFitTwin = customer ? await getMemberFitTwin() : null
   const order: CookieCategory[] = ["necessary", "functional", "analytics", "marketing"]
   const categories = order.map((key) => ({
     key,
@@ -84,25 +90,26 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
-      className={`${archivo.variable} ${jetbrains.variable}`}
+      className={`${bodoni.variable} ${jost.variable}`}
     >
       <body className="min-h-dvh antialiased">
         <div className="scroll-line" aria-hidden="true" />
         <NextIntlClientProvider>
+          <FitTwinProvider initialMember={memberFitTwin} isMember={Boolean(customer)}>
           <SiteHeader />
           <main id="icerik" tabIndex={-1} className="outline-none">
             {children}
           </main>
           <SiteFooter />
           <AreionChat
-            consented={aiConsent}
-            consentText={CONSENT_TEXTS.ai_chat_transfer.text[locale]}
             defaults={{
               full_name: customer ? `${customer.first_name ?? ""} ${customer.last_name ?? ""}`.trim() : undefined,
               email: customer?.email ?? undefined,
             }}
           />
           <CookieConsent initial={choice} categories={categories} />
+          <SkinSwitch />
+          </FitTwinProvider>
         </NextIntlClientProvider>
       </body>
     </html>

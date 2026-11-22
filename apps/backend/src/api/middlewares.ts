@@ -71,6 +71,13 @@ export default defineMiddlewares({
       method: ["POST"],
       middlewares: [authenticate("customer", ["bearer", "session"], { allowUnauthenticated: true })],
     },
+    // Tamir talebi: üyelik isteğe bağlı, en fazla 3 fotoğraf (base64) için büyük gövde
+    {
+      matcher: "/store/arion/repairs",
+      method: ["POST"],
+      bodyParser: { sizeLimit: "6mb" },
+      middlewares: [authenticate("customer", ["bearer", "session"], { allowUnauthenticated: true })],
+    },
     // Yalnızca üyeler
     {
       matcher: "/store/arion/me*",

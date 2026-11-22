@@ -45,7 +45,7 @@ export function FaqSearch({ items, categories }: { items: FaqView[]; categories:
         value={q}
         onChange={(e) => setQ(e.target.value)}
         placeholder={t("searchPlaceholder")}
-        className="glass min-h-14 w-full rounded-full px-6 text-lg text-white placeholder:text-smoke"
+        className="glass min-h-14 w-full rounded-[2px] px-6 text-lg text-white placeholder:text-smoke"
       />
       <p className="mt-3 text-sm text-smoke" aria-live="polite">
         {q ? (filtered.length ? t("results", { count: filtered.length }) : t("noResults")) : ""}
@@ -60,7 +60,7 @@ export function FaqSearch({ items, categories }: { items: FaqView[]; categories:
             <ul className="mt-4 space-y-2">
               {list.map((i) => (
                 <li key={i.id}>
-                  <details className="glass group rounded-2xl p-5" open={Boolean(q)}>
+                  <details className="glass group rounded-[4px] p-5" open={Boolean(q)}>
                     <summary className="cursor-pointer list-none font-semibold">
                       <span className="flex items-start justify-between gap-4">
                         {i.q}

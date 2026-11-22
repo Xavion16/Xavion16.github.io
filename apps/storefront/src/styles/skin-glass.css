@@ -1,0 +1,80 @@
+/*
+ * DENEME: Cam (glassmorphism) görünümü — DECISIONS #079.
+ * Yalnızca <html data-skin="glass"> iken devreye girer; varsayılan görünüm Altın & Gümüş (#078) değişmez.
+ * Geri almak: bu dosyayı ve layout.tsx'teki importunu + <SkinSwitch /> bileşenini silmek yeterli.
+ */
+
+/* Arka plan: camın ardında görünsün diye sabit altın/gümüş ışık havuzları */
+html[data-skin="glass"] body {
+  background:
+    radial-gradient(60vmax 50vmax at 10% 6%, rgb(201 162 83 / 0.3), transparent 60%),
+    radial-gradient(50vmax 42vmax at 92% 28%, rgb(196 199 204 / 0.16), transparent 62%),
+    radial-gradient(70vmax 52vmax at 38% 96%, rgb(122 90 28 / 0.34), transparent 65%),
+    var(--color-void);
+  background-attachment: fixed;
+}
+
+/* Opak bölüm zeminleri saydamlaşır: arkadaki ışık görünür */
+html[data-skin="glass"] main .velvet-bg,
+html[data-skin="glass"] main .bg-void,
+html[data-skin="glass"] main .bg-carbon,
+html[data-skin="glass"] body > footer {
+  background: transparent;
+}
+
+/* Üst çubuk: buzlu cam */
+html[data-skin="glass"] body > header {
+  background: rgb(10 9 8 / 0.35);
+  border-bottom-color: rgb(255 255 255 / 0.14);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  backdrop-filter: blur(24px) saturate(150%);
+}
+
+/* Cam paneller: daha açık, daha yumuşak köşeli */
+html[data-skin="glass"] .glass {
+  background: rgb(255 255 255 / 0.07);
+  border: 1px solid rgb(255 255 255 / 0.18);
+  border-radius: 16px;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.2),
+    0 24px 60px -30px rgb(0 0 0 / 0.85);
+  -webkit-backdrop-filter: blur(26px) saturate(150%);
+  backdrop-filter: blur(26px) saturate(150%);
+}
+
+/* Kartlar ve görsel kutuları: yumuşak köşe */
+html[data-skin="glass"] main .rounded-\[4px\] {
+  border-radius: 16px;
+}
+/* Açılış bölümü (.split-hero) altın görünümdeki gibi kalır */
+html[data-skin="glass"] .rounded-\[2px\]:not(.split-hero *) {
+  border-radius: 10px;
+}
+
+/* Ürün kartı: cam çerçeve */
+html[data-skin="glass"] .product-card {
+  padding: 0.6rem 0.6rem 1rem;
+  border-radius: 20px;
+  background: rgb(255 255 255 / 0.05);
+  border: 1px solid rgb(255 255 255 / 0.14);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.14);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+}
+
+/* Açılış (Kadın | Erkek) cam pano almaz: fotoğraf ve başlık altın görünümdeki gibi kalır (kullanıcı geri bildirimi) */
+
+/* Cam düğme: buzlu zemin */
+html[data-skin="glass"] .btn-glass:not(.split-hero *) {
+  background: rgb(255 255 255 / 0.08);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+
+/* backdrop-filter yoksa cam paneller okunur kalsın diye koyulaşır */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  html[data-skin="glass"] .glass,
+  html[data-skin="glass"] .product-card {
+    background: rgb(21 19 15 / 0.92);
+  }
+}

@@ -21,7 +21,17 @@
     "menuClose": "Menüyü kapat",
     "language": "Dil",
     "switchTo": "English",
-    "switchToLabel": "Switch to English"
+    "switchToLabel": "Switch to English",
+    "women": "Kadın",
+    "men": "Erkek",
+    "kids": "Çocuk",
+    "mega": {
+      "allWomen": "Tüm topuklular",
+      "allMen": "Tüm erkek",
+      "classic": "Klasik",
+      "boots": "Kışlık bot",
+      "sneakers": "Sneaker"
+    }
   },
   "footer": {
     "tagline": "Crafted in Türkiye.",
@@ -160,6 +170,19 @@
         "finishing": "Finisaj",
         "qc": "Kalite kontrol",
         "shipping": "Kargo"
+      },
+      "more": "Atölyeyi gör",
+      "stepDesc": {
+        "cutting": "Deri, kalıp kâğıdı üzerinden elle kesilir; damar yönü her parçada aynı tutulur.",
+        "upper": "Saya parçaları mumlu iple, iki iğneyle elde dikilir.",
+        "lasting": "Saya ahşap kalıba gerilir; ayakkabının biçimini bu adım verir.",
+        "finishing": "Son kat cila elle, bezle ve mumla katman katman sürülür."
+      },
+      "craftAlt": {
+        "cutting": "Usta elleri, kâğıt kalıp üzerinden konyak rengi deriyi kesiyor",
+        "upper": "Usta elleri, kahverengi sayayı mumlu iple dikiyor",
+        "lasting": "Usta elleri, sayayı pense ile ahşap kalıba geriyor",
+        "finishing": "Usta elleri, bitmiş oxford'un burnunu bezle cilalıyor"
       }
     },
     "promises": {
@@ -193,6 +216,58 @@
       "m4": "Ayakkabı Pasaportu",
       "m5": "Ömür Planı",
       "m6": "İade kargosu satıcıdan"
+    },
+    "kadife": {
+      "hero": {
+        "eyebrow": "Kadın · Topuklu",
+        "title": "Gece <em>senin.</em>",
+        "lead": "Kadife, saten, rugan. İstanbul atölyesinde bir heykel gibi şekillenen topuklular; her model çizgi, denge ve ışık için. Her çift, Ayak İkizi ile milimetresine kadar senin.",
+        "cta": "Vitrini keşfet",
+        "ctaAlt": "Stiletto'yu gör",
+        "imageAlt": "Siyah yansımalı zeminde, spot ışığında altın rengi bilekten bağlı stiletto"
+      },
+      "room": {
+        "eyebrow": "Kadın · Yalnızca topuklu",
+        "title": "Topuklu <em>Vitrin.</em>",
+        "lead": "Kadın koleksiyonu tek bir şeye adandı: topuklu. Her model bir heykel gibi ele alındı; çizgi, denge ve ışık.",
+        "cta": "Topukluları keşfet",
+        "see3d": "Artemis'i gör",
+        "tiles": {
+          "stiletto": "Selene Stiletto",
+          "cizme": "Artemis Çizme",
+          "slingback": "Aurea Slingback",
+          "bot": "Hera Bilek Bot"
+        },
+        "tileAlt": "{name}, sıcak siyah stüdyo fonunda"
+      },
+      "salon": {
+        "eyebrow": "Erkek · Salon",
+        "title": "Erkek <em>Salonu.</em>",
+        "lead": "Erkekler için ayrı bir salon: konyak rengi deriler, el cilası, sessiz bir özgüven. Goodyear dikiş, yenilenebilen pençe.",
+        "cta": "Erkek koleksiyonu",
+        "imageAlt": "Yan yana siyah oxford, bordo loafer ve taba derby"
+      },
+      "explore": {
+        "title": "Üç dünya, <em>tek ölçü.</em>",
+        "women": "Kadın",
+        "womenSub": "Topuklu",
+        "men": "Erkek",
+        "menSub": "Klasik · Bot · Sneaker",
+        "kids": "Çocuk",
+        "kidsSub": "Büyüme paylı"
+      },
+      "credit": "Görseller DEMO amaçlıdır.",
+      "heroMen": {
+        "eyebrow": "Erkek · Salon",
+        "title": "Sessiz <em>özgüven.</em>",
+        "lead": "Konyak rengi deriler, el cilası, Goodyear dikiş. Pençesi yenilenebilen, yıllarca eşlik eden erkek ayakkabıları. Her çift, Ayak İkizi ile milimetresine kadar senin.",
+        "cta": "Salonu keşfet",
+        "ctaAlt": "Atölyeyi gör",
+        "imageAlt": "Siyah yansımalı zeminde, spot ışığında cilalı konyak rengi brogue oxford"
+      },
+      "split": {
+        "title": "ARION: İstanbul atölyesinden kadın topukluları ve erkek ayakkabıları"
+      }
     }
   },
   "manifesto": {
@@ -233,7 +308,6 @@
       "cocuk": "Esnek taban, geniş burun ve büyüme payı. Ayak büyüdükçe ölçüm hatırlatıcısı."
     },
     "back": "Ana sayfaya dön",
-    "voiceLabel": "Yapay zekâ ile üretilmiş ses",
     "listen": "Sesli dinle",
     "stop": "Durdur"
   },
@@ -279,7 +353,16 @@
       "clear": "Temizle",
       "madeToOrder": "Atölyede üretilir",
       "manifesto": "Neden böyle yapıyoruz?",
-      "colors": "{count} renk"
+      "colors": "{count} renk",
+      "groups": {
+        "erkek": {
+          "name": "Erkek",
+          "manifesto": "Erkek Salonu: klasik, bot ve sneaker. Goodyear dikiş, yenilenebilen pençe, sessiz bir özgüven.",
+          "tab": "Erkek"
+        }
+      },
+      "shotAlt": "{name}, sıcak siyah stüdyo fonunda yandan görünüm",
+      "shotTopAlt": "{name}, üstten görünüm"
     },
     "product": {
       "color": "Renk",
@@ -358,7 +441,172 @@
       "ballWidthMm": "Ön ayak genişliği (mm)",
       "fitting": "Genişlik",
       "chartNote": "Uyum motoru numarayla değil milimetreyle çalışır. UK/US karşılıkları yaklaşıktır.",
-      "related": "Aynı kategoriden"
+      "related": "Aynı kategoriden",
+      "viewer": {
+        "tabs": {
+          "drawing": "Çizim",
+          "model": "3D · AR",
+          "anatomy": "Anatomi"
+        },
+        "tabsLabel": "Ürün görünümü",
+        "load": "3D modeli yükle",
+        "loading": "Model yükleniyor…",
+        "ar": "Odanda gör (AR)",
+        "rotateHint": "Sürükleyerek döndür, iki parmakla yakınlaştır.",
+        "demoModel": "Temsili 3D model (DEMO) — gerçek ürün taraması değildir.",
+        "modelAlt": "{name} temsili 3D modeli",
+        "anatomy": {
+          "title": "Ayakkabının içi",
+          "lead": "Katmanları ayır ve her parçanın ne işe yaradığını gör.",
+          "explode": "Katmanları ayır",
+          "layers": "Katmanlar",
+          "canvasLabel": "{name} katmanlarının 3D patlatılmış görünümü",
+          "reducedMotion": "Hareket azaltma açık: otomatik döndürme kapalı."
+        },
+        "layers": {
+          "upper": {
+            "name": "Saya",
+            "desc": "Ayağı saran üst yüzey. Deri ya da tekstil; nefes alması ve şeklini koruması beklenir."
+          },
+          "lining": {
+            "name": "Astar",
+            "desc": "Sayanın iç yüzü. Sürtünmeyi azaltır, nemi uzaklaştırır."
+          },
+          "membrane": {
+            "name": "Su geçirmez membran",
+            "desc": "Saya ile astar arasında; suyu dışarıda tutar, buharın çıkmasına izin verir."
+          },
+          "insole": {
+            "name": "İç taban",
+            "desc": "Ayağın doğrudan bastığı yüzey; zamanla ayağın izini alır."
+          },
+          "shank": {
+            "name": "Şank",
+            "desc": "Taban kemer bölgesindeki sert şerit; ayakkabının ortadan bükülmesini engeller, topukta yükü dağıtır."
+          },
+          "midsole": {
+            "name": "Ara taban",
+            "desc": "Darbe emen katman. Sneaker'da köpük, klasikte ince deri dolgu."
+          },
+          "outsole": {
+            "name": "Dış taban",
+            "desc": "Zemine temas eden kısım: tutuş, aşınma ve tamir edilebilirlik burada belirlenir."
+          },
+          "heel": {
+            "name": "Topuk",
+            "desc": "Ağırlık merkezini taşır. Yüksekliği ve açısı dengeyi doğrudan etkiler."
+          },
+          "tongue": {
+            "name": "Dil",
+            "desc": "Bağcık baskısını dağıtır, üst ayağı korur."
+          },
+          "laces": {
+            "name": "Bağcıklar",
+            "desc": "Sayayı ayağın hacmine göre ayarlar; yüksek kemerde fark yaratır."
+          },
+          "straps": {
+            "name": "Cırt bantlar",
+            "desc": "Çocuğun kendi başına giyip çıkarabilmesi için."
+          },
+          "accent": {
+            "name": "Yele çizgisi",
+            "desc": "ARION'un yan aksanı; yansıtıcı demo malzeme."
+          }
+        },
+        "stories": {
+          "topuklu": {
+            "title": "Topuklu: denge mühendisliği",
+            "points": [
+              "Ağırlık merkezi: topuk yükseldikçe yük ön ayağa kayar; kalıp ön ayakta bu yüzden daha geniş tutulur.",
+              "Topuk açısı: topuk ucu, ağırlık merkezinin tam altına gelecek açıyla monte edilir.",
+              "Şank: çelik şerit kemer bölgesini taşır, ayakkabının ortadan çökmesini engeller."
+            ]
+          },
+          "kislik-bot": {
+            "title": "Kışlık bot: içeride kuru, dışarıda tutunan",
+            "points": [
+              "Membran katmanı saya ile astar arasında; dikiş hatları bantla kapatılır.",
+              "Dikiş hattı: taban ile saya birleşimi su girişinin en zayıf noktasıdır; çift dikişle güçlendirilir.",
+              "Taban dişleri: derin ve aralıklı dişler karı ve çamuru dışarı atar."
+            ]
+          },
+          "sneaker": {
+            "title": "Sneaker: hafiflik ve geri dönüş",
+            "points": [
+              "Ara taban köpüğü darbeyi emer ve enerjiyi geri verir.",
+              "Topuk kilidi ayağın kaymasını önler; ön ayak hareketli kalır.",
+              "Dış taban yalnızca aşınan bölgelerde kalınlaştırılır."
+            ]
+          },
+          "klasik": {
+            "title": "Klasik: yeniden tabanlanabilir yapı",
+            "points": [
+              "Goodyear welt dikişi sayayı tabandan ayırmadan yeni taban takılmasına izin verir.",
+              "Deri iç taban zamanla ayağın şeklini alır.",
+              "Şank, uzun yürüyüşte kemer bölgesini destekler."
+            ]
+          },
+          "cocuk": {
+            "title": "Çocuk: büyüyen ayağa yer",
+            "points": [
+              "Geniş burun parmakların serbest hareketine izin verir.",
+              "Esnek dış taban, adımın doğal bükülmesini engellemez.",
+              "Kalıpta 12 mm büyüme payı vardır."
+            ]
+          }
+        },
+        "stageTitle": "3D ürün sahnesi",
+        "stageLabel": "{name} etkileşimli 3D modeli",
+        "demoShort": "3D · DEMO",
+        "anatomyToggle": "Anatomi",
+        "arTitle": "Artırılmış gerçeklikte gör",
+        "arClose": "Kapat",
+        "arHint": "AR telefon ve tablette çalışır: Android'de Scene Viewer, iPhone'da Quick Look açılır. Masaüstünde modeli döndürüp inceleyebilirsin.",
+        "rotateLeft": "Sola döndür",
+        "rotateRight": "Sağa döndür",
+        "pause": "Durdur",
+        "play": "Döndür",
+        "reset": "Sıfırla",
+        "modelAdapted": "malzemeler ARION tarafından yeniden atandı",
+        "view3d": "3D'de incele",
+        "viewPhoto": "Fotoğraf",
+        "viewSide": "Yandan görünüm",
+        "viewTop": "Üstten görünüm",
+        "thumbs": "Ürün görselleri"
+      },
+      "durability": {
+        "whatItMeans": "Bu ne demek?",
+        "meanings": {
+          "flex_cycles": "Tabanın kırılmadan kaç kez bükülebildiği. Yüksek değer, uzun ömürlü taban demektir.",
+          "abrasion": "Standart sürtünme testinde kaybolan malzeme hacmi. Düşük değer, yavaş aşınma demektir.",
+          "waterproof_hours": "Ayakkabı suya batırılmış hareket halindeyken içeri su geçmeden geçen süre.",
+          "slip_wet": "Islak zeminde kaymaya karşı direnç katsayısı. Yüksek değer, daha iyi tutuş demektir.",
+          "slip_dry": "Kuru zeminde kaymaya karşı direnç katsayısı.",
+          "weight": "Bir çiftin toplam ağırlığı. Hafiflik her kategoride öncelik değildir.",
+          "heel_stability": "Topuğun yük altında yana açılma miktarı. Düşük değer, daha dengeli topuk demektir."
+        },
+        "compareTitle": "Kategoriye göre öncelik",
+        "compareLead": "Aynı testler her kategoride aynı ağırlığı taşımaz.",
+        "priority": {
+          "high": "Yüksek öncelik",
+          "medium": "Orta öncelik",
+          "low": "Düşük öncelik"
+        }
+      },
+      "page": {
+        "onThisPage": "Bu sayfada",
+        "fit": "Uyum",
+        "anatomy": "Anatomi",
+        "lifetime": "Ömür",
+        "anatomyLead": "Bu modelin katmanları ve neden böyle yapıldığı.",
+        "openAnatomy": "Sahnede katmanları ayır",
+        "lifetimeTitle": "Bu çift seninle yaşlansın",
+        "lifetimeBody": "Her çift bir pasaportla gelir: kalıp, malzeme, usta ve tamir geçmişi. Taban aşındığında yeniden tabanlarız; ömrü bittiğinde geri alıp yeniden kazandırırız.",
+        "repairability": "Tamir edilebilirlik",
+        "passportSample": "Örnek pasaportu gör",
+        "lifetimePlan": "Ömür Planı"
+      },
+      "chooseSize": "Numara seç"
     },
     "cart": {
       "title": "Sepet",
@@ -461,7 +709,8 @@
       "errors": {
         "invalidCredentials": "E-posta ya da şifre hatalı.",
         "invalidRegister": "Lütfen işaretli alanları kontrol et.",
-        "registerFailed": "Üyelik oluşturulamadı. Bu e-posta zaten kayıtlı olabilir."
+        "registerFailed": "Üyelik oluşturulamadı. Bu e-posta zaten kayıtlı olabilir.",
+        "demoOnly": "Bu bir ödev sitesidir: üyelik gösterim amaçlıdır, hesap oluşturulmaz."
       },
       "nav": {
         "overview": "Genel bakış",
@@ -480,7 +729,7 @@
         "lastChange": "Son değişiklik: {date}",
         "cookies": "Çerez tercihleri",
         "cookiesNote": "Çerez izinlerini tarayıcı bazında yönetirsin.",
-        "fitTwinPhase": "Ayak İkizi Faz 5'te açılacak; şimdiden izin verebilir ya da vermeyebilirsin.",
+        "fitTwinPhase": "Bu izni geri alırsan kayıtlı Ayak İkizin kalıcı olarak silinir.",
         "openCookies": "Çerez tercihlerini aç"
       },
       "dataRequests": {
@@ -519,6 +768,13 @@
     "errors": {
       "selectVariant": "Lütfen tüm seçenekleri belirle.",
       "addFailed": "Ürün sepete eklenemedi. Stok bitmiş olabilir."
+    },
+    "staticCart": {
+      "shippingFree": "Ücretsiz",
+      "checkout": "Siparişi tamamla (demo)",
+      "demoNote": "Bu bir ödev sitesidir: ödeme alınmaz, sipariş oluşturulmaz ve ürün gönderilmez.",
+      "doneTitle": "Teşekkürler.",
+      "doneBody": "Demo siparişin tamamlandı. Bu bir ödev sitesi olduğu için ödeme alınmadı ve gerçek bir sipariş oluşturulmadı."
     }
   },
   "cookies": {
@@ -695,28 +951,404 @@
     "open": "Areion'a sor",
     "close": "Sohbeti kapat",
     "title": "Areion",
-    "subtitle": "Yapay zekâ danışmanı",
-    "disclosure": "Ben bir yapay zekâ asistanıyım, insan değilim. Sağlık tavsiyesi vermem, kart bilgisi istemem.",
-    "consentTitle": "Başlamadan önce",
-    "consentAccept": "Kabul ediyorum, başla",
-    "consentDecline": "Temsilciyle yazışmak istiyorum",
-    "privacy": "Aydınlatma metni",
+    "subtitle": "Ayakkabı danışmanı · demo",
+    "disclosure": "Gösterim amaçlı bir asistanım: yanıtlarım hazır metinlerdir, yapay zekâ ya da dış servis kullanılmaz. Kart bilgisi istemem.",
     "placeholder": "Sorunu yaz… (ör. 41 mi 42 mi?)",
     "send": "Gönder",
-    "thinking": "Areion düşünüyor…",
+    "thinking": "Areion yazıyor…",
     "handoff": "Temsilciye bağlan",
     "handoffName": "Ad soyad",
     "handoffEmail": "E-posta",
     "handoffSubmit": "Temsilciye ilet",
-    "handoffDone": "Seni bir temsilciye bağladım. Talep numaran {ticket}. Konuşma geçmişin (kişisel bilgiler maskelenerek) temsilciye iletildi.",
-    "error": "Şu an yanıt veremiyorum. İstersen seni bir temsilciye bağlayayım.",
+    "handoffDone": "Talebin {ticket} numarasıyla alındı (demo). Bu bir ödev sitesi olduğu için gerçek bir temsilciye iletilmez.",
     "greeting": "Merhaba, ben Areion. Beden, kalıp, kargo, iade ya da ürünlerimiz hakkında sorabilirsin.",
-    "masked": "Kişisel bilgilerin gönderilmeden önce maskelenir."
+    "replies": {
+      "health": "Sağlıkla ilgili konularda tavsiye veremem; ayağındaki ağrı ya da rahatsızlık için bir hekime danışmanı öneririm. Ayak İkizi ölçüleri yalnızca numara ve kalıp önerisi içindir.",
+      "size": "Numara için en doğru yol Ayak İkizi: A4 kâğıt üzerinde ayağını ölçer, her modelin kalıbına göre uyum skorunu gösterir. Arada kaldıysan topuklularda yarım numara büyük öneririz.",
+      "returns": "Teslimattan sonra 14 gün içinde cayma hakkınla iade edebilirsin; iade kargosu bizden. İade sihirbazı adım adım yönlendirir.",
+      "shipping": "Siparişler 1–3 iş günü içinde kargoya verilir. Sipariş takibi sayfasından durumu görebilirsin.",
+      "repair": "ARION ayakkabıları tamir edilebilir: taban ve pençe yenileme Ömür Planı kapsamında. Ayakkabı pasaportundaki kodla talep açabilirsin.",
+      "heels": "Kadın koleksiyonu yalnızca topuklulardan oluşur: Selene Stiletto, Eos Blok Topuk, Artemis Topuklu Çizme, Hera Bilek Bot, Aurea Slingback, Aphrodite Sandalet ve Astra Mule.",
+      "men": "Erkek salonunda Adrastus Oxford, Castor Loafer, Pollux Derby ve Herakles Chelsea gibi klasikler; ayrıca bot ve sneaker'lar var.",
+      "kids": "Çocuk modellerimizde 10–12 mm büyüme payı var: Iris Cırtlı, Triton Çocuk Botu, Hebe Çocuk Sneaker ve Delphinus Çocuk Sandalet.",
+      "fallback": "Bunu tam anlayamadım. Beden, kalıp, kargo, iade, tamir ya da ürünlerimiz hakkında sorabilirsin; istersen seni bir temsilciye de yönlendirebilirim."
+    },
+    "links": {
+      "fitTwin": "Ayak İkizi'ni aç",
+      "returns": "İade sihirbazı",
+      "help": "Yardım merkezi",
+      "lifetime": "Ömür Planı",
+      "heels": "Topukluları gör",
+      "men": "Erkek salonu",
+      "kids": "Çocuk modelleri"
+    }
   },
   "footerHelp": {
     "helpCenter": "Yardım merkezi",
     "tracking": "Sipariş takibi",
     "returns": "İade ve değişim",
     "contact": "İletişim"
+  },
+  "fit": {
+    "meta": {
+      "title": "Ayak İkizi",
+      "description": "Ayak ölçülerini gir, her kalıp için 0–100 uyum skoru ve önerilen numarayı gör."
+    },
+    "eyebrow": "Ayak İkizi",
+    "title": "Numaraya değil, milimetreye göre seç.",
+    "lead": "Ayağını bir kez ölç; her ARION kalıbı için uyum skorunu, önerilen numarayı ve genişliği gerekçesiyle görelim.",
+    "privacy": {
+      "title": "Ölçülerin nerede duruyor?",
+      "guest": "Üye değilsen ölçülerin yalnızca bu sekmede tutulur; sunucumuza gönderilmez ve sekmeyi kapatınca silinir.",
+      "member": "Üyeysen, ayrıca açık rıza verirsen ölçülerin şifrelenerek hesabında saklanır. Rıza vermezsen hiçbir şey kaydedilmez.",
+      "noAi": "Ayak İkizi verisi yapay zekâ hizmetlerine gönderilmez ve sağlık değerlendirmesi için kullanılmaz.",
+      "notice": "Aydınlatma metni"
+    },
+    "steps": {
+      "method": "Yöntem",
+      "length": "Uzunluk",
+      "width": "Genişlik",
+      "arch": "Kemer",
+      "preference": "Tercih",
+      "result": "Sonuç"
+    },
+    "progress": "Adım {current} / {total}",
+    "next": "Devam",
+    "back": "Geri",
+    "method": {
+      "title": "Nasıl ölçmek istersin?",
+      "manual": "Cetvelle ölç",
+      "manualHint": "Bir kâğıt, kalem ve cetvel yeter. Yaklaşık 3 dakika.",
+      "paper": "A4 kâğıt fotoğrafı (deneysel)",
+      "paperHint": "Ayağını A4 kâğıda koyup fotoğrafla. Fotoğraf yalnızca tarayıcında işlenir, hiçbir yere yüklenmez."
+    },
+    "length": {
+      "title": "Ayak uzunluğu",
+      "steps": [
+        "Kâğıdı duvara dayalı olarak yere koy, topuğunu duvara yasla.",
+        "Ağırlığını ayağına ver; en uzun parmağının ucunu kalemle işaretle.",
+        "Duvardan işarete kadar olan mesafeyi milimetre olarak ölç. İki ayağını da ölç, büyük olanı yaz."
+      ],
+      "label": "Uzunluk (mm)",
+      "hint": "Örnek: 26,5 cm = 265 mm. Akşam saatlerinde ölçmek daha doğru sonuç verir."
+    },
+    "width": {
+      "title": "Ön ayak genişliği",
+      "steps": [
+        "Ayağın kâğıt üzerindeyken, başparmak ve serçe parmak eklemlerinin hizasındaki en geniş iki noktayı işaretle.",
+        "İki işaret arasındaki mesafeyi milimetre olarak ölç."
+      ],
+      "label": "Genişlik (mm)",
+      "girth": "Ön ayak çevresi (mm, isteğe bağlı)",
+      "girthHint": "Mezura ile en geniş yerden ayağın etrafını ölç. Bilmiyorsan boş bırak."
+    },
+    "arch": {
+      "title": "Kemer görünümü",
+      "hint": "Islak ayakla bir kâğıda bas ve izine bak. Bu bir sağlık değerlendirmesi değildir; yalnızca ayakkabının üst hacmini seçmek için kullanılır.",
+      "flat": "Alçak",
+      "flatHint": "İzin büyük bölümü görünür",
+      "normal": "Orta",
+      "normalHint": "İzin ortası belirgin biçimde incelir",
+      "high": "Yüksek",
+      "highHint": "Topuk ve ön ayak arasında ince bir şerit"
+    },
+    "preference": {
+      "title": "Nasıl hissetmesini seversin?",
+      "snug": "Sıkı",
+      "snugHint": "Ayağı saran, oynamayan",
+      "regular": "Dengeli",
+      "regularHint": "Çoğu kişi için",
+      "roomy": "Rahat",
+      "roomyHint": "Parmaklara daha çok yer"
+    },
+    "paper": {
+      "title": "A4 yöntemi",
+      "intro": "Ayağını A4 kâğıdın üzerine koy, topuğun kâğıdın kısa kenarına değsin. Tepeden, kâğıdın dört köşesi görünecek şekilde fotoğraf çek.",
+      "choose": "Fotoğraf seç",
+      "local": "Fotoğraf cihazında işlenir; sunucuya gönderilmez ve sayfadan ayrılınca silinir.",
+      "instructions": "Sırayla işaretle: kâğıdın 4 köşesi (sol üst, sağ üst, sağ alt, sol alt), topuk, en uzun parmak ucu, ön ayağın en geniş iki noktası.",
+      "pointLabels": [
+        "Sol üst köşe",
+        "Sağ üst köşe",
+        "Sağ alt köşe",
+        "Sol alt köşe",
+        "Topuk",
+        "Parmak ucu",
+        "Genişlik 1",
+        "Genişlik 2"
+      ],
+      "next": "Sıradaki: {label}",
+      "done": "Ölçüldü: uzunluk {length} mm, genişlik {width} mm",
+      "reset": "Noktaları sıfırla",
+      "use": "Bu ölçüleri kullan",
+      "canvasLabel": "Fotoğraf üzerinde nokta işaretleme alanı"
+    },
+    "errors": {
+      "length_range": "Uzunluk 100–340 mm arasında olmalı.",
+      "width_range": "Genişlik 40–140 mm arasında olmalı.",
+      "girth_range": "Çevre 120–340 mm arasında olmalı.",
+      "ratio": "Genişlik ve uzunluk birbiriyle uyumsuz görünüyor; ölçümü tekrar kontrol eder misin?"
+    },
+    "result": {
+      "title": "Ayak İkizin hazır",
+      "summary": "Uzunluk {length} mm · Genişlik {width} mm",
+      "recommendations": "Sana en uygun kalıplar",
+      "scoreLabel": "Uyum skoru",
+      "size": "Önerilen: {size} {width}",
+      "viewProduct": "Ürüne git",
+      "browse": "Bana uyanları gör",
+      "edit": "Ölçüleri düzenle"
+    },
+    "save": {
+      "guestTitle": "Bu sekmede saklanıyor",
+      "guestBody": "Sekmeyi kapatınca silinir. Kalıcı saklamak istersen üye girişi yapıp açık rıza verebilirsin.",
+      "signIn": "Giriş yap",
+      "memberTitle": "Hesabına kaydet",
+      "consentHint": "Kutu işaretli değilken ölçülerin kaydedilmez.",
+      "save": "Şifreli kaydet",
+      "saved": "Ayak İkizin hesabına şifreli olarak kaydedildi.",
+      "consentRequired": "Kaydetmek için açık rıza kutusunu işaretlemelisin.",
+      "error": "Kaydedilemedi. Lütfen tekrar dene.",
+      "delete": "Ayak İkizimi sil",
+      "deleteConfirm": "Ölçülerin kalıcı olarak silinecek ve rızan geri alınacak. Emin misin?",
+      "deleted": "Ayak İkizin kalıcı olarak silindi.",
+      "clearGuest": "Bu sekmeden sil"
+    },
+    "reasons": {
+      "length_ok": "Uzunluk bu kalıp için ideal parmak payında.",
+      "length_short": "Ayağın önerilen numarada bile ideal paydan {mm} mm uzun; bu kalıp sana kısa gelebilir.",
+      "length_long": "Ayağın en küçük numarada bile ideal paydan {mm} mm kısa; ayakkabı bol gelebilir.",
+      "width_ok": "Ön ayak genişliğin bu kalıpla uyumlu.",
+      "width_narrow": "{suggest, select, W {Ön ayağın bu kalıbın standart genişliğinden {mm} mm geniş; W (geniş) seçeneğini öneriyoruz.} N {Ön ayağın bu kalıptan {mm} mm geniş.} other {Ön ayağın bu kalıptan {mm} mm geniş; bu modelde geniş seçenek yok.}}",
+      "width_wide": "{suggest, select, N {Ön ayağın bu kalıptan {mm} mm dar; N (dar) seçeneğini öneriyoruz.} other {Ön ayağın bu kalıptan {mm} mm dar; ayakkabı ön tarafta bol gelebilir.}}",
+      "girth_tight": "Ön ayak çevren bu kalıbın {mm} mm üzerinde; bağcıklı modeller üst kısmı ayarlamayı kolaylaştırır.",
+      "extra_sock": "Kışlık kalın çorap için {mm} mm ek pay hesaba katıldı.",
+      "extra_growth": "Çocuk kalıbında büyüme payı hesaba katıldı. Çocuk ayağını 3–4 ayda bir yeniden ölç.",
+      "arch_high": "Yüksek kemer görünümünde üst kısmın hacmi önemlidir; bağcık ayarı fark yaratır.",
+      "preference": "{preference, select, snug {Sıkı oturan his tercihine göre pay azaltıldı.} other {Rahat his tercihine göre pay artırıldı.}}",
+      "no_good_size": "Bu kalıpta sana tam uyan numara yok."
+    },
+    "bands": {
+      "great": "Çok iyi uyum",
+      "good": "İyi uyum",
+      "fair": "Orta uyum",
+      "poor": "Zayıf uyum"
+    },
+    "product": {
+      "title": "Sana uyumu",
+      "cta": "Ayak İkizini oluştur",
+      "ctaHint": "Ölçülerini gir, bu kalıp için skorunu ve numaranı görelim.",
+      "recommended": "Önerilen numara",
+      "widthLabel": "Genişlik",
+      "fromTwin": "{source, select, member {Hesabındaki Ayak İkizine göre} other {Bu sekmedeki Ayak İkizine göre}}",
+      "table": "Numaralara göre skor",
+      "update": "Ölçüleri güncelle"
+    },
+    "filter": {
+      "fitsMe": "Bana uyanlar",
+      "fitsMeHint": "Uyum skoru {threshold} ve üzeri",
+      "needTwin": "Ayak İkizi oluştur",
+      "sortByFit": "Uyuma göre sırala",
+      "none": "Ayak İkizine göre bu listede {threshold} üzeri skor alan ürün yok.",
+      "badge": "Uyum {score}",
+      "density": "Izgara görünümü",
+      "wide": "Geniş",
+      "dense": "Sık"
+    }
+  },
+  "passport": {
+    "metaTitle": "Ayakkabı Pasaportu {code}",
+    "eyebrow": "Ayakkabı Pasaportu",
+    "notFound": "Bu kodla bir pasaport bulunamadı.",
+    "lookup": {
+      "label": "Pasaport kodu",
+      "placeholder": "ARN-2026-000123",
+      "submit": "Pasaportu aç"
+    },
+    "privacy": "Pasaport ürüne aittir, sahibine değil: kişisel veri içermez.",
+    "product": "Model",
+    "last": "Kalıp",
+    "options": "Seçenek",
+    "produced": "Üretim",
+    "batch": "Parti",
+    "craftsman": "Usta",
+    "since": "{year} yılından beri",
+    "materials": "Malzemeler ve kaynak bölgesi",
+    "tests": "Test kartı",
+    "care": "Bakım talimatı",
+    "repairs": "Tamir geçmişi",
+    "noRepairs": "Henüz tamir kaydı yok.",
+    "recycle": "Ömrünün sonunda",
+    "recycleBody": "Çifti Geri Al – Yeniden Doğ programına gönder: tamir edilebilecek parçalar yeniden kullanılır, kalanlar malzemesine göre ayrıştırılıp geri dönüştürülür. Karşılığında indirim kredisi alırsın.",
+    "dpp": "Dijital ürün pasaportu verisi",
+    "dppRecycled": "Geri dönüştürülmüş malzeme payı",
+    "dppCarbon": "Tahmini karbon ayak izi",
+    "repairCta": "Bu çift için tamir talebi aç",
+    "viewProduct": "Ürün sayfası",
+    "specialties": {
+      "cutting": "Kesim",
+      "closing": "Saya dikimi",
+      "lasting": "Kalıba çekme",
+      "sole": "Taban montajı",
+      "finishing": "Finisaj",
+      "qc": "Kalite kontrol"
+    },
+    "careByCategory": {
+      "topuklu": [
+        "Topuk ucunu aşınma çizgisine gelmeden değiştir.",
+        "Deriyi ayda bir nemlendir; süet ise yalnızca fırçala.",
+        "Kalıp ağacıyla sakla, burnun şekli korunur."
+      ],
+      "kislik-bot": [
+        "Islak çıkardıktan sonra kâğıt doldurup oda sıcaklığında kurut; kaloriferin üstüne koyma.",
+        "Sezon başında su itici sprey uygula.",
+        "Taban dişleri 3 mm'nin altına inince taban değişimi iste."
+      ],
+      "sneaker": [
+        "Elde, ılık su ve yumuşak fırçayla temizle; makinede yıkama.",
+        "İç tabanı çıkarıp ayrı kurut.",
+        "Dış taban topukta aşındığında yama ile ömrünü uzat."
+      ],
+      "klasik": [
+        "Her giyişten sonra kalıp ağacı tak.",
+        "Ayda bir krem, mevsimde bir cila.",
+        "Pençe aşındığında Goodyear yeniden tabanlama iste; saya yıllarca kullanılır."
+      ],
+      "cocuk": [
+        "Cırt bantları tüy ve kumdan arındır.",
+        "Ayak ölçüsünü 3–4 ayda bir kontrol et.",
+        "Küçülen çifti Geri Al – Yeniden Doğ programına gönder."
+      ]
+    }
+  },
+  "repair": {
+    "types": {
+      "resole": "Taban değişimi",
+      "heel": "Topuk tamiri",
+      "stitch": "Dikiş onarımı",
+      "clean": "Bakım ve temizlik",
+      "recraft": "Geri Al – Yeniden Doğ"
+    },
+    "typeHints": {
+      "resole": "Aşınan dış taban yenilenir; saya ve astar korunur.",
+      "heel": "Topuk ucu ya da topuk bloğu değiştirilir.",
+      "stitch": "Açılan dikişler yeniden dikilir.",
+      "clean": "Derin temizlik, nemlendirme ve cila.",
+      "recraft": "Eski çifti gönder; yeniden kazandıralım ya da geri dönüştürelim. Karşılığında indirim kredisi."
+    }
+  },
+  "lifetime": {
+    "metaTitle": "Ömür Planı",
+    "metaDescription": "Bakım, tamir ve Geri Al – Yeniden Doğ: ARION ayakkabılarının ömrünü uzatma planı.",
+    "eyebrow": "Ömür Planı",
+    "title": "Ayakkabı biter. Söz bitmez.",
+    "lead": "Bakım hatırlatıcıları, ücret tahminli tamir ve eski çiftini yeniden kazandıran geri alım programı.",
+    "reminders": {
+      "title": "Bakım hatırlatıcıları",
+      "body": "Satın aldığın modelin bakım takvimine göre e-posta gönderiyoruz: ilk cila, mevsim bakımı, taban kontrolü. Siparişle ilgili işlemsel bilgilendirmeler dışında kalan hatırlatıcılar yalnızca ticari elektronik ileti onayın varsa gönderilir.",
+      "manage": "İzinlerimi yönet"
+    },
+    "form": {
+      "title": "Tamir ya da geri alım talebi",
+      "type": "Ne yapalım?",
+      "passport": "Pasaport kodu (isteğe bağlı)",
+      "passportHint": "Ayakkabının dilindeki QR etiketinde yazar. Varsa tahmin modele göre yapılır.",
+      "description": "Sorunu kısaca anlat",
+      "photos": "Fotoğraflar (en fazla 3, isteğe bağlı)",
+      "photosHint": "Fotoğraflar tarayıcında küçültülüp yalnızca bu talep için gönderilir; talep kapandıktan sonra saklama süresi sonunda silinir.",
+      "name": "Ad soyad",
+      "email": "E-posta",
+      "quote": "Ücret tahmini al",
+      "quoteResult": "Tahmini ücret: {min} – {max} (DEMO)",
+      "creditResult": "Tahmini indirim kredisi: {credit} (DEMO)",
+      "notFeasible": "Bu modelde taban değişimi uygun değil; bakım ya da Geri Al – Yeniden Doğ seçeneğine bakabilirsin.",
+      "passportNotFound": "Bu pasaport kodu bulunamadı.",
+      "submit": "Talebi gönder",
+      "sending": "Gönderiliyor…",
+      "success": "Talebin alındı.",
+      "reference": "Talep no",
+      "shipping": "Ücretsiz gönderim kodu",
+      "shippingHint": "Çifti kutusuna koy, bu kodu kargo şubesinde söyle. Ücret, ustamız inceledikten sonra kesinleşir; onayın olmadan işlem yapılmaz.",
+      "error": "Talep gönderilemedi. Lütfen alanları kontrol et.",
+      "removePhoto": "Fotoğrafı kaldır",
+      "privacy": "Bilgilerin yalnızca bu talebi yürütmek için işlenir."
+    }
+  },
+  "transparency": {
+    "metaTitle": "Şeffaflık Paneli",
+    "metaDescription": "ARION'un ölçülebilir sözleri: iade oranı, tamir sayısı, ayakkabı ömrü ve müşteri hizmetleri yanıt süresi.",
+    "eyebrow": "Ölçülebilir sözler",
+    "title": "İddia değil, veri.",
+    "lead": "Sözlerimizi ölçüyoruz. Aşağıdaki değerler veritabanımızdan bu sayfa açıldığında hesaplanır.",
+    "demo": "DEMO ortamı: değerler demo siparişlerden ve örnek kayıtlardan hesaplanır, gerçek işletme verisi değildir.",
+    "generated": "Hesaplanma: {date}",
+    "returnRate": "İade oranı",
+    "returnRateHow": "{returns} iade talebi / {orders} sipariş",
+    "reasons": "İade nedenleri",
+    "reasonLabels": {
+      "fit": "Uyum",
+      "dislike": "Beğenmedim",
+      "defective": "Kusurlu",
+      "wrong_item": "Yanlış ürün"
+    },
+    "repaired": "Tamir edilen çift",
+    "repairedHow": "Tamamlanan tamir kayıtları",
+    "recrafted": "Geri alınıp yeniden kazandırılan çift",
+    "recraftedHow": "Geri Al – Yeniden Doğ ile tamamlanan kayıtlar",
+    "lifetime": "Ortalama kullanım süresi",
+    "lifetimeValue": "{months} ay",
+    "lifetimeHow": "Tamir ya da geri alım kaydı olan çiftlerde üretimden son kayda kadar geçen süre ({n} çift)",
+    "response": "Ortalama ilk yanıt süresi",
+    "responseValue": "{hours} saat",
+    "responseHow": "Yanıtlanan destek taleplerinde talep ile ilk yanıt arasındaki süre ({n} talep)",
+    "noData": "Henüz yeterli veri yok"
+  },
+  "atelier": {
+    "metaTitle": "Atölye",
+    "metaDescription": "ARION ustaları, üretim adımları ve atölyeden son çıkan çiftler.",
+    "eyebrow": "Atölye",
+    "title": "Her çiftin bir ustası var.",
+    "lead": "İstanbul atölyemizde her çift yedi adımdan geçer. Atölyede üretilen modellerde siparişini bu adımlar üzerinden takip edersin.",
+    "steps": "Üretim adımları",
+    "artisans": "Ustalar",
+    "recent": "Atölyeden son çıkanlar",
+    "recentHint": "Her çift bir pasaportla çıkar. Koda dokun, pasaportu aç.",
+    "demo": "Ustalar ve kayıtlar demo amaçlıdır; kurgusaldır.",
+    "stepNames": {
+      "cutting": "Kesim",
+      "closing": "Saya dikimi",
+      "lasting": "Kalıba çekme",
+      "sole": "Taban montajı",
+      "finishing": "Finisaj",
+      "qc": "Kalite kontrol",
+      "shipping": "Kargo"
+    },
+    "stepDescs": {
+      "cutting": "Deri damarına göre okunur, parçalar fire en az olacak şekilde kesilir.",
+      "closing": "Saya parçaları birleştirilir; çift iğne ve el dikişi.",
+      "lasting": "Saya kalıba elle çekilir ve dinlenmeye bırakılır; ayakkabının şekli burada doğar.",
+      "sole": "Taban Goodyear, Blake ya da yapıştırma yöntemiyle monte edilir.",
+      "finishing": "Kenarlar zımparalanır, boyanır ve cilalanır.",
+      "qc": "24 noktalı kontrol listesi; pasaport etiketi bu adımda takılır.",
+      "shipping": "Kutulanır ve kargoya verilir."
+    },
+    "timeline": {
+      "title": "Atölye takibi",
+      "lead": "Bu sipariş atölyede senin için üretiliyor. Tahmini teslim: {date} ({days} gün).",
+      "current": "Şu an",
+      "done": "Tamamlandı",
+      "planned": "Planlanan",
+      "by": "Usta: {name}",
+      "note": "Adım tarihleri teslim süresine göre planlanır (DEMO). Mesafeli satışta teslim en geç 30 gündür."
+    }
+  },
+  "nav2": {
+    "lifetime": "Ömür Planı",
+    "transparency": "Şeffaflık"
+  },
+  "skin": {
+    "label": "Görünüm (deneme)",
+    "gold": "Altın",
+    "glass": "Cam"
   }
 }
